@@ -9,8 +9,9 @@ import guiTeacher.components.*;
 public class CatalogScreen extends FullFunctionScreen {
 	
 	private TextField nameField;
-	private TextField 
+	private TextField typeField;
 	private TextField descriptionField;
+	private Button add;
 	
 
 	public CatalogScreen(int width, int height) {
@@ -22,6 +23,12 @@ public class CatalogScreen extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		descriptionField = new TextField(40,40,200,30,"Monster Name","rawr");
 		viewObjects.add(descriptionField);
+		add = new Button(30,30, 20, 10, "Add", new Action(){
+			@Override
+			public void act() {
+				descriptionField.setText("lol m2k");
+			}
+		});
 	}
 	
 	
