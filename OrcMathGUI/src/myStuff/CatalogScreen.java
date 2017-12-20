@@ -26,6 +26,7 @@ public class CatalogScreen extends FullFunctionScreen {
 		viewObjects.add(nameField);
 		hpField = new TextField(40,80,200,30, "Base HP", "rawr");
 		viewObjects.add(hpField);
+		descriptionField = new TextField(40, 120, 200, 30, "Description", "rawr");
 		add = new Button(30,30, 20, 10, "Add", new Action(){
 			@Override
 			public void act() {
