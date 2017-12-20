@@ -15,6 +15,7 @@ public class CatalogScreen extends FullFunctionScreen {
 	private TextField hpField;
 	private TextField fireResField;
 	private TextField iceResField;
+	private TextField waterResField;
 	private TextField descriptionField;
 	private Button add;
 	private TextArea descriptionArea;
@@ -39,7 +40,9 @@ public class CatalogScreen extends FullFunctionScreen {
 		iceResField = new TextField(40, 220, 200, 30, "", "Ice Res");
 		iceResField.setInputType(TextField.INPUT_TYPE_NUMERIC);
 		viewObjects.add(iceResField);
-		
+		waterResField = new TextField(40, 280, 200, 30, "", "Water Res");
+		waterResField.setInputType(TextField.INPUT_TYPE_NUMERIC);
+		viewObjects.add(waterResField);
 		descriptionField = new TextField(40, 160, 200, 30, "", "rawr");
 		add = new Button(260,40,40,40,"Add", new Action(){
 			@Override
