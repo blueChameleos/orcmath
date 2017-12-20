@@ -10,6 +10,7 @@ public class CatalogScreen extends FullFunctionScreen {
 	
 	private TextField nameField;
 	private TextField typeField;
+	private TextField hpField;
 	private TextField descriptionField;
 	private Button add;
 	
@@ -21,12 +22,14 @@ public class CatalogScreen extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		descriptionField = new TextField(40,40,200,30,"Monster Name","rawr");
-		viewObjects.add(descriptionField);
+		nameField = new TextField(40,40,200,30,"Monster Name","rawr");
+		viewObjects.add(nameField);
+		hpField = new TextField(40,80,200,30, "Base HP", "rawr");
+		viewObjects.add(hpField);
 		add = new Button(30,30, 20, 10, "Add", new Action(){
 			@Override
 			public void act() {
-				descriptionField.setText("lol m2k");
+				descriptionField.setText("Name");
 			}
 		});
 	}
