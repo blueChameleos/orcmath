@@ -53,8 +53,8 @@ public class CatalogMaker {
 		
 	}
 	
-	public void getCatalog() {
-		
+	public ArrayList<Monsters> getCatalog() {
+		return catalog;
 	}
 	
 }
