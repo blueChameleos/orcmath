@@ -6,6 +6,7 @@ public class CatalogMakerGUI extends GUIApplication {
 
 	public CatalogMakerGUI(int width, int height) {
 		super(width, height);
+		setVisible(true);
 		// TODO Auto-generated constructor stub
 	}
 
