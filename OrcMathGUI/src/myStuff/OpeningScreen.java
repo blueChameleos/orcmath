@@ -2,6 +2,8 @@ package myStuff;
 
 import java.util.List;
 
+import guiTeacher.components.Action;
+import guiTeacher.components.Button;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -16,13 +18,13 @@ public class OpeningScreen extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		
-	}
-
-	public static void main(String[] args) {
-		catalog = new CatalogMakerGUI(800, 550);
-		Thread go = new Thread(catalog);
-		go.start();
+		Button open = new Button((getWidth() - 100)/2, getHeight() - 100, 250, 30, "Click to go to next screen", new Action() {
+			@Override
+			public void act() {
+				CatalogMakerGUI.catalog.setScreen(CatalogMakerGUI.transition);
+			}
+		});
+		viewObjects.add(open);
 	}
 
 }

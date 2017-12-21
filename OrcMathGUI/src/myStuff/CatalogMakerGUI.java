@@ -19,7 +19,7 @@ public class CatalogMakerGUI extends GUIApplication {
 		opener = new OpeningScreen(getWidth(), getHeight());
 		transition = new NextScreen(getWidth(), getHeight());
 		setScreen(opener);
-		setScreen(transition);
+		//setScreen(transition);
 	}
 	
 	public static void main(String[] args) {
