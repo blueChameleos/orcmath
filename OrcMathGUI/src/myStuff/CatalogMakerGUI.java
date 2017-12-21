@@ -6,6 +6,7 @@ public class CatalogMakerGUI extends GUIApplication {
 	
 	public static CatalogMakerGUI catalog;
 	public static OpeningScreen opener;
+	public static NextScreen transition;
 
 	public CatalogMakerGUI(int width, int height) {
 		super(width, height);
@@ -15,8 +16,10 @@ public class CatalogMakerGUI extends GUIApplication {
 
 	@Override
 	public void initScreen() {
-		CatalogScreen s = new CatalogScreen(getWidth(), getHeight());
-		setScreen(s);
+		opener = new OpeningScreen(getWidth(), getHeight());
+		transition = new NextScreen(getWidth(), getHeight());
+		setScreen(opener);
+		//setScreen(transition);
 	}
 	
 	public static void main(String[] args) {
