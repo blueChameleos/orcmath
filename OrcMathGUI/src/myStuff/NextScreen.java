@@ -7,7 +7,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class NextScreen extends FullFunctionScreen {
 
-	
+	//s
 	
 	public NextScreen(int width, int height) {
 		super(width, height);
