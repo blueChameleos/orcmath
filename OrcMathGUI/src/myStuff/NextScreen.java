@@ -7,6 +7,8 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class NextScreen extends FullFunctionScreen {
 
+	
+	
 	public NextScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
