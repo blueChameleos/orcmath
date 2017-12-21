@@ -3,6 +3,9 @@ package myStuff;
 import guiTeacher.GUIApplication;
 
 public class CatalogMakerGUI extends GUIApplication {
+	
+	public static CatalogMakerGUI catalog;
+	public static OpeningScreen opener;
 
 	public CatalogMakerGUI(int width, int height) {
 		super(width, height);
@@ -17,8 +20,8 @@ public class CatalogMakerGUI extends GUIApplication {
 	}
 	
 	public static void main(String[] args) {
-		CatalogMakerGUI sample = new CatalogMakerGUI(800, 550);
-		Thread go = new Thread(sample);
+		catalog = new CatalogMakerGUI(800, 550);
+		Thread go = new Thread(catalog);
 		go.start();
 	}
 
