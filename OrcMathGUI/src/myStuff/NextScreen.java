@@ -10,7 +10,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class NextScreen extends FullFunctionScreen {
 
-	Thread fader;
+	Graphic background;
 	
 	public NextScreen(int width, int height) {
 		super(width, height);
@@ -19,7 +19,7 @@ public class NextScreen extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		Graphic background = new Graphic(0, 0, 800, 550, "resources/opened.jpg");
+		background = new Graphic(0, 0, 800, 550, "resources/opened.jpg");
 		Button close = new Button((getWidth())/4, getHeight() - 100, 250, 30, "Click to close the card.", new Action() {
 			@Override
 			public void act() {
@@ -29,8 +29,12 @@ public class NextScreen extends FullFunctionScreen {
 		viewObjects.add(background);
 		viewObjects.add(close);
 		
+
+	}
+	
+	public void startFader() {
 		background.setAlpha(0f);
-		fader = new Thread(new Runnable() {
+		Thread fader = new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
@@ -45,11 +49,7 @@ public class NextScreen extends FullFunctionScreen {
 				background.setAlpha(1f);
 			}
 		});
-		
-	}
-	
-	public void startFader() {
-		
+		fader.start();
 	}
 
 }

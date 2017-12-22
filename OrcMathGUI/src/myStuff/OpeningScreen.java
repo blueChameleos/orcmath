@@ -25,6 +25,7 @@ public class OpeningScreen extends FullFunctionScreen {
 			@Override
 			public void act() {
 				CatalogMakerGUI.catalog.setScreen(CatalogMakerGUI.transition);
+				CatalogMakerGUI.transition.startFader();
 			}
 		});
 		viewObjects.add(background);
