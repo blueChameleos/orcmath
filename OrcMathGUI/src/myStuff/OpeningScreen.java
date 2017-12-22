@@ -21,7 +21,7 @@ public class OpeningScreen extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		Graphic background = new Graphic(0, 0, 800, 550, "resources/background.jpg");
-		Button open = new Button((getWidth())/4, getHeight() - 100, 250, 30, "Click to go to next screen", new Action() {
+		Button open = new Button((getWidth())/5, getHeight() - 100, 250, 30, "Click to go to next screen", new Action() {
 			@Override
 			public void act() {
 				CatalogMakerGUI.catalog.setScreen(CatalogMakerGUI.transition);
