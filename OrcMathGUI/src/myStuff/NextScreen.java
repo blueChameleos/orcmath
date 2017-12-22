@@ -10,7 +10,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class NextScreen extends FullFunctionScreen {
 
-	//s
+	Thread fader;
 	
 	public NextScreen(int width, int height) {
 		super(width, height);
@@ -28,6 +28,28 @@ public class NextScreen extends FullFunctionScreen {
 		});
 		viewObjects.add(background);
 		viewObjects.add(close);
+		
+		background.setAlpha(0f);
+		fader = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while(background.getAlpha() + 0.01 < 1.0) {
+					background.setAlpha((float)(background.getAlpha() + 0.01));
+					try {
+						Thread.sleep(20);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				background.setAlpha(1f);
+			}
+		});
+		
+	}
+	
+	public void startFader() {
+		
 	}
 
 }
