@@ -167,7 +167,22 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 	}
 	
 	public void playSequence() {
-		ButtonInterfaceWei b;
+		ButtonInterfaceWei b = null;
+		for(int i = 0; i < sequence.size(); i++) {
+			if(b != null) {
+				b.dim();
+			}
+			b = sequence.get(i).getButton();
+			b.highlight();
+			int sleepTime = (int) Math.log(Math.pow(2, roundNumber)) + 3;
+			try {
+				Thread.sleep(sleepTime);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		b.dim();
 	}
 
 }
