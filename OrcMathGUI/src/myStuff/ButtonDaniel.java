@@ -19,12 +19,7 @@ public class ButtonDaniel extends Button implements ButtonInterfaceWei {
 	}
 	public void drawButton(Graphics2D g, boolean hover)
 	{
-		if(hover)
-		{
-			
-		}else {
-			
-		}
+		
 	}
 
 	@Override
