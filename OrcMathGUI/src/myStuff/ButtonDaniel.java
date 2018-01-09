@@ -22,7 +22,6 @@ public class ButtonDaniel extends Button implements ButtonInterfaceWei {
 		// TODO Auto-generated constructor stub
 	}
 	
-	/*
 	public void drawButton(Graphics2D g, boolean hover){
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
@@ -43,7 +42,6 @@ public class ButtonDaniel extends Button implements ButtonInterfaceWei {
 					(getHeight()+fm.getHeight()-fm.getDescent())/2);
 		}
 	}
-	*/
 
 	@Override
 	public void highlight() {

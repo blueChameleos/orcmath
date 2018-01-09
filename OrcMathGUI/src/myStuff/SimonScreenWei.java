@@ -54,8 +54,7 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 	}
 
 	private MoveInterfaceWei getMove(int selectedButton) {
-		// TODO Auto-generated method stub
-		return null;
+		return new MoveDaniel();
 	}
 
 	/**
@@ -79,7 +78,7 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 		int x = 100;
 		int y = 200;
 		for(int j = 0; j < buttons.length; j++) {
-			final ButtonInterfaceWei b = getAButton();
+			final ButtonInterfaceWei b = getButton();
 			b.setColor(colors[j]);
 			b.setX(x);
 			b.setY(y);
@@ -163,6 +162,7 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 				label.setText("");
 			}
 		});
+		changer.start();
 	}
 	
 	public void playSequence() {

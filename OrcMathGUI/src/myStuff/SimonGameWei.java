@@ -4,6 +4,7 @@ import guiTeacher.GUIApplication;
 
 public class SimonGameWei extends GUIApplication {
 	
+	private static final long serialVersionUID = 7306986693476268506L;
 	private static SimonGameWei game;
 	private SimonScreenWei screen;
 
