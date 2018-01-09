@@ -6,7 +6,7 @@ public class SimonGameWei extends GUIApplication {
 	
 	private static final long serialVersionUID = 7306986693476268506L;
 	private static SimonGameWei game;
-	private SimonScreenWei screen;
+	private static SimonScreenWei screen;
 
 	public SimonGameWei(int width, int height) {
 		super(width, height);
