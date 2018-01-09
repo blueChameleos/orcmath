@@ -81,8 +81,8 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 		for(int j = 0; j < buttons.length; j++) {
 			final ButtonInterfaceWei b = getAButton();
 			b.setColor(colors[j]);
-		    b.setX(x);
-		    b.setY(y);
+			b.setX(x);
+			b.setY(y);
 			b.setAction(new Action(){
 				
 				public void act(){
@@ -124,7 +124,7 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 		
 	}
 
-	private ButtonInterfaceWei getAButton() {
+	private ButtonInterfaceWei getButton() {
 		// TODO Auto-generated method stub
 		return new ButtonDaniel(0, 0, 100, 50, "", null);
 	}
@@ -182,6 +182,6 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 			}
 		}
 		b.dim();
-	}
+	}  
 
 }
