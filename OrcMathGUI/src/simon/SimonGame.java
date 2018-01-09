@@ -3,16 +3,19 @@ package simon;
 import guiTeacher.GUIApplication;
 
 public class SimonGame extends GUIApplication {
+	
+	private static SimonGame game;
+	public SimonScreen ui;
+	
 
 	public SimonGame(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
+		setVisible(true);
 	}
 
 	@Override
 	public void initScreen() {
-		// TODO Auto-generated method stub
-
+		ui = new SimonScreen();
 	}
 
 	public static void main(String[] args) {
