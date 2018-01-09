@@ -3,21 +3,25 @@ package myStuff;
 import guiTeacher.GUIApplication;
 
 public class SimonGameWei extends GUIApplication {
+	
+	private static SimonGameWei game;
+	private SimonScreenWei screen;
 
 	public SimonGameWei(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
+		setVisible(true);
 	}
 
 	@Override
 	public void initScreen() {
-		// TODO Auto-generated method stub
-
+		screen = new SimonScreenWei(getWidth(), getHeight());
+		setScreen(screen);
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		game = new SimonGameWei(800, 1200);
+		Thread go = new Thread(game);
+		go.start();
 	}
 
 }

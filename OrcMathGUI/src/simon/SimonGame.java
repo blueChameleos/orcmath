@@ -20,7 +20,9 @@ public class SimonGame extends GUIApplication {
 	}
 
 	public static void main(String[] args) {
-		
+		game = new SimonGame(800,800);
+		Thread go = new Thread(game);
+		go.start();
 	}
 
 }

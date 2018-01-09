@@ -23,8 +23,6 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 	
 	public SimonScreenWei(int width, int height) {
 		super(width, height);
-		Thread app = new Thread(this);
-		app.start();
 	}
 
 	@Override
@@ -71,7 +69,7 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 		int numberOfButtons = 6;
 		buttons = new ButtonInterfaceWei[numberOfButtons];
 		Color[] colors = new Color[numberOfButtons];
-		int x = 200;
+		int x = 100;
 		int y = 200;
 		for(int i = 0; i < colors.length; i++) {
 			colors[i] = new Color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
@@ -113,10 +111,7 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 				
 			});
 			buttons[j] = b;
-			x += 50;
-			if(j == 4) {
-				y += 100;
-			}
+			y += 100;
 		}
 	}
 
@@ -127,7 +122,7 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 
 	private ButtonInterfaceWei getAButton() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ButtonDaniel(0, 0, 100, 50, "", null);
 	}
 
 	@Override
