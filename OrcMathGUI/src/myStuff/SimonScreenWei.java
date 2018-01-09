@@ -126,7 +126,7 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 
 	private ButtonInterfaceWei getAButton() {
 		// TODO Auto-generated method stub
-		return new ButtonDaniel(0, 0, 100, 50, "text", null);
+		return new ButtonDaniel(0, 0, 100, 50, "", null);
 	}
 
 	@Override
