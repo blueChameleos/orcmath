@@ -15,8 +15,7 @@ public class ProgressDaniel extends Component implements ProgressInterfaceWei {
 
 	@Override
 	public void setRound(int x) {
-		this
-
+		roundNumber = x;
 	}
 
 	@Override

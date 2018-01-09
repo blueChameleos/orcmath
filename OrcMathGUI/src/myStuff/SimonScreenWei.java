@@ -11,6 +11,7 @@ import guiTeacher.userInterfaces.ClickableScreen;
 
 public class SimonScreenWei extends ClickableScreen implements Runnable{
 
+	private static final long serialVersionUID = 3565322860517751569L;
 	private static ProgressInterfaceWei progress;
 	private ArrayList<MoveInterfaceWei> sequence;
 	private TextLabel label;
@@ -69,11 +70,14 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 		int numberOfButtons = 6;
 		buttons = new ButtonInterfaceWei[numberOfButtons];
 		Color[] colors = new Color[numberOfButtons];
+		colors[0] = Color.blue;
+		colors[1] = Color.red;
+		colors[2] = Color.green;
+		colors[3] = Color.yellow;
+		colors[4] = Color.orange;
+		colors[5] = Color.pink;
 		int x = 100;
 		int y = 200;
-		for(int i = 0; i < colors.length; i++) {
-			colors[i] = new Color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-		}
 		for(int j = 0; j < buttons.length; j++) {
 			final ButtonInterfaceWei b = getAButton();
 			b.setColor(colors[j]);
@@ -122,7 +126,7 @@ public class SimonScreenWei extends ClickableScreen implements Runnable{
 
 	private ButtonInterfaceWei getAButton() {
 		// TODO Auto-generated method stub
-		return new ButtonDaniel(0, 0, 100, 50, "", null);
+		return new ButtonDaniel(0, 0, 100, 50, "text", null);
 	}
 
 	@Override
