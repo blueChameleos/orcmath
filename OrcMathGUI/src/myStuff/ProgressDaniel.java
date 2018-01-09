@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import guiTeacher.components.Component;
 
 public class ProgressDaniel extends Component implements ProgressInterfaceWei {
+	
+	private int roundNumber;
 
 	public ProgressDaniel(int x, int y, int w, int h) {
 		super(x, y, w, h);
