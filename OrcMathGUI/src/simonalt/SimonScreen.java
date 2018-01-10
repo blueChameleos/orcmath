@@ -41,7 +41,10 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 		progress.setRound(roundNumber);
 		progress.setSequenceSize(sequence.size());
 		changeText("Simon's turn");
+		long startTime = System.currentTimeMillis();
 		playSequence();
+		long difference = System.currentTimeMillis() - startTime;
+		System.out.println(difference);
 		changeText("Your turn");
 		acceptingInput = true;
 		sequenceIndex = 0;
@@ -57,7 +60,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 			//System.out.println(b);
 			b.highlight();
 			try {
-				Thread.sleep(650);
+				Thread.sleep(350);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -73,7 +76,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 			public void run() {
 				label.setText(text);
 				try {
-					Thread.sleep(650);
+					Thread.sleep(350);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -135,7 +138,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 							public void run(){
 								b.highlight();
 								try {
-									Thread.sleep(650);
+									Thread.sleep(350);
 								} catch (InterruptedException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
@@ -147,7 +150,12 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 						if(b == sequence.get(sequenceIndex).getButton()) {
 							sequenceIndex++;
 							if(sequenceIndex == sequence.size()){ 
-							    Thread nextRound = new Thread(SimonScreen.this); 
+								try {
+									Thread.sleep(350);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+							    Thread nextRound = new Thread(SimonScreen.this);
 							    nextRound.start(); 
 							}
 						}
