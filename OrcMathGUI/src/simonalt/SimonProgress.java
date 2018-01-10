@@ -21,12 +21,10 @@ public class SimonProgress extends Component {
 	public void update(Graphics2D g) {
 		clear();
 		if(playing) {
-			//g.fillRect(0, 0, getWidth(), getHeight());
 			g.setColor(Color.black);
 			g.drawString("Round: " + this.roundNumber, 660, 40);
 			g.drawString("Sequence Size: " + this.sequenceSize, 660, 60);
 		}else {
-			//g.fillRect(0, 0, getWidth(), getHeight());
 			g.setColor(Color.black);
 			g.drawString("Game Over", 660, 40);
 			g.drawString("Round: " + this.roundNumber, 660, 60);

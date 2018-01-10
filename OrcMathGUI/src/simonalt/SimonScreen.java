@@ -57,7 +57,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 			//System.out.println(b);
 			b.highlight();
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(650);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -73,7 +73,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 			public void run() {
 				label.setText(text);
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(650);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -135,7 +135,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 							public void run(){
 								b.highlight();
 								try {
-									Thread.sleep(455);
+									Thread.sleep(650);
 								} catch (InterruptedException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
