@@ -90,7 +90,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 		while(b == lastButton) {
 			 b = buttons[(int)(Math.random()*buttons.length)];
 		}
-		System.out.println(b);
+		lastButton = b;
 		return new Move(b);
 	}
 
@@ -172,7 +172,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 	public void gameOver() {
 		progress.lose();
 		for(int i = 0; i < buttons.length; i++) {
-			buttons[i].setAction(null);
+			buttons[i].setEnabled(false);
 		}
 	}
 
