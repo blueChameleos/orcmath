@@ -29,24 +29,22 @@ public class Hero implements Character {
 	@Override
 	public String getImage() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.img;
 	}
 
 	@Override
 	public int getHP() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.hp;
 	}
 
 	@Override
 	public void setHP() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void special() {
-		// TODO Auto-generated method stub
 		
 	}
 	
