@@ -1,9 +1,11 @@
 package maple_gacha;
 
+import java.awt.Color;
 import java.util.List;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -18,7 +20,9 @@ public class UnitSelectionScreen extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		Button startBattle = new Button(640,512, 200, 200, "Start Battle", new Action() {
+		Graphic background = new Graphic(0,0,getWidth(), getHeight(), "resources/mainguiscreen.jpg");
+		viewObjects.add(background);
+		Button startBattle = new Button(540,512, 200, 200, "Start Battle", new Action() {
 			public void act() {
 				MainGame.game.setScreen(MainGame.battle);
 			}
