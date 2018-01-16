@@ -63,7 +63,18 @@ public class GBattleSystem {
 	}
 
 	private void sortOrder() {
-		// TODO Auto-generated method stub
+		int pivotSpeed = order.get(order.size()-1).getSpeed());
+	
+		int currentIdx = -1;
+		for(int i =0; i<pivotSpeed; i++)
+		{
+			if(order.get(i).getSpeed() < pivotSpeed)
+			{
+				currentIdx ++;
+				Character holder = order.get
+			}
+		}
+		
 		
 	}
 }
