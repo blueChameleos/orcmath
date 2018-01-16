@@ -20,10 +20,19 @@ public class MainGame extends GUIApplication {
 		setScreen(main);
 	}
 
+	
 	public static void main(String[] args) {
+		createCharacters();
 		MainGame game = new MainGame(1280, 1024);
 		Thread runner = new Thread(game);
 		runner.start();
+	}
+
+	
+	
+	private static void createCharacters() {
+		
+		
 	}
 
 }
