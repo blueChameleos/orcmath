@@ -59,22 +59,41 @@ public class GBattleSystem {
 			order.add(e);
 		}
 		
-		sortOrder();
+		order = sortOrder(order);
 	}
 
-	private void sortOrder() {
-		int pivotSpeed = order.get(order.size()-1).getSpeed());
-	
-		int currentIdx = -1;
-		for(int i =0; i<pivotSpeed; i++)
+	private ArrayList<Character> sortOrder(ArrayList<Character> list) {
+		int currentIdx = order.size();
+		int pivotSpeed = order.get(0);
+		
+		if(list.size() > 1)
 		{
-			if(order.get(i).getSpeed() < pivotSpeed)
+			for(int i = 1; i< order.size(); i++)
 			{
-				currentIdx ++;
-				Character holder = order.get
+				if(list.get(i).getSpeed < pivotSpeed)
+				{
+					currentIdx --;
+					swap(currentIdx, i);
+				}
 			}
+			
+			currentIdx --;
+			swap(currentIdx, 0);
+			sortOrder((ArrayList<Character>) order.subList(0, currentIdx));
+			sortOrder((ArrayList<Character>) order.subList(currentIdx+1, order.size()));
+			
+		}
+		else 
+		{
+			return list;
 		}
 		
-		
 	}
+
+	private void swap(int currentIdx, int i) {
+		Character holder = order.get(currentIdx);
+		order.set(currentIdx, order.get(i));
+		order.set(i, holder);
+	}
+
 }
