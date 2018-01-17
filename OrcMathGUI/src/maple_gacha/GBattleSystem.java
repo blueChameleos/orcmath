@@ -11,7 +11,6 @@ public class GBattleSystem implements Runnable {
 	private Enemies[][] enemiesList; //round -> enemies 
 	private int round;
 	private ArrayList<Character> order = new ArrayList<Character>();
-	private ArrayList<double> changes;
 
 	//creation of System
 	public GBattleSystem(int difficulty, Image backgrnd, Character[] mainParty)
@@ -27,7 +26,6 @@ public class GBattleSystem implements Runnable {
 	}
 
 	public void run() {
-		makeOrder();
 		updateGame();
 	
 
