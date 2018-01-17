@@ -24,26 +24,45 @@ public class GBattleSystem {
 	}
 
 	private void changeDifficulty(int difficulty) {
-		setRounds();
-		setEnemiesNum();
+		setRounds((int) Math.pow(difficulty, 1.5));
+		setEnemiesNum((int) Math.pow(difficulty, 1.3));
 		
 		populateEnemies();
-		changeStats();
+		changeStats( Math.log((difficulty+1))+.5);
+		
 	}
 
 	
+	private void changeStats(double d) {
+		for(Enemies e: enemiesList)
+		{
+			e.setAttack((int)e.getAttack*d);
+			e.setHealth((int)e.getHealth*d);
+			e.setSpeed((int)e.getSpeed*d);
+		}
+	}
+
+	private void setEnemiesNum(int enemiesNum) {
+		this.enemiesNum = enemiesNum;
+	}
+
+	private void setRounds(int round) {
+		this.round = round;
+	}
+
 	private void populateEnemies() {
 		for( int rounds =0; rounds< enemiesList.length; i++)
 		{
 			for(int idx = 0; idx<enemiesList[rounds][idx].length; idx++)
 			{
-				enemeisList[rounds][idx] = new enemies();
+				enemeisList[rounds][idx] = new Enemies();
 			}
 		}
 	}
 
 	private void playGame() {
 		makeOrder();
+		
 		
 	}
 
