@@ -70,7 +70,7 @@ public class GBattleSystem {
 		{
 			for(int i = 1; i< order.size(); i++)
 			{
-				if(list.get(i).getSpeed < pivotSpeed)
+				if(list.get(i).getSpeed() < pivotSpeed)
 				{
 					currentIdx --;
 					swap(currentIdx, i);
