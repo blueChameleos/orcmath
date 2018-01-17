@@ -62,7 +62,7 @@ public class GBattleSystem {
 
 	private void playGame() {
 		makeOrder();
-		
+		updateGame();
 		
 	}
 
@@ -78,10 +78,10 @@ public class GBattleSystem {
 			order.add(e);
 		}
 		
-		order = sortOrder(order);
+		sortOrder(order);
 	}
 
-	private ArrayList<Character> sortOrder(ArrayList<Character> list) {
+	private void sortOrder(ArrayList<Character> list) {
 		int currentIdx = order.size();
 		int pivotSpeed = order.get(0);
 		
@@ -101,10 +101,6 @@ public class GBattleSystem {
 			sortOrder((ArrayList<Character>) order.subList(0, currentIdx));
 			sortOrder((ArrayList<Character>) order.subList(currentIdx+1, order.size()));
 			
-		}
-		else 
-		{
-			return list;
 		}
 		
 	}
