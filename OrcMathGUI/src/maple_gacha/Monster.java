@@ -17,7 +17,7 @@ public class Monster extends Hero implements Character {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+ 
 	@Override
 	public int getHP() {
 		// TODO Auto-generated method stub

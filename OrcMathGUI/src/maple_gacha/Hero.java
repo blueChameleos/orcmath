@@ -9,7 +9,7 @@ public class Hero implements Character {
 	private int attack;
 	private int defense;
 	private int hp;
-	
+	 
 	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		this.img = img;
 		this.rank = rank;

@@ -8,3 +8,4 @@ public class Boss extends Monster implements Character {
 	}
 
 }
+ 
