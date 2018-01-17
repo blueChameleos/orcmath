@@ -3,14 +3,14 @@ package maple_gacha;
 public class Hero implements Character {
 
 	private String img;
-	private int rank;
+	private String rank;
 	private int strength;
 	private int speed;
 	private int attack;
 	private int defense;
 	private int hp;
 	
-	public Hero(String img, int rank, int strength, int speed, int attack, int defense, int hp) {
+	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		this.img = img;
 		this.rank = rank;
 		this.strength = strength;
@@ -46,6 +46,10 @@ public class Hero implements Character {
 	@Override
 	public void special() {
 		
+	}
+	
+	public String toString() {
+		return "THIS IS HERO";
 	}
 	
 }

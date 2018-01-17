@@ -2,7 +2,7 @@ package maple_gacha;
 
 public class Monster extends Hero implements Character {
 
-	public Monster(String img, int rank, int strength, int speed, int attack, int defense, int hp) {
+	public Monster(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		super(img, rank, strength, speed, attack, defense, hp);
 	}
 
