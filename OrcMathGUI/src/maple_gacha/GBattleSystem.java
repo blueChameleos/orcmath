@@ -34,6 +34,7 @@ public class GBattleSystem implements Runnable {
 	private void changeDifficulty(int difficulty) {
 		setRounds((int) Math.pow(difficulty, 1.5));
 		setEnemiesNum((int) Math.pow(difficulty, 1.3));
+		enemiesList = new Enemies[round][enemiesNum];
 
 		populateEnemies();
 		changeStats( Math.log((difficulty+1))+.5);
