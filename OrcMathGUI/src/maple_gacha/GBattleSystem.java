@@ -40,7 +40,7 @@ public class GBattleSystem implements Runnable {
 			Character currentPlayer = order.get(i);
 			if(currentPlayer.getClass() == Enemies)
 			{
-				order.get(i).attack(randomTarget() /*skill? */);
+				order.get(i).attack(randomTarget(), (int) (Math.random()*3));
 			}
 			else
 			{
@@ -49,7 +49,11 @@ public class GBattleSystem implements Runnable {
 		}
 	}
 
-	private void changeDifficulty(int difficulty) {
+	private Character randomTarget() {
+		return mainParty[(int) Math.random()*mainParty.length];
+	}
+
+0	private void changeDifficulty(int difficulty) {
 		setRounds((int) Math.pow(difficulty, 1.5));
 		setEnemiesNum((int) Math.pow(difficulty, 1.3));
 		enemiesList = new Enemies[round][enemiesNum];
