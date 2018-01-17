@@ -11,6 +11,8 @@ public class GBattleSystem implements Runnable {
 	private Enemies[][] enemiesList; //round -> enemies 
 	private int round;
 	private ArrayList<Character> order = new ArrayList<Character>();
+	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
+	private Thread gameSystem;
 
 	//creation of System
 	public GBattleSystem(int difficulty, Image backgrnd, Character[] mainParty)
@@ -19,16 +21,32 @@ public class GBattleSystem implements Runnable {
 		this.backgroundImage = backgrnd;
 		this.mainParty = mainParty;
 
-		Thread gameSystem = new Thread(this);
+		gameSystem = new Thread(this);
 		gameSystem.start();
 		run();
 
 	}
 
 	public void run() {
+		playGame();
 		updateGame();
 	
 
+	}
+
+	private void playGame() {
+		for( int i=0; i<order.size();i++)
+		{
+			Character currentPlayer = order.get(i);
+			if(currentPlayer.getClass() == Enemies)
+			{
+				order.get(i).attack(randomTarget() /*skill? */);
+			}
+			else
+			{
+				getUserInput();
+			}
+		}
 	}
 
 	private void changeDifficulty(int difficulty) {
