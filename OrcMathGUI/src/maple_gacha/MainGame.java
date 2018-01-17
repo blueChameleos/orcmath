@@ -15,9 +15,10 @@ public class MainGame extends GUIApplication {
 	@Override
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS
+		LoadingScreen load = new LoadingScreen(getWidth(), getHeight());
 		MainScreen main = new MainScreen(getWidth(), getHeight());
 		BattleScreen battle = new BattleScreen(getWidth(), getHeight());
-		setScreen(main);
+		setScreen(load);
 	}
 
 	public static void main(String[] args) {
