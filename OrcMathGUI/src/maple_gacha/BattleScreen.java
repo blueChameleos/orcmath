@@ -21,8 +21,6 @@ public class BattleScreen extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		Graphic background = getRandomBackground();
 		viewObjects.add(background);
-		
-		
 	}
 
 	private Graphic getRandomBackground() {

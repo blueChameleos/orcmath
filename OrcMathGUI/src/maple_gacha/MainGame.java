@@ -8,6 +8,8 @@ public class MainGame extends GUIApplication {
 	public static MainGame game;
 	public static BattleScreen battle;
 	public static MainScreen main;
+	public static int width;
+	public static int height;
 	public static UnitSelectionScreen unitsel;
 
 	public MainGame(int width, int height) {
@@ -25,7 +27,7 @@ public class MainGame extends GUIApplication {
 	}
 
 	public static void main(String[] args) {
-		game = new MainGame(1024, 800);
+		game = new MainGame(1280, 720);
 		Thread runner = new Thread(game);
 		runner.start();
 	}
