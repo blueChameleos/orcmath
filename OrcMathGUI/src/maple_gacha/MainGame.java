@@ -24,9 +24,11 @@ public class MainGame extends GUIApplication {
 		// MainScreen main = new MainScreen(getWidth(), getHeight());
 		// BattleScreen battle = new BattleScreen(getWidth(), getHeight());
 		createCharacters();
-		BeginnerSelectionScreen bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());
-		setScreen(bScreen);
-		setLocationRelativeTo(null);
+		//BeginnerSelectionScreen bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());
+		//setScreen(bScreen);
+		//setLocationRelativeTo(null);
+		CharacterScreen cScreen = new CharacterScreen(getWidth(), getHeight());
+		setScreen(cScreen);
 	}
 
 	public static void main(String[] args) {
