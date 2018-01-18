@@ -21,8 +21,8 @@ public class SimonGameWei extends GUIApplication {
 
 	public static void main(String[] args) {
 		game = new SimonGameWei(800, 1200);
-		Thread go = new Thread(game);
-		go.start();
+		//Thread go = new Thread(game);
+		//go.start();
 	}
 
 }
