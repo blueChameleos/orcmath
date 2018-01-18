@@ -6,6 +6,7 @@ import java.util.List;
 import guiTeacher.components.Action;
 import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.Graphic;
+import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -24,6 +25,12 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
 
+		TextLabel text = new TextLabel(400,200,500,500, "Choose your hero!");
+		text.setSize(60);
+		text.setTextColor(Color.orange);
+		
+		viewObjects.add(text);
+		
 		ClickableGraphic begWizard = new ClickableGraphic(1000, 400, 200 ,200, MainGame.game.beginnerWizard.getImage());
 		ClickableGraphic begArcher = new ClickableGraphic(200, 400, 200, 200, MainGame.game.beginnerArcher.getImage());
 		ClickableGraphic begSword = new ClickableGraphic(600, 400, 200 ,200, MainGame.game.beginnerSword.getImage());
