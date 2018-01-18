@@ -10,6 +10,7 @@ import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.Link;
+import guiTeacher.components.StyledComponent;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -24,6 +25,8 @@ public class LoadingScreen extends FullFunctionScreen{
 	private static final long serialVersionUID = 1L;
 	private Button play;
 	private Button quit;
+	private Button loadgame;
+	private Button newgame;
 	private TextArea name;
 	
 	public LoadingScreen(int width, int height) {
@@ -34,7 +37,28 @@ public class LoadingScreen extends FullFunctionScreen{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		play = new Link(540,462,200,100,"PLAY",new Action() {
+		
+		StyledComponent.setButtonOutline(true);
+		play = new Button(540,462,200,75,"PLAY",Color.green,new Action() {
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				viewObjects.remove(play);
+				viewObjects.add(loadgame);
+				viewObjects.add(newgame);
+			}
+		});
+		try {
+			File fontFile = new File("resources//Bobbleboddy.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(16f);
+			play.setFont(baseFont);
+			play.setSize(48);
+		} 
+		catch (Exception e) {
+			 e.printStackTrace();
+		}		
+		newgame = new Button(getWidth()/2 - 100,462,200,75,"New Game",Color.cyan,new Action() {
 
 			@Override
 			public void act() {
@@ -45,15 +69,34 @@ public class LoadingScreen extends FullFunctionScreen{
 		});
 		try {
 			File fontFile = new File("resources//Bobbleboddy.ttf");
-			// File fontFile = new File("resources//DayRoman.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(16f);
-			play.setFont(baseFont);
-			play.setSize(60);
+			newgame.setFont(baseFont);
+			newgame.setSize(36);
 		} 
 		catch (Exception e) {
 			 e.printStackTrace();
 		}
+		loadgame = new Button(getWidth()/2 - 100,550,200,75,"Load Game",Color.cyan,new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		try {
+			File fontFile = new File("resources//Bobbleboddy.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(16f);
+			loadgame.setFont(baseFont);
+			loadgame.setSize(36);
+		} 
+		catch (Exception e) {
+			 e.printStackTrace();
+		}
+
 		quit = new Button(1000,900,200,50,"QUIT",Color.red,new Action() {
 
 			@Override
@@ -64,7 +107,6 @@ public class LoadingScreen extends FullFunctionScreen{
 		});
 		try {
 			File fontFile = new File("resources//Bobbleboddy.ttf");
-			// File fontFile = new File("resources//DayRoman.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(16f);
 			quit.setFont(baseFont);
@@ -76,7 +118,6 @@ public class LoadingScreen extends FullFunctionScreen{
 		name = new TextArea(420,200,600,200,"MapleStory");
 		try {
 			File fontFile = new File("resources//deloise.ttf");
-			// File fontFile = new File("resources//DayRoman.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(16f);
 			name.setFont(baseFont);
