@@ -11,7 +11,7 @@ public class MainScreen extends GUIApplication {
 	
 	public static MainScreen main;
 	
-	public static SummonScreen summon;
+	public static EthanSummonScreen summon;
 
 	/**
 	 * 
@@ -25,7 +25,7 @@ public class MainScreen extends GUIApplication {
 	}
 
 	public void initScreen() {
-		summon = new SummonScreen(getWidth(),getHeight());
+		summon = new EthanSummonScreen(getWidth(),getHeight());
 		setScreen(summon);
 
 	}
