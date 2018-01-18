@@ -1,10 +1,13 @@
 package maple_gacha;
 
+import guiTeacher.components.Action;
+
 public class Items {
 
-	Action act;
-	public Items(Action Effect) {
-		this.act = Effect;
+	private String desc;
+	
+	public Items(String desc) {
+		this.desc = desc;
 	}
 
 }

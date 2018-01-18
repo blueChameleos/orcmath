@@ -23,7 +23,7 @@ public class MainGame extends GUIApplication {
 		main = new MainScreen(getWidth(), getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
 		battle = new BattleScreen(getWidth(), getHeight());
-		setScreen(unitsel);
+		setScreen(battle);
 	}
 
 	public static void main(String[] args) {

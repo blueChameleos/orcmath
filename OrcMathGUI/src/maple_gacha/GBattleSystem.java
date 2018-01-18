@@ -23,15 +23,11 @@ public class GBattleSystem implements Runnable {
 
 		gameSystem = new Thread(this);
 		gameSystem.start();
-		run();
-
 	}
 
 	public void run() {
 		playGame();
 		updateGame();
-	
-
 	}
 
 	private void playGame() {
