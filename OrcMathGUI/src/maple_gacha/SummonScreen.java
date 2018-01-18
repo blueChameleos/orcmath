@@ -18,7 +18,7 @@ public class SummonScreen extends FullFunctionScreen implements Runnable{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		StyledComponent.setButtonOutline(false);
+		StyledComponent.setButtonOutline(true);
 
 		
 		
@@ -34,7 +34,7 @@ public class SummonScreen extends FullFunctionScreen implements Runnable{
 		banner1.setVisible(false);
 		//viewObjects.add(banner1);
 
-		Button single = new Button(getWidth() / 2 + 50, getHeight() / 2 + 50, 75, 75, "x1", new Action() {
+		Button single = new Button(500, 525, 50, 50, "x1", Color.yellow, new Action() {
 
 			@Override
 			public void act() {
@@ -42,7 +42,7 @@ public class SummonScreen extends FullFunctionScreen implements Runnable{
 			}
 		});
 
-		Button multi = new Button(500, 500, 50, 50, "x5", new Action() {
+		Button multi = new Button(700, 525, 50, 50, "x5", Color.yellow,new Action() {
 
 			@Override
 			public void act() {
@@ -50,7 +50,7 @@ public class SummonScreen extends FullFunctionScreen implements Runnable{
 			}
 		});
 		
-		multi.setBackground(Color.black);
+		multi.setBackground(Color.yellow);
 
 		Button feature = new Button(getWidth() / 2 + 125, getHeight() / 2 + 125, 500, 75, "feature", new Action() {
 
