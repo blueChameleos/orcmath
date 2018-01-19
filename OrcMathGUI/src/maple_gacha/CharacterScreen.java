@@ -19,7 +19,9 @@ public class CharacterScreen extends FullFunctionScreen {
 	private boolean isOccupied2;
 	private boolean isClicked;
 	private boolean isClicked2;
-
+	private boolean isFull;
+	
+	
 	public CharacterScreen(int width, int height) {
 		super(width, height);
 		setVisible(true);
@@ -39,54 +41,49 @@ public class CharacterScreen extends FullFunctionScreen {
 		team.add(MainGame.game.beginnerArcher);
 		team.add(MainGame.game.beginnerSword);
 		team.add(MainGame.game.beginnerWizard);
-		for(int i = 0; i < team.size(); i++) {
-				ClickableGraphic character = new ClickableGraphic(131 +208*i,144,400,200, team.get(i).getImage());
+		ArrayList<Hero> tempDisplay  = new ArrayList<Hero>();
+		for (Hero i:team) {
+			tempDisplay.add(i);
+		}
+		for(int i = 0; i < tempDisplay.size(); i++) {
+				ClickableGraphic character = new ClickableGraphic(131 +208*i,144,400,200, tempDisplay.get(i).getImage());
+				Hero hero = tempDisplay.get(i);
 				character.setVisible(true);
-				ClickableGraphic character2 = new ClickableGraphic(1280,1024,400,200,team.get(i).getImage());
-				character2.setVisible(true);
 				character.setAction(new Action() {
-
-					@Override
+					boolean enable = false;
 					public void act() {
-						if(!isOccupied) {
-							character2.setX(76);
-							character2.setY(601);
-							isOccupied = true;
-						}else if(isOccupied && !isOccupied2) {
-							character2.setX(296);
-							character2.setY(601);
-							isOccupied2 = true;
-						}else if(isOccupied & isOccupied2) {
-							character2.setX(516);
-							character2.setY(601);
+						int arrSize = MainGame.game.currentTeam.size();
+					
+						if(enable) {
+							System.out.println(enable);
+							tempDisplay.add(hero);
+							MainGame.game.currentTeam.remove(hero);
+							character.setX(12);
+							character.setY(12);
+							enable = false;
 						}
-						character.setVisible(false);
+						else if(arrSize == 0 && !enable ) {
+							character.setX(76);
+							character.setY(601);
+							tempDisplay.remove(hero);
+							enable = true;
+						}else if(arrSize == 1 && !enable) {
+							character.setX(296);
+							character.setY(601);
+							tempDisplay.remove(hero);
+							enable = true;
+						}else if(arrSize == 2 && !enable) {
+							character.setX(516);
+							character.setY(601);
+							tempDisplay.remove(hero);
+							enable = true;
+						}
+						MainGame.game.currentTeam.add(hero);
 					}
+						
 					
 				});
 				viewObjects.add(character);
-				viewObjects.add(character2);
-				character2.setAction(new Action() {
-
-					@Override
-					public void act() {
-						
-						if(!isClicked) {
-							character2.setX(131);
-							character2.setY(144);
-							isClicked = true;
-						}else if(isClicked && !isClicked2) {
-							character2.setX(131+206);
-							character2.setY(144);
-							isClicked2 = true;
-						}else if(isClicked && isClicked2) {
-							character2.setX(131+206+206);
-							character2.setY(144);
-						}
-						
-					}
-					
-				});
 			}
 		
 	}

@@ -9,6 +9,7 @@ public class MainGame extends GUIApplication {
 	private static final long serialVersionUID = 6853186922252287821L;
 	private static BattleScreen battle;
 	public static ArrayList<Hero> team;
+	public static ArrayList<Hero> currentTeam;
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
@@ -28,6 +29,7 @@ public class MainGame extends GUIApplication {
 		// BattleScreen battle = new BattleScreen(getWidth(), getHeight());
 		createCharacters();
 		team = new ArrayList<Hero>();
+		currentTeam = new ArrayList<Hero>();
 		BeginnerSelectionScreen bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());
 		setScreen(bScreen);
 		setLocationRelativeTo(null);
