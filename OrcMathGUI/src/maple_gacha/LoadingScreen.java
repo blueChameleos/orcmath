@@ -37,12 +37,12 @@ public class LoadingScreen extends FullFunctionScreen{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		
 		StyledComponent.setButtonOutline(true);
 		play = new Button(540,462,200,75,"PLAY",Color.green,new Action() {
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
+				play.setEnabled(false);
 				viewObjects.remove(play);
 				viewObjects.add(loadgame);
 				viewObjects.add(newgame);
@@ -63,7 +63,7 @@ public class LoadingScreen extends FullFunctionScreen{
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
-				
+				MainGame.game.setScreen(MainGame.main);
 			}
 			
 		});
@@ -82,7 +82,7 @@ public class LoadingScreen extends FullFunctionScreen{
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
-				
+				MainGame.game.setScreen(MainGame.main);
 			}
 			
 		});
@@ -96,7 +96,6 @@ public class LoadingScreen extends FullFunctionScreen{
 		catch (Exception e) {
 			 e.printStackTrace();
 		}
-
 		quit = new Button(1000,900,200,50,"QUIT",Color.red,new Action() {
 
 			@Override
@@ -115,7 +114,7 @@ public class LoadingScreen extends FullFunctionScreen{
 		catch (Exception e) {
 			 e.printStackTrace();
 		}
-		name = new TextArea(420,200,600,200,"MapleStory");
+		name = new TextArea(480,200,600,200,"GachaStory");
 		try {
 			File fontFile = new File("resources//deloise.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -130,7 +129,6 @@ public class LoadingScreen extends FullFunctionScreen{
 		viewObjects.add(play);
 		viewObjects.add(quit);
 		viewObjects.add(name);		
-
 	}
 
 	
