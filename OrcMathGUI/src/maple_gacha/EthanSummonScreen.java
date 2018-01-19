@@ -1,6 +1,8 @@
 package maple_gacha;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.io.File;
 import java.util.List;
 
 import guiTeacher.components.Action;
@@ -18,6 +20,14 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+        try {
+        	File fontFile = new File("resources//PermanentMarker.ttf");
+        	Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+        	Font baseFont=font.deriveFont(16f);
+        	StyledComponent.setBaseFont(baseFont);
+        } catch (Exception e) {
+        	e.printStackTrace();		
+		}
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
 		
@@ -25,6 +35,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
+				
+				
 			}
 		});
 
@@ -32,7 +44,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-
+				
 			}
 		});
 		
@@ -47,7 +59,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		Graphic arrow = new Graphic(100, 250, 178, 179, "resources/picture1.png");
 		viewObjects.add(arrow);
 
-		Graphic arrow1 = new Graphic(1000, 250, 178, 179, "resources/picture2.png");
+		Graphic arrow1 = new Graphic(1000, (getHeight()/2)-50, 178, 179, "resources/picture2.png");
 		viewObjects.add(arrow1);
 
 		Graphic banner = new Graphic((1280 - 650) / 2, 1024 / 2 - 350, 650, 350, "resources/banner.jpg");
@@ -82,7 +94,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 				// feature summon button
 			}
 		});
-
+		
 		viewObjects.add(single);
 		viewObjects.add(multi);
 		viewObjects.add(feature);
