@@ -32,9 +32,9 @@ public class DavidGetCharacterSingle extends FullFunctionScreen{
 
 	public void lighting()
 	{
-		URL url = null;
+		URL url = resources/Level_up_animation_You&I;
 		try {
-			url = new URL("Level_up_animation_You&I");
+			url = new URL("resources/Level_up_animation_You&I");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
