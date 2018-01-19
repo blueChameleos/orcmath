@@ -35,7 +35,7 @@ public class CharacterScreen extends FullFunctionScreen {
 		background.setVisible(true);
 		viewObjects.add(background);
 		
-		team = new ArrayList<Hero>();
+		ArrayList<Hero> team = MainGame.game.team;
 		team.add(MainGame.game.beginnerArcher);
 		team.add(MainGame.game.beginnerSword);
 		team.add(MainGame.game.beginnerWizard);
@@ -70,6 +70,7 @@ public class CharacterScreen extends FullFunctionScreen {
 
 					@Override
 					public void act() {
+						
 						if(!isClicked) {
 							character2.setX(131);
 							character2.setY(144);

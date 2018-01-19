@@ -26,6 +26,7 @@ public class MainGame extends GUIApplication {
 		// MainScreen main = new MainScreen(getWidth(), getHeight());
 		// BattleScreen battle = new BattleScreen(getWidth(), getHeight());
 		createCharacters();
+		team = new ArrayList<Hero>();
 		//BeginnerSelectionScreen bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());
 		//setScreen(bScreen);
 		//setLocationRelativeTo(null);
