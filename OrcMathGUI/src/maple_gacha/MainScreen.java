@@ -22,19 +22,18 @@ public class MainScreen extends GUIApplication {
 		super(width, height);
 		setVisible(true);
 		// TODO Auto-generated constructor stub
+		//setVisible(true);
 	}
 
 	public void initScreen() {
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		setScreen(summon);
-
 	}
-
+	
 	public static void main(String[] args) {
 		main = new MainScreen(1280,1024);
 		Thread r = new Thread(main);
 		r.start();
 	}
-
 
 }
