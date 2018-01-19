@@ -19,7 +19,7 @@ public class MainGame extends GUIApplication {
 	public MainGame(int width, int height) {
 		super(width, height);
 		setVisible(true);
-	}
+	} 
 
 	@Override
 	public void initScreen() {

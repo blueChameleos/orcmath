@@ -19,7 +19,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		super(width, height);
 		// TODO Auto-generated constructor stub
 	}
-
+ 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		Graphic charBg = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/charSelectBG.png");
