@@ -18,6 +18,7 @@ public class MainGame extends GUIApplication {
 		LoadingScreen load = new LoadingScreen(getWidth(), getHeight());
 		MainScreen main = new MainScreen(getWidth(), getHeight());
 		BattleScreen battle = new BattleScreen(getWidth(), getHeight());
+		OptionsScreen options = new OptionsScreen(getWidth(), getHeight());
 		setScreen(load);
 	}
 
