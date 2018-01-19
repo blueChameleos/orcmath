@@ -5,6 +5,7 @@ import java.util.List;
 import guiTeacher.GUIApplication;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import guiTeacher.userInterfaces.Screen;
 
 public class TempSummonScreen extends GUIApplication {
 	
@@ -18,6 +19,8 @@ public class TempSummonScreen extends GUIApplication {
 	
 	public static EthanSummonScreen summon;
 
+	public static DavidGetCharacterSingle single;
+
 	/**
 	 * 
 	 */
@@ -25,6 +28,7 @@ public class TempSummonScreen extends GUIApplication {
 
 	public void initScreen() {
 		summon = new EthanSummonScreen(getWidth(),getHeight());
+		single = new DavidGetCharacterSingle(getWidth(), getHeight());
 		setScreen(summon);
 
 	}
