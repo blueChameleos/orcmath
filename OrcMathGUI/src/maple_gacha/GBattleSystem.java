@@ -8,11 +8,13 @@ public class GBattleSystem implements Runnable {
 	private int enemiesNum;
 	private Image backgroundImage;
 	private Character[] mainParty;
-	private Enemies[][] enemiesList; //round -> enemies 
+	private Object[][] enemiesList; //round -> enemies 
 	private int round;
 	private ArrayList<Character> order = new ArrayList<Character>();
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Thread gameSystem;
+	private Items[] itemsList = {new Items("Heal", 20, "Small Heal Potion"), new Items("Heal", 50, "Medium Healing Potion"), new Items("Heal", 100, "Huge Healing Potion"), new Items("Heal", 300, "Cheat Heal"), new Items("Aoe", 30, "Molotov"),new Items("Aoe", 50, "Grenade"), new Items("Aoe", 100, "Pms Ray"), new Items("Single", 40, "Syringe"), new Items("Single", 80, "Javelin"), new Items("Single", 15, "Shuriken")};
+	
 
 	//creation of System
 	public GBattleSystem(int difficulty, Image backgrnd, Character[] mainParty)
