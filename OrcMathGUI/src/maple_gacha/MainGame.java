@@ -1,12 +1,14 @@
 package maple_gacha;
 
+import java.util.ArrayList;
+
 import guiTeacher.GUIApplication;
 
 public class MainGame extends GUIApplication {
 
 	private static final long serialVersionUID = 6853186922252287821L;
 	private static BattleScreen battle;
-
+	public static ArrayList<Hero> team;
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;

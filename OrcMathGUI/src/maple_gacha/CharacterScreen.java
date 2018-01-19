@@ -14,7 +14,7 @@ public class CharacterScreen extends FullFunctionScreen {
 	
 	
 	private static final long serialVersionUID = 6339468790728949736L;
-	public static ArrayList<Hero> team;
+	
 	private boolean isOccupied;
 	private boolean isOccupied2;
 	private boolean isClicked;
