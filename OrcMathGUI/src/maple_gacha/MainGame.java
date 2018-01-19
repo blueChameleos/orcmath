@@ -25,10 +25,9 @@ public class MainGame extends GUIApplication {
 		//NOTE ADD MAIN SCREEN LATER GUYS
 		load = new LoadingScreen(getWidth(), getHeight());
 		main = new MainScreen(getWidth(), getHeight());
-		setScreen(load);
-		battle = new BattleScreen(getWidth(), getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
-		battle = new BattleScreen(getWidth(), getHeight());
+		battle = new BattleScreen(getWidth(), getHeight());	
+		setScreen(load);
 	}
 
 	public static void main(String[] args) {
