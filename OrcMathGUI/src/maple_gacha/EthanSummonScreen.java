@@ -18,10 +18,31 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		StyledComponent.setButtonOutline(true);
-
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
+		
+		Button rightarrow = new Button(1000, 250, 178, 179, " ", new Action() {
+
+			@Override
+			public void act() {
+			}
+		});
+
+		Button leftarrow = new Button(100, 250, 178, 179, " ", new Action() {
+
+			@Override
+			public void act() {
+
+			}
+		});
+		
+		viewObjects.add(rightarrow);
+		viewObjects.add(leftarrow);
+		
+		
+		StyledComponent.setButtonOutline(true);
+		
+		//somehow have it so not all buttons have the outline
 
 		Graphic arrow = new Graphic(100, 250, 178, 179, "resources/picture1.png");
 		viewObjects.add(arrow);
@@ -43,6 +64,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 				// single summon button
 			}
 		});
+		
+		single.setActiveBorderColor(null);
 
 		Button multi = new Button(700, 525, 50, 50, "x5", Color.yellow, new Action() {
 
@@ -52,7 +75,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			}
 		});
 
-		Button feature = new Button(875, 125, 100, 75, "feature", Color.yellow, new Action() {
+		Button feature = new Button(865, 90, 100, 75, "feature", Color.yellow, new Action() {
 
 			@Override
 			public void act() {
@@ -60,26 +83,9 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			}
 		});
 
-		Button rightarrow = new Button(1000, 250, 178, 179, " ", new Action() {
-
-			@Override
-			public void act() {
-			}
-		});
-
-		Button leftarrow = new Button(100, 250, 178, 179, " ", new Action() {
-
-			@Override
-			public void act() {
-
-			}
-		});
-
 		viewObjects.add(single);
 		viewObjects.add(multi);
 		viewObjects.add(feature);
-		viewObjects.add(rightarrow);
-		viewObjects.add(leftarrow);
 	}
 
 	@Override
