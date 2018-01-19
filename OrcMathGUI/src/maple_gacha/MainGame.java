@@ -12,6 +12,7 @@ public class MainGame extends GUIApplication {
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
+	public static CharacterScreen cScreen;
 
 	public static MainGame game;
 
@@ -27,11 +28,11 @@ public class MainGame extends GUIApplication {
 		// BattleScreen battle = new BattleScreen(getWidth(), getHeight());
 		createCharacters();
 		team = new ArrayList<Hero>();
-		//BeginnerSelectionScreen bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());
-		//setScreen(bScreen);
-		//setLocationRelativeTo(null);
-		CharacterScreen cScreen = new CharacterScreen(getWidth(), getHeight());
-		setScreen(cScreen);
+		BeginnerSelectionScreen bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());
+		setScreen(bScreen);
+		setLocationRelativeTo(null);
+		cScreen = new CharacterScreen(getWidth(), getHeight());
+//		setScreen(cScreen);
 	}
 
 	public static void main(String[] args) {

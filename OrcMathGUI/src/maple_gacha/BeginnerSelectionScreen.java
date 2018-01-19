@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.List;
 
 import guiTeacher.components.Action;
+import guiTeacher.components.Button;
 import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.TextLabel;
@@ -24,8 +25,23 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		Graphic charBg = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/charSelectBG.png");
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
+		Button next = new Button(400, 780, 500, 125, "Next", null);
+		next.setSize(100);
+		next.setEnabled(false);
+		next.setAction(new Action() {
 
-		TextLabel text = new TextLabel(400,200,500,500, "Choose your hero!");
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				MainGame.game.setScreen((MainGame.game.cScreen));
+				
+			}
+			
+		});
+		TextLabel text = new TextLabel(400,200,1000,500, "Choose your hero!");
+		
+	
+		
 		text.setSize(60);
 		text.setTextColor(Color.orange);
 		
@@ -49,6 +65,10 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				// TODO Auto-generated method stub
 				begSword.setVisible(false);
 				begWizard.setVisible(false);
+				MainGame.game.team.add(MainGame.game.beginnerArcher);
+				text.setText("You chose the archer!" );
+				next.setEnabled(true);
+
 			}
 
 		});
@@ -60,6 +80,10 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				// TODO Auto-generated method stub
 				begArcher.setVisible(false);
 				begWizard.setVisible(false);
+				MainGame.game.team.add(MainGame.game.beginnerSword);
+				text.setText("You chose the Sword!" );
+				next.setEnabled(true);
+
 			}
 
 		});
@@ -71,10 +95,16 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				// TODO Auto-generated method stub
 				begArcher.setVisible(false);
 				begSword.setVisible(false);
-			}
+				MainGame.game.team.add(MainGame.game.beginnerWizard);
+				text.setText("You chose the Wizard!" );
+				next.setEnabled(true);
 
+			}
 		});
 		
+		
+		viewObjects.add(next);
+
 
 	}
 
