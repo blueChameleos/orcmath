@@ -25,7 +25,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen{
 	
 	public DavidGetCharacterSingle(int width, int height) {
 		super(width, height);
-		//getCard();
+		getCard();
 		//lighting();
 		// TODO Auto-generated constructor stub
 	}

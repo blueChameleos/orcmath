@@ -12,7 +12,8 @@ public class MainScreen extends GUIApplication {
 	public static MainScreen main;
 	
 	public static EthanSummonScreen summon;
-
+	
+	public static DavidGetCharacterSingle single;
 	/**
 	 * 
 	 */
@@ -22,11 +23,12 @@ public class MainScreen extends GUIApplication {
 		super(width, height);
 		setVisible(true);
 		// TODO Auto-generated constructor stub
-		//setVisible(true);
+		
 	}
 
 	public void initScreen() {
 		summon = new EthanSummonScreen(getWidth(),getHeight());
+		single = new DavidGetCharacterSingle(getWidth(),getHeight());
 		setScreen(summon);
 	}
 	

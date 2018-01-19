@@ -9,17 +9,17 @@ import guiTeacher.userInterfaces.Screen;
 
 public class TempSummonScreen extends GUIApplication {
 	
+	public static MainScreen main;
+	public static EthanSummonScreen summon;
+	public static DavidGetCharacterSingle single;
+	
 	public TempSummonScreen(int width, int height) {
 		super(width, height);
 		setVisible(true);
 		// TODO Auto-generated constructor stub
 	}
 
-	public static MainScreen main;
-	
-	public static EthanSummonScreen summon;
 
-	public static DavidGetCharacterSingle single;
 
 	/**
 	 * 
