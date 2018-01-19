@@ -3,6 +3,8 @@ package maple_gacha;
 import java.awt.Color;
 import java.util.List;
 
+import com.itextpdf.text.Font;
+
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.ClickableGraphic;
@@ -15,9 +17,11 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class BeginnerSelectionScreen extends FullFunctionScreen {
 
+	private boolean selected;
+	
 	public BeginnerSelectionScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
+		selected = false;
 	}
  
 	@Override
@@ -25,25 +29,28 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		Graphic charBg = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/charSelectBG.png");
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
-		Button next = new Button(400, 780, 500, 125, "Next", null);
-		next.setSize(100);
-		next.setEnabled(false);
+		
+//		Button next = new Button(400, 780, 500, 125, "Next", null);
+		ClickableGraphic next = new ClickableGraphic(500, 780, 500 ,125, "resources/characterPics/playbutton.png");
+		
+
 		next.setAction(new Action() {
 
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
-				MainGame.game.setScreen((MainGame.game.cScreen));
+				if(selected) {
+					MainGame.game.setScreen((MainGame.game.cScreen));					
+				}
 				
 			}
 			
 		});
 		TextLabel text = new TextLabel(400,200,1000,500, "Choose your hero!");
-		
 	
 		
 		text.setSize(60);
-		text.setTextColor(Color.orange);
+		
 		
 		viewObjects.add(text);
 		
@@ -67,7 +74,9 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				begWizard.setVisible(false);
 				MainGame.game.team.add(MainGame.game.beginnerArcher);
 				text.setText("You chose the archer!" );
-				next.setEnabled(true);
+			
+				selected = true;
+
 
 			}
 
@@ -82,7 +91,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				begWizard.setVisible(false);
 				MainGame.game.team.add(MainGame.game.beginnerSword);
 				text.setText("You chose the Sword!" );
-				next.setEnabled(true);
+				selected = true;
 
 			}
 
@@ -97,7 +106,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				begSword.setVisible(false);
 				MainGame.game.team.add(MainGame.game.beginnerWizard);
 				text.setText("You chose the Wizard!" );
-				next.setEnabled(true);
+				selected = true;
 
 			}
 		});
