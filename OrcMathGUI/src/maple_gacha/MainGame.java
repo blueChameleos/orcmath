@@ -5,10 +5,15 @@ import guiTeacher.GUIApplication;
 public class MainGame extends GUIApplication {
 	
 	private static final long serialVersionUID = 6853186922252287821L;
-
+	
 	public static MainGame game;
+	public static BattleScreen battle;
+	public static MainScreen main;	
 	public static LoadingScreen load;
-	public static MainScreen main;
+	public static int width;
+	public static int height;
+	public static UnitSelectionScreen unitsel;
+
 	
 	public MainGame(int width, int height) {
 		super(width, height);
@@ -21,6 +26,9 @@ public class MainGame extends GUIApplication {
 		load = new LoadingScreen(getWidth(), getHeight());
 		main = new MainScreen(getWidth(), getHeight());
 		setScreen(load);
+		battle = new BattleScreen(getWidth(), getHeight());
+		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
+		battle = new BattleScreen(getWidth(), getHeight());
 	}
 
 	public static void main(String[] args) {

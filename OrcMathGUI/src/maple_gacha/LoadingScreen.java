@@ -38,26 +38,6 @@ public class LoadingScreen extends FullFunctionScreen{
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		StyledComponent.setButtonOutline(true);
-		play = new Button(540,462,200,75,"PLAY",Color.green,new Action() {
-			@Override
-			public void act() {
-				// TODO Auto-generated method stub
-				play.setEnabled(false);
-				viewObjects.remove(play);
-				viewObjects.add(loadgame);
-				viewObjects.add(newgame);
-			}
-		});
-		try {
-			File fontFile = new File("resources//Bobbleboddy.ttf");
-			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-			Font baseFont=font.deriveFont(16f);
-			play.setFont(baseFont);
-			play.setSize(48);
-		} 
-		catch (Exception e) {
-			 e.printStackTrace();
-		}		
 		newgame = new Button(getWidth()/2 - 100,462,200,75,"New Game",Color.cyan,new Action() {
 
 			@Override
@@ -96,6 +76,27 @@ public class LoadingScreen extends FullFunctionScreen{
 		catch (Exception e) {
 			 e.printStackTrace();
 		}
+		play = new Button(540,462,200,75,"PLAY",Color.green,new Action() {
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				play.setEnabled(false);
+				viewObjects.remove(play);
+				viewObjects.add(loadgame);
+				viewObjects.add(newgame);
+			}
+		});
+		try {
+			File fontFile = new File("resources//Bobbleboddy.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(16f);
+			play.setFont(baseFont);
+			play.setSize(48);
+		} 
+		catch (Exception e) {
+			 e.printStackTrace();
+		}		
+		
 		quit = new Button(1000,900,200,50,"QUIT",Color.red,new Action() {
 
 			@Override
