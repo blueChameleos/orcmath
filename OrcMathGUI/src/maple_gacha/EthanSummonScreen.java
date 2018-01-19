@@ -16,7 +16,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	
 	private ArrayList<BannerScreen> test;
-
+	
 	public EthanSummonScreen(int width, int height) {
 		super(width, height);
 	}
