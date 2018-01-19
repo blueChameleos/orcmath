@@ -17,8 +17,12 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 	private ArrayList<BannerScreen> test;
 
+	private int bannerNum;
+	
+
 	public EthanSummonScreen(int width, int height) {
 		super(width, height);
+		bannerNum = 1;
 	}
 
 	@Override
@@ -32,6 +36,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			e.printStackTrace();
 		}
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
+//		background.loadImages("resources/mario.png", getWidth(), getHeight()); This line changes the image file
 		viewObjects.add(background);
 
 		Button rightarrow = new Button((int) (getWidth() / 10 * 7.75), (int) (getHeight() / 2 * .80), 178, 179, " ",
