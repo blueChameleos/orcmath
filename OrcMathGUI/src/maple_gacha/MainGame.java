@@ -6,6 +6,9 @@ public class MainGame extends GUIApplication {
 	
 	private static final long serialVersionUID = 6853186922252287821L;
 
+	private static LoadingScreen load;
+	private static MainScreen main;
+	
 	public MainGame(int width, int height) {
 		super(width, height);
 		setVisible(true);
@@ -14,8 +17,8 @@ public class MainGame extends GUIApplication {
 	@Override
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS
-		LoadingScreen load = new LoadingScreen(getWidth(), getHeight());
-		MainScreen main = new MainScreen(getWidth(), getHeight());
+		load = new LoadingScreen(getWidth(), getHeight());
+		main = new MainScreen(getWidth(), getHeight());
 		setScreen(load);
 	}
 
