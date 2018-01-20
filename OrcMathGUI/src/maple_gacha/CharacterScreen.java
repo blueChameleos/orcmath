@@ -32,15 +32,12 @@ public class CharacterScreen extends FullFunctionScreen {
 	}
 
 	@Override
-	public void initAllObjects(List<Visible> viewObjects) {
+	public void initAllObjects(List<Visible> viewObjects) { // this runs before beginnerselection updates the team class. 
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/cardSystem.png");
 		background.setVisible(true);
 		viewObjects.add(background);
 		
-		ArrayList<Hero> team = MainGame.game.team;
-		team.add(MainGame.game.beginnerArcher);
-		team.add(MainGame.game.beginnerSword);
-		team.add(MainGame.game.beginnerWizard);
+		ArrayList<Hero> team = MainGame.game.team; 
 		ArrayList<Hero> tempDisplay  = new ArrayList<Hero>();
 		for (Hero i:team) {
 			tempDisplay.add(i);
