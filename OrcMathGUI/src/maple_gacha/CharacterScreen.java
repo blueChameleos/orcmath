@@ -52,7 +52,7 @@ public class CharacterScreen extends FullFunctionScreen {
 						int arrSize = MainGame.game.currentTeam.size();
 					
 						if(enable) {
-							System.out.println(enable);
+							System.out.println(enable); 
 							tempDisplay.add(hero);
 							MainGame.game.currentTeam.remove(hero);
 							character.setX(12);
