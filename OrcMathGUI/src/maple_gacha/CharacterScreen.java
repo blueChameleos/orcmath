@@ -1,6 +1,7 @@
 package maple_gacha;
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,15 @@ public class CharacterScreen extends FullFunctionScreen {
 	private boolean isClicked;
 	private boolean isClicked2;
 	private boolean isFull;
+	private ClickableGraphic g1;
+	private ClickableGraphic g2;
+	private ClickableGraphic g3;
+	private ClickableGraphic g4;
+	private ClickableGraphic g5;
+	
+	private ClickableGraphic c1;
+	private ClickableGraphic c2;
+	private ClickableGraphic c3;
 	
 	
 	public CharacterScreen(int width, int height) {
@@ -36,52 +46,18 @@ public class CharacterScreen extends FullFunctionScreen {
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/cardSystem.png");
 		background.setVisible(true);
 		viewObjects.add(background);
+
+		ClickableGraphic[] clickList = new ClickableGraphic[8];
+
+		clickList[0] = g1;
+		clickList[1] = g2;
+		clickList[2] = g3;
+		clickList[3] = g4;
+		clickList[4] = g5;
+		clickList[5] = c1;
+		clickList[6] = c2;
+		clickList[7] = c3;
 		
-		ArrayList<Hero> team = MainGame.game.team; 
-		ArrayList<Hero> tempDisplay  = new ArrayList<Hero>();
-		for (Hero i:team) {
-			tempDisplay.add(i);
-		}
-		for(int i = 0; i < tempDisplay.size(); i++) {
-				ClickableGraphic character = new ClickableGraphic(131 +208*i,144,400,200, tempDisplay.get(i).getImage());
-				Hero hero = tempDisplay.get(i);
-				character.setVisible(true);
-				character.setAction(new Action() {
-					boolean enable = false;
-					public void act() {
-						int arrSize = MainGame.game.currentTeam.size();
-					
-						if(enable) {
-							System.out.println(enable); 
-							tempDisplay.add(hero);
-							MainGame.game.currentTeam.remove(hero);
-							character.setX(12);
-							character.setY(12);
-							enable = false;
-						}
-						else if(arrSize == 0 && !enable ) {
-							character.setX(76);
-							character.setY(601);
-							tempDisplay.remove(hero);
-							enable = true;
-						}else if(arrSize == 1 && !enable) {
-							character.setX(296);
-							character.setY(601);
-							tempDisplay.remove(hero);
-							enable = true;
-						}else if(arrSize == 2 && !enable) {
-							character.setX(516);
-							character.setY(601);
-							tempDisplay.remove(hero);
-							enable = true;
-						}
-						MainGame.game.currentTeam.add(hero);
-					}
-						
-					
-				});
-				viewObjects.add(character);
-			}
 		
 	}
 }
