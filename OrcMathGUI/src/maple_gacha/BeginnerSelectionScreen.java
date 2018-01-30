@@ -107,7 +107,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		});
 		
 		begWizard.setAction(new Action() {
-
+ 
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub

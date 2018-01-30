@@ -28,7 +28,7 @@ public class ClickableGraphic extends Graphic implements Clickable {
 	public ClickableGraphic(int x, int y, int w, int h, String imageLocation) {
 		super(x, y, w, h, imageLocation);
 		this.imageLocation = imageLocation;
-	}
+	} 
 
 	public ClickableGraphic(int x, int y, double scale, String imageLocation) {
 		super(x, y, scale, imageLocation);
