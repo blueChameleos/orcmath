@@ -23,9 +23,11 @@ import guiTeacher.interfaces.Clickable;
 public class ClickableGraphic extends Graphic implements Clickable {
 
 	private Action action;
+	private String imageLocation;
 	
 	public ClickableGraphic(int x, int y, int w, int h, String imageLocation) {
 		super(x, y, w, h, imageLocation);
+		this.imageLocation = imageLocation;
 	}
 
 	public ClickableGraphic(int x, int y, double scale, String imageLocation) {
@@ -50,6 +52,10 @@ public class ClickableGraphic extends Graphic implements Clickable {
 	
 	public void hoverAction(){
 		//most Components don't do anything on hover
+	}
+	
+	public String getImageLocation() {
+		return this.imageLocation;
 	}
 
 }

@@ -1,6 +1,7 @@
 package maple_gacha;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.itextpdf.text.Font;
@@ -18,6 +19,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class BeginnerSelectionScreen extends FullFunctionScreen {
 
 	private boolean selected;
+	private ArrayList<ClickableGraphic> allBeg;
 	
 	public BeginnerSelectionScreen(int width, int height) {
 		super(width, height);
@@ -30,8 +32,8 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
 		
-//		Button next = new Button(400, 780, 500, 125, "Next", null);
-		ClickableGraphic next = new ClickableGraphic(500, 780, 500 ,125, "resources/characterPics/playbutton.png");
+		Button next = new Button(400, 780, 500, 125, "Next", Color.red, null);
+//		ClickableGraphic next = new ClickableGraphic(500, 780, 500 ,125, "resources/characterPics/playbutton.png");
 		
 
 		next.setAction(new Action() {
@@ -46,6 +48,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 			}
 			
 		});
+		
 		TextLabel text = new TextLabel(400,200,1000,500, "Choose your hero!");
 	
 		
@@ -54,10 +57,16 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		
 		viewObjects.add(text);
 		
-		ClickableGraphic begWizard = new ClickableGraphic(1000, 400, 200 ,200, MainGame.game.beginnerWizard.getImage());
-		ClickableGraphic begArcher = new ClickableGraphic(200, 400, 200, 200, MainGame.game.beginnerArcher.getImage());
-		ClickableGraphic begSword = new ClickableGraphic(600, 400, 200 ,200, MainGame.game.beginnerSword.getImage());
+		ClickableGraphic begArcher = new ClickableGraphic(200, 500, 200, 200, MainGame.game.beginnerArcher.getImage());
+		ClickableGraphic begSword = new ClickableGraphic(600, 500, 200 ,200, MainGame.game.beginnerSword.getImage());
+		ClickableGraphic begWizard = new ClickableGraphic(1000, 500, 200 ,200, MainGame.game.beginnerWizard.getImage());
 
+		allBeg = new ArrayList<ClickableGraphic>();
+		allBeg.add(begArcher);
+		allBeg.add(begSword);
+		allBeg.add(begWizard);
+		
+		
 		viewObjects.add(begArcher);
 		viewObjects.add(begSword);
 		viewObjects.add(begWizard);
@@ -76,7 +85,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				text.setText("You chose the archer!" );
 			
 				selected = true;
-
+				choose(begArcher);
 
 			}
 
@@ -115,6 +124,13 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		viewObjects.add(next);
 
 
+	}
+	
+	public void choose(ClickableGraphic c) {
+	
+		
+		System.out.println(c.getImageLocation());
+		
 	}
 
 }
