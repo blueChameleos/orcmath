@@ -17,12 +17,11 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 	private ArrayList<BannerScreen> test;
 
-	private int bannerNum;
 	
 
 	public EthanSummonScreen(int width, int height) {
 		super(width, height);
-		bannerNum = 1;
+		
 	}
 
 	@Override
@@ -62,7 +61,17 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 		StyledComponent.setButtonOutline(true);
 
-		// somehow have it so not all buttons have the outline
+
+		Button mainMenu = new Button((int) (getWidth() / 10 * .75), (int) (getHeight() / 2 * 2.5), 50, 50, "Main Menu", new Action() {
+			
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		viewObjects.add(mainMenu);
 
 		Graphic arrow = new Graphic((int) (getWidth() / 10 * .75), (int) (getHeight() / 2 * .80), 178, 179,
 				"resources/picture1.png");
@@ -100,7 +109,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			}
 		});
 
-		Button feature = new Button(865, 290, 100, 75, "feature", Color.yellow, new Action() {
+		Button feature = new Button((int) (getWidth()/2 * 1.36) , (int)(getHeight()/2 * .51), 100, 75, "featured", Color.yellow, new Action() {
 
 			@Override
 			public void act() {
