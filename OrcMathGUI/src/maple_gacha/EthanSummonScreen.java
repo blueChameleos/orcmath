@@ -26,6 +26,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		StyledComponent.setButtonOutline(false);
 		try {
 			File fontFile = new File("resources//PermanentMarker.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -61,18 +62,6 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 		StyledComponent.setButtonOutline(true);
 
-
-		Button mainMenu = new Button((int) (getWidth() / 10 * .75), (int) (getHeight() / 2 * 2.5), 50, 50, "Main Menu", new Action() {
-			
-			@Override
-			public void act() {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		viewObjects.add(mainMenu);
-
 		Graphic arrow = new Graphic((int) (getWidth() / 10 * .75), (int) (getHeight() / 2 * .80), 178, 179,
 				"resources/picture1.png");
 		viewObjects.add(arrow);
@@ -89,7 +78,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		banner1.setVisible(false);
 		// viewObjects.add(banner1);
 
-		Button single = new Button(500, 725, 50, 50, "x1", Color.yellow, new Action() {
+		Button single = new Button((int) (getWidth() / 10 * 3.75), (int) (getHeight() / 2 * 1.4), 50, 50, "x1", Color.yellow, new Action() {
 
 			@Override
 			public void act() {
@@ -101,7 +90,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 		single.setActiveBorderColor(null);
 
-		Button multi = new Button(700, 725, 50, 50, "x5", Color.yellow, new Action() {
+		Button multi = new Button((int) (getWidth() / 10 * 6), (int) (getHeight() / 2 * 1.4), 50, 50, "x5", Color.yellow, new Action() {
 
 			@Override
 			public void act() {
@@ -116,9 +105,18 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 				// feature summon button
 			}
 		});
+		
+		Button mainMenu = new Button((int) (getWidth() / 10 * 4.75), (int) (getHeight() / 2 * 1.5), 100, 75, "Main Menu", Color.yellow, new Action() {
+
+			@Override
+			public void act() {
+				MainScreen.main.setScreen(MainScreen.load);
+			}
+		});
 
 		viewObjects.add(single);
 		viewObjects.add(multi);
+		viewObjects.add(mainMenu);
 		viewObjects.add(feature);
 	}
 

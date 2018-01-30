@@ -14,6 +14,9 @@ public class MainScreen extends GUIApplication {
 	public static EthanSummonScreen summon;
 	
 	public static DavidGetCharacterSingle single;
+	
+	public static LoadingScreen load;
+	
 	/**
 	 * 
 	 */
@@ -27,6 +30,7 @@ public class MainScreen extends GUIApplication {
 	}
 
 	public void initScreen() {
+		load = new LoadingScreen(getWidth(), getHeight());
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		single = new DavidGetCharacterSingle(getWidth(),getHeight());
 		setScreen(summon);
