@@ -16,6 +16,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 	private ArrayList<Graphic> test;	
+	private int index;
 
 	public EthanSummonScreen(int width, int height) {
 		super(width, height);
@@ -25,12 +26,22 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	public void add(Graphic bannerImg) {
 		test.add(bannerImg);
 	}
-	public void changeBanner(Graphic bannerImg, List<Visible> viewObjects) {
-//		test.add(bannerImg);
+	public void changeBanner(String position) {
+		if(position.equals("right")) {
+			Graphic temp = test.get(0);
+			test.add(temp);
+			test.remove(0);
+		}else {
+			Graphic temp = test.get(2);
+			test.add(temp);
+			test.remove(3);
+		}
+		
 	}
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		index = 0;
 		test = new ArrayList<Graphic>();
 		StyledComponent.setButtonOutline(false);
 		try {
@@ -43,13 +54,33 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		}
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
+		
+
+		Graphic banner = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
+				"resources/banner.jpg");
+		add(banner);
+
+		//This should probably be part of the arraylist somehow?
+		Graphic banner1 = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
+				"resources/banner1.jpg");
+		add(banner1);
+		
+		Graphic banner2 = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350, "resources/banner2.jpeg");
+		add(banner2);
+		
+		viewObjects.add(test.get(0));
 
 		Button rightarrow = new Button((int) (getWidth() / 10 * 7.75), (int) (getHeight() / 2 * .80), 178, 179, " ",
 				new Action() {
 
 					@Override
 					public void act() {
-
+						if(index == 2) {
+							index = 0;
+						}
+						System.out.println("you clicked it");
+						changeBanner("right");
+						viewObjects.add(test.get(0));
 					}
 				});
 
@@ -58,7 +89,9 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 					@Override
 					public void act() {
-						//change bannerImg
+						System.out.println("you clicked it");
+						changeBanner("left");
+						viewObjects.add(test.get(0));
 					}
 				});
 
@@ -74,20 +107,6 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		Graphic arrow1 = new Graphic((int) ((getWidth() / 10) * 7.75), (int) (getHeight() / 2 * .80), 178, 179,
 				"resources/picture2.png");
 		viewObjects.add(arrow1);
-
-		Graphic banner = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
-				"resources/banner.jpg");
-		add(banner);
-
-		//This should probably be part of the arraylist somehow?
-		Graphic banner1 = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
-				"resources/banner1.jpg");
-		add(banner1);
-		
-		Graphic banner2 = new Graphic(getWidth() / 2, getHeight() / 2, 650, 350, "resources/banner2.jpg");
-		add(banner2);
-		
-		viewObjects.add(test.get(0));
 		
 		Button single = new Button((int) (getWidth() / 10 * 3.75), (int) (getHeight() / 2 * 1.4), 50, 50, "x1", Color.yellow, new Action() {
 
