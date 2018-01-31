@@ -83,7 +83,7 @@ public class CharacterScreen extends FullFunctionScreen {
 				clickList.set(i, new ClickableCharacter(133+205*i,142,206,319,"resources/Empty2.png",null));
 				System.out.println(i);
 				clickList.get(i).setAction(new Action() {
-					boolean enable = false;
+					boolean enable = false; 
 					@Override
 					public void act() {
 						int arrSize = MainGame.game.currentTeam.size();
