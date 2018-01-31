@@ -39,12 +39,10 @@ public class LoadingScreen extends FullFunctionScreen{
 	public void initAllObjects(List<Visible> viewObjects) {
 		StyledComponent.setButtonOutline(true);
 		newgame = new Button(getWidth()/2 - 100,462,200,75,"New Game",Color.cyan,new Action() {
-
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
 				MainGame.game.setScreen(MainGame.main);
-				System.out.println("i");
 			}
 			
 		});
@@ -58,6 +56,7 @@ public class LoadingScreen extends FullFunctionScreen{
 			
 		});
 		newgame.setVisible(false);
+		loadgame.setVisible(false);
 		play = new Button(540,462,200,75,"PLAY",Color.green,new Action() {
 			@Override
 			public void act() {
@@ -65,6 +64,7 @@ public class LoadingScreen extends FullFunctionScreen{
 				play.setEnabled(false);
 				viewObjects.remove(play);
 				newgame.setVisible(true);
+				loadgame.setVisible(true);
 			}
 		});	
 		quit = new Button(1000,900,200,50,"QUIT",Color.red,new Action() {
@@ -90,7 +90,7 @@ public class LoadingScreen extends FullFunctionScreen{
 			newgame.setSize(36);			
 			File fontFile2 = new File("resources//deloise.ttf");
 			Font font2 = Font.createFont(Font.TRUETYPE_FONT, fontFile2);
-			Font baseFont2=font.deriveFont(16f);
+			Font baseFont2=font2.deriveFont(16f);
 			name.setFont(baseFont2);
 			name.setSize(100);
 		} 
@@ -98,6 +98,7 @@ public class LoadingScreen extends FullFunctionScreen{
 			 e.printStackTrace();
 		}		
 		viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/homescreen.png"));
+		viewObjects.add(new Graphic(750, 160, 150,150,"resources/mapleleaf.png"));
 		viewObjects.add(play);
 		viewObjects.add(quit);
 		viewObjects.add(name);		

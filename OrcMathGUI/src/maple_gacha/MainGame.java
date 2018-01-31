@@ -10,6 +10,7 @@ public class MainGame extends GUIApplication {
 	public static BattleScreen battle;
 	public static MainScreen main;	
 	public static LoadingScreen load;
+	public static EthanSummonScreen summon;
 	public static int width;
 	public static int height;
 	public static UnitSelectionScreen unitsel;
@@ -23,10 +24,11 @@ public class MainGame extends GUIApplication {
 	@Override
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS
-		main = new MainScreen(getWidth(), getHeight());
-		load = new LoadingScreen(getWidth(), getHeight());
+		summon = new EthanSummonScreen(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
-		battle = new BattleScreen(getWidth(), getHeight());	
+		battle = new BattleScreen(getWidth(), getHeight());				
+		main = new MainScreen(getWidth(), getHeight());	
+		load = new LoadingScreen(getWidth(), getHeight());
 		setScreen(load);
 	}
 
