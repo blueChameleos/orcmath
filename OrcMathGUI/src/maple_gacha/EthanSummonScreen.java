@@ -33,7 +33,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			test.remove(0);
 		}else {
 			Graphic temp = test.get(2);
-			test.add(temp);
+			test.add(0, temp);
 			test.remove(3);
 		}
 		

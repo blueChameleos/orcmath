@@ -64,7 +64,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		lighting.addSequence("resources/summoninganimation.png", 200, 0, 0, 1375, 1024, 21);
 		viewObjects.add(lighting);
 		
-		public void Thread()
+		/*public void Thread()
 		{
 			if(lightingCount == false)
 			{
@@ -77,7 +77,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 			{
 				
 			}
-		}
+		}*/
 		//dsdd
 			
 		
