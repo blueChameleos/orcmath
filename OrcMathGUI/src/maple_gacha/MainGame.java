@@ -44,12 +44,16 @@ public class MainGame extends GUIApplication {
 		runner.start();
 	}
 
-	public static void createCharacters() {
+	public void createCharacters() {
 		beginnerArcher = new Hero("resources/characterPics/Beginner_Archer_Character.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
 		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
+		
+		
 		System.out.println(beginnerSword.getImage());
 		System.out.println(beginnerArcher);
 	}
 
+	
+	
 }

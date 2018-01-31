@@ -32,7 +32,8 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
 		
-		Button next = new Button(400, 780, 500, 125, "Next", Color.red, null);
+		Button next = new Button(400, 780, 500, 125, "Next", Color.pink, null);
+		next.setSize(150);
 //		ClickableGraphic next = new ClickableGraphic(500, 780, 500 ,125, "resources/characterPics/playbutton.png");
 		
 
@@ -89,7 +90,6 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				text.setText("You chose the archer!" );
 			
 				selected = true;
-				choose(begArcher);
 
 			}
 
@@ -130,11 +130,5 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 
 	}
 	
-	public void choose(ClickableGraphic c) {
-	
-		
-		System.out.println(c.getImageLocation());
-		
-	}
 
 }
