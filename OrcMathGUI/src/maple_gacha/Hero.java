@@ -10,6 +10,7 @@ public class Hero implements Character {
 	private int defense;
 	private int hp;
 	private int uniqueID;
+	private int exp;
 	 
 	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		this.img = img;
@@ -20,6 +21,7 @@ public class Hero implements Character {
 		this.defense = defense;
 		this.hp = hp;
 		this.uniqueID = (int) (Math.random() * 1000000 + 10000) - (int) (Math.random() * 5000);
+		this.exp = 0;
 	}
 
 	@Override
@@ -56,5 +58,9 @@ public class Hero implements Character {
 	
 	public int getID() {
 		return this.uniqueID;
+	}
+	
+	public int getEXP() {
+		return this.exp;
 	}
 }

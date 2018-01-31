@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.itextpdf.text.Font;
+import java.awt.Font;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
@@ -28,12 +28,18 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
  
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		Color or = new Color(255, 230, 179);
+
 		Graphic charBg = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/charSelectBG.png");
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
 		
-		Button next = new Button(400, 780, 500, 125, "Next", Color.pink, null);
-		next.setSize(150);
+		Button next = new Button(570, 780, 150, 125, "Next", or, null);
+		Font myFont = new Font("DialogInput", Font.PLAIN, 12);
+		next.setFont(myFont);
+		next.setSize(50);
+		next.setCurve(100, 100);
+		
 //		ClickableGraphic next = new ClickableGraphic(500, 780, 500 ,125, "resources/characterPics/playbutton.png");
 		
 
@@ -51,7 +57,10 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 			
 		});
 		
+		
 		TextLabel text = new TextLabel(400,200,1000,500, "Choose your hero!");
+		text.setFont(myFont);
+		text.setCustomTextColor(or);
 	
 		
 		text.setSize(60);
@@ -62,6 +71,9 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		ClickableGraphic begArcher = new ClickableGraphic(200, 500, 200, 200, MainGame.game.beginnerArcher.getImage());
 		ClickableGraphic begSword = new ClickableGraphic(600, 500, 200 ,200, MainGame.game.beginnerSword.getImage());
 		ClickableGraphic begWizard = new ClickableGraphic(1000, 500, 200 ,200, MainGame.game.beginnerWizard.getImage());
+		
+		
+		
 
 		allBeg = new ArrayList<ClickableGraphic>();
 		allBeg.add(begArcher);
