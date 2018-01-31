@@ -34,7 +34,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
 		
-		Button next = new Button(590, 780, 70, 70, "Next", or, null);
+		Button next = new Button(620, 780, 70, 70, "Next", or, null);
 		Font myFont = new Font("DialogInput", Font.PLAIN, 20);
 		next.setFont(myFont);
 	
@@ -58,7 +58,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		});
 		
 		
-		TextLabel text = new TextLabel(380,200,1000,500, "Choose your hero!");
+		TextLabel text = new TextLabel(320,200,1000,500, "Choose your hero!");
 		text.setFont(myFont);
 		text.setCustomTextColor(or);
 	
@@ -99,6 +99,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				MainGame.game.team.add(MainGame.game.beginnerSword);
 				MainGame.game.team.add(MainGame.game.beginnerWizard);
 				
+				begArcher.setX(560);
 				text.setText("You chose the archer!" );
 			
 				selected = true;
@@ -132,6 +133,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				MainGame.game.team.add(MainGame.game.beginnerWizard);
 				text.setText("You chose the Wizard!" );
 				selected = true;
+				begWizard.setX(600);
 
 			}
 		});
