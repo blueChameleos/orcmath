@@ -42,6 +42,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 			public void act() {
 				// TODO Auto-generated method stub
 				if(selected) {
+					MainGame.cScreen.reloadScreen();
 					MainGame.game.setScreen((MainGame.game.cScreen));					
 				}
 				
@@ -82,6 +83,9 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				begSword.setVisible(false);
 				begWizard.setVisible(false);
 				MainGame.game.team.add(MainGame.game.beginnerArcher);
+				MainGame.game.team.add(MainGame.game.beginnerSword);
+				MainGame.game.team.add(MainGame.game.beginnerWizard);
+				
 				text.setText("You chose the archer!" );
 			
 				selected = true;
