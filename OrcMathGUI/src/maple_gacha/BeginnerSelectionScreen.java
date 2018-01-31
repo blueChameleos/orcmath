@@ -95,9 +95,10 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				// TODO Auto-generated method stub
 				begSword.setVisible(false);
 				begWizard.setVisible(false);
-				MainGame.game.team.add(MainGame.game.beginnerArcher);
-				MainGame.game.team.add(MainGame.game.beginnerSword);
-				MainGame.game.team.add(MainGame.game.beginnerWizard);
+				MainGame.addHero(MainGame.game.beginnerArcher);
+				MainGame.addHero(MainGame.game.beginnerArcher);
+				MainGame.addHero(MainGame.game.beginnerSword);
+				MainGame.addHero(MainGame.game.beginnerWizard);
 				
 				begArcher.setX(560);
 				text.setText("You chose the archer!" );
@@ -115,7 +116,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				// TODO Auto-generated method stub
 				begArcher.setVisible(false);
 				begWizard.setVisible(false);
-				MainGame.game.team.add(MainGame.game.beginnerSword);
+				MainGame.addHero(MainGame.game.beginnerSword);
 				text.setText("You chose the Sword!" );
 				selected = true;
 
@@ -130,7 +131,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				// TODO Auto-generated method stub
 				begArcher.setVisible(false);
 				begSword.setVisible(false);
-				MainGame.game.team.add(MainGame.game.beginnerWizard);
+				MainGame.addHero(MainGame.game.beginnerWizard);
 				text.setText("You chose the Wizard!" );
 				selected = true;
 				begWizard.setX(600);
