@@ -95,8 +95,8 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				// TODO Auto-generated method stub
 				begSword.setVisible(false);
 				begWizard.setVisible(false);
-				MainGame.addHero(MainGame.game.beginnerArcher);
-				MainGame.addHero(MainGame.game.beginnerArcher);
+				MainGame.addHero(MainGame.beginnerArcher);
+				MainGame.addHero(MainGame.beginnerArcher);
 				MainGame.addHero(MainGame.game.beginnerSword);
 				MainGame.addHero(MainGame.game.beginnerWizard);
 				

@@ -12,44 +12,6 @@ public class Hero implements Character {
 	private int uniqueID;
 	private int exp;
 	 
-	public String getImg() {
-		return img;
-	}
-
-	public String getRank() {
-		return rank;
-	}
-
-	public int getStrength() {
-		return strength;
-	}
-
-	public int getSpeed() {
-		return speed;
-	}
-
-	public int getAttack() {
-		return attack;
-	}
-
-	public int getDefense() {
-		return defense;
-	}
-
-	public int getHp() {
-		return hp;
-	}
-
-	public int getUniqueID() {
-		return uniqueID;
-	}
-
-	public int getExp() {
-		return exp;
-	}
-	public void reloadID() {
-		this.uniqueID = (int) (Math.random() * 1000000 + 10000) - (int) (Math.random() * 5000);
-	}
 	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		this.img = img;
 		this.rank = rank;
@@ -100,5 +62,43 @@ public class Hero implements Character {
 	
 	public int getEXP() {
 		return this.exp;
+	}
+	public String getImg() {
+		return img;
+	}
+
+	public String getRank() {
+		return rank;
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public int getAttack() {
+		return attack;
+	}
+
+	public int getDefense() {
+		return defense;
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public int getUniqueID() {
+		return uniqueID;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+	public void reloadID() {
+		this.uniqueID = (int) (Math.random() * 1000000 + 10000) - (int) (Math.random() * 5000);
 	}
 }
