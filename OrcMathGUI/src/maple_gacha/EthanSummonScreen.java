@@ -15,18 +15,23 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
-	private ArrayList<BannerScreen> test;	
-	//arraylist of thebanners?
-
-	
+	private ArrayList<Graphic> test;	
 
 	public EthanSummonScreen(int width, int height) {
 		super(width, height);
-		
+	}
+	
+	
+	public void add(Graphic bannerImg) {
+		test.add(bannerImg);
+	}
+	public void changeBanner(Graphic bannerImg, List<Visible> viewObjects) {
+//		test.add(bannerImg);
 	}
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		test = new ArrayList<Graphic>();
 		StyledComponent.setButtonOutline(false);
 		try {
 			File fontFile = new File("resources//PermanentMarker.ttf");
@@ -53,7 +58,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 					@Override
 					public void act() {
-
+						//change bannerImg
 					}
 				});
 
@@ -72,14 +77,18 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 		Graphic banner = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
 				"resources/banner.jpg");
-		viewObjects.add(banner);
+		add(banner);
 
-		
 		//This should probably be part of the arraylist somehow?
-		Graphic banner1 = new Graphic(getWidth() / 2, getHeight() / 2, 650, 350, "resources/banner1.jpg");
-		banner1.setVisible(false);
-		// viewObjects.add(banner1);
-
+		Graphic banner1 = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
+				"resources/banner1.jpg");
+		add(banner1);
+		
+		Graphic banner2 = new Graphic(getWidth() / 2, getHeight() / 2, 650, 350, "resources/banner2.jpg");
+		add(banner2);
+		
+		viewObjects.add(test.get(0));
+		
 		Button single = new Button((int) (getWidth() / 10 * 3.75), (int) (getHeight() / 2 * 1.4), 50, 50, "x1", Color.yellow, new Action() {
 
 			@Override
