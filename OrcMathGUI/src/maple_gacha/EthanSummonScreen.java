@@ -15,7 +15,8 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
-	private ArrayList<BannerScreen> test;
+	private ArrayList<BannerScreen> test;	
+	//arraylist of thebanners?
 
 	
 
@@ -36,7 +37,6 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			e.printStackTrace();
 		}
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
-//		background.loadImages("resources/mario.png", getWidth(), getHeight()); This line changes the image file
 		viewObjects.add(background);
 
 		Button rightarrow = new Button((int) (getWidth() / 10 * 7.75), (int) (getHeight() / 2 * .80), 178, 179, " ",
@@ -74,6 +74,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 				"resources/banner.jpg");
 		viewObjects.add(banner);
 
+		
+		//This should probably be part of the arraylist somehow?
 		Graphic banner1 = new Graphic(getWidth() / 2, getHeight() / 2, 650, 350, "resources/banner1.jpg");
 		banner1.setVisible(false);
 		// viewObjects.add(banner1);
@@ -102,7 +104,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-				// feature summon button
+				//arraylist of featured characters
 			}
 		});
 		
