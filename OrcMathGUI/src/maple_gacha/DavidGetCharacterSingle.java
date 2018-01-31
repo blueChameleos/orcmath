@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import guiTeacher.components.Action;
+import guiTeacher.components.AnimatedComponent;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
@@ -23,7 +24,8 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	 */
 	private static final long serialVersionUID = -6471336238619387248L;
 	Button back;
-
+	AnimatedComponent lighting;
+	
 	public DavidGetCharacterSingle(int width, int height) {
 		super(width, height);
 		getCard();
@@ -32,24 +34,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	}
 
 	public void lighting() {
-		URL url;
-		try {
-			url = new URL("http://maplestory.wikia.com/wiki/File:Level_up_animation_You%26I.gif");
-			Icon icon = new ImageIcon(url);
-			JLabel label = new JLabel(icon);
-
-			JFrame f = new JFrame("Animation");
-			f.getContentPane().add(label);
-			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			f.pack();
-			f.setLocationRelativeTo(null);
-			f.setVisible(true);
-
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		
 	}
 
 	public void getCard() {
@@ -74,11 +59,20 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 				"resources/mech.jpg");
 
 		getCard(mech);
-
+		
+		
+		
+		lighting = new AnimatedComponent(250, 265, 29, 34);
+		lighting.addSequence("resources/summoninganimation.png", 150, 234, 50, 29, 34, 3);
+		
+		Thread run = new Thread(lighting);
+		run.start();
+		
+		viewObjects.add(lighting);
 	}
 
 	public void getCard(Graphic asdf) {
-		// viewObjects.add(asdf);
+		
 	}
 
 }
