@@ -85,7 +85,7 @@ public class CharacterScreen extends FullFunctionScreen {
 				clickList.get(i).setAction(new Action() {
 					boolean enable = false; 
 					@Override
-					public void act() {
+					public void act() { 
 						int arrSize = MainGame.game.currentTeam.size();
 						if(arrSize == 0 && !clickList.get(number).returnbool()) {
 							if(clickList.get(number).getHero() != null) {
