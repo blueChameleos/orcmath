@@ -52,6 +52,7 @@ public class ClickableGraphic extends Graphic implements Clickable {
 	
 	public void hoverAction(){
 		//most Components don't do anything on hover
+		
 	}
 	
 	public String getImageLocation() {

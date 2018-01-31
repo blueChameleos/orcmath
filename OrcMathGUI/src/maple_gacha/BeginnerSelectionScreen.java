@@ -34,10 +34,10 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
 		
-		Button next = new Button(570, 780, 150, 125, "Next", or, null);
-		Font myFont = new Font("DialogInput", Font.PLAIN, 12);
+		Button next = new Button(590, 780, 70, 70, "Next", or, null);
+		Font myFont = new Font("DialogInput", Font.PLAIN, 20);
 		next.setFont(myFont);
-		next.setSize(50);
+	
 		next.setCurve(100, 100);
 		
 //		ClickableGraphic next = new ClickableGraphic(500, 780, 500 ,125, "resources/characterPics/playbutton.png");
@@ -58,7 +58,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		});
 		
 		
-		TextLabel text = new TextLabel(400,200,1000,500, "Choose your hero!");
+		TextLabel text = new TextLabel(380,200,1000,500, "Choose your hero!");
 		text.setFont(myFont);
 		text.setCustomTextColor(or);
 	
