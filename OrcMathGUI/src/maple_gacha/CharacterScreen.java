@@ -72,6 +72,7 @@ public class CharacterScreen extends FullFunctionScreen {
 						clickList.get(findEquality(clickG.get(number).getHero())).changebool();
 						MainGame.game.currentTeam.remove(clickG.get(number).getHero());
 						clickG.get(number).loadImages("resources/Empty.png", 206, 319);
+						reloadC1();
 					}
 				}
 			});
@@ -87,12 +88,13 @@ public class CharacterScreen extends FullFunctionScreen {
 					@Override
 					public void act() { 
 						int arrSize = MainGame.game.currentTeam.size();
+						
+						System.out.println(clickList.get(number).getHero().getID());
+						
 						if(arrSize == 0 && !clickList.get(number).returnbool()) {
 							if(clickList.get(number).getHero() != null) {
 								MainGame.game.currentTeam.add(clickList.get(number).getHero());
-								System.out.println(clickList.get(number).getHero().getImage());
-								clickG.get(0).loadImages(clickList.get(number).getHero().getImage(), 206, 319);
-								System.out.println(clickG.get(0).getImageLocation());
+								clickG.get(0).loadImages(clickList.get(number).getHero().getImage(), 206, 319);			
 								clickG.get(0).changeHero(clickList.get(number).getHero());
 								clickList.get(number).changebool();
 							}
@@ -103,11 +105,10 @@ public class CharacterScreen extends FullFunctionScreen {
 								clickG.get(1).changeHero(clickList.get(number).getHero());
 								clickList.get(number).changebool();
 							}
-						}else if(arrSize == 2
-								&& !clickList.get(number).returnbool()) {
+						}else if(arrSize == 2 && !clickList.get(number).returnbool()) {
 							if(clickList.get(number).getHero() != null) {
 								MainGame.game.currentTeam.add(clickList.get(number).getHero());
-								clickG.get(2).loadImages(clickList.get(number).getHero().getImage(), 206, 319);
+								clickG.get(2).loadImages(clickList.get(number).getHero().getImage(), 207, 313);
 								clickG.get(2).changeHero(clickList.get(number).getHero());
 								clickList.get(number).changebool();
 							}
@@ -121,15 +122,34 @@ public class CharacterScreen extends FullFunctionScreen {
 	}
 	
 	public void reloadScreen() {
-		int teamSize = MainGame.game.team.size();
+		int teamSize = MainGame.team.size();
+		if (teamSize > 5) {
+			teamSize = 5;
+		}
 		for(int i=0;i<teamSize;i++) {
-			clickList.get(i).changeHero(MainGame.game.team.get(i));
-			clickList.get(i).loadImages(MainGame.game.team.get(i).getImage(), 206, 319);
+			MainGame.team.get(i).reloadID();
+			clickList.get(i).changeHero(MainGame.team.get(i));
+			clickList.get(i).loadImages(MainGame.team.get(i).getImage(), 206, 319);
+		}
+	}
+	public void reloadC1() {
+		int teamSize = MainGame.currentTeam.size();
+		clearC1();
+		for(int i=0;i<teamSize;i++) {
+			MainGame.currentTeam.get(i).reloadID();
+			clickG.get(i).changeHero( MainGame.currentTeam.get(i));
+			clickG.get(i).loadImages( MainGame.currentTeam.get(i).getImage(), 206, 319);
 		}
 	}
 	
+	public void clearC1() {
+		for(int i=0;i<3;i++) {
+			clickG.get(i).changeHero(null);
+			clickG.get(i).loadImages("resources/Empty.png", 206, 319);
+		}
+	}
 	public int findEquality(Hero hero) {
-		for (int i=0;i<clickList.size();i++) {
+		for (int i=0;i<clickList.size();i++) { 
 			if(clickList.get(i).getHero()  == hero) {
 				return i;
 			}
