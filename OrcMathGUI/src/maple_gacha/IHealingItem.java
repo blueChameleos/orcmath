@@ -6,5 +6,10 @@ public class IHealingItem extends Items {
 		super(value, name);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void act(Character target, int value)
+	{
+		target.setHp(target.getHp()+value);
+	}
 
 }

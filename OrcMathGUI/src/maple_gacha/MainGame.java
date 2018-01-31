@@ -27,7 +27,7 @@ public class MainGame extends GUIApplication {
 	}
 
 	public static void main(String[] args) {
-		game = new MainGame(1280, 720);
+		game = new MainGame(1280, 1024);
 		Thread runner = new Thread(game);
 		runner.start();
 	}

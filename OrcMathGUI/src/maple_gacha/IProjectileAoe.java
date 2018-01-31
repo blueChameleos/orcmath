@@ -7,4 +7,11 @@ public class IProjectileAoe extends IProjectile {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void act(ArrayList<Enemy> targets, int value)
+	{
+		for(int i = 0; i< targets.size(); i++)
+		{
+			targets.get(i).setHP(targets.get(i).getHP() - value);
+		}
+	}
 }

@@ -6,5 +6,8 @@ public class IProjectileSingle extends IProjectile {
 		super(value, name);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public void act(Character target, int value) {
+		target.setHP(target.getHP()- value);
+	}
 }

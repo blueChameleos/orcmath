@@ -158,4 +158,17 @@ public class GBattleSystem implements Runnable {
 		this.round = round;
 	}
 
+	public static void useItem(Items items) {
+		if(items instanceof IProjectileAoe)
+		{
+			items.act(enemeiesList[round], items.getValue());
+		}
+		else 
+		{
+			items.act(currentEnemy, items.getValue());
+		}
+		
+		
+	}
+
 }
