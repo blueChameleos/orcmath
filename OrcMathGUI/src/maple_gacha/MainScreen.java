@@ -35,7 +35,7 @@ public class MainScreen extends GUIApplication {
 		load = new LoadingScreen(getWidth(), getHeight());
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		single = new DavidGetCharacterSingle(getWidth(),getHeight());
-		//multi = new DavidGetCharacterMulti(getWidth(),getHeight());
+		multi = new DavidGetCharacterMulti(getWidth(),getHeight());
 		setScreen(summon);
 	}
 	
