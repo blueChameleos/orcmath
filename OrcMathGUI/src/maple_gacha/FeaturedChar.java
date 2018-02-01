@@ -2,6 +2,7 @@ package maple_gacha;
 
 import java.util.List;
 
+import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -14,8 +15,9 @@ public class FeaturedChar extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		// TODO Auto-generated method stub
-
+		Graphic arrow = new Graphic((int) (getWidth() / 10 * .75), (int) (getHeight() / 2 * .80), 178, 179,
+				"resources/picture1.png");
+		viewObjects.add(arrow);
 	}
 
 }
