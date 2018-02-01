@@ -178,7 +178,7 @@ public class CharacterScreen extends FullFunctionScreen {
 	
 	public void changeScreen(int start,int end) {
 		System.out.println("xd");
-		for(int i=start;i<end;i++) {
+		for(int i=start;i<end;i++) {//s
 			MainGame.team.get(i).reloadID();
 			clickList.get(i).changeHero(MainGame.team.get(i));
 			clickList.get(i).loadImages(MainGame.team.get(i).getImage(), 206, 319);
