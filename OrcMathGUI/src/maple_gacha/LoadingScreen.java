@@ -31,7 +31,6 @@ public class LoadingScreen extends FullFunctionScreen{
 	
 	public LoadingScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -39,18 +38,13 @@ public class LoadingScreen extends FullFunctionScreen{
 	public void initAllObjects(List<Visible> viewObjects) {
 		StyledComponent.setButtonOutline(true);
 		newgame = new Button(getWidth()/2 - 100,462,200,75,"New Game",Color.cyan,new Action() {
-			@Override
 			public void act() {
-				// TODO Auto-generated method stub
 				MainGame.game.setScreen(MainGame.main);
 			}
 			
 		});
 		loadgame = new Button(getWidth()/2 - 100,550,200,75,"Load Game",Color.cyan,new Action() {
-
-			@Override
 			public void act() {
-				// TODO Auto-generated method stub
 				MainGame.game.setScreen(MainGame.main);
 			}
 			
@@ -58,9 +52,7 @@ public class LoadingScreen extends FullFunctionScreen{
 		newgame.setVisible(false);
 		loadgame.setVisible(false);
 		play = new Button(540,462,200,75,"PLAY",Color.green,new Action() {
-			@Override
 			public void act() {
-				// TODO Auto-generated method stub
 				play.setEnabled(false);
 				viewObjects.remove(play);
 				newgame.setVisible(true);

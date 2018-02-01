@@ -21,7 +21,6 @@ public class MainScreen extends FullFunctionScreen {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Button featured;
 	private Button dungeon;
 	private Button summonb;
 	private Button inventory;
@@ -30,51 +29,33 @@ public class MainScreen extends FullFunctionScreen {
 	
 	public MainScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
-		//setVisible(true);
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
 		//change to something else rather than a button
-		featured = new Button((getWidth()/2)-((getWidth()-200)/2),550,getWidth()-200,200,"",Color.blue,new Action() {
-			@Override
-			public void act() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});		
+		//featured banners ((getWidth()/2)-((getWidth()-200)/2),550,getWidth()-200,200)	
 		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
-			@Override
 			public void act() {
-				// TODO Auto-generated method stub
 				MainGame.game.setScreen(MainGame.summon);
 			}
 			
 		});
 		summonb = new Button(getWidth()/2-100,875,200,100,"Summon",Color.yellow,new Action() {
-			@Override
 			public void act() {
-				// TODO Auto-generated method stub
 				MainGame.game.setScreen(MainGame.summon);
 			}
 			
 		});
 		inventory = new Button(((getWidth()/4)*3)-150,875,200,100,"Units",Color.yellow,new Action() {
-			@Override
 			public void act() {
-				// TODO Auto-generated method stub
 				MainGame.game.setScreen(MainGame.summon);
 			}
 			
 		});
-		quit = new Button(getWidth()-150,getHeight()-75,150,75,"QUIT",Color.red,new Action() {
-
-			@Override
+		quit = new Button(getWidth()-175,getHeight()-100,150,75,"QUIT",Color.red,new Action() {
 			public void act() {
 				System.exit(1);
 			}
-			
 		});
 		name = new TextArea(480,10,600,200,"GachaStory");		
 		try {		
@@ -103,15 +84,13 @@ public class MainScreen extends FullFunctionScreen {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home.jpg"));
 		}else {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home2.png"));
-		}
-		viewObjects.add(new Graphic(795, 30, 75,75,"resources/mapleleaf.png"));
-		viewObjects.add(featured);
+		}		
+		viewObjects.add(name);
+		viewObjects.add(new Graphic(795, 30, 75,75,"resources/mapleleaf.png"));		
 		viewObjects.add(dungeon);
 		viewObjects.add(summonb);
 		viewObjects.add(inventory);
 		viewObjects.add(quit);
-		viewObjects.add(name);
-		
 	}
 
 }

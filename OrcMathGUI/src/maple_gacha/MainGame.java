@@ -21,7 +21,6 @@ public class MainGame extends GUIApplication {
 		setVisible(true);
 	}
 
-	@Override
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS
 		summon = new EthanSummonScreen(getWidth(),getHeight());
