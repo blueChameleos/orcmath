@@ -56,7 +56,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 			}
 			
 		});
-		
+		//s
 		
 		TextLabel text = new TextLabel(320,200,1000,500, "Choose your hero!");
 		text.setFont(myFont);

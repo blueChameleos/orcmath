@@ -24,7 +24,7 @@ public class Hero implements Character {
 		this.uniqueID = (int) (Math.random() * 1000000 + 10000) - (int) (Math.random() * 5000);
 		this.exp = 0;
 	}
-
+//s
 	@Override
 	public void attack() {
 		// TODO Auto-generated method stub
