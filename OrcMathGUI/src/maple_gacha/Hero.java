@@ -11,7 +11,8 @@ public class Hero implements Character {
 	private int hp;
 	private int uniqueID;
 	private int exp;
-	 
+	private boolean clickE;
+
 	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		this.img = img;
 		this.rank = rank;
@@ -100,5 +101,12 @@ public class Hero implements Character {
 	}
 	public void reloadID() {
 		this.uniqueID = (int) (Math.random() * 1000000 + 10000) - (int) (Math.random() * 5000);
+	}
+	public boolean isClickE() {
+		return clickE;
+	}
+
+	public void setClickE() {
+		clickE = !clickE;
 	}
 }
