@@ -22,6 +22,7 @@ public class MainScreen extends FullFunctionScreen {
 	private static final long serialVersionUID = 1L;
 
 	private Button featured;
+	private Button dungeon;
 	private Button summonb;
 	private Button inventory;
 	private Button quit;
@@ -34,11 +35,20 @@ public class MainScreen extends FullFunctionScreen {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
+		//change to something else rather than a button
 		featured = new Button((getWidth()/2)-((getWidth()-200)/2),550,getWidth()-200,200,"",Color.blue,new Action() {
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
 				
+			}
+			
+		});		
+		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				MainGame.game.setScreen(MainGame.summon);
 			}
 			
 		});
@@ -50,7 +60,15 @@ public class MainScreen extends FullFunctionScreen {
 			}
 			
 		});
-		quit = new Button(1100,900,150,75,"QUIT",Color.red,new Action() {
+		inventory = new Button(((getWidth()/4)*3)-150,875,200,100,"Units",Color.yellow,new Action() {
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				MainGame.game.setScreen(MainGame.summon);
+			}
+			
+		});
+		quit = new Button(getWidth()-150,getHeight()-75,150,75,"QUIT",Color.red,new Action() {
 
 			@Override
 			public void act() {
@@ -59,7 +77,18 @@ public class MainScreen extends FullFunctionScreen {
 			
 		});
 		name = new TextArea(480,10,600,200,"GachaStory");		
-		try {			
+		try {		
+			File fontFile = new File("resources//Bobbleboddy.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(16f);
+			quit.setFont(baseFont);
+			quit.setSize(24);
+			dungeon.setFont(baseFont);
+			dungeon.setSize(36);
+			summonb.setFont(baseFont);
+			summonb.setSize(36);
+			inventory.setFont(baseFont);
+			inventory.setSize(36);	
 			File fontFile2 = new File("resources//deloise.ttf");
 			Font font2 = Font.createFont(Font.TRUETYPE_FONT, fontFile2);
 			Font baseFont2=font2.deriveFont(16f);
@@ -69,6 +98,7 @@ public class MainScreen extends FullFunctionScreen {
 		catch (Exception e) {
 			 e.printStackTrace();
 		}
+		//randomizes background
 		if(Math.random() > .5) {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home.jpg"));
 		}else {
@@ -76,7 +106,9 @@ public class MainScreen extends FullFunctionScreen {
 		}
 		viewObjects.add(new Graphic(795, 30, 75,75,"resources/mapleleaf.png"));
 		viewObjects.add(featured);
+		viewObjects.add(dungeon);
 		viewObjects.add(summonb);
+		viewObjects.add(inventory);
 		viewObjects.add(quit);
 		viewObjects.add(name);
 		
