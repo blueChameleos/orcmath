@@ -32,6 +32,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			test.add(temp);
 			test.remove(0);
 		}else {
+			//can only be left now
 			Graphic temp = test.get(2);
 			test.add(0, temp);
 			test.remove(3);
@@ -78,7 +79,6 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 						if(index == 2) {
 							index = 0;
 						}
-						System.out.println("you clicked it");
 						changeBanner("right");
 						viewObjects.add(test.get(0));
 					}
@@ -89,7 +89,6 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 					@Override
 					public void act() {
-						System.out.println("you clicked it");
 						changeBanner("left");
 						viewObjects.add(test.get(0));
 					}
