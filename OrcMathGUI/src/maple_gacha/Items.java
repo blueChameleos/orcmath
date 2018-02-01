@@ -1,5 +1,7 @@
 package maple_gacha;
 
+import java.util.ArrayList;
+
 import guiTeacher.components.Action;
 
 public class Items {
@@ -29,6 +31,10 @@ public class Items {
 	public void act(ArrayList<Enemy> targets, int value)
 	{
 		
+	}
+
+	public int getValue() {
+		return value;
 	}
 
 }

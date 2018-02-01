@@ -14,6 +14,7 @@ public class GBattleSystem implements Runnable {
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Thread gameSystem;
 	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
+	private ArrayList<ArrayList<Items>> inventory = new ArrayList<ArrayList<Items>>();
 	private Character currentPlayer;
 	private Character currentEnemy;
 
@@ -158,17 +159,31 @@ public class GBattleSystem implements Runnable {
 		this.round = round;
 	}
 
-	public static void useItem(Items items) {
+	public void useItem(Items items) {
 		if(items instanceof IProjectileAoe)
 		{
-			items.act(enemeiesList[round], items.getValue());
+			items.act(enemiesList[round], items.getValue());
 		}
 		else 
 		{
 			items.act(currentEnemy, items.getValue());
 		}
 		
+		inventory.get(inventory.indexOf(items)).remove(0);
 		
+		//next turn;
+	}
+
+	public Object[][] getEnemiesList() {
+		return enemiesList;
+	}
+
+	public ArrayList<ArrayList<Items>> getInventory() {
+		return this.inventory;
+	}
+
+	public void setInventory(ArrayList<ArrayList<Items>> inventory) {
+		this.inventory = inventory;
 	}
 
 }
