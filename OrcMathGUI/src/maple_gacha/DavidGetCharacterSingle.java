@@ -25,13 +25,15 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	public void lighting() {
 
 	}
+	
+	
 
 	public void rng() {
 		rate = (int) Math.floor(Math.random() * 101);
 	}
 
 	public void getCard() {
-		if (rate < 25) {
+		if (rate < 100) {
 			srare = true;
 			lightingCount = false;
 		} else {
@@ -55,8 +57,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 
 		viewObjects.add(back);
 
-		Graphic mech = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
-				"resources/mech.jpg");
+		Graphic mech = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,"resources/mech.jpg");
 
 		lighting = new AnimatedComponent(0, 0, 1375, 1024);
 		viewObjects.add(lighting);
@@ -79,4 +80,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 			System.out.println("trash");
 		}
 	}
+	
+	
+	
 }

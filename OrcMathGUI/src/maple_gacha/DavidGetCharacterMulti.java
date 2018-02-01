@@ -22,8 +22,8 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 		super(width, height);
 	}
 
-	public void lighting() {
-
+	public void printCard() {
+		
 	}
 
 	public void rng() {
@@ -76,6 +76,8 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 						System.out.println("sss");
 						System.out.println("sss");
 						System.out.println("sss");
+						
+						printCard(); 
 					}
 				}
 			}.start();
