@@ -32,6 +32,10 @@ public class Items {
 	{
 		
 	}
+	
+	public int getValue() {
+		return this.value;
+	}
 
 	public int getValue() {
 		return value;

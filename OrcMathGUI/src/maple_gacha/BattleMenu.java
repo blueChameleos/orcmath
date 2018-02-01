@@ -25,15 +25,14 @@ public class BattleMenu extends ComponentContainer implements Visible{
 
 	@Override
 	public void initObjects(List<Visible> viewObjects) {
-		for(int i = 0; i<listOfItems.size(); i++)
-		{
-			Button newButton = new Button(getX()-10, getY()-20, 30, 30, listOfItems.get(i).getDesc() , new Action() {
-			
-				@Override
+		for(int i = 0; i<listOfItems.size(); i++){
+			int j = i;
+			Button newButton = new Button(getX()-10, getY()-20, 30, 30, "" , new Action() {
 				public void act() {
-					GBattleSystem.useItem(listOfItems.get(i)); //inside method, the quantity will be decreased + progress with the turn.
+					GBattleSystem.useItem(listOfItems.get(j)); //inside method, the quantity will be decreased + progress with the turn.
 				}
 			});
+			viewObjects.add(newButton);
 		}
 	}
 

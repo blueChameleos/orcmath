@@ -51,7 +51,7 @@ public class GBattleSystem implements Runnable {
 	}
 
 	private void playGame() {
-		for( int i=0; i<order.size();i++)
+		for(int i=0; i<order.size();i++)
 		{
 			currentPlayer = order.get(i);
 			if(currentPlayer.getClass() == Enemies)
