@@ -5,6 +5,21 @@ import java.util.ArrayList;
 
 public class GBattleSystem implements Runnable {
 
+	
+/*	things to do:
+		BattleSystem:
+			implement turns(user Turn) - change ui on AI turn (do today)
+
+			: ui change(figure out on friday)
+				update screen each turn 
+
+			user input on BattleScreen (Saturday + Sunday)
+
+
+			create wait system for front end + back end (stoping until the other finsihes job ie. user input and updating)
+
+			begin testign after merge.
+*/
 	private int enemiesNum;
 	private Image backgroundImage;
 	private Character[] mainParty;
@@ -14,6 +29,7 @@ public class GBattleSystem implements Runnable {
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Thread gameSystem;
 	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
+	private ArrayList<ArrayList<Items>> inventory = new ArrayList<ArrayList<Items>>();
 	private Character currentPlayer;
 	private Character currentEnemy;
 
@@ -46,22 +62,28 @@ public class GBattleSystem implements Runnable {
 
 	public void run() {
 		playGame();
-		updateGame();
 	}
 
 	private void playGame() {
 		for(int i=0; i<order.size();i++)
 		{
 			currentPlayer = order.get(i);
-			if(currentPlayer.getClass() == Enemies)
+			if(currentPlayer instanceof Enemies)
 			{
 				order.get(i).attack(randomTarget(), (int) (Math.random()*3));
 			}
 			else
 			{
-				getUserInput();
+				//sleep until user does soemthing.
 			}
+			
+			
+			updateGame();
 		}
+	}
+	
+	private void getUserInput() {
+		
 	}
 
 	private Character randomTarget() {
@@ -158,17 +180,31 @@ public class GBattleSystem implements Runnable {
 		this.round = round;
 	}
 
-	public static void useItem(Items items) {
+	public void useItem(Items items) {
 		if(items instanceof IProjectileAoe)
 		{
-			items.act(enemeiesList[round], items.getValue());
+			items.act(enemiesList[round], items.getValue());
 		}
 		else 
 		{
 			items.act(currentEnemy, items.getValue());
 		}
 		
+		inventory.get(inventory.indexOf(items)).remove(0);
 		
+		//next turn;
+	}
+
+	public Object[][] getEnemiesList() {
+		return enemiesList;
+	}
+
+	public ArrayList<ArrayList<Items>> getInventory() {
+		return this.inventory;
+	}
+
+	public void setInventory(ArrayList<ArrayList<Items>> inventory) {
+		this.inventory = inventory;
 	}
 	
 	public ArrayList<Character> getCharacters(){

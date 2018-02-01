@@ -37,4 +37,8 @@ public class Items {
 		return this.value;
 	}
 
+	public int getValue() {
+		return value;
+	}
+
 }

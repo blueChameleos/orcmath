@@ -47,6 +47,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 		});
 		Button itembttn = new Button(getWidth() - 275, getHeight() - 350, 275, 200, "Items", new Action() {
 			public void act() {
+				
 				itemMenu.setVisible(true);
 			}
 		});
