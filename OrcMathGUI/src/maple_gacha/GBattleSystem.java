@@ -5,6 +5,21 @@ import java.util.ArrayList;
 
 public class GBattleSystem implements Runnable {
 
+	
+/*	things to do:
+		BattleSystem:
+			implement turns(user Turn) - change ui on AI turn (do today)
+
+			: ui change(figure out on friday)
+				update screen each turn 
+
+			user input on BattleScreen (Saturday + Sunday)
+
+
+			create wait system for front end + back end (stoping until the other finsihes job ie. user input and updating)
+
+			begin testign after merge.
+*/
 	private int enemiesNum;
 	private Image backgroundImage;
 	private Character[] mainParty;
@@ -47,22 +62,28 @@ public class GBattleSystem implements Runnable {
 
 	public void run() {
 		playGame();
-		updateGame();
 	}
 
 	private void playGame() {
 		for(int i=0; i<order.size();i++)
 		{
 			currentPlayer = order.get(i);
-			if(currentPlayer.getClass() == Enemies)
+			if(currentPlayer instanceof Enemies)
 			{
 				order.get(i).attack(randomTarget(), (int) (Math.random()*3));
 			}
 			else
 			{
-				getUserInput();
+				//sleep until user does soemthing.
 			}
+			
+			
+			updateGame();
 		}
+	}
+	
+	private void getUserInput() {
+		
 	}
 
 	private Character randomTarget() {
