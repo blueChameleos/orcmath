@@ -170,5 +170,13 @@ public class GBattleSystem implements Runnable {
 		
 		
 	}
+	
+	public ArrayList<Character> getCharacters(){
+		return this.order;
+	}
+	
+	public int getRound() {
+		return this.round;
+	}
 
 }
