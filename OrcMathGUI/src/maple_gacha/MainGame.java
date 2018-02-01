@@ -15,6 +15,8 @@ public class MainGame extends GUIApplication {
 	public static Hero beginnerWizard;
 	public static CharacterScreen cScreen;
 
+
+	
 	public static MainGame game;
 
 	public MainGame(int width, int height) {

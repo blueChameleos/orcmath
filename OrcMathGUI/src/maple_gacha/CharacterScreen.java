@@ -25,6 +25,9 @@ public class CharacterScreen extends FullFunctionScreen {
 	private boolean isClicked2;
 	private boolean isFull;
 	
+	public int startPos;
+	public int endPos;
+	
 	private ClickableGraphic arrow1;
 	private ClickableGraphic arrow2;
 	private ClickableCharacter g1;
@@ -60,12 +63,30 @@ public class CharacterScreen extends FullFunctionScreen {
 			
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
+				if (startPos > 0) {
+					startPos--;
+					endPos--;
+					changeScreen(startPos,endPos);
+				}
 				
 			}
 		});
 		viewObjects.add(arrow1);
 		arrow2 = new ClickableGraphic(1172,220,75,100,"resources/screenPics/arrow2"+ ".jpg");
+		
+		arrow2.setAction(new Action() {
+			
+			@Override
+			public void act() {
+				if (endPos < MainGame.team.size()) {
+					startPos++;
+					endPos++;
+					System.out.println(startPos +"  "+ endPos);
+					changeScreen(startPos,endPos);
+				}
+				
+			}
+		});
 		viewObjects.add(arrow2);
 		clickList = new ArrayList<ClickableCharacter>();
 		clickG = new ArrayList<ClickableCharacter>();
@@ -138,13 +159,32 @@ public class CharacterScreen extends FullFunctionScreen {
 		}
 	}
 	
-	public void reloadScreen(int start,int end) {
+	public void reloadScreen() {
+		startPos = 0;
+		endPos =  MainGame.team.size();
+		if (MainGame.team.size() >= 5) {
+			endPos = 5;
+		}
+		int teamSize = MainGame.team.size();
+		if (teamSize > 5) {
+			teamSize = 5;
+		}
+		for(int i=0;i<teamSize;i++) {
+			MainGame.team.get(i).reloadID();
+			clickList.get(i).changeHero(MainGame.team.get(i));
+			clickList.get(i).loadImages(MainGame.team.get(i).getImage(), 206, 319);
+		}
+	}
+	
+	public void changeScreen(int start,int end) {
+		System.out.println("xd");
 		for(int i=start;i<end;i++) {
 			MainGame.team.get(i).reloadID();
 			clickList.get(i).changeHero(MainGame.team.get(i));
 			clickList.get(i).loadImages(MainGame.team.get(i).getImage(), 206, 319);
 		}
 	}
+	
 	public void reloadC1() {
 		int teamSize = MainGame.currentTeam.size();
 		clearC1();

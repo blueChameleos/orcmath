@@ -97,6 +97,9 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				begWizard.setVisible(false);
 				MainGame.addHero(MainGame.beginnerArcher);
 				MainGame.addHero(MainGame.beginnerArcher);
+				MainGame.addHero(MainGame.beginnerArcher);
+				MainGame.addHero(MainGame.beginnerArcher);
+				MainGame.addHero(MainGame.game.beginnerSword);
 				MainGame.addHero(MainGame.game.beginnerSword);
 				MainGame.addHero(MainGame.game.beginnerWizard);
 				
