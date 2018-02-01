@@ -21,11 +21,18 @@ public class MainScreen extends FullFunctionScreen {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private Button featured;
 	private Button dungeon;
 	private Button summonb;
 	private Button inventory;
 	private Button quit;
 	private TextArea name;
+	private Button temp1;
+	private Button temp2;
+	private Button temp3;
+	private Button temp4;
+	private Button temp5;
+	private Button temp6;
 	
 	public MainScreen(int width, int height) {
 		super(width, height);
@@ -33,7 +40,15 @@ public class MainScreen extends FullFunctionScreen {
 
 	public void initAllObjects(List<Visible> viewObjects) {
 		//change to something else rather than a button
-		//featured banners ((getWidth()/2)-((getWidth()-200)/2),550,getWidth()-200,200)	
+		featured = new Button((getWidth()/2)-((getWidth()-200)/2),600,getWidth()-200,200,"",Color.cyan,new Action(){
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
 			public void act() {
 				MainGame.game.setScreen(MainGame.summon);
@@ -58,6 +73,60 @@ public class MainScreen extends FullFunctionScreen {
 			}
 		});
 		name = new TextArea(480,10,600,200,"GachaStory");		
+		temp1 = new Button((getWidth()/2)-555,200,180,350,"",Color.black, new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		temp2 = new Button((getWidth()/2)-370,200,180,350,"",Color.black,new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		temp3 = new Button((getWidth()/2)-185,200,180,350,"",Color.black,new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		temp4 = new Button((getWidth()/2),200,180,350,"",Color.black,new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		temp5 = new Button((getWidth()/2)+185,200,180,350,"",Color.black,new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		temp6 = new Button((getWidth()/2)+370,200,180,350,"",Color.black,new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		try {		
 			File fontFile = new File("resources//Bobbleboddy.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -86,7 +155,14 @@ public class MainScreen extends FullFunctionScreen {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home2.png"));
 		}		
 		viewObjects.add(name);
-		viewObjects.add(new Graphic(795, 30, 75,75,"resources/mapleleaf.png"));		
+		viewObjects.add(new Graphic(795, 30, 75,75,"resources/mapleleaf.png"));	
+		viewObjects.add(temp1);
+		viewObjects.add(temp2);
+		viewObjects.add(temp3);
+		viewObjects.add(temp4);
+		viewObjects.add(temp5);
+		viewObjects.add(temp6);
+		viewObjects.add(featured);
 		viewObjects.add(dungeon);
 		viewObjects.add(summonb);
 		viewObjects.add(inventory);
