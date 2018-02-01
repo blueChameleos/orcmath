@@ -132,8 +132,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-				// multi summon button
-			}
+				MainScreen.main.setScreen(MainScreen.multi);			}
 		});
 
 		Button feature = new Button((int) (getWidth()/2 * 1.36) , (int)(getHeight()/2 * .51), 100, 75, "featured", Color.yellow, new Action() {
