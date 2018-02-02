@@ -35,7 +35,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	public void getCard() {
 		if (rate < 100) {
 			srare = true;
-			lightingCount = false;
+			lightingCount = true;
 		} else {
 			srare = false;
 		}
@@ -46,7 +46,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		rng();
 		getCard();
 
-		back = new Button(600, 500, 100, 75, "Back", Color.YELLOW, new Action() {
+		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
@@ -55,24 +55,35 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 			}
 		});
 
-		viewObjects.add(back);
+		
 
-		Graphic mech = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,"resources/mech.jpg");
-
+		Graphic mech = new Graphic(475, 350, 650, 350,"resources/mech.jpg");
+		
+		
 		lighting = new AnimatedComponent(0, 0, 1375, 1024);
 		viewObjects.add(lighting);
 
 		if (srare == true) {
 			new Thread() {
 				
-				public void run() {
+				public void run() {	
 
-					if (lightingCount == false) {
+					if (lightingCount == true) {
 						lighting.setRepeat(false);
 						lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
 						Thread light = new Thread(lighting);
 						light.start();
 						System.out.println("sss");
+						
+						try {
+							light.sleep(4500);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						viewObjects.add(mech);
+						viewObjects.add(back);
+						
 					}
 				}
 			}.start();
