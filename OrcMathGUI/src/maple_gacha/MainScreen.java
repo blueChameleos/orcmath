@@ -16,6 +16,15 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 import holiday.HolidayCard;
 
 public class MainScreen extends FullFunctionScreen {
+	
+	public static MainScreen main;
+	
+	public static EthanSummonScreen summon;
+	
+	public static DavidGetCharacterSingle single;
+	
+	public static LoadingScreen load;
+	
 	/**
 	 * 
 	 */
@@ -168,5 +177,4 @@ public class MainScreen extends FullFunctionScreen {
 		viewObjects.add(inventory);
 		viewObjects.add(quit);
 	}
-
 }
