@@ -10,6 +10,7 @@ import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
+import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -17,6 +18,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 	private ArrayList<Graphic> banners;	
 	private int index;
+	private int nx;
 
 	public EthanSummonScreen(int width, int height) {
 		super(width, height);
@@ -40,10 +42,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			//can only be left now
 			if(index <= 0) {
 				index = 2;
-				System.out.println(index);
 			}else {
 				index--;
-				System.out.println(index);
 			}
 			Graphic temp = banners.get(2);
 			banners.add(0, temp);
@@ -51,10 +51,29 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		}
 		
 	}
+	
+	public int getNx() {
+		return nx;
+	}
+
+
+	public void setNx(int nx) {
+		this.nx = nx;
+	}
+
+
+	private void canSummon() {
+		if(nx >= 5) {
+			nx = nx - 5;
+			System.out.println(nx);
+		}
+		
+	}
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		index = 0;
+		nx = 5;
 		banners = new ArrayList<Graphic>();
 		StyledComponent.setButtonOutline(false);
 		try {
@@ -68,7 +87,13 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
 		
-
+		Graphic currency = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .5), 75, 75,
+				"resources/nx1.jpg");
+		viewObjects.add(currency);
+		
+		TextArea count = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .525), 500, 500, "  " + nx + " NX");
+		viewObjects.add(count);
+		
 		Graphic banner = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
 				"resources/banner.jpg");
 		add(banner);
@@ -120,7 +145,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-
+				canSummon();
 				MainScreen.main.setScreen(MainScreen.single);
 
 			}
