@@ -30,7 +30,8 @@ public class MainGame extends GUIApplication {
 	} 
 
 	public void initScreen() {
-		//NOTE ADD MAIN SCREEN LATER GUYS		
+		//NOTE ADD MAIN SCREEN LATER GUYS				
+		createCharacters();
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
@@ -38,7 +39,7 @@ public class MainGame extends GUIApplication {
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());			
-		createCharacters();
+
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
 		setLocationRelativeTo(null);
