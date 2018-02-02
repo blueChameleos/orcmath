@@ -70,16 +70,16 @@ public class GBattleSystem implements Runnable {
 			currentPlayer = order.get(i);
 			if(currentPlayer instanceof Monster)
 			{
-				BattleScreen.SwitchUIAI():
+				MainGame.battle.SwitchUIAI();
 				Character target = randomTarget();
-				int action = (int) (Math.random()*3)
+				int action = (int) (Math.random()*3);
 				order.get(i).attack(target, action);
 				BattleScreen.showAiTurn(order.get(i), target, action);
 			}
 			else
 			{
 				//sleep until user does soemthing.
-				BattleScreen.SwitchAIUI();
+				MainGame.battle.SwitchAIUI();
 				BattleScreen.backend.gameSystem.sleep(Long.MAX_VALUE);
 			}
 			
