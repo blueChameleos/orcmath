@@ -62,14 +62,19 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	}
 
 
-	private void canSummon() {
+	private boolean canSummon() {
 		if(nx >= 5) {
 			nx = nx - 5;
-			System.out.println(nx);
+			return true;
 		}
-		
+		return false;
 	}
 
+	private void cantSummon() {
+		//cant summon
+		
+	}
+	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		index = 0;
@@ -142,16 +147,15 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		viewObjects.add(arrow1);
 		
 		Button single = new Button((int) (getWidth() / 10 * 3.75), (int) (getHeight() / 2 * 1.4), 50, 50, "x1", Color.yellow, new Action() {
-
-			@Override
 			public void act() {
-<<<<<<< HEAD
 				canSummon();
-				MainScreen.main.setScreen(MainScreen.single);
-=======
 
+				if(canSummon()) {
+					count.setText("  " + nx + " NX");
+				}else {
+					cantSummon();
+				}
 				MainGame.game.setScreen(MainGame.single);
->>>>>>> refs/remotes/origin/gacha_develop
 
 			}
 		});
