@@ -83,3 +83,4 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	}
 
 }
+ 
