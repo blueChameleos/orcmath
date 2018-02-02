@@ -31,7 +31,10 @@ public class MainGame extends GUIApplication {
 
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS				
-		createCharacters();
+		createCharacters();		
+		team = new ArrayList<Hero>();
+		currentTeam = new ArrayList<Hero>();
+		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
@@ -39,17 +42,12 @@ public class MainGame extends GUIApplication {
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());			
-
-		team = new ArrayList<Hero>();
-		currentTeam = new ArrayList<Hero>();
-		setLocationRelativeTo(null);
 		setScreen(load);
 	}
 	
 	public static void main(String[] args) {
 		game = new MainGame(1280, 1024);
 		Thread runner = new Thread(game);
-
 		runner.start();
 	}
 
@@ -65,5 +63,4 @@ public class MainGame extends GUIApplication {
 		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());
 		team.add(newHero);
 	}
-
 }

@@ -56,7 +56,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 			}
 			
 		});
-		
+		//s
 		
 		TextLabel text = new TextLabel(320,200,1000,500, "Choose your hero!");
 		text.setFont(myFont);
@@ -96,9 +96,12 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				begSword.setVisible(false);
 				begWizard.setVisible(false);
 				MainGame.addHero(MainGame.beginnerArcher);
+				MainGame.addHero(MainGame.game.beginnerSword);
 				MainGame.addHero(MainGame.beginnerArcher);
 				MainGame.addHero(MainGame.game.beginnerSword);
+				MainGame.addHero(MainGame.beginnerArcher);
 				MainGame.addHero(MainGame.game.beginnerWizard);
+				
 				
 				begArcher.setX(560);
 				text.setText("You chose the archer!" );
