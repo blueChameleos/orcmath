@@ -81,6 +81,6 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	public void SwitchAIUI() {
 		
 	}
-
+ 
 }
  
