@@ -89,7 +89,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 					@Override
 					public void act() {
 						changeBanner("right");
-						viewObjects.add(banners.get(0));
+						viewObjects.add(banners.get(0)); 
 					}
 				});
 
