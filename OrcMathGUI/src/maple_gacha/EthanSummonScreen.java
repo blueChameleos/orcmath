@@ -62,14 +62,19 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	}
 
 
-	private void canSummon() {
+	private boolean canSummon() {
 		if(nx >= 5) {
 			nx = nx - 5;
-			System.out.println(nx);
+			return true;
 		}
-		
+		return false;
 	}
 
+	private void cantSummon() {
+		//cant summon
+		
+	}
+	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		index = 0;
@@ -145,10 +150,16 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-				canSummon();
+				if(canSummon()) {
+					count.setText("  " + nx + " NX");
+				}else {
+					cantSummon();
+				}
+				
 				MainScreen.main.setScreen(MainScreen.single);
 
 			}
+
 		});
 
 		single.setActiveBorderColor(null);
