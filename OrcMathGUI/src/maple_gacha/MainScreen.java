@@ -16,17 +16,6 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 import holiday.HolidayCard;
 
 public class MainScreen extends FullFunctionScreen {
-
-	public static MainScreen main;
-
-	public static EthanSummonScreen summon;
-
-	public static DavidGetCharacterSingle single;
-
-	public static DavidGetCharacterMulti multi;
-
-	public static LoadingScreen load;
-
 	/**
 	 * 
 	 */
@@ -62,7 +51,7 @@ public class MainScreen extends FullFunctionScreen {
 		});
 		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
 			public void act() {
-				MainGame.game.setScreen(MainGame.summon);
+//				MainGame.game.setScreen(MainGame.summon);
 			}
 			
 		});
@@ -74,7 +63,7 @@ public class MainScreen extends FullFunctionScreen {
 		});
 		inventory = new Button(((getWidth()/4)*3)-150,875,200,100,"Units",Color.yellow,new Action() {
 			public void act() {
-				MainGame.game.setScreen(MainGame.summon);
+				MainGame.game.setScreen(MainGame.cScreen);
 			}
 			
 		});

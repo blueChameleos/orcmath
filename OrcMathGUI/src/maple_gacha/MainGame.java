@@ -23,6 +23,9 @@ public class MainGame extends GUIApplication {
 	public static Hero beginnerWizard;
 	public static CharacterScreen cScreen;
 	public static BeginnerSelectionScreen bScreen;
+	public static DavidGetCharacterSingle single;
+	public static DavidGetCharacterMulti multi;
+
 	
 	public MainGame(int width, int height) {
 		super(width, height);
@@ -38,7 +41,7 @@ public class MainGame extends GUIApplication {
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
-		battle = new BattleScreen(getWidth(), getHeight());				
+//		battle = new BattleScreen(getWidth(), getHeight());				
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());			

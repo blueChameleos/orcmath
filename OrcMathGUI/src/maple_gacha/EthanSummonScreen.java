@@ -121,7 +121,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			@Override
 			public void act() {
 
-				MainScreen.main.setScreen(MainScreen.single);
+				MainGame.game.setScreen(MainGame.single);
 
 			}
 		});
@@ -132,7 +132,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-				MainScreen.main.setScreen(MainScreen.multi);			}
+				MainGame.game.setScreen(MainGame.multi);			}
 		});
 
 		Button feature = new Button((int) (getWidth()/2 * 1.36) , (int)(getHeight()/2 * .51), 100, 75, "featured", Color.yellow, new Action() {
@@ -147,7 +147,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-				MainScreen.main.setScreen(MainScreen.load);
+				MainGame.game.setScreen(MainGame.main);
 			}
 		});
 

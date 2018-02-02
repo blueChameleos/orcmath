@@ -1,6 +1,7 @@
 package maple_gacha;
 
 
+import java.awt.Color;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,8 @@ public class CharacterScreen extends FullFunctionScreen {
 	private ClickableCharacter c2;
 	private ClickableCharacter c3;
 	
+	private Button next;
+	
 	ArrayList<ClickableCharacter> clickList;
 	ArrayList<ClickableCharacter> clickG;
 	
@@ -57,7 +60,15 @@ public class CharacterScreen extends FullFunctionScreen {
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/cardSystem.png");
 		background.setVisible(true);
 		viewObjects.add(background);
-		
+		next = new Button(1100,925,140,80,"MENU",Color.yellow,new Action() {
+			@Override
+			public void act() {
+				MainGame.game.setScreen(MainGame.main);
+				
+			}
+			
+		});
+		viewObjects.add(next);
 		arrow1 = new ClickableGraphic(40,220,75,100,"resources/screenPics/arrow.jpg");
 		arrow1.setAction(new Action() {
 			
