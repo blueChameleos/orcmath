@@ -23,7 +23,7 @@ public class GBattleSystem implements Runnable {
 	private int enemiesNum;
 	private Image backgroundImage;
 	private Character[] mainParty;
-	private Object[][] enemiesList; //round -> enemies 
+	private Monster[][] enemiesList; //round -> enemies 
 	private int round;
 	private ArrayList<Character> order = new ArrayList<Character>();
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
@@ -68,7 +68,7 @@ public class GBattleSystem implements Runnable {
 		for(int i=0; i<order.size();i++)
 		{
 			currentPlayer = order.get(i);
-			if(currentPlayer instanceof Enemies)
+			if(currentPlayer instanceof Monster)
 			{
 				order.get(i).attack(randomTarget(), (int) (Math.random()*3));
 			}
@@ -93,7 +93,7 @@ public class GBattleSystem implements Runnable {
 0	private void changeDifficulty(int difficulty) {
 		setRounds((int) Math.pow(difficulty, 1.5));
 		setEnemiesNum((int) Math.pow(difficulty, 1.3));
-		enemiesList = new Enemies[round][enemiesNum];
+		enemiesList = new Monster[round][enemiesNum];
 
 		populateEnemies();
 		changeStats( Math.log((difficulty+1))+.5);
@@ -102,7 +102,7 @@ public class GBattleSystem implements Runnable {
 
 
 	private void changeStats(double d) {
-		for(Enemies e: enemiesList)
+		for(Monster e: enemiesList)
 		{
 			e.setAttack((int)e.getAttack*d);
 			e.setHealth((int)e.getHealth*d);
@@ -111,11 +111,11 @@ public class GBattleSystem implements Runnable {
 	}
 
 	private void populateEnemies() {
-		for( int rounds =0; rounds< enemiesList.length; i++)
+		for(int rounds = 0; rounds< enemiesList.length; i++)
 		{
 			for(int idx = 0; idx<enemiesList[rounds][idx].length; idx++)
 			{
-				enemeisList[rounds][idx] = new Enemies();
+				enemeisList[rounds][idx] = new Monster();
 			}
 		}
 	}
@@ -195,7 +195,7 @@ public class GBattleSystem implements Runnable {
 		//next turn;
 	}
 
-	public Object[][] getEnemiesList() {
+	public Monster[][] getEnemiesList() {
 		return enemiesList;
 	}
 
