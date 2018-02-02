@@ -102,6 +102,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				MainGame.addHero(MainGame.beginnerArcher);
 				MainGame.addHero(MainGame.game.beginnerWizard);
 				
+				
 				begArcher.setX(560);
 				text.setText("You chose the archer!" );
 			
