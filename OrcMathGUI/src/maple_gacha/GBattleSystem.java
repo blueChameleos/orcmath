@@ -34,21 +34,6 @@ public class GBattleSystem implements Runnable {
 	private Character currentEnemy;
 
 	//creation of System
-	public Character getCurrentEnemy() {
-		return currentEnemy;
-	}
-
-	public void setCurrentEnemy(Character currentEnemy) {
-		this.currentEnemy = currentEnemy;
-	}
-
-	public Character getCurrentPlayer() {
-		return currentPlayer;
-	}
-
-	public void setCurrentPlayer(Character currentPlayer) {
-		this.currentPlayer = currentPlayer;
-	}
 
 	public GBattleSystem(int difficulty, Image backgrnd, Character[] mainParty)
 	{
@@ -70,35 +55,31 @@ public class GBattleSystem implements Runnable {
 			currentPlayer = order.get(i);
 			if(currentPlayer instanceof Monster)
 			{
-				MainGame.battle.SwitchUIAI();
+				MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
 				Character target = randomTarget();
 				int action = (int) (Math.random()*3);
 				order.get(i).attack(target, action);
-				BattleScreen.showAiTurn(order.get(i), target, action);
+				BattleScreen.showAiTurn(order.get(i), target, action); //changes ai text-area to show events
 			}
 			else
 			{
-				//sleep until user does soemthing.
-				MainGame.battle.SwitchAIUI();
-				BattleScreen.backend.gameSystem.sleep(Long.MAX_VALUE);
-			}
+				//sleep until user does something.
+				MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
+				BattleScreen.backend.gameSystem.sleep(Long.MAX_VALUE); //sleep for long time
+			}	
 			
-			
-			updateGame();
+			updateGame(); //don't know the use for.
 		}
 	}
 	
-	private Character randomTarget() {
-		return mainParty[(int) Math.random()*mainParty.length];
-	}
-
+	//difficulty
 	private void changeDifficulty(int difficulty) {
-		setRounds((int) Math.pow(difficulty, 1.5));
-		setEnemiesNum((int) Math.pow(difficulty, 1.3));
+		setRounds((int) Math.pow(difficulty, 1.5)); 
+		setEnemiesNum((int) Math.pow(difficulty, 1.3 ));
 		enemiesList = new Monster[round][enemiesNum];
 
 		populateEnemies();
-		changeStats( Math.log((difficulty+1))+.5);
+		changeStats( Math.log((difficulty+1))+.5); //good function
 
 	}
 
@@ -112,16 +93,21 @@ public class GBattleSystem implements Runnable {
 		}
 	}
 
+	//end of difficulty
+	
+	//creating enemies
 	private void populateEnemies() {
 		for(int rounds = 0; rounds< enemiesList.length; i++)
 		{
 			for(int idx = 0; idx<enemiesList[rounds][idx].length; idx++)
 			{
-				enemeisList[rounds][idx] = new Monster();
+				enemeisList[rounds][idx] = new Monster(); 
 			}
 		}
 	}
 
+	
+	//begin of quicksort for specific round
 	private void makeOrder() {
 
 		for(Character c: mainParty)
@@ -166,21 +152,8 @@ public class GBattleSystem implements Runnable {
 		order.set(currentIdx, order.get(i));
 		order.set(i, holder);
 	}
-
-	@Override
-
-
-	private void updateGame() {
-		
-	}
 	
-	private void setEnemiesNum(int enemiesNum) {
-		this.enemiesNum = enemiesNum;
-	}
-
-	private void setRounds(int round) {
-		this.round = round;
-	}
+	// end of sort
 
 	public void useItem(Items items) {
 		if(items instanceof IProjectileAoe)
@@ -197,6 +170,15 @@ public class GBattleSystem implements Runnable {
 		//next turn;
 	}
 
+	//setters and getters.
+	private void setEnemiesNum(int enemiesNum) {
+		this.enemiesNum = enemiesNum;
+	}
+
+	private void setRounds(int round) {
+		this.round = round;
+	}
+	
 	public Monster[][] getEnemiesList() {
 		return enemiesList;
 	}
@@ -215,6 +197,22 @@ public class GBattleSystem implements Runnable {
 	
 	public int getRound() {
 		return this.round;
+	}
+	
+	public Character getCurrentEnemy() {
+		return currentEnemy;
+	}
+
+	public void setCurrentEnemy(Character currentEnemy) {
+		this.currentEnemy = currentEnemy;
+	}
+
+	public Character getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(Character currentPlayer) {
+		this.currentPlayer = currentPlayer;
 	}
 
 }
