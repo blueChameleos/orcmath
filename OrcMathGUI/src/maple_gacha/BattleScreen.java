@@ -33,7 +33,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 		Button attackbttn = new Button(getWidth() - 300, getHeight() - 400, 250, 200, "Attack", new Action() {
 			public void act() {
 				backend.getCharacters().get(backend.getRound()).attack(currentEnemy, value);
-			}
+			} 
 		});
 		Button skillbttn = new Button(getWidth() - 275, getHeight() - 350, 275, 200, "Skill", new Action() {
 			public void act() {
