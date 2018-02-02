@@ -29,7 +29,7 @@ public class BattleMenu extends ComponentContainer implements Visible{
 			int j = i;
 			Button newButton = new Button(getX()-10, getY()-20, 30, 30, "" , new Action() {
 				public void act() {
-					GBattleSystem.useItem(listOfItems.get(j)); //inside method, the quantity will be decreased + progress with the turn.
+					MainGame.game.battle.backend.useItem(listOfItems.get(j)); //inside method, the quantity will be decreased + progress with the turn.
 				}
 			});
 			viewObjects.add(newButton);
