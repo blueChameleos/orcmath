@@ -47,7 +47,7 @@ public class MainGame extends GUIApplication {
 		load = new LoadingScreen(getWidth(), getHeight());			
 		setScreen(load);
 	}
-	
+	 
 	public static void main(String[] args) {
 		game = new MainGame(1280, 1024);
 		Thread runner = new Thread(game);
