@@ -28,8 +28,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 		viewObjects.add(background);
 		
 		
-		BattleMenu itemMenu = new BattleMenu(roundNum, roundNum, null, null);
-		itemMenu.setVisible(false);
+//		BattleMenu itemMenu = new BattleMenu(roundNum, roundNum, null, null);
+//		itemMenu.setVisible(false);
 		Button attackbttn = new Button(getWidth() - 300, getHeight() - 400, 250, 200, "Attack", new Action() {
 			public void act() {
 				backend.getCharacters().get(backend.getRound()).attack(currentEnemy, value);
@@ -48,7 +48,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 		Button itembttn = new Button(getWidth() - 275, getHeight() - 350, 275, 200, "Items", new Action() {
 			public void act() {
 				
-				itemMenu.setVisible(true);
+//				itemMenu.setVisible(true);
 			}
 		});
 		//
@@ -61,7 +61,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 		//viewObjects.add(skillbttn);
 		//viewObjects.add(defbttn);
 		viewObjects.add(itembttn);
-		viewObjects.add(itemMenu);
+//		viewObjects.add(itemMenu);
 		
 	}
 
@@ -71,6 +71,14 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 
 	@Override
 	public void run() {
+		
+	}
+
+	public void SwitchUIAI() {
+		
+	}
+
+	public void SwitchAIUI() {
 		
 	}
 
