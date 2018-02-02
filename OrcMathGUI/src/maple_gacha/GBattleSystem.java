@@ -13,10 +13,27 @@ public class GBattleSystem implements Runnable {
 	private ArrayList<Character> order = new ArrayList<Character>();
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Thread gameSystem;
-	private Items[] itemsList = {new Items("Heal", 20, "Small Heal Potion"), new Items("Heal", 50, "Medium Healing Potion"), new Items("Heal", 100, "Huge Healing Potion"), new Items("Heal", 300, "Cheat Heal"), new Items("Aoe", 30, "Molotov"),new Items("Aoe", 50, "Grenade"), new Items("Aoe", 100, "Pms Ray"), new Items("Single", 40, "Syringe"), new Items("Single", 80, "Javelin"), new Items("Single", 15, "Shuriken")};
-	
+	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
+	private Character currentPlayer;
+	private Character currentEnemy;
 
 	//creation of System
+	public Character getCurrentEnemy() {
+		return currentEnemy;
+	}
+
+	public void setCurrentEnemy(Character currentEnemy) {
+		this.currentEnemy = currentEnemy;
+	}
+
+	public Character getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(Character currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
 	public GBattleSystem(int difficulty, Image backgrnd, Character[] mainParty)
 	{
 		changeDifficulty(difficulty); 
@@ -35,7 +52,7 @@ public class GBattleSystem implements Runnable {
 	private void playGame() {
 		for( int i=0; i<order.size();i++)
 		{
-			Character currentPlayer = order.get(i);
+			currentPlayer = order.get(i);
 			if(currentPlayer.getClass() == Enemies)
 			{
 				order.get(i).attack(randomTarget(), (int) (Math.random()*3));
@@ -139,6 +156,19 @@ public class GBattleSystem implements Runnable {
 
 	private void setRounds(int round) {
 		this.round = round;
+	}
+
+	public static void useItem(Items items) {
+		if(items instanceof IProjectileAoe)
+		{
+			items.act(enemeiesList[round], items.getValue());
+		}
+		else 
+		{
+			items.act(currentEnemy, items.getValue());
+		}
+		
+		
 	}
 
 }

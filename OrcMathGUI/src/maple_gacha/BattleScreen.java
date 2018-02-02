@@ -1,10 +1,14 @@
 package maple_gacha;
 
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+import guiTeacher.components.Action;
+import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
+import guiTeacher.userInterfaces.ComponentContainer;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class BattleScreen extends FullFunctionScreen implements Runnable{
@@ -23,6 +27,42 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	public void initAllObjects(List<Visible> viewObjects) {
 		Graphic background = getRandomBackground();
 		viewObjects.add(background);
+		
+		
+/*		BattleMenu itemMenu = new BattleMenu(roundNum, roundNum, null, null);
+		itemMenu.setVisible(false);
+		Button attackbttn = new Button(getWidth() - 300, getHeight() - 400, 250, 200, "Attack", new Action() {
+			public void act() {
+				//uses the current characters default atk
+			}
+		});
+		Button skillbttn = new Button(getWidth() - 275, getHeight() - 350, 275, 200, "Skill", new Action() {
+			public void act() {
+				//opens skill menu, then allows user to atk with skill
+			}
+		});
+		Button defbttn = new Button(getWidth() - 300, getHeight() - 350, 275, 200, "Guard", new Action() {
+			public void act() {
+				//sends character into guard pose
+			}
+		});*/
+		Button itembttn = new Button(getWidth() - 275, getHeight() - 350, 275, 200, "Items", new Action() {
+			public void act() {
+//				itemMenu.setVisible(true);
+			}
+		});
+		//
+		
+		
+		//create menus for skills and items.
+		
+		
+		//viewObjects.add(attackbttn);
+		//viewObjects.add(skillbttn);
+		//viewObjects.add(defbttn);
+		viewObjects.add(itembttn);
+//		viewObjects.add(itemMenu);
+		
 	}
 
 	private Graphic getRandomBackground() {
@@ -31,10 +71,6 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 
 	@Override
 	public void run() {
-		
-	}
-	
-	public void mouseClicked(MouseEvent e) {
 		
 	}
 
