@@ -38,13 +38,15 @@ public class MainGame extends GUIApplication {
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
 		setLocationRelativeTo(null);
+		single = new DavidGetCharacterSingle(getWidth(),getHeight());
+		multi = new DavidGetCharacterMulti(getWidth(),getHeight());
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
 //		battle = new BattleScreen(getWidth(), getHeight());				
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
-		load = new LoadingScreen(getWidth(), getHeight());			
+		load = new LoadingScreen(getWidth(), getHeight());		
 		setScreen(load);
 	}
 	

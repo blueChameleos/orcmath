@@ -51,7 +51,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 				itemMenu.setVisible(true);
 			}
 		});
-		//
+		// 
 		
 		
 		//create menus for skills and items.
