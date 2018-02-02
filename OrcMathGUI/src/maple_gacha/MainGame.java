@@ -76,7 +76,7 @@ public class MainGame extends GUIApplication {
 		highPrincess = new Hero("resources/charcterPics/Hero_HighPrincess.png", "S", 30, 30, 30, 30, 200);
 		
 		
-		
+		 
 		
 		
 		
