@@ -45,7 +45,10 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		rng();
 		getCard();
-
+		
+		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/summoningbackground.png");
+		
+		
 		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
@@ -73,7 +76,6 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 						lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
 						Thread light = new Thread(lighting);
 						light.start();
-						System.out.println("sss");
 						
 						try {
 							light.sleep(4500);
@@ -81,6 +83,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						viewObjects.add(background);
 						viewObjects.add(mech);
 						viewObjects.add(back);
 						
@@ -92,6 +95,6 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		}
 	}
 	
-	//sd
+	
 	
 }

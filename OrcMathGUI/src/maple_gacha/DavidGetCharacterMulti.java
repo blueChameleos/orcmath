@@ -70,23 +70,32 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 						lighting.setRepeat(false);
 						lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
 						Thread light = new Thread(lighting);
-						light.start();
-						System.out.println("sss");
-						System.out.println("sss");
-						System.out.println("sss");
-						System.out.println("sss");
-						System.out.println("sss");
+
 						
-						printCard(); 
+						light.start();
+						
+						try {
+							light.sleep(4500);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						viewObjects.add(mech);
+						viewObjects.add(mech);
+						viewObjects.add(mech);
+						viewObjects.add(mech);
+						viewObjects.add(mech);
+						viewObjects.add(back);
 					}
 				}
 			}.start();
 		} else {
-			System.out.println("trash");
-			System.out.println("trash");
-			System.out.println("trash");
-			System.out.println("trash");
-			System.out.println("trash");
+			viewObjects.add(mech);
+			viewObjects.add(mech);
+			viewObjects.add(mech);
+			viewObjects.add(mech);
+			viewObjects.add(mech);
+			viewObjects.add(back);
 		}
 	}
 }
