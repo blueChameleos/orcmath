@@ -18,19 +18,38 @@
  *******************************************************************************/
 package guiTeacher.components;
 
+import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Clickable;
+import maple_gacha.Hero;
 
-public class ClickableGraphic extends Graphic implements Clickable {
+public class ClickableCharacter extends Graphic implements Clickable { 
 
 	private Action action;
 	private String imageLocation;
+	private Hero hero;
+	private boolean enable = false;
 	
-	public ClickableGraphic(int x, int y, int w, int h, String imageLocation) {
+	public ClickableCharacter(int x, int y, int w, int h, String imageLocation,Hero hero) {
 		super(x, y, w, h, imageLocation);
 		this.imageLocation = imageLocation;
+		this.hero = hero;
 	} 
-
-	public ClickableGraphic(int x, int y, double scale, String imageLocation) {
+	public void changebool() {
+		enable = !enable;
+	}
+	public boolean returnbool() {
+		return enable;
+	}
+	public void changeHero(Hero hero) {
+		this.hero = hero;
+	}
+	
+	public Hero getHero() {
+		return hero;
+	}
+	
+	
+	public ClickableCharacter(int x, int y, double scale, String imageLocation) {
 		super(x, y, scale, imageLocation);
 	}
 
@@ -38,7 +57,7 @@ public class ClickableGraphic extends Graphic implements Clickable {
 	public void setAction(Action a){
 		this.action = a;
 	}
-	public ClickableGraphic(int x, int y, String imageLocation) {
+	public ClickableCharacter(int x, int y, String imageLocation) {
 		super(x, y, imageLocation);
 	}
 
@@ -52,7 +71,6 @@ public class ClickableGraphic extends Graphic implements Clickable {
 	
 	public void hoverAction(){
 		//most Components don't do anything on hover
-		
 	}
 	
 	public String getImageLocation() {
