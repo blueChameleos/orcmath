@@ -168,6 +168,7 @@ public class Graphic implements Visible {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 	}
 
 	public void move(int newX, int newY, int durationMS){

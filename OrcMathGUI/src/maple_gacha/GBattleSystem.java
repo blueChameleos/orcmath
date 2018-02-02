@@ -47,19 +47,18 @@ public class GBattleSystem implements Runnable {
 			currentPlayer = order.get(i);
 			if(currentPlayer instanceof Monster)
 			{
-				BattleScreen.SwitchUIAI(); //switch user interface to the ai turn
-				Character target = mainParty[(int) Math.random()*mainParty.length];
+				MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
+				Character target = randomTarget();
 				int action = (int) (Math.random()*3);
-				order.get(i).attack(target, action); 
+				order.get(i).attack(target, action);
 				BattleScreen.showAiTurn(order.get(i), target, action); //changes ai text-area to show events
 			}
 			else
 			{
 				//sleep until user does something.
-				BattleScreen.SwitchAIUI(); //switch Ai interface to user interface
+				MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 				BattleScreen.backend.gameSystem.sleep(Long.MAX_VALUE); //sleep for long time
-			}
-			
+			}	
 			
 			updateGame(); //don't know the use for.
 		}

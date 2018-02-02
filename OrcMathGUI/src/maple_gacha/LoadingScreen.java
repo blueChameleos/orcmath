@@ -25,7 +25,7 @@ public class LoadingScreen extends FullFunctionScreen{
 	private static final long serialVersionUID = 1L;
 	private Button play;
 	private Button quit;
-	private Button loadgame;
+//	private Button loadgame;
 	private Button newgame;
 	private TextArea name;
 	
@@ -39,24 +39,24 @@ public class LoadingScreen extends FullFunctionScreen{
 		StyledComponent.setButtonOutline(true);
 		newgame = new Button(getWidth()/2 - 100,462,200,75,"New Game",Color.cyan,new Action() {
 			public void act() {
-				MainGame.game.setScreen(MainGame.main);
+				MainGame.game.setScreen(MainGame.bScreen);
 			}
 			
 		});
-		loadgame = new Button(getWidth()/2 - 100,550,200,75,"Load Game",Color.cyan,new Action() {
-			public void act() {
-				MainGame.game.setScreen(MainGame.main);
-			}
-			
-		});
+//		loadgame = new Button(getWidth()/2 - 100,550,200,75,"Load Game",Color.cyan,new Action() {
+//			public void act() {
+//				MainGame.game.setScreen(MainGame.main);
+//			}
+//			
+//		});
 		newgame.setVisible(false);
-		loadgame.setVisible(false);
+//		loadgame.setVisible(false);
 		play = new Button(540,462,200,75,"PLAY",Color.green,new Action() {
 			public void act() {
 				play.setEnabled(false);
 				viewObjects.remove(play);
 				newgame.setVisible(true);
-				loadgame.setVisible(true);
+//				loadgame.setVisible(true);
 			}
 		});	
 		quit = new Button(1000,900,200,50,"QUIT",Color.red,new Action() {
@@ -76,8 +76,8 @@ public class LoadingScreen extends FullFunctionScreen{
 			quit.setSize(24);
 			play.setFont(baseFont);
 			play.setSize(48);
-			loadgame.setFont(baseFont);
-			loadgame.setSize(36);
+//			loadgame.setFont(baseFont);
+//			loadgame.setSize(36);
 			newgame.setFont(baseFont);
 			newgame.setSize(36);			
 			File fontFile2 = new File("resources//deloise.ttf");
@@ -94,7 +94,7 @@ public class LoadingScreen extends FullFunctionScreen{
 		viewObjects.add(play);
 		viewObjects.add(quit);
 		viewObjects.add(name);		
-		viewObjects.add(loadgame);
+//		viewObjects.add(loadgame);
 		viewObjects.add(newgame);
 	}
 

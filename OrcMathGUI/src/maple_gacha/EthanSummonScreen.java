@@ -15,7 +15,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
-	private ArrayList<Graphic> test;	
+	private ArrayList<Graphic> banners;	
 	private int index;
 
 	public EthanSummonScreen(int width, int height) {
@@ -24,18 +24,30 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	
 	
 	public void add(Graphic bannerImg) {
-		test.add(bannerImg);
+		banners.add(bannerImg);
 	}
 	public void changeBanner(String position) {
 		if(position.equals("right")) {
-			Graphic temp = test.get(0);
-			test.add(temp);
-			test.remove(0);
+			if(index >= 2) {
+				index = 0;
+			}else {
+				index++;
+			}
+			Graphic temp = banners.get(0);
+			banners.add(temp);
+			banners.remove(0);
 		}else {
 			//can only be left now
-			Graphic temp = test.get(2);
-			test.add(0, temp);
-			test.remove(3);
+			if(index <= 0) {
+				index = 2;
+				System.out.println(index);
+			}else {
+				index--;
+				System.out.println(index);
+			}
+			Graphic temp = banners.get(2);
+			banners.add(0, temp);
+			banners.remove(3);
 		}
 		
 	}
@@ -43,7 +55,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		index = 0;
-		test = new ArrayList<Graphic>();
+		banners = new ArrayList<Graphic>();
 		StyledComponent.setButtonOutline(false);
 		try {
 			File fontFile = new File("resources//PermanentMarker.ttf");
@@ -69,18 +81,15 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		Graphic banner2 = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350, "resources/banner2.jpeg");
 		add(banner2);
 		
-		viewObjects.add(test.get(0));
+		viewObjects.add(banners.get(0));
 
 		Button rightarrow = new Button((int) (getWidth() / 10 * 7.75), (int) (getHeight() / 2 * .80), 178, 179, " ",
 				new Action() {
 
 					@Override
 					public void act() {
-						if(index == 2) {
-							index = 0;
-						}
 						changeBanner("right");
-						viewObjects.add(test.get(0));
+						viewObjects.add(banners.get(0));
 					}
 				});
 
@@ -90,7 +99,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 					@Override
 					public void act() {
 						changeBanner("left");
-						viewObjects.add(test.get(0));
+						viewObjects.add(banners.get(0));
 					}
 				});
 
@@ -112,7 +121,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 			@Override
 			public void act() {
 
-				MainScreen.main.setScreen(MainScreen.single);
+				MainGame.game.setScreen(MainGame.single);
 
 			}
 		});
@@ -123,15 +132,14 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-				// multi summon button
-			}
+				MainGame.game.setScreen(MainGame.multi);			}
 		});
 
 		Button feature = new Button((int) (getWidth()/2 * 1.36) , (int)(getHeight()/2 * .51), 100, 75, "featured", Color.yellow, new Action() {
 
 			@Override
 			public void act() {
-				//arraylist of featured characters
+				//arraylist of featured characters?
 			}
 		});
 		
@@ -139,7 +147,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-				MainScreen.main.setScreen(MainScreen.load);
+				MainGame.game.setScreen(MainGame.main);
 			}
 		});
 
