@@ -70,11 +70,17 @@ public class GBattleSystem implements Runnable {
 			currentPlayer = order.get(i);
 			if(currentPlayer instanceof Enemies)
 			{
-				order.get(i).attack(randomTarget(), (int) (Math.random()*3));
+				BattleScreen.SwitchUIAI():
+				Character target = randomTarget();
+				int action = (int) (Math.random()*3)
+				order.get(i).attack(target, action);
+				BattleScreen.showAiTurn(order.get(i), target, action);
 			}
 			else
 			{
 				//sleep until user does soemthing.
+				BattleScreen.SwitchAIUI();
+				BattleScreen.backend.gameSystem.sleep(Long.MAX_VALUE);
 			}
 			
 			
@@ -82,15 +88,11 @@ public class GBattleSystem implements Runnable {
 		}
 	}
 	
-	private void getUserInput() {
-		
-	}
-
 	private Character randomTarget() {
 		return mainParty[(int) Math.random()*mainParty.length];
 	}
 
-0	private void changeDifficulty(int difficulty) {
+	private void changeDifficulty(int difficulty) {
 		setRounds((int) Math.pow(difficulty, 1.5));
 		setEnemiesNum((int) Math.pow(difficulty, 1.3));
 		enemiesList = new Enemies[round][enemiesNum];
