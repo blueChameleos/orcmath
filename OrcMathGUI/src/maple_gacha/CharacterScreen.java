@@ -81,7 +81,6 @@ public class CharacterScreen extends FullFunctionScreen {
 				if (endPos < MainGame.team.size()) {
 					startPos++;
 					endPos++;
-					System.out.println(startPos +"  "+ endPos);
 					changeScreen(startPos,endPos);
 				}
 				
@@ -119,16 +118,14 @@ public class CharacterScreen extends FullFunctionScreen {
 		for(int i=0;i<clickList.size();i++) {
 				int number = i;
 				clickList.set(i, new ClickableCharacter(133+205*i,142,206,319,"resources/Empty2.png",null));
-				System.out.println(i);
 				clickList.get(i).setAction(new Action() {
 					boolean enable = false; 
 					@Override
 					public void act() { 
 						int arrSize = MainGame.game.currentTeam.size();
-						System.out.println(!MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE());
+						System.out.println(MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE());
 						if(arrSize == 0 ) {
 							if(clickList.get(number).getHero() != null && !MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE()){
-								System.out.println(!MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE());
 								MainGame.game.currentTeam.add(clickList.get(number).getHero());
 								clickG.get(0).loadImages(clickList.get(number).getHero().getImage(), 206, 319);			
 								clickG.get(0).changeHero(clickList.get(number).getHero());
@@ -143,7 +140,7 @@ public class CharacterScreen extends FullFunctionScreen {
 
 							}
 						}else if(arrSize == 2 ) {
-							if(clickList.get(number).getHero() != null ) {
+							if(clickList.get(number).getHero() != null && !MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE() ) {
 								MainGame.game.currentTeam.add(clickList.get(number).getHero());
 								clickG.get(2).loadImages(clickList.get(number).getHero().getImage(), 207, 313);
 								clickG.get(2).changeHero(clickList.get(number).getHero());
@@ -178,10 +175,12 @@ public class CharacterScreen extends FullFunctionScreen {
 	
 	public void changeScreen(int start,int end) {
 		System.out.println("xd");
-		for(int i=start;i<end;i++) {//ss
-			MainGame.team.get(i).reloadID();
-			clickList.get(i).changeHero(MainGame.team.get(i));
-			clickList.get(i).loadImages(MainGame.team.get(i).getImage(), 206, 319);
+		int checker = end - start;
+		int count = start;
+		for(int i=0;i<checker;i++) {//ss
+			clickList.get(i).changeHero(MainGame.team.get(count));
+			clickList.get(i).loadImages(MainGame.team.get(count).getImage(), 206, 319);
+			count++;
 		}
 	}
 	
@@ -203,7 +202,7 @@ public class CharacterScreen extends FullFunctionScreen {
 	}
 	public int findEquality(Hero hero) {
 		for (int i=0;i<MainGame.game.team.size();i++) { 
-			if(clickList.get(i).getHero()  == hero) {
+			if(MainGame.game.team.get(i).getID() == hero.getID()) {
 				return i;
 			}
 		}
