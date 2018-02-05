@@ -63,10 +63,16 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	}
 
 
-	private boolean canSummon() {
-		if(nx >= 5) {
+	private boolean canSummon(int type) {
+		//type 0 is single type 1 is multi
+		if(nx >= 5 && type == 0) {
 			nx = nx - 5;
 			return true;
+		}else {
+			if(nx >= 25 && type == 1) {
+				nx = nx - 25;
+				return true;
+			}
 		}
 		return false;
 	}
@@ -78,7 +84,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		index = 0;
-		nx = 4;
+		setNx(5);
 		banners = new ArrayList<Graphic>();
 		StyledComponent.setButtonOutline(false);
 		try {
@@ -99,7 +105,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		TextArea count = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .525), 500, 500, "  " + nx + " NX");
 		viewObjects.add(count);
 		
-		error = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 10 * 1.5), 150, 150, "You do not have enough stones");
+		error = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 10 * 1.5), 150, 150, "You do not have enough nx!");
 		viewObjects.add(error);
 		error.setVisible(false);
 		
@@ -152,15 +158,12 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		
 		Button single = new Button((int) (getWidth() / 10 * 3.75), (int) (getHeight() / 2 * 1.4), 50, 50, "x1", Color.yellow, new Action() {
 			public void act() {
-				canSummon();
-
-				if(canSummon()) {
+				if(canSummon(0)) {
 					count.setText("  " + nx + " NX");
+					MainGame.game.setScreen(MainGame.single);
 				}else {
 					cantSummon();
 				}
-				MainGame.game.setScreen(MainGame.single);
-
 			}
 		});
 
@@ -170,7 +173,13 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-				MainGame.game.setScreen(MainGame.multi);			}
+				if(canSummon(1)) {
+					count.setText("  " + nx + " NX");
+					MainGame.game.setScreen(MainGame.multi);
+				}else {
+					cantSummon();
+				}
+			}
 		});
 
 		Button feature = new Button((int) (getWidth()/2 * 1.36) , (int)(getHeight()/2 * .51), 100, 75, "featured", Color.yellow, new Action() {
