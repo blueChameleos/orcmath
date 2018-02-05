@@ -42,9 +42,9 @@ public class ItemMenu extends Pane {
 					MainGame.game.battle.backend.useItem(itemlist.get(j)); //uses the item
 				}
 			});
-			//add designs later beneath
-			
-			
+			/*
+			 * add designs later
+			 */
 			viewObjects.add(item);
 		}
 	}

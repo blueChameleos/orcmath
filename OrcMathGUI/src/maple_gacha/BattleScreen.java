@@ -20,7 +20,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	public static Button skillbttn;
 	public static Button defbttn;
 	public static Button itembttn;
-	public static NewBattleMenu userui;
+	public static BattleMenu userui;
 	
 	public BattleScreen(int width, int height) {
 		super(width, height);
@@ -30,7 +30,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		Graphic background = getRandomBackground();
-		userui = new NewBattleMenu(this,30, 800);
+		userui = new BattleMenu(this,30, 800);
 		
 //		BattleMenu itemMenu = new BattleMenu(roundNum, roundNum, null, null);
 //		itemMenu.setVisible(false);
