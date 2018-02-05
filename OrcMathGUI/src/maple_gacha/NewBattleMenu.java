@@ -9,6 +9,7 @@ import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Pane;
 import guiTeacher.components.TextArea;
+import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
@@ -17,10 +18,17 @@ public class NewBattleMenu extends Pane {
 	private static final long serialVersionUID = 6116383819049095100L;
 	private static final int WIDTH = 1000;
 	private static final int HEIGHT = 175;
+	public static TextLabel playerHP;
+	public static TextArea log;
+	public static ItemMenu itemmenu;
 	public static Button attackbutton;
 	public static Button defbutton;
 	public static Button skillbutton;
 	public static Button itembutton;
+	
+	public NewBattleMenu(FocusController focusController, int x, int y) {
+		super(focusController, x, y, WIDTH, HEIGHT);
+	}
 
 	public NewBattleMenu(FocusController focusController, int x, int y, int width, int height) {
 		super(focusController, x, y, WIDTH, HEIGHT);
@@ -34,6 +42,6 @@ public class NewBattleMenu extends Pane {
 	}
 
 	public void initAllObjects(List<Visible> viewObjects){
-		
+		itemmenu = new ItemMenu(MainGame.game.battle, 25, 800);
 	}
 }
