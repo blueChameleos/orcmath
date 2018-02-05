@@ -68,7 +68,7 @@ public class GBattleSystem implements Runnable {
 	
 	private void updateGame() {
 		// TODO Auto-generated method stub
-		
+		BattleScreen.backend.gameSystem.interrupt();
 	}
 
 	//difficulty
@@ -116,11 +116,13 @@ public class GBattleSystem implements Runnable {
 		order = new ArrayList<Hero>();
 		for(Hero c: mainParty)
 		{
+			if(c.getHP() > 0)
 			order.add(c);
 		}
 
 		for(Monster e: enemiesList[round])
 		{
+			if(e.getHP() > 0)
 			order.add(e);
 		}
 
