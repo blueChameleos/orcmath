@@ -64,23 +64,23 @@ public class MainGame extends GUIApplication {
 	}
 
 	public static void createCharacters() {
-		beginnerArcher = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
-		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
+		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100);
+		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
+		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100);
 		
-		mediumWizard = new Hero("resources/characterPics/Hero_MediumLilWizard.png", "A", 20, 20 ,20 ,20 , 150);
-		mediumAxe = new Hero("resources/characterPics/Hero_MediumAxeBoy.png", "A", 20, 20, 20, 20, 150);
-		mediumWitch = new Hero("resources/characterPics/Hero_MediumWitch.png", "A", 20, 20, 20, 20, 150);
-		mediumWolfGirl = new Hero("resources/characterPics/Hero_MediumWolfandGirl.png", "A", 20, 20, 20, 20, 150);
-		mediumCannonMan = new Hero("resources/characterPics/Hero_MediumCannonMan.png", "A", 20, 20, 20, 20, 150);
+		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150);
+		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150);
+		mediumWitch = new Hero("resources/characterPics/HeroAitch.png", "A", 20, 20, 20, 20, 150);
+		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150);
+		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "A", 20, 20, 20, 20, 150);
 		
-		highTank = new Hero("resources/characterPics/Hero_HighTank.png", "S", 30, 30, 30, 30, 200);
-		highPrincess = new Hero("resources/charcterPics/Hero_HighPrincess.png", "S", 30, 30, 30, 30, 200);
+		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200);
+		highPrincess = new Hero("resources/charcterPics/HeroSPrincess.png", "S", 30, 30, 30, 30, 200);
 		
 		
 		 
 		
-		
+		 
 		
 //		System.out.println(beginnerSword.getImage());
 //		System.out.println(beginnerArcher);
