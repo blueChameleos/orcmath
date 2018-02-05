@@ -78,8 +78,7 @@ public class GBattleSystem implements Runnable {
 		enemiesList = new Monster[round][enemiesNum];
 
 		populateEnemies();
-		changeStats( Math.log((difficulty+1))+.5); //good function
-
+//		changeStats(Math.log((difficulty+1))+.5); //good function //good comment btw
 	}
 
 
@@ -88,23 +87,23 @@ public class GBattleSystem implements Runnable {
 		{
 			for(Monster e: el)
 			{
-				e.setAttack((int)e.getAttack()*d);
-				e.setHP((int)e.getHP()*d);
-				e.setSpeed((int)e.getSpeed()*d);
+//				e.setAttack((int)e.getAttack()*d);
+//				e.setHP((int)e.getHP()*d);
+//				e.setSpeed((int)e.getSpeed()*d);
 			}
 			
 		}
 	}
 
-	//end of difficulty
-	
+	//end of difficulty	
 	//creating enemies
 	private void populateEnemies() {
 		for(int rounds = 0; rounds< enemiesList.length; rounds++)
 		{
 			for(int idx = 0; idx<enemiesList[rounds].length; idx++)
 			{
-				enemiesList[rounds][idx] = MainGame.game.Mobs[Math.random()*MainGame.game.Mobs.size()];
+				enemiesList[rounds][idx] = MainGame.game.mobs[(int) Math.random()*MainGame.game.mobs.length];
+				
 			}
 		}
 	}

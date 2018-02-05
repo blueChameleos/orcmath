@@ -5,6 +5,10 @@ public class Monster extends Hero implements Character {
 	public Monster(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		super(img, rank, strength, speed, attack, defense, hp);
 	}
+	
+	public Monster(int strength, int speed, int attack, int defense, int hp) {
+		super("resources/characterPics/Hero_BeginnerArcher.png", "SS", strength, speed, attack, defense, hp);
+	}
 
 	@Override
 	public void attack() {

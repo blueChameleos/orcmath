@@ -4,6 +4,6 @@ public interface Character {
 	void attack();
 	String getImage();
 	int getHP();
-	void setHP();
+	void setHP(int hp);
 	void special();
 }

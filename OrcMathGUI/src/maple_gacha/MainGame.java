@@ -18,6 +18,7 @@ public class MainGame extends GUIApplication {
 	public static UnitSelectionScreen unitsel;
 	public static ArrayList<Hero> team;
 	public static ArrayList<Hero> currentTeam;
+	public static Monster[] mobs;
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
@@ -34,18 +35,19 @@ public class MainGame extends GUIApplication {
 
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS				
-		createCharacters();		
+		createCharacters();
+		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
-//		battle = new BattleScreen(getWidth(), getHeight());				
+		battle = new BattleScreen(getWidth(), getHeight());				
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());			
-		setScreen(load);
+		setScreen(battle);
 	}
 
 	public static void main(String[] args) {
@@ -60,6 +62,12 @@ public class MainGame extends GUIApplication {
 		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
 		System.out.println(beginnerSword.getImage());
 		System.out.println(beginnerArcher);
+	}
+	
+	public static void createMobs() {
+		for(int i = 0; i < 3; i++) {
+			mobs[i] = new Monster(1,1,1,1,1);
+		}
 	}
 	
 	public static void addHero(Hero hero) {

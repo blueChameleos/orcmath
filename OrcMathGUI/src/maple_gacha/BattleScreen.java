@@ -16,57 +16,21 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	private static final long serialVersionUID = 2809999782648181302L;
 	private int roundNum;
 	public static GBattleSystem backend;
-	public static Button attackbttn;
-	public static Button skillbttn;
-	public static Button defbttn;
-	public static Button itembttn;
 	public static BattleMenu userui;
 	
 	public BattleScreen(int width, int height) {
 		super(width, height);
+		backend = new GBattleSystem(1, "resources/b_background0.jpg", CharacterScreen.);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		Graphic background = getRandomBackground();
-		userui = new BattleMenu(this,30, 800);
-		
-//		BattleMenu itemMenu = new BattleMenu(roundNum, roundNum, null, null);
-//		itemMenu.setVisible(false);
-		attackbttn = new Button(getWidth() - 300, getHeight() - 400, 250, 200, "Attack", new Action() {
-			public void act() {
-				backend.getCharacters().get(backend.getRound()).attack(currentEnemy, value);
-			}
-		});
-		skillbttn = new Button(getWidth() - 275, getHeight() - 350, 275, 200, "Skill", new Action() {
-			public void act() {
-				backend.getCharacters().get(backend.getRound()).special();
-			}
-		});
-		defbttn = new Button(getWidth() - 300, getHeight() - 350, 275, 200, "Guard", new Action() {
-			public void act() {
-				backend.getCharacters().get(backend.getRound()).guard();
-			}
-		});
-		itembttn = new Button(getWidth() - 275, getHeight() - 350, 275, 200, "Items", new Action() {
-			public void act() {
-				
-//				itemMenu.setVisible(true);
-			}
-		});
-		//
-		
-		
-		//create menus for skills and items.
-		
+		userui = new BattleMenu(this,30,800);
+		userui.update();
 		viewObjects.add(background);
-		//viewObjects.add(attackbttn);
-		//viewObjects.add(skillbttn);
-		//viewObjects.add(defbttn);
-		viewObjects.add(itembttn);
-//		viewObjects.add(itemMenu);
-		
+		viewObjects.add(userui);
 	}
 
 	private Graphic getRandomBackground() {

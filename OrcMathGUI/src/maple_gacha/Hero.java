@@ -44,8 +44,8 @@ public class Hero implements Character {
 	}
 
 	@Override
-	public void setHP() {
-		
+	public void setHP(int hp) {
+		this.hp = hp;
 	}
 
 	@Override
