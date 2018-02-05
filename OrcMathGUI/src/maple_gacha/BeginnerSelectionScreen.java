@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.File;
+import java.io.IOException;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
@@ -18,27 +21,51 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class BeginnerSelectionScreen extends FullFunctionScreen {
 
-	private boolean selected;
 	private ArrayList<ClickableGraphic> allBeg;
+	private ClickableGraphic begArcher;
+	private ClickableGraphic begSword;
+	private ClickableGraphic begWizard;
+	
 	
 	public BeginnerSelectionScreen(int width, int height) {
 		super(width, height);
-		selected = false;
+
 	}
  
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		
+		TextLabel text = new TextLabel(410,200,1000,500, "Choose your hero!");
+		
 		Color or = new Color(255, 230, 179);
 
 		Graphic charBg = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/charSelectBG.png");
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
+
+		begArcher = new ClickableGraphic(200, 500, 200, 200, MainGame.game.beginnerArcher.getImage());
+		begSword = new ClickableGraphic(600, 500, 200 ,200, MainGame.game.beginnerSword.getImage());
+		begWizard = new ClickableGraphic(1000, 500, 200 ,200, MainGame.game.beginnerWizard.getImage());
 		
-		Button next = new Button(620, 780, 70, 70, "Next", or, null);
-		Font myFont = new Font("DialogInput", Font.PLAIN, 20);
-		next.setFont(myFont);
-	
-		next.setCurve(100, 100);
+		
+		Button next = new Button(670, 780, 70, 70, "Next", or, null);
+		next.setVisible(false);
+		
+			
+		Button retry = new Button(595, 780, 70, 70, "Redo", or, null);
+		retry.setVisible(false);
+		
+		retry.setAction(new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				MainGame.game.team.clear();
+				showChars();
+				text.setText("Choose your hero!");
+			}
+			
+		});
 		
 //		ClickableGraphic next = new ClickableGraphic(500, 780, 500 ,125, "resources/characterPics/playbutton.png");
 		
@@ -48,29 +75,26 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
-				if(selected) {
+				if(!MainGame.game.team.isEmpty()) {
 					MainGame.cScreen.reloadScreen();
-					MainGame.game.setScreen((MainGame.game.cScreen));					
+					MainGame.game.setScreen((MainGame.game.cScreen));										
+				} else {
+					text.setText("You must choose a hero first!");
+					text.setX(300);
 				}
+			
 				
 			}
 			
 		});
 		//s
 		
-		TextLabel text = new TextLabel(320,200,1000,500, "Choose your hero!");
-		text.setFont(myFont);
-		text.setCustomTextColor(or);
 	
 		
 		text.setSize(60);
-		
-		
+		text.setCustomTextColor(or);
 		viewObjects.add(text);
 		
-		ClickableGraphic begArcher = new ClickableGraphic(200, 500, 200, 200, MainGame.game.beginnerArcher.getImage());
-		ClickableGraphic begSword = new ClickableGraphic(600, 500, 200 ,200, MainGame.game.beginnerSword.getImage());
-		ClickableGraphic begWizard = new ClickableGraphic(1000, 500, 200 ,200, MainGame.game.beginnerWizard.getImage());
 		
 		
 		
@@ -102,11 +126,12 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				MainGame.addHero(MainGame.beginnerArcher);
 				MainGame.addHero(MainGame.game.beginnerWizard);
 				
-				
+				text.setX(410);
 				begArcher.setX(560);
 				text.setText("You chose the archer!" );
 			
-				selected = true;
+				retry.setVisible(true);
+				next.setVisible(true);
 
 			}
 
@@ -120,8 +145,12 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				begArcher.setVisible(false);
 				begWizard.setVisible(false);
 				MainGame.addHero(MainGame.game.beginnerSword);
-				text.setText("You chose the Sword!" );
-				selected = true;
+				text.setText("You chose the Swordsman!" );
+				retry.setVisible(true);
+				next.setVisible(true);
+				text.setX(410);
+
+
 
 			}
 
@@ -136,16 +165,43 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				begSword.setVisible(false);
 				MainGame.addHero(MainGame.game.beginnerWizard);
 				text.setText("You chose the Wizard!" );
-				selected = true;
 				begWizard.setX(600);
+				retry.setVisible(true);
+				next.setVisible(true);
+				text.setX(410);
+
 
 			}
 		});
 		
 		
+		try {
+			File fontFile2 = new File("resources//deloise.ttf");
+			Font font2 = Font.createFont(Font.TRUETYPE_FONT, fontFile2);
+			Font baseFont2=font2.deriveFont(90f);
+			text.setFont(baseFont2);
+			baseFont2 = font2.deriveFont(16f);
+			next.setFont(baseFont2);
+			retry.setFont(baseFont2);
+		} catch(Exception e) {
+			
+		}
+		
+		
 		viewObjects.add(next);
 
-
+		
+		
+		viewObjects.add(retry);
+	}
+	
+	private void showChars() {
+		begArcher.setX(200);
+		begSword.setX(600);
+		begWizard.setX(1000);
+		begArcher.setVisible(true);
+		begSword.setVisible(true);
+		begWizard.setVisible(true);
 	}
 	
 

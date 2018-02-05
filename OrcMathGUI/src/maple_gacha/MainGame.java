@@ -17,6 +17,8 @@ public class MainGame extends GUIApplication {
 	public static int height;
 	public static UnitSelectionScreen unitsel;
 	public static ArrayList<Hero> team;
+	public static ArrayList<Monster> mobs;
+	public static ArrayList<Monster> boss;
 	public static ArrayList<Hero> currentTeam;
 	public static CharacterScreen cScreen;
 	public static BeginnerSelectionScreen bScreen;
@@ -80,8 +82,12 @@ public class MainGame extends GUIApplication {
 		
 		
 		
-		System.out.println(beginnerSword.getImage());
-		System.out.println(beginnerArcher);
+//		System.out.println(beginnerSword.getImage());
+//		System.out.println(beginnerArcher);
+	}
+	
+	public static void createMobs() {
+		
 	}
 	
 	public static void addHero(Hero hero) {
