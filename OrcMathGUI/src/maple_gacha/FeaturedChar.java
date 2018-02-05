@@ -15,9 +15,10 @@ public class FeaturedChar extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		Graphic arrow = new Graphic((int) (getWidth() / 10 * .75), (int) (getHeight() / 2 * .80), 178, 179,
-				"resources/picture1.png");
-		viewObjects.add(arrow);
+		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
+		viewObjects.add(background);
+		
+		
 	}
 
 }

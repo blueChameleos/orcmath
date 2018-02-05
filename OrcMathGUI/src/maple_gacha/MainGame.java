@@ -13,6 +13,7 @@ public class MainGame extends GUIApplication {
 	public static MainScreen main;	
 	public static LoadingScreen load;
 	public static EthanSummonScreen summon;
+	public static FeaturedChar featured;
 	public static int width;
 	public static int height;
 	public static UnitSelectionScreen unitsel;
@@ -42,6 +43,7 @@ public class MainGame extends GUIApplication {
 		multi = new DavidGetCharacterMulti(getWidth(),getHeight());
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
+		featured = new FeaturedChar(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
 //		battle = new BattleScreen(getWidth(), getHeight());				
 		main = new MainScreen(getWidth(), getHeight());	

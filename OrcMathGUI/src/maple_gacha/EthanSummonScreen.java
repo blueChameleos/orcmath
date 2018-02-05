@@ -8,6 +8,7 @@ import java.util.List;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
 import guiTeacher.components.TextArea;
@@ -186,7 +187,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 
 			@Override
 			public void act() {
-				//arraylist of featured characters?
+				MainGame.game.setScreen(MainGame.featured);
 			}
 		});
 		
