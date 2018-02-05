@@ -23,22 +23,17 @@ public class Items {
 		this.name = name;
 	}
 
-	public void act(Character target, int value) {
-		// TODO Auto-generated method stub
+	public void act(Monster[] enemiesList, int value) {
 		
 	}
 	
-	public void act(ArrayList<Enemy> targets, int value)
+	public void act(Hero target, int value)
 	{
 		
 	}
 	
 	public int getValue() {
 		return this.value;
-	}
-
-	public int getValue() {
-		return value;
 	}
 
 }

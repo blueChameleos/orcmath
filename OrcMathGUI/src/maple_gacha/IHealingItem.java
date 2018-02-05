@@ -7,9 +7,9 @@ public class IHealingItem extends Items {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void act(Character target, int value)
+	public void act(Hero target, int value)
 	{
-		target.setHp(target.getHp()+value);
+		target.setHp(target.getHP()+value);
 	}
 
 }

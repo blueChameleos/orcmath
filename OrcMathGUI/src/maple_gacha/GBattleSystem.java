@@ -14,16 +14,16 @@ public class GBattleSystem implements Runnable {
 */
 	private int enemiesNum;
 	private Image backgroundImage;
-	private Character[] mainParty;
+	private Hero[] mainParty;
 	private Monster[][] enemiesList; //round -> enemies 
 	private int round;
-	private ArrayList<Character> order = new ArrayList<Character>();
+	private ArrayList<Hero> order = new ArrayList<Hero>();
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Thread gameSystem;
 	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
 	private ArrayList<ArrayList<Items>> inventory = new ArrayList<ArrayList<Items>>();
-	private Character currentPlayer;
-	private Character currentEnemy;
+	private Hero currentPlayer;
+	private Monster currentEnemy;
 
 	//creation of System
 
@@ -38,17 +38,19 @@ public class GBattleSystem implements Runnable {
 	}
 
 	public void run() {
+		makeOrder();
 		playGame();
 	}
 
 	private void playGame() {
+		
 		for(int i=0; i<order.size();i++)
 		{
 			currentPlayer = order.get(i);
 			if(currentPlayer instanceof Monster)
 			{
 				MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
-				Character target = randomTarget();
+				Hero target = mainParty[(int) Math.random()*mainParty.length];
 				int action = (int) (Math.random()*3);
 				order.get(i).attack(target, action);
 				BattleScreen.showAiTurn(order.get(i), target, action); //changes ai text-area to show events
@@ -77,11 +79,15 @@ public class GBattleSystem implements Runnable {
 
 
 	private void changeStats(double d) {
-		for(Monster e: enemiesList)
+		for(Monster[] el: enemiesList)
 		{
-			e.setAttack((int)e.getAttack*d);
-			e.setHealth((int)e.getHealth*d);
-			e.setSpeed((int)e.getSpeed*d);
+			for(Monster e: el)
+			{
+				e.setAttack((int)e.getAttack()*d);
+				e.setHP((int)e.getHP()*d);
+				e.setSpeed((int)e.getSpeed()*d);
+			}
+			
 		}
 	}
 
@@ -91,9 +97,9 @@ public class GBattleSystem implements Runnable {
 	private void populateEnemies() {
 		for(int rounds = 0; rounds< enemiesList.length; i++)
 		{
-			for(int idx = 0; idx<enemiesList[rounds][idx].length; idx++)
+			for(int idx = 0; idx<enemiesList[rounds].length; idx++)
 			{
-				enemeisList[rounds][idx] = new Monster(); 
+				enemiesList[rounds][idx] = new Monster(null, null, idx, idx, idx, idx, idx); 
 			}
 		}
 	}
@@ -102,12 +108,13 @@ public class GBattleSystem implements Runnable {
 	//begin of quicksort for specific round
 	private void makeOrder() {
 
-		for(Character c: mainParty)
+		order = new ArrayList<Hero>();
+		for(Hero c: mainParty)
 		{
 			order.add(c);
 		}
 
-		for(Enemies e: enemieslist[round])
+		for(Monster e: enemiesList[round])
 		{
 			order.add(e);
 		}
@@ -115,15 +122,15 @@ public class GBattleSystem implements Runnable {
 		sortOrder(order);
 	}
 
-	private void sortOrder(ArrayList<Character> list) {
+	private void sortOrder(ArrayList<Hero> heroList) {
 		int currentIdx = order.size();
-		int pivotSpeed = order.get(0);
+		int pivotSpeed = order.get(0).getSpeed();
 
-		if(list.size() > 1)
+		if(heroList.size() > 1)
 		{
 			for(int i = 1; i< order.size(); i++)
 			{
-				if(list.get(i).getSpeed() < pivotSpeed)
+				if(heroList.get(i).getSpeed() < pivotSpeed)
 				{
 					currentIdx --;
 					swap(currentIdx, i);
@@ -132,15 +139,15 @@ public class GBattleSystem implements Runnable {
 
 			currentIdx --;
 			swap(currentIdx, 0);
-			sortOrder((ArrayList<Character>) order.subList(0, currentIdx));
-			sortOrder((ArrayList<Character>) order.subList(currentIdx+1, order.size()));
+			sortOrder((ArrayList<Hero>) order.subList(0, currentIdx));
+			sortOrder((ArrayList<Hero>) order.subList(currentIdx+1, order.size()));
 
 		}
 
 	}
 
 	private void swap(int currentIdx, int i) {
-		Character holder = order.get(currentIdx);
+		Hero holder = order.get(currentIdx);
 		order.set(currentIdx, order.get(i));
 		order.set(i, holder);
 	}
@@ -154,7 +161,15 @@ public class GBattleSystem implements Runnable {
 		}
 		else 
 		{
-			items.act(currentEnemy, items.getValue());
+			if(items instanceof IHealingItem)
+			{
+				items.act(currentPlayer, items.getValue());
+			}
+			else
+			{
+				items.act(currentEnemy, items.getValue());
+			}
+			
 		}
 		
 		inventory.get(inventory.indexOf(items)).remove(0);
@@ -183,7 +198,7 @@ public class GBattleSystem implements Runnable {
 		this.inventory = inventory;
 	}
 	
-	public ArrayList<Character> getCharacters(){
+	public ArrayList<Hero> getCharacters(){
 		return this.order;
 	}
 	
@@ -191,19 +206,19 @@ public class GBattleSystem implements Runnable {
 		return this.round;
 	}
 	
-	public Character getCurrentEnemy() {
+	public Monster getCurrentEnemy() {
 		return currentEnemy;
 	}
 
-	public void setCurrentEnemy(Character currentEnemy) {
+	public void setCurrentEnemy(Monster currentEnemy) {
 		this.currentEnemy = currentEnemy;
 	}
 
-	public Character getCurrentPlayer() {
+	public Hero getCurrentPlayer() {
 		return currentPlayer;
 	}
 
-	public void setCurrentPlayer(Character currentPlayer) {
+	public void setCurrentPlayer(Hero currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
 
