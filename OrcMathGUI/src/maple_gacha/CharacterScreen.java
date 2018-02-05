@@ -30,6 +30,7 @@ public class CharacterScreen extends FullFunctionScreen {
 	public int startPos;
 	public int endPos;
 	
+	private int idx;
 	private ClickableGraphic arrow1;
 	private ClickableGraphic arrow2;
 	private ClickableCharacter g1;
@@ -52,6 +53,7 @@ public class CharacterScreen extends FullFunctionScreen {
 	public CharacterScreen(int width, int height) {
 		super(width, height);
 		setVisible(true);
+		idx = -1;
 		isOccupied = false;
 		isOccupied2 = false;
 		isClicked = false;
@@ -129,9 +131,10 @@ public class CharacterScreen extends FullFunctionScreen {
 				}
 			});
 			clickG.get(i).setHoverAction(new Action() {
-				
-				@Override
 				public void act() {
+					if(idx != number && (clickG.get(number).getHero() != null)) {
+						System.out.println(number);
+						idx = number;
 					confirmation.setText("Rank = " + clickG.get(number).getHero().getRank() + "\n" +
 							"Strength = " + clickG.get(number).getHero().getStrength() + "\n" + 
 							"Speed = " + clickG.get(number).getHero().getSpeed() + "\n" + 
@@ -139,6 +142,7 @@ public class CharacterScreen extends FullFunctionScreen {
 							"Defense = " + clickG.get(number).getHero().getDefense() + "\n" +
 							"HP = " + clickG.get(number).getHero().getHP() + "\n" +
 							"Unique ID = " + clickG.get(number).getHero().getUniqueID() + "\n");
+					}
 				}
 			});
 			
@@ -185,7 +189,7 @@ public class CharacterScreen extends FullFunctionScreen {
 					}
 				});
 				viewObjects.add(clickList.get(number));
-				
+
 		}
 	}
 	
