@@ -45,7 +45,7 @@ public class CharacterScreen extends FullFunctionScreen {
 	private TextArea confirmation;
 	
 	private Button next;
-	
+	//m
 	ArrayList<ClickableCharacter> clickList;
 	ArrayList<ClickableCharacter> clickG;
 	
