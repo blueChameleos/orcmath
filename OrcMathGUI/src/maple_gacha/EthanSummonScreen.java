@@ -19,6 +19,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	private ArrayList<Graphic> banners;	
 	private int index;
 	private int nx;
+	private TextArea error;
 
 	public EthanSummonScreen(int width, int height) {
 		super(width, height);
@@ -71,14 +72,13 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	}
 
 	private void cantSummon() {
-		//cant summon
-		
+		error.setVisible(true);
 	}
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		index = 0;
-		nx = 5;
+		nx = 4;
 		banners = new ArrayList<Graphic>();
 		StyledComponent.setButtonOutline(false);
 		try {
@@ -98,6 +98,10 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 		
 		TextArea count = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .525), 500, 500, "  " + nx + " NX");
 		viewObjects.add(count);
+		
+		error = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 10 * 1.5), 150, 150, "You do not have enough stones");
+		viewObjects.add(error);
+		error.setVisible(false);
 		
 		Graphic banner = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
 				"resources/banner.jpg");
