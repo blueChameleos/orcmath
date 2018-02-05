@@ -48,6 +48,27 @@ public class Hero implements Character {
 		
 	}
 
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
+	public void setDefense(int defense) {
+		this.defense = defense;
+	}
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
 	@Override
 	public void special() {
 		

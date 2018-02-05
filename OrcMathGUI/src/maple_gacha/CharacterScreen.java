@@ -185,7 +185,7 @@ public class CharacterScreen extends FullFunctionScreen {
 					}
 				});
 				viewObjects.add(clickList.get(number));
-
+				
 		}
 	}
 	
