@@ -27,7 +27,7 @@ public class GBattleSystem implements Runnable {
 
 	//creation of System
 
-	public GBattleSystem(int difficulty, Image backgrnd, Character[] mainParty)
+	public GBattleSystem(int difficulty, Image backgrnd, Hero[] mainParty)
 	{
 		changeDifficulty(difficulty); 
 		this.backgroundImage = backgrnd;
@@ -66,6 +66,11 @@ public class GBattleSystem implements Runnable {
 		}
 	}
 	
+	private void updateGame() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	//difficulty
 	private void changeDifficulty(int difficulty) {
 		setRounds((int) Math.pow(difficulty, 1.5)); 
@@ -95,11 +100,11 @@ public class GBattleSystem implements Runnable {
 	
 	//creating enemies
 	private void populateEnemies() {
-		for(int rounds = 0; rounds< enemiesList.length; i++)
+		for(int rounds = 0; rounds< enemiesList.length; rounds++)
 		{
 			for(int idx = 0; idx<enemiesList[rounds].length; idx++)
 			{
-				enemiesList[rounds][idx] = new Monster(null, null, idx, idx, idx, idx, idx); 
+				enemiesList[rounds][idx] = MainGame.game.Mobs[Math.random()*MainGame.game.Mobs.size()];
 			}
 		}
 	}
