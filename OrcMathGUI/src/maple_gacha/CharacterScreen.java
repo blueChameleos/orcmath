@@ -12,6 +12,7 @@ import guiTeacher.components.ClickableCharacter;
 import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.CustomImageButton;
 import guiTeacher.components.Graphic;
+import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -41,6 +42,8 @@ public class CharacterScreen extends FullFunctionScreen {
 	private ClickableCharacter c2;
 	private ClickableCharacter c3;
 	
+	private TextArea confirmation;
+	
 	private Button next;
 	
 	ArrayList<ClickableCharacter> clickList;
@@ -60,6 +63,8 @@ public class CharacterScreen extends FullFunctionScreen {
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/cardSystem.png");
 		background.setVisible(true);
 		viewObjects.add(background);
+		confirmation = new TextArea(745,580,475,320,"");
+		viewObjects.add(confirmation);
 		next = new Button(1100,925,140,80,"MENU",Color.yellow,new Action() {
 			@Override
 			public void act() {
@@ -123,7 +128,23 @@ public class CharacterScreen extends FullFunctionScreen {
 					}
 				}
 			});
+			clickG.get(i).setHoverAction(new Action() {
+				
+				@Override
+				public void act() {
+					confirmation.setText("Rank = " + clickG.get(number).getHero().getRank() + "\n" +
+							"Strength = " + clickG.get(number).getHero().getStrength() + "\n" + 
+							"Speed = " + clickG.get(number).getHero().getSpeed() + "\n" + 
+							"Attack = " + clickG.get(number).getHero().getAttack() + "\n" + 
+							"Defense = " + clickG.get(number).getHero().getDefense() + "\n" +
+							"HP = " + clickG.get(number).getHero().getHP() + "\n" +
+							"Unique ID = " + clickG.get(number).getHero().getUniqueID() + "\n");
+				}
+			});
+			
 			viewObjects.add(clickG.get(i));
+			
+			
 		}
 		
 		for(int i=0;i<clickList.size();i++) {
@@ -141,6 +162,7 @@ public class CharacterScreen extends FullFunctionScreen {
 								clickG.get(0).loadImages(clickList.get(number).getHero().getImage(), 206, 319);			
 								clickG.get(0).changeHero(clickList.get(number).getHero());
 								MainGame.team.get(findEquality(clickList.get(number).getHero())).setClickE();
+								
 							}
 						}else if(arrSize == 1 ) {
 							if(clickList.get(number).getHero() != null && !MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE()) {

@@ -28,7 +28,9 @@ public class ClickableCharacter extends Graphic implements Clickable {
 	private String imageLocation;
 	private Hero hero;
 	private boolean enable = false;
+	private Action hoverAction;
 	
+
 	public ClickableCharacter(int x, int y, int w, int h, String imageLocation,Hero hero) {
 		super(x, y, w, h, imageLocation);
 		this.imageLocation = imageLocation;
@@ -70,7 +72,10 @@ public class ClickableCharacter extends Graphic implements Clickable {
 	}
 	
 	public void hoverAction(){
-		//most Components don't do anything on hover
+		if(hoverAction != null)hoverAction.act();
+	}
+	public void setHoverAction(Action hoverAction) {
+		this.hoverAction = hoverAction;
 	}
 	
 	public String getImageLocation() {
