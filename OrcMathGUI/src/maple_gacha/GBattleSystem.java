@@ -13,7 +13,6 @@ public class GBattleSystem implements Runnable {
 			begin testing after merge.
 */
 	private int enemiesNum;
-	private Image backgroundImage;
 	private Hero[] mainParty;
 	private Monster[][] enemiesList; //round -> enemies 
 	private int round;
@@ -23,6 +22,7 @@ public class GBattleSystem implements Runnable {
 	private ArrayList<ArrayList<Items>> inventory = new ArrayList<ArrayList<Items>>();
 	private Hero currentPlayer;
 	private Monster currentEnemy;
+	private boolean waiting = false;
 
 	//creation of System
 
@@ -48,7 +48,7 @@ public class GBattleSystem implements Runnable {
 				MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
 				Hero target = mainParty[(int) Math.random()*mainParty.length];
 				int action = (int) (Math.random()*3);
-				order.get(i).attack(target, action);
+				order.get(i).useTurn(target, action);
 				BattleScreen.showAiTurn(order.get(i), target, action); //changes ai text-area to show events
 			}
 			else
@@ -56,14 +56,14 @@ public class GBattleSystem implements Runnable {
 				//sleep until user does something.
 				MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 				currentPlayer.setGuard(false);
-			}	
-			
-			updateGame(); //don't know the use for.
+				
+				
+				while(waiting)
+				{
+					//wait until user does something.
+				}
+			}
 		}
-	}
-	
-	private void updateGame() {
-		// TODO Auto-generated method stub
 	}
 
 	//difficulty
@@ -82,9 +82,9 @@ public class GBattleSystem implements Runnable {
 		{
 			for(Monster e: el)
 			{
-//				e.setAttack((int)e.getAttack()*d);
-//				e.setHP((int)e.getHP()*d);
-//				e.setSpeed((int)e.getSpeed()*d);
+				/*e.setAttack((int)e.getAttack()*d);
+				e.setHP((int)e.getHP()*d);
+				e.setSpeed((int)e.getSpeed()*d);*/
 			}
 			
 		}
@@ -221,6 +221,10 @@ public class GBattleSystem implements Runnable {
 
 	public void setCurrentPlayer(Hero currentPlayer) {
 		this.currentPlayer = currentPlayer;
+	}
+
+	public void setWaiting(boolean waiting) {
+		this.waiting = waiting;
 	}
 
 }
