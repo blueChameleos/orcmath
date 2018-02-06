@@ -20,7 +20,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	
 	public BattleScreen(int width, int height) {
 		super(width, height);
-		backend = new GBattleSystem(1, "resources/b_background0.jpg", CharacterScreen.);
+		backend = new GBattleSystem(1, null);
 		// TODO Auto-generated constructor stub
 	}
 

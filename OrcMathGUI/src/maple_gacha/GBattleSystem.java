@@ -27,14 +27,12 @@ public class GBattleSystem implements Runnable {
 
 	//creation of System
 
-	public GBattleSystem(int difficulty, Image backgrnd, Hero[] mainParty)
+	public GBattleSystem(int difficulty, Hero[] mainParty)
 	{
 		changeDifficulty(difficulty); 
-		this.backgroundImage = backgrnd;
 		this.mainParty = mainParty;
-
-		gameSystem = new Thread(this);
-		gameSystem.start();
+		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
+		currentEnemy = enemiesList[0][0];
 	}
 
 	public void run() {
@@ -42,8 +40,7 @@ public class GBattleSystem implements Runnable {
 		playGame();
 	}
 
-	private void playGame() {
-		
+	private void playGame() {	
 		for(int i=0; i<order.size();i++)
 		{
 			currentPlayer = order.get(i);

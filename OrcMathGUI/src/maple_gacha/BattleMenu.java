@@ -47,6 +47,8 @@ public class BattleMenu extends Pane {
 		attackbutton = new Button(900, 10, 120, 75, "Attack", new Action() {
 			@Override
 			public void act() {
+				System.out.println(MainGame.game.battle.backend.getCurrentEnemy());
+				System.out.println(MainGame.game.battle.backend.getCurrentEnemy().getHp());
 				MainGame.game.battle.backend.getCurrentEnemy().setHP(MainGame.game.battle.backend.getCurrentEnemy().getHP() - MainGame.game.battle.backend.getCurrentPlayer().getAttack());
 				System.out.println(MainGame.game.battle.backend.getCurrentEnemy().getHp());
 			}
