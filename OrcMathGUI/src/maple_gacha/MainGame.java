@@ -108,7 +108,7 @@ public class MainGame extends GUIApplication {
 	*/
 		try {
 	         // Open an audio input stream.           
-	          File soundFile = new File("resources/khalid.wav"); //you could also get the sound file with an URL
+	          File soundFile = new File("resources/maplestory music.wav"); //you could also get the sound file with an URL
 	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
 	         // Get a sound clip resource.
 	         Clip clip = AudioSystem.getClip();
