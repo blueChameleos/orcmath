@@ -7,13 +7,14 @@ import java.util.List;
 import guiPlayer.CustomPane;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.Graphic;
 import guiTeacher.components.Pane;
 import guiTeacher.components.TextArea;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
-public class BattleMenu extends Pane {
+public class BattleMenu extends Pane implements Runnable{
 	
 	private static final long serialVersionUID = 6116383819049095100L;
 	private static final int WIDTH = 1180;
@@ -21,6 +22,7 @@ public class BattleMenu extends Pane {
 	public static TextLabel playerHP;
 	public static TextArea log;
 //	public static ItemMenu itemmenu;
+	public static Graphic playerPortrait;
 	public static Button attackbutton;
 	public static Button defbutton;
 	public static Button skillbutton;
@@ -43,14 +45,16 @@ public class BattleMenu extends Pane {
 	public void initAllObjects(List<Visible> viewObjects){
 		this.setAlpha((float) 0.5);
 		this.setBackground(Color.BLUE);
+		log = new TextArea(250, 15, 700, 145, "Testing");
 //		itemmenu = new ItemMenu(MainGame.game.battle, 25, 800);
 		attackbutton = new Button(900, 10, 120, 75, "Attack", new Action() {
 			@Override
 			public void act() {
-				System.out.println(MainGame.game.battle.backend.getCurrentEnemy());
-				System.out.println(MainGame.game.battle.backend.getCurrentEnemy().getHp());
+//				System.out.println(MainGame.game.battle.backend.getCurrentEnemy());
+//				System.out.println(MainGame.game.battle.backend.getCurrentEnemy().getHp());
 				MainGame.game.battle.backend.getCurrentEnemy().setHP(MainGame.game.battle.backend.getCurrentEnemy().getHP() - MainGame.game.battle.backend.getCurrentPlayer().getAttack());
-				System.out.println(MainGame.game.battle.backend.getCurrentEnemy().getHp());
+//				System.out.println(MainGame.game.battle.backend.getCurrentEnemy().getHp());
+				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " attacked " + MainGame.game.battle.backend.getCurrentEnemy() + "!");
 			}
 		});
 		attackbutton.setBackgroundColor(Color.YELLOW);
@@ -82,14 +86,34 @@ public class BattleMenu extends Pane {
 		viewObjects.add(defbutton);
 		viewObjects.add(skillbutton);
 		viewObjects.add(itembutton);
-		//viewObjects.add(log);
+		viewObjects.add(log);
 	}
 	
 	public void playText(String text) {
-		int i = 1;
-		while(log.getText().length() < text.length()) {
-			log.setText(text.substring(0, i));
-		}
+		Thread printer = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				for(int i = 0; i < text.length(); i++) {
+					log.setText(log.getText()+ text.substring(i, i+1));
+					BattleMenu.this.update();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			}
+		});
+		printer.start();
+	}
+	
+	public void updateLog(String text) {
+//		log.setText(text);
+		playText(text);
 	}
 	
 	public void updateHPBars() {
@@ -98,5 +122,11 @@ public class BattleMenu extends Pane {
 	
 	public void updateImgs() {
 		//updates the current player img
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 }
