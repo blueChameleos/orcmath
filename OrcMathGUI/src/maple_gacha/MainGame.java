@@ -24,6 +24,7 @@ public class MainGame extends GUIApplication {
 	public static BeginnerSelectionScreen bScreen;
 	public static DavidGetCharacterSingle single;
 	public static DavidGetCharacterMulti multi;
+	
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
@@ -35,6 +36,16 @@ public class MainGame extends GUIApplication {
 	private static Hero highTank;
 	private static Hero highPrincess;
 
+	private static Monster minionBlowfish;
+	private static Monster minionDemon;
+	private static Monster minionDevil;
+	private static Monster minionInvidia;
+	private static Monster minionYeti;
+	private static Monster minionPsy;
+	private static Monster minionDragon;
+	private static Monster minionAlien;
+	
+
 	
 	public MainGame(int width, int height) {
 		super(width, height);
@@ -44,6 +55,7 @@ public class MainGame extends GUIApplication {
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS				
 		createCharacters();		
+		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
 		setLocationRelativeTo(null);
@@ -87,7 +99,14 @@ public class MainGame extends GUIApplication {
 	}
 	
 	public static void createMobs() {
-		
+		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
+		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
+		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
+		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
+		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
+		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
 	}
 	
 	public static void addHero(Hero hero) {
