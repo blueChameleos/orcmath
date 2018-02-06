@@ -124,38 +124,32 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		
 		viewObjects.add(banners.get(0));
 
-		Button rightarrow = new Button((int) (getWidth() / 10 * 7.75), (int) (getHeight() / 2 * .80), 178, 179, " ",
-				new Action() {
-
-					@Override
-					public void act() {
-						changeBanner("right");
-						viewObjects.add(banners.get(0)); 
-					}
-				});
-
-		Button leftarrow = new Button((int) (getWidth() / 10 * .75), (int) (getHeight() / 2 * .80), 178, 179, " ",
-				new Action() {
-
-					@Override
-					public void act() {
-						changeBanner("left");
-						viewObjects.add(banners.get(0));
-					}
-				});
-
-		viewObjects.add(rightarrow);
-		viewObjects.add(leftarrow);
-
-		StyledComponent.setButtonOutline(true);
-
-		Graphic arrow = new Graphic((int) (getWidth() / 10 * .75), (int) (getHeight() / 2 * .80), 178, 179,
+		ClickableGraphic leftArrow = new ClickableGraphic((int) (getWidth() / 10 * .75), (int) (getHeight() / 2 * .80), 178, 179,
 				"resources/picture1.png");
-		viewObjects.add(arrow);
-
-		Graphic arrow1 = new Graphic((int) ((getWidth() / 10) * 7.75), (int) (getHeight() / 2 * .80), 178, 179,
+		
+		leftArrow.setAction(new Action() {
+			
+			@Override
+			public void act() {
+				changeBanner("left");
+				viewObjects.add(banners.get(0));	
+			}
+		});
+		viewObjects.add(leftArrow);
+		
+		ClickableGraphic rightArrow = new ClickableGraphic((int) (getWidth() / 10 * 7.75), (int) (getHeight() / 2 * .80), 178, 179,
 				"resources/picture2.png");
-		viewObjects.add(arrow1);
+		
+		rightArrow.setAction(new Action() {
+			
+			@Override
+			public void act() {
+				changeBanner("right");
+				viewObjects.add(banners.get(0));	
+			}
+		});
+		viewObjects.add(rightArrow);
+
 		
 		Button single = new Button((int) (getWidth() / 10 * 3.75), (int) (getHeight() / 2 * 1.4), 50, 50, "x1", Color.yellow, new Action() {
 			public void act() {
@@ -235,6 +229,13 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 	@Override
 	public void setNX(int nx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setPotentialChars(ArrayList<Hero> chars) {
 		// TODO Auto-generated method stub
 		
 	}
