@@ -51,7 +51,7 @@ public class MainScreen extends FullFunctionScreen {
 		});
 		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
 			public void act() {
-//				MainGame.game.setScreen(MainGame.summon);
+				MainGame.game.setScreen(new BattleScreen(getWidth(), getHeight()));
 			}
 			
 		});

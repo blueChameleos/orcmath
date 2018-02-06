@@ -39,20 +39,21 @@ public class MainGame extends GUIApplication {
 		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
+		currentTeam.add(beginnerArcher);
+		currentTeam.add(beginnerSword);
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
-		battle = new BattleScreen(getWidth(), getHeight());				
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());			
-		setScreen(battle);
+		setScreen(bScreen);
 	}
 
 	public static void main(String[] args) {
 		game = new MainGame(1280, 1024);
-		Thread runner = new Thread(game);
+		Thread runner = new Thread(game); 
 		runner.start();
 	}
 
