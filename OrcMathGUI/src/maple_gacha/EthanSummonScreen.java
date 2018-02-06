@@ -85,7 +85,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		index = 0;
-		setNx(999);
+		System.out.println(getNx());
+		setNx(getNx());//for some reason I can't make this actually change on featuredchar thing.
 		banners = new ArrayList<Graphic>();
 		StyledComponent.setButtonOutline(false);
 		try {
