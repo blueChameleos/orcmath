@@ -39,6 +39,8 @@ public class MainGame extends GUIApplication {
 		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
+		currentTeam.add(beginnerArcher);
+		currentTeam.add(beginnerSword);
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
