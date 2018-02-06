@@ -12,6 +12,7 @@ public class Hero implements Character {
 	private int uniqueID;
 	private int exp;
 	private boolean clickE;
+	private boolean guarding;
 
 	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		this.img = img;
@@ -108,5 +109,13 @@ public class Hero implements Character {
 
 	public void setClickE() {
 		clickE = !clickE;
+	}
+	public void setGuard(boolean b) {
+		this.guarding = b;
+	}
+	
+	public boolean getGuard(boolean b)
+	{
+		return this.guarding;
 	}
 }
