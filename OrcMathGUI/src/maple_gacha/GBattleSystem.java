@@ -19,7 +19,6 @@ public class GBattleSystem implements Runnable {
 	private int round;
 	private ArrayList<Hero> order = new ArrayList<Hero>();
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
-	private Thread gameSystem;
 	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
 	private ArrayList<ArrayList<Items>> inventory = new ArrayList<ArrayList<Items>>();
 	private Hero currentPlayer;
@@ -56,7 +55,7 @@ public class GBattleSystem implements Runnable {
 			{
 				//sleep until user does something.
 				MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
-				BattleScreen.backend.gameSystem.sleep(Long.MAX_VALUE); //sleep for long time
+				currentPlayer.setGuard(false);
 			}	
 			
 			updateGame(); //don't know the use for.
@@ -65,7 +64,6 @@ public class GBattleSystem implements Runnable {
 	
 	private void updateGame() {
 		// TODO Auto-generated method stub
-		BattleScreen.backend.gameSystem.interrupt();
 	}
 
 	//difficulty
