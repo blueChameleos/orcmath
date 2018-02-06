@@ -15,7 +15,7 @@ import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
+public class EthanSummonScreen extends FullFunctionScreen implements Runnable, BannerInterface {
 
 	private ArrayList<Graphic> banners;	
 	private int index;
@@ -209,6 +209,34 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	public void summonBanner(int idx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void updateNX(int nx) {
+		
+		
+	}
+
+
+	@Override
+	public void getNX(int nx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setNX(int nx) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

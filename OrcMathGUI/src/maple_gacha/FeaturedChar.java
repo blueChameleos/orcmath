@@ -1,5 +1,6 @@
 package maple_gacha;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import guiTeacher.components.Graphic;
@@ -7,6 +8,7 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class FeaturedChar extends FullFunctionScreen {
+	public ArrayList<Hero> chars;
 
 	public FeaturedChar(int width, int height) {
 		super(width, height);
@@ -18,6 +20,8 @@ public class FeaturedChar extends FullFunctionScreen {
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
 		
+		
+		new Hero(name, name, borderWidth, borderWidth, borderWidth, borderWidth, borderWidth);
 		
 	}
 
