@@ -45,11 +45,10 @@ public class MainGame extends GUIApplication {
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
-		battle = new BattleScreen(getWidth(), getHeight());				
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());			
-		setScreen(battle);
+		setScreen(bScreen);
 	}
 
 	public static void main(String[] args) {
