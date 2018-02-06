@@ -85,7 +85,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		index = 0;
-		setNx(5);
+		setNx(999);
 		banners = new ArrayList<Graphic>();
 		StyledComponent.setButtonOutline(false);
 		try {
