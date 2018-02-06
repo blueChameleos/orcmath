@@ -28,9 +28,6 @@ public class MainScreen extends FullFunctionScreen {
 	private Button inventory;
 	private Button quit;
 	private TextArea name;
-	private Button temp1;
-	private Button temp3;
-	private Button temp5;
 
 	public MainScreen(int width, int height) {
 		super(width, height);
@@ -40,7 +37,10 @@ public class MainScreen extends FullFunctionScreen {
 		if(Math.random() > .5) {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home.jpg"));
 		}else {
-			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home2.png"));
+			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home2.png"));		
+			viewObjects.add(new Graphic((getWidth()/2)-359,155,226,339,"resources/border1.png"));
+			viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
+			viewObjects.add(new Graphic((getWidth()/2)+133,155,226,339,"resources/border1.png"));
 		}	
 		featured = new AnimatedComponent((getWidth()/2)-325,510,650,350);
 		featured.addSequence("resources/banners.png", 5000,0,0,650,350,3);	
@@ -71,36 +71,6 @@ public class MainScreen extends FullFunctionScreen {
 			}
 		});
 		name = new TextArea(480,10,600,200,"GachaStory");		
-		viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
-//		viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
-//		viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
-		temp1 = new Button((getWidth()/2)-339,175,206,319,"",Color.black, new Action() {
-
-			@Override
-			public void act() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-//		temp3 = new Button((getWidth()/2)-103,175,206,319,"",Color.black,new Action() {
-//
-//			@Override
-//			public void act() {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//		});
-		temp5 = new Button((getWidth()/2)+133,175,206,319,"",Color.black,new Action() {
-
-			@Override
-			public void act() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
 		try {		
 			File fontFile = new File("resources//Bobbleboddy.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -124,9 +94,6 @@ public class MainScreen extends FullFunctionScreen {
 		}
 		viewObjects.add(new Graphic(795, 30, 75,75,"resources/mapleleaf.png"));		
 		viewObjects.add(name);
-		viewObjects.add(temp1);
-//		viewObjects.add(temp3);
-		viewObjects.add(temp5);
 		viewObjects.add(dungeon);
 		viewObjects.add(summonb);
 		viewObjects.add(inventory);
