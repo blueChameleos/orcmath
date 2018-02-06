@@ -43,7 +43,7 @@ public class MainScreen extends FullFunctionScreen {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home2.png"));
 		}	
 		featured = new AnimatedComponent((getWidth()/2)-325,510,650,350);
-		featured.addSequence("resources/banners.png", 10000,0,0,650,350,3);	
+		featured.addSequence("resources/banners.png", 5000,0,0,650,350,3);	
 		viewObjects.add(featured);
 		Thread banner = new Thread(featured);
 		banner.start();
@@ -71,7 +71,8 @@ public class MainScreen extends FullFunctionScreen {
 			}
 		});
 		name = new TextArea(480,10,600,200,"GachaStory");		
-		temp1 = new Button((getWidth()/2)-314,175,206,319,"",Color.black, new Action() {
+		viewObjects.add(new Graphic((getWidth()/2)-103,175,206,319,"resources/border.png"));
+		temp1 = new Button((getWidth()/2)-339,175,206,319,"",Color.black, new Action() {
 
 			@Override
 			public void act() {
@@ -80,16 +81,16 @@ public class MainScreen extends FullFunctionScreen {
 			}
 			
 		});
-		temp3 = new Button((getWidth()/2)-103,175,206,319,"",Color.black,new Action() {
-
-			@Override
-			public void act() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		temp5 = new Button((getWidth()/2)+108,175,206,319,"",Color.black,new Action() {
+//		temp3 = new Button((getWidth()/2)-103,175,206,319,"",Color.black,new Action() {
+//
+//			@Override
+//			public void act() {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//		});
+		temp5 = new Button((getWidth()/2)+133,175,206,319,"",Color.black,new Action() {
 
 			@Override
 			public void act() {
@@ -122,7 +123,7 @@ public class MainScreen extends FullFunctionScreen {
 		viewObjects.add(new Graphic(795, 30, 75,75,"resources/mapleleaf.png"));		
 		viewObjects.add(name);
 		viewObjects.add(temp1);
-		viewObjects.add(temp3);
+//		viewObjects.add(temp3);
 		viewObjects.add(temp5);
 		viewObjects.add(dungeon);
 		viewObjects.add(summonb);
