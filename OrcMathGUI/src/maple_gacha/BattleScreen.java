@@ -48,7 +48,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	public void initAllObjects(List<Visible> viewObjects) {
 		Graphic background = getRandomBackground();
 		viewObjects.add(background);
-		clickHero = new ArrayList<ClickableGraphic>();
+		clickHero = new ArrayList<ClickableGraphic>(); 
 		clickHero.add(heroPos1);
 		clickHero.add(heroPos2);
 		clickHero.add(heroPos3);
