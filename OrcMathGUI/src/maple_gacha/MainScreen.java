@@ -71,7 +71,9 @@ public class MainScreen extends FullFunctionScreen {
 			}
 		});
 		name = new TextArea(480,10,600,200,"GachaStory");		
-		viewObjects.add(new Graphic((getWidth()/2)-103,175,206,319,"resources/border.png"));
+		viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
+//		viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
+//		viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
 		temp1 = new Button((getWidth()/2)-339,175,206,319,"",Color.black, new Action() {
 
 			@Override
