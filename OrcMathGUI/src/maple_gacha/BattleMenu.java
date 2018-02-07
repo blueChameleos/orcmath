@@ -40,7 +40,7 @@ public class BattleMenu extends Pane implements Runnable{
 	public BattleMenu(FocusController focusController, int x, int y, int width, int height, ArrayList<Visible> initWithObjects) {
 		super(focusController, x, y, width, height, initWithObjects);
 		// TODO Auto-generated constructor stub
-	}
+	} 
 
 	public void initAllObjects(List<Visible> viewObjects){
 		this.setAlpha((float) 0.5);
