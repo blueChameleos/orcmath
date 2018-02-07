@@ -45,15 +45,13 @@ public class BattleMenu extends Pane implements Runnable{
 	public void initAllObjects(List<Visible> viewObjects){
 		this.setAlpha((float) 0.5);
 		this.setBackground(Color.BLUE);
-		log = new TextArea(250, 15, 700, 145, "Testing");
+		log = new TextArea(250, 15, 700, 145, "What will " + MainGame.game.battle.backend.getCurrentPlayer() + " do?");
+		log.setBackgroundColor(Color.WHITE);
 //		itemmenu = new ItemMenu(MainGame.game.battle, 25, 800);
 		attackbutton = new Button(900, 10, 120, 75, "Attack", new Action() {
 			@Override
 			public void act() {
-//				System.out.println(MainGame.game.battle.backend.getCurrentEnemy());
-//				System.out.println(MainGame.game.battle.backend.getCurrentEnemy().getHp());
 				MainGame.game.battle.backend.getCurrentEnemy().setHP(MainGame.game.battle.backend.getCurrentEnemy().getHP() - MainGame.game.battle.backend.getCurrentPlayer().getAttack());
-//				System.out.println(MainGame.game.battle.backend.getCurrentEnemy().getHp());
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " attacked " + MainGame.game.battle.backend.getCurrentEnemy() + "!");
 			}
 		});
@@ -61,8 +59,7 @@ public class BattleMenu extends Pane implements Runnable{
 		defbutton = new Button(1030, 85, 120, 75, "Guard", new Action() {
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
-				
+				MainGame.game.battle.backend.getCurrentPlayer().setGuard(true);
 			}
 		});
 		defbutton.setBackgroundColor(Color.YELLOW);
@@ -99,7 +96,7 @@ public class BattleMenu extends Pane implements Runnable{
 					log.setText(log.getText()+ text.substring(i, i+1));
 					BattleMenu.this.update();
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(350);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -112,7 +109,7 @@ public class BattleMenu extends Pane implements Runnable{
 	}
 	
 	public void updateLog(String text) {
-//		log.setText(text);
+		log.setText("");
 		playText(text);
 	}
 	

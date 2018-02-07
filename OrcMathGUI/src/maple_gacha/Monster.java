@@ -12,8 +12,11 @@ public class Monster extends Hero implements Character {
 
 	@Override
 	public void attack() {
-		// TODO Auto-generated method stub
-		
+		if(MainGame.game.battle.backend.getCurrentPlayer().getGuard(b)) {
+			
+		}else {
+			
+		}
 	}
 
 	@Override
@@ -29,9 +32,9 @@ public class Monster extends Hero implements Character {
 	}
 
 	@Override
-	public void setHP() {
+	public void setHP(int hp) {
 		// TODO Auto-generated method stub
-		
+		this.hp = hp;
 	}
 
 	@Override
