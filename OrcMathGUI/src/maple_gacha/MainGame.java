@@ -107,12 +107,9 @@ public class MainGame extends GUIApplication {
 			MGP.start(loop);
 	*/
 		try {
-	         // Open an audio input stream.           
-	          File soundFile = new File("resources/maplestory music.wav"); //you could also get the sound file with an URL
+	          File soundFile = new File("resources/maplestory music.wav");
 	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
-	         // Get a sound clip resource.
 	         Clip clip = AudioSystem.getClip();
-	         // Open audio clip and load samples from the audio input stream.
 	         clip.open(audioIn);
 	         clip.start();
 	      } catch (UnsupportedAudioFileException e) {

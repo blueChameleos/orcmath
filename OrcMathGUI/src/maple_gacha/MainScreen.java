@@ -3,7 +3,14 @@ package maple_gacha;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.AnimatedComponent;
@@ -15,6 +22,7 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import holiday.HolidayCard;
+import sun.audio.AudioPlayer;
 
 public class MainScreen extends FullFunctionScreen {
 	/**
@@ -28,11 +36,29 @@ public class MainScreen extends FullFunctionScreen {
 	private Button inventory;
 	private Button quit;
 	private TextArea name;
-
+	private Clip g;
 	public MainScreen(int width, int height) {
 		super(width, height);
 	}
-
+	
+	public void playMusic(String musicPos) {
+		if (g!= null) {
+			g.stop();
+		}
+		try {
+	          File soundFile = new File(musicPos);
+	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
+	         Clip clip = AudioSystem.getClip();
+	         clip.open(audioIn);
+	         clip.start();
+	      } catch (UnsupportedAudioFileException e) {
+	         e.printStackTrace();
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      } catch (LineUnavailableException e) {
+	         e.printStackTrace();
+	      }
+	}
 	public void initAllObjects(List<Visible> viewObjects) {		
 		if(Math.random() > .5) {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home.jpg"));
