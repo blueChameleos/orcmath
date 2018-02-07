@@ -59,7 +59,7 @@ public class FeaturedChar extends FullFunctionScreen implements BannerInterface 
 	}
 
 	@Override
-	public void setPotentialChars(ArrayList<Hero> chars) {
+	public void setPotentialChars(ArrayList<Hero> chars, int type) {
 		if(checkFeatured()) {
 			//change for only featured chars.
 		}
@@ -70,6 +70,12 @@ public class FeaturedChar extends FullFunctionScreen implements BannerInterface 
 	private boolean checkFeatured() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void bannerType(int idx) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
