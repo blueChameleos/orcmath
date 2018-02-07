@@ -21,7 +21,7 @@ public class BattleMenu extends Pane implements Runnable{
 	private static final int HEIGHT = 175;
 	public static TextLabel playerHP;
 	public static TextArea log;
-//	public static ItemMenu itemmenu;
+	public static ItemMenu itemmenu;
 	public static Graphic playerPortrait;
 	public static Button attackbutton;
 	public static Button defbutton;
@@ -47,7 +47,7 @@ public class BattleMenu extends Pane implements Runnable{
 		this.setBackground(Color.BLUE);
 		log = new TextArea(250, 15, 700, 145, "What will ");
 		log.setBackgroundColor(Color.WHITE);
-//		itemmenu = new ItemMenu(MainGame.game.battle, 25, 800);
+		itemmenu = new ItemMenu(MainGame.game.battle, 25, 800);
 		playerPortrait = new Graphic(100,20,150,150,"resources/char.jpg");
 		viewObjects.add(playerPortrait);
 		attackbutton = new Button(900, 10, 120, 75, "Attack", new Action() {
@@ -76,7 +76,7 @@ public class BattleMenu extends Pane implements Runnable{
 		itembutton = new Button(1030, 10, 120, 75, "Item", new Action() {
 			@Override
 			public void act() {
-//				itemmenu.setVisible(true);
+				itemmenu.setVisible(true);
 			}
 		});
 		itembutton.setBackgroundColor(Color.YELLOW);
