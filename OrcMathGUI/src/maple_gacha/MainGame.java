@@ -45,6 +45,7 @@ public class MainGame extends GUIApplication {
 	public static BeginnerSelectionScreen bScreen;
 	public static DavidGetCharacterSingle single;
 	public static DavidGetCharacterMulti multi;
+	private static Clip g;
 
 	
 	public MainGame(int width, int height) {
@@ -77,41 +78,24 @@ public class MainGame extends GUIApplication {
 //		button.addActionListener(new AL());
 //		frame.setVisible(true);
 //		
-		music();
+		playMusic("resources/maplestory music.wav");
 		
 		game = new MainGame(1280, 1024);
 		Thread runner = new Thread(game);
 		runner.start();
 	}
 
-
-	public static void music() {
-			/* AudioPlayer MGP = AudioPlayer.player;
-			AudioStream BGM;
-			AudioData MD;
-
-			ContinuousAudioDataStream loop = null;
-
-			try {
-				InputStream test = new FileInputStream("resources/khalid.wav");
-				BGM = new AudioStream(test);
-				AudioPlayer.player.start(BGM);
-				// MD = BGM.getData();
-				// loop = new ContinuousAudioDataStream(MD);
-
-			} catch (FileNotFoundException e) {
-				System.out.print(e.toString());
-			} catch (IOException error) {
-				System.out.print(error.toString());
-			}
-			MGP.start(loop);
-	*/
+	public static void playMusic(String musicPos) {
+		if (g!= null) {
+			System.out.println();
+			g.stop();
+		}
 		try {
-	          File soundFile = new File("resources/maplestory music.wav");
+	          File soundFile = new File(musicPos);
 	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
-	         Clip clip = AudioSystem.getClip();
-	         clip.open(audioIn);
-	         clip.start();
+	          g = AudioSystem.getClip();
+	         g.open(audioIn);
+	         g.start();
 	      } catch (UnsupportedAudioFileException e) {
 	         e.printStackTrace();
 	      } catch (IOException e) {
@@ -120,6 +104,8 @@ public class MainGame extends GUIApplication {
 	         e.printStackTrace();
 	      }
 	}
+	
+	
 	public static void createCharacters() {
 		beginnerArcher = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);

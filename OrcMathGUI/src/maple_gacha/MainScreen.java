@@ -36,29 +36,10 @@ public class MainScreen extends FullFunctionScreen {
 	private Button inventory;
 	private Button quit;
 	private TextArea name;
-	private Clip g;
 	public MainScreen(int width, int height) {
 		super(width, height);
 	}
 	
-	public void playMusic(String musicPos) {
-		if (g!= null) {
-			g.stop();
-		}
-		try {
-	          File soundFile = new File(musicPos);
-	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
-	         Clip clip = AudioSystem.getClip();
-	         clip.open(audioIn);
-	         clip.start();
-	      } catch (UnsupportedAudioFileException e) {
-	         e.printStackTrace();
-	      } catch (IOException e) {
-	         e.printStackTrace();
-	      } catch (LineUnavailableException e) {
-	         e.printStackTrace();
-	      }
-	}
 	public void initAllObjects(List<Visible> viewObjects) {		
 		if(Math.random() > .5) {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home.jpg"));
@@ -79,18 +60,23 @@ public class MainScreen extends FullFunctionScreen {
 		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
 			public void act() {
 //				MainGame.game.setScreen(MainGame.summon);
+				MainGame.game.playMusic("resources/khalid.wav");
 			}
 			
 		});
 		summonb = new Button(getWidth()/2-100,875,200,100,"Summon",Color.yellow,new Action() {
 			public void act() {
 				MainGame.game.setScreen(MainGame.summon);
+				MainGame.game.playMusic("resources/khalid.wav");
+
 			}
 			
 		});
 		inventory = new Button(((getWidth()/4)*3)-150,875,200,100,"Units",Color.yellow,new Action() {
 			public void act() {
 				MainGame.game.setScreen(MainGame.cScreen);
+				MainGame.game.playMusic("resources/khalid.wav");
+
 			}
 			
 		});
