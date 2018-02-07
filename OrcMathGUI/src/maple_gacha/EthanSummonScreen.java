@@ -229,7 +229,14 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 
 	@Override
-	public void setPotentialChars(ArrayList<Hero> chars) {
+	public void setPotentialChars(ArrayList<Hero> chars, int type) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void bannerType(int idx) {
 		// TODO Auto-generated method stub
 		
 	}
