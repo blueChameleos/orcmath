@@ -13,7 +13,14 @@ public class Hero implements Character {
 	private int exp;
 	private boolean clickE;
 	private boolean guarding;
-
+	private double defensePercentage = .1;
+	
+	public double getDefensePercentage() {
+		return defensePercentage;
+	}
+	public void setDefensePercentage(double defensePercentage) {
+		this.defensePercentage = defensePercentage;
+	}
 	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		this.img = img;
 		this.rank = rank;

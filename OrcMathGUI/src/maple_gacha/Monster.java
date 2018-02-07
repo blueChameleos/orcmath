@@ -43,4 +43,25 @@ public class Monster extends Hero implements Character {
 		
 	}
 
+	public void useTurn(Hero target, int action) {
+		if( action == 1)
+		{
+			attack(target, this.attack);
+		}
+		else
+		{
+			if(action == 2)
+			{
+				defend();
+			}
+			else
+			{
+				if( action == 3)
+				{
+					useSkill();
+				}
+			}
+		}
+		
+	}
 }
