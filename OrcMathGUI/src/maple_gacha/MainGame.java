@@ -24,8 +24,7 @@ public class MainGame extends GUIApplication {
 	public static Hero beginnerWizard;
 	public static CharacterScreen cScreen;
 	public static BeginnerSelectionScreen bScreen;
-	public static DavidGetCharacterSingle single;
-	public static DavidGetCharacterMulti multi;
+
 
 	
 	public MainGame(int width, int height) {
@@ -39,8 +38,7 @@ public class MainGame extends GUIApplication {
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
 		setLocationRelativeTo(null);
-		single = new DavidGetCharacterSingle(getWidth(),getHeight());
-		multi = new DavidGetCharacterMulti(getWidth(),getHeight());
+	
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		featured = new FeaturedChar(getWidth(),getHeight());

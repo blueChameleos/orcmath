@@ -26,7 +26,6 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 
 	public void lighting() {
 		lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
-		System.out.println("10");
 		Thread light = new Thread(lighting);
 		light.start();
 
@@ -50,6 +49,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		
+		System.out.println("10");
 		StyledComponent.setButtonOutline(false);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/summoningbackground.png");
 		Graphic mech = new Graphic(475, 350, 650, 350,"resources/mech.jpg");
@@ -62,17 +62,15 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 				
 				viewObjects.remove(background);
 				viewObjects.remove(mech);
-				viewObjects.remove(back);
 				viewObjects.add(skipAn);
 				viewObjects.add(lighting);
 				
 				MainGame.game.setScreen(MainGame.summon);
+				viewObjects.remove(back);
 			}
 		});
 		
-		viewObjects.add(background);
-		viewObjects.add(mech);
-		viewObjects.add(back);
+		
 		
 		
 		
@@ -87,9 +85,13 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 				public void act() {
 						
 					viewObjects.remove(lighting);
-					skipAn.setVisible(false);
+					
+					viewObjects.add(background);
+					viewObjects.add(mech);
+					viewObjects.add(back);
 					viewObjects.remove(skipAn);
-
+					//skipAn.setVisible(false);
+					
 				}
 			});
 		
