@@ -46,27 +46,29 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		int playerSizeH = 100;
+		int playerSizeW = 100;
 		Graphic background = getRandomBackground();
 		viewObjects.add(background);
 		clickHero = new ArrayList<ClickableGraphic>(); 
 		clickHero.add(heroPos1);
 		clickHero.add(heroPos2);
 		clickHero.add(heroPos3);
-		
+		userui = new BattleMenu(this,30,800);
+		userui.update();
+		viewObjects.add(userui);
 		for(int i=0;i<MainGame.currentTeam.size();i++) {
-			clickHero.set(i, new ClickableGraphic(700+(i*100),600,100,100,MainGame.currentTeam.get(i).getImage()));
+			int number = i;
+			clickHero.set(i, new ClickableGraphic(700+(i*100),600,playerSizeW,playerSizeH,MainGame.currentTeam.get(i).getImage()));
 			clickHero.get(i).setAction(new Action() {
-				
 				@Override
 				public void act() {
-					
+					userui.playerPortrait.loadImages(MainGame.currentTeam.get(number).getImage(), 150, 150);
+					userui.update();
 				}
 			});
 			viewObjects.add(clickHero.get(i));
 		}
-		userui = new BattleMenu(this,30,800);
-		userui.update();
-		viewObjects.add(userui);
 	} 
 
 	private Graphic getRandomBackground() {
