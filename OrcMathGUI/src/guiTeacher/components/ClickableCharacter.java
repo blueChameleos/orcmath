@@ -74,6 +74,8 @@ public class ClickableCharacter extends Graphic implements Clickable {
 	public void hoverAction(){
 		if(hoverAction != null)hoverAction.act();
 	}
+	
+	
 	public void setHoverAction(Action hoverAction) {
 		this.hoverAction = hoverAction;
 	}

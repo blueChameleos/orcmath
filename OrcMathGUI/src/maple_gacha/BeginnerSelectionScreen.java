@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.ClickableCharacter;
 import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.TextLabel;
@@ -21,10 +22,11 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class BeginnerSelectionScreen extends FullFunctionScreen {
 
-	private ArrayList<ClickableGraphic> allBeg;
-	private ClickableGraphic begArcher;
-	private ClickableGraphic begSword;
-	private ClickableGraphic begWizard;
+	private ArrayList<ClickableCharacter> allBeg;
+	private ClickableCharacter begArcher;
+	private ClickableCharacter begSword;
+	private ClickableCharacter begWizard;
+	private boolean selected;
 	
 	
 	public BeginnerSelectionScreen(int width, int height) {
@@ -43,9 +45,10 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
 
-		begArcher = new ClickableGraphic(200, 500, 200, 200, MainGame.game.beginnerArcher.getImage());
-		begSword = new ClickableGraphic(600, 500, 200 ,200, MainGame.game.beginnerSword.getImage());
-		begWizard = new ClickableGraphic(1000, 500, 200 ,200, MainGame.game.beginnerWizard.getImage());
+		begArcher = new ClickableCharacter(200, 500, 200, 200, MainGame.game.beginnerArcher.getImage(), null);
+		begSword = new ClickableCharacter(600, 500, 200 ,200, MainGame.game.beginnerSword.getImage(), null);
+		begWizard = new ClickableCharacter(1000, 500, 200 ,200, MainGame.game.beginnerWizard.getImage(), null);
+		
 		
 		
 		Button next = new Button(670, 780, 70, 70, "Next", or, null);
@@ -99,11 +102,29 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		
 		
 
-		allBeg = new ArrayList<ClickableGraphic>();
+		allBeg = new ArrayList<ClickableCharacter>();
 		allBeg.add(begArcher);
 		allBeg.add(begSword);
 		allBeg.add(begWizard);
 		
+		Graphic lightbulb = new Graphic(100, 400, 100, 100, "resources/lightbulb.png");
+		lightbulb.setVisible(false);
+		viewObjects.add(lightbulb);
+		
+		
+		for(ClickableCharacter c : allBeg) {
+			c.setHoverAction(new Action() {
+
+				@Override
+				public void act() {
+					System.out.println(c.getImageLocation());
+					lightbulb.setVisible(true);
+					lightbulb.setX(c.getX() + 30);
+				}
+				
+				
+			});
+		}
 		
 		viewObjects.add(begArcher);
 		viewObjects.add(begSword);
