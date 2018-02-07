@@ -21,6 +21,9 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	private int index;
 	private int nx;
 	private TextArea error;
+	private TextArea count;
+	private static DavidGetCharacterSingle singleScreen;
+
 
 	public EthanSummonScreen(int width, int height) {
 		super(width, height);
@@ -30,6 +33,11 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	public void add(Graphic bannerImg) {
 		banners.add(bannerImg);
 	}
+	
+	public TextArea getCount() {
+		return count;
+	}
+	
 	public void changeBanner(String position) {
 		if(position.equals("right")) {
 			if(index >= 2) {
@@ -67,11 +75,11 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	private boolean canSummon(int type) {
 		//type 0 is single type 1 is multi
 		if(nx >= 5 && type == 0) {
-			nx = nx - 5;
+			setNx(getNx()-5);
 			return true;
 		}else {
 			if(nx >= 25 && type == 1) {
-				nx = nx - 25;
+				setNx(getNx()-25);
 				return true;
 			}
 		}
@@ -105,7 +113,9 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 				"resources/nx1.jpg");
 		viewObjects.add(currency);
 		
-		TextArea count = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .525), 500, 500, "  " + nx + " NX");
+		count = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .525), 500, 500, "  " + getNx()
+		+ " NX");
+		count.setText("  " + nx + " NX");
 		viewObjects.add(count);
 		
 		error = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 10 * 1.5), 150, 150, "You do not have enough nx!");
@@ -134,7 +144,9 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 			@Override
 			public void act() {
 				changeBanner("left");
-				viewObjects.add(banners.get(0));	
+				viewObjects.add(banners.get(0));
+				setNx(1000);
+				getCount().setText("  " + getNx() + " NX");
 			}
 		});
 		viewObjects.add(leftArrow);
@@ -156,8 +168,9 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		Button single = new Button((int) (getWidth() / 10 * 3.75), (int) (getHeight() / 2 * 1.4), 50, 50, "x1", Color.yellow, new Action() {
 			public void act() {
 				if(canSummon(0)) {
-					count.setText("  " + nx + " NX");
-					MainGame.game.setScreen(MainGame.single);
+					count.setText("  " + getNx() + " NX");
+					MainGame.game.setScreen(new DavidGetCharacterSingle(getWidth(), getHeight()));
+//					MainGame.game.setScreen(MainGame.single);
 				}else {
 					cantSummon();
 				}
@@ -171,7 +184,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 			@Override
 			public void act() {
 				if(canSummon(1)) {
-					count.setText("  " + nx + " NX");
+					count.setText("  " + getNx() + " NX");
 					MainGame.game.setScreen(MainGame.multi);
 				}else {
 					cantSummon();
@@ -210,27 +223,6 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 	@Override
 	public void summonBanner(int idx) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void updateNX(int nx) {
-		
-		
-	}
-
-
-	@Override
-	public void getNX(int nx) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void setNX(int nx) {
 		// TODO Auto-generated method stub
 		
 	}

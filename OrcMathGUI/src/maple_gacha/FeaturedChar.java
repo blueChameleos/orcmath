@@ -46,10 +46,7 @@ public class FeaturedChar extends FullFunctionScreen implements BannerInterface 
 			
 			@Override
 			public void act() {
-				MainGame.summon.setNX(500);
-				System.out.println(MainGame.summon.getNx() + " NX.");
 				MainGame.game.setScreen(MainGame.summon);
-				
 			}
 		});
 		viewObjects.add(goBack);
@@ -57,24 +54,6 @@ public class FeaturedChar extends FullFunctionScreen implements BannerInterface 
 
 	@Override
 	public void summonBanner(int idx) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateNX(int nx) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void getNX(int nx) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setNX(int nx) {
 		// TODO Auto-generated method stub
 		
 	}
