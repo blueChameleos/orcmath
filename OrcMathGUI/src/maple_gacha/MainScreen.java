@@ -36,6 +36,9 @@ public class MainScreen extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {		
 		if(Math.random() > .5) {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home.jpg"));
+			viewObjects.add(new Graphic((getWidth()/2)-359,155,226,339,"resources/border5.png"));
+			viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border5.png"));
+			viewObjects.add(new Graphic((getWidth()/2)+133,155,226,339,"resources/border5.png"));
 		}else {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home2.png"));		
 			viewObjects.add(new Graphic((getWidth()/2)-359,155,226,339,"resources/border1.png"));
