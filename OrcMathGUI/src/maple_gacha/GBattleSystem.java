@@ -17,9 +17,10 @@ public class GBattleSystem implements Runnable {
 	private Monster[][] enemiesList; //round -> enemies 
 	private int round;
 	private ArrayList<Hero> order = new ArrayList<Hero>();
+	private Thread gameSystem;
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
-	private ArrayList<ArrayList<Items>> inventory = new ArrayList<ArrayList<Items>>();
+	private ArrayList<Items> inventory = new ArrayList<Items>();
 	private Hero currentPlayer;
 	private Monster currentEnemy;
 	private boolean waiting = false;
@@ -32,6 +33,9 @@ public class GBattleSystem implements Runnable {
 		this.mainParty = mainParty;
 		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		currentEnemy = enemiesList[0][0];
+		
+		gameSystem = new Thread(this);
+		gameSystem.run();
 	}
 
 	public void run() {
@@ -58,14 +62,10 @@ public class GBattleSystem implements Runnable {
 				currentPlayer.setGuard(false);
 				
 				
-				while(waiting)
-				{
-					//wait until user does something.
-				}
+				MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
 			}
 		}
 	}
-
 	//difficulty
 	private void changeDifficulty(int difficulty) {
 		setRounds((int) Math.pow(difficulty, 1.5)); 
@@ -155,25 +155,25 @@ public class GBattleSystem implements Runnable {
 	
 	// end of sort
 
-	public void useItem(Items items) {
-		if(items instanceof IProjectileAoe)
+	public void useItem(Items item) {
+		if(item instanceof IProjectileAoe)
 		{
-			items.act(enemiesList[round], items.getValue());
+			item.act(enemiesList[round], item.getValue());
 		}
 		else 
 		{
-			if(items instanceof IHealingItem)
+			if(item instanceof IHealingItem)
 			{
-				items.act(currentPlayer, items.getValue());
+				item.act(currentPlayer, item.getValue());
 			}
 			else
 			{
-				items.act(currentEnemy, items.getValue());
+				item.act(currentEnemy, item.getValue());
 			}
 			
 		}
 		
-		inventory.get(inventory.indexOf(items)).remove(0);
+		inventory.remove(inventory.indexOf(item));
 		
 		//next turn;
 	}
@@ -191,12 +191,8 @@ public class GBattleSystem implements Runnable {
 		return enemiesList;
 	}
 
-	public ArrayList<ArrayList<Items>> getInventory() {
+	public ArrayList<Items> getInventory() {
 		return this.inventory;
-	}
-
-	public void setInventory(ArrayList<ArrayList<Items>> inventory) {
-		this.inventory = inventory;
 	}
 	
 	public ArrayList<Hero> getCharacters(){
@@ -226,5 +222,11 @@ public class GBattleSystem implements Runnable {
 	public void setWaiting(boolean waiting) {
 		this.waiting = waiting;
 	}
+	
+
+	public Thread getGameSystem() {
+		return gameSystem;
+	}
+
 
 }
