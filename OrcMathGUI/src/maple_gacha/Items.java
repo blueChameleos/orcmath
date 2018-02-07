@@ -1,10 +1,11 @@
 package maple_gacha;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import guiTeacher.components.Action;
 
-public class Items {
+public class Items implements Serializable{
 	
 	private String name;
 	private int value;

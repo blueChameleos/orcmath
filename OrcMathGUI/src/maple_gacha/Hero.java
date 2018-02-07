@@ -1,6 +1,8 @@
 package maple_gacha;
 
-public class Hero implements Character {
+import java.io.Serializable;
+
+public class Hero implements Character, Serializable{
 
 	private String img;
 	private String rank;
