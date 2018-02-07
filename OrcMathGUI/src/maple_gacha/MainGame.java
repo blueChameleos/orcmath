@@ -38,7 +38,6 @@ public class MainGame extends GUIApplication {
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
 		setLocationRelativeTo(null);
-	
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 		featured = new FeaturedChar(getWidth(),getHeight());

@@ -49,7 +49,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		
-		System.out.println("10");
+		//System.out.println("10");
 		StyledComponent.setButtonOutline(false);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/summoningbackground.png");
 		Graphic mech = new Graphic(475, 350, 650, 350,"resources/mech.jpg");

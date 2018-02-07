@@ -185,7 +185,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 			public void act() {
 				if(canSummon(1)) {
 					count.setText("  " + getNx() + " NX");
-					MainGame.game.setScreen(MainGame.multi);
+					MainGame.game.setScreen(new DavidGetCharacterMulti(getWidth(), getHeight()));
 				}else {
 					cantSummon();
 				}
