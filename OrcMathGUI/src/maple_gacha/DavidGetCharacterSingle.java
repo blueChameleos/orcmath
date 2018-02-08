@@ -97,7 +97,8 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 			}
 		});
 		
-		
+		viewObjects.add(back);
+
 		skipAn = new Button(0,0,getWidth() ,getHeight()," ", new Action() {
 
 				@Override
