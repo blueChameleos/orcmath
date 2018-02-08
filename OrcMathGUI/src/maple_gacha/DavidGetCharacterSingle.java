@@ -20,7 +20,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	public double rate;
 	private Button skipAn;
 	public boolean lightingCheck;
-	private ArrayList<Hero> Hero;
+	public ArrayList<Hero> asdf;
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
@@ -39,12 +39,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		System.out.println(beginnerArcher);
 	}	
 	
-	public void banner()
-	{
-		
-		Hero.add(beginnerArcher);
-
-	}
+	
 
 	public void lighting() {
 		lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
@@ -70,9 +65,8 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		Hero = new ArrayList<Hero>();
+		asdf = new ArrayList<Hero>();
 		
-		//System.out.println("10");
 		StyledComponent.setButtonOutline(false);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/summoningbackground.png");
 		Graphic mech = new Graphic(475, 350, 650, 350,"resources/mech.jpg");
@@ -80,6 +74,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		
 		rng();
 		getCard();
+		banner();
 		
 		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
 
@@ -133,6 +128,20 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		}.start();
 		
 	}
+	public void banner()
+	{
+		
+		asdf.add(beginnerArcher);
+		asdf.add(beginnerSword);
+		asdf.add(beginnerWizard);
+		
+		
+		System.out.println("Character added "+asdf.get(0));
+		System.out.println("Character added "+asdf.get(1));
+		System.out.println("Character added "+asdf.get(2));
+
+	}
+	
 }
 		
 	
