@@ -87,7 +87,6 @@ public class MainGame extends GUIApplication {
 
 	public static void playMusic(String musicPos) {
 		if (g!= null) {
-			System.out.println();
 			g.stop();
 		}
 		try {

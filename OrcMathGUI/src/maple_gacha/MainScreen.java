@@ -60,14 +60,14 @@ public class MainScreen extends FullFunctionScreen {
 		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
 			public void act() {
 //				MainGame.game.setScreen(MainGame.summon);
-				MainGame.game.playMusic("resources/khalid.wav");
+				MainGame.playMusic("resources/khalid.wav");
 			}
 			
 		});
 		summonb = new Button(getWidth()/2-100,875,200,100,"Summon",Color.yellow,new Action() {
 			public void act() {
 				MainGame.game.setScreen(MainGame.summon);
-				MainGame.game.playMusic("resources/khalid.wav");
+				MainGame.playMusic("resources/khalid.wav");
 
 			}
 			
@@ -75,7 +75,7 @@ public class MainScreen extends FullFunctionScreen {
 		inventory = new Button(((getWidth()/4)*3)-150,875,200,100,"Units",Color.yellow,new Action() {
 			public void act() {
 				MainGame.game.setScreen(MainGame.cScreen);
-				MainGame.game.playMusic("resources/khalid.wav");
+				MainGame.playMusic("resources/khalid.wav");
 
 			}
 			
