@@ -19,6 +19,17 @@ public class FeaturedChar extends FullFunctionScreen{
 	private ArrayList<Hero> chars;
 	private int index;
 	private Graphic begArcher;
+	private ArrayList<Hero> thing;
+	private boolean ready;
+
+
+	public boolean isReady() {
+		return ready;
+	}
+
+	public void setReady(boolean ready) {
+		this.ready = ready;
+	}
 
 	public FeaturedChar(int width, int height) {
 		super(width, height);
@@ -27,6 +38,7 @@ public class FeaturedChar extends FullFunctionScreen{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		setReady(false);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
 		
@@ -40,9 +52,14 @@ public class FeaturedChar extends FullFunctionScreen{
 			e.printStackTrace();
 		}
 		
+		if(isReady()) {
+			Graphic beg1 = new Graphic(getWidth()/2, (int) (getHeight()/2 * .9) , 200, 200, MainGame.summon.getThings().get(0).getImage());
+			viewObjects.add(beg1);
+		}
+		
 		if(getIndex() == 0) {
 			Hero featuredChar1 = new Hero("resources/characterPics/Hero_HighTank.png","B", 10, 10, 10, 10, 100);
-			begArcher = new Graphic(getWidth()/2, (int) (getHeight()/2 * .9) , 200, 200, featuredChar1.getImage());
+			Graphic begArcher = new Graphic(getWidth()/2, (int) (getHeight()/2 * .9) , 200, 200, featuredChar1.getImage());
 			viewObjects.add(begArcher);
 		}
 		
