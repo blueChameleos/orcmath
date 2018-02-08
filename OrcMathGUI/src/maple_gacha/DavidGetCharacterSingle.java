@@ -21,22 +21,31 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	private Button skipAn;
 	public boolean lightingCheck;
 	public ArrayList<Hero> asdf;
-	public static Hero beginnerArcher;
-	public static Hero beginnerSword;
-	public static Hero beginnerWizard;
+	public static Hero Archer;
+	public static Hero Sword;
+	public static Hero Wizard;
+	public ArrayList<Hero> stuff;
+
 	
-	
+	public ArrayList<Hero> getStuff() {
+		return stuff;
+	}
+
+	public void setStuff(ArrayList<Hero> stuff) {
+		this.stuff = stuff;
+	}
+
 	public DavidGetCharacterSingle(int width, int height) {
 		super(width, height);
 	}
 	
 	public static void createCharacters() {
-		beginnerArcher = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
-		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
+		Archer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
+		Sword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
+		Wizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
 		//add the characters here?
-		System.out.println(beginnerSword.getImage());
-		System.out.println(beginnerArcher);
+		System.out.println(Sword.getImage());
+		System.out.println(Archer);
 	}	
 	
 	
@@ -75,6 +84,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		rng();
 		getCard();
 		banner();
+		contains(asdf);
 		
 		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
 
@@ -131,9 +141,9 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	public void banner()
 	{
 		
-		asdf.add(beginnerArcher);
-		asdf.add(beginnerSword);
-		asdf.add(beginnerWizard);
+		asdf.add(Archer);
+		asdf.add(Sword);
+		asdf.add(Wizard);
 		
 		
 		System.out.println("Character added "+asdf.get(0));
@@ -141,6 +151,20 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		System.out.println("Character added "+asdf.get(2));
 
 	}
+	
+	public boolean contains(ArrayList<Hero> asdf)
+	{
+		asdf.add(Wizard);
+		
+		for(Hero Wizard: asdf)
+		{
+			System.out.println("The "+asdf.get(0)+true);
+			
+		}
+		return true;
+		
+	}
+
 	
 }
 		
