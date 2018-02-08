@@ -36,6 +36,10 @@ public class MainScreen extends FullFunctionScreen {
 	private Button inventory;
 	private Button quit;
 	private TextArea name;
+	private Graphic[] unitlist;
+	private Graphic unit1;
+	private Graphic unit2;
+	private Graphic unit3;
 	public MainScreen(int width, int height) {
 		super(width, height);
 	}
@@ -51,7 +55,14 @@ public class MainScreen extends FullFunctionScreen {
 			viewObjects.add(new Graphic((getWidth()/2)-359,155,226,339,"resources/border1.png"));
 			viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
 			viewObjects.add(new Graphic((getWidth()/2)+133,155,226,339,"resources/border1.png"));
-		}	
+		}
+		unit1 = new Graphic(0,0,1,1,"resources/border1.png");
+		unit2 = new Graphic(0,0,1,1,"resources/border1.png");
+		unit3 = new Graphic(0,0,1,1,"resources/border1.png");
+		reload();
+		viewObjects.add(unit1);
+		viewObjects.add(unit2);
+		viewObjects.add(unit3);
 		featured = new AnimatedComponent((getWidth()/2)-325,510,650,350);
 		featured.addSequence("resources/banners.png", 5000,0,0,650,350,3);	
 		viewObjects.add(featured);
@@ -114,4 +125,15 @@ public class MainScreen extends FullFunctionScreen {
 		viewObjects.add(inventory);
 		viewObjects.add(quit);
 	}
+	
+	public void reload() {
+		unitlist = new Graphic[3];
+		unitlist[0] = unit1;
+		unitlist[1] = unit2;
+		unitlist[2] = unit3;
+		for(int i = 0; i < MainGame.currentTeam.size(); i++) {
+				unitlist[i] = new Graphic((getWidth()/2)-359+(i*246),175,206,319,MainGame.currentTeam.get(i).getImage());
+		}
+	}
+
 }
