@@ -37,6 +37,10 @@ public class GBattleSystem implements Runnable {
 //		gameSystem.run();
 	}
 
+	public void setInventory(ArrayList<Items> inventory) {
+		this.inventory = inventory;
+	}
+
 	public void run() {
 		makeOrder();
 		playGame();
