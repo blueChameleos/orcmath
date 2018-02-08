@@ -15,7 +15,7 @@ public class GBattleSystem implements Runnable {
 	private int enemiesNum;
 	private Hero[] mainParty;
 	private Monster[][] enemiesList; //round -> enemies 
-	private int round;
+	private int round = 0;
 	private ArrayList<Hero> order = new ArrayList<Hero>();
 	private Thread gameSystem;
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
@@ -33,7 +33,6 @@ public class GBattleSystem implements Runnable {
 		this.mainParty = mainParty;
 		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		currentEnemy = enemiesList[0][0];
-		round = 0;
 		gameSystem = new Thread(this);
 		gameSystem.run();
 	}
@@ -66,12 +65,12 @@ public class GBattleSystem implements Runnable {
 				MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
 			}
 		}
+		round++;
 	}
 	//difficulty
 	private void changeDifficulty(int difficulty) {
-		setRounds((int) Math.pow(difficulty, 1.5)); 
 		setEnemiesNum((int) Math.pow(difficulty, 1.3 ));
-		enemiesList = new Monster[round][enemiesNum];
+		enemiesList = new Monster[(int) Math.pow(difficulty, 1.5)][enemiesNum];
 
 		populateEnemies();
 //		changeStats(Math.log((difficulty+1))+.5); //good function //good comment btw
@@ -183,10 +182,6 @@ public class GBattleSystem implements Runnable {
 	private void setEnemiesNum(int enemiesNum) {
 		this.enemiesNum = enemiesNum;
 	}
-
-	private void setRounds(int round) {
-		this.round = round;
-	}
 	
 	public Monster[][] getEnemiesList() {
 		return enemiesList;
@@ -198,10 +193,6 @@ public class GBattleSystem implements Runnable {
 	
 	public ArrayList<Hero> getCharacters(){
 		return this.order;
-	}
-	
-	public int getRound() {
-		return this.round;
 	}
 	
 	public Monster getCurrentEnemy() {
