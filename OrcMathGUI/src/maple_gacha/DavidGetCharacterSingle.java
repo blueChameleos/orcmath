@@ -1,6 +1,7 @@
 package maple_gacha;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 
 import guiTeacher.components.Action;
@@ -19,9 +20,30 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	public double rate;
 	private Button skipAn;
 	public boolean lightingCheck;
+	private ArrayList<Hero> Hero;
+	public static Hero beginnerArcher;
+	public static Hero beginnerSword;
+	public static Hero beginnerWizard;
+	
 	
 	public DavidGetCharacterSingle(int width, int height) {
 		super(width, height);
+	}
+	
+	public static void createCharacters() {
+		beginnerArcher = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
+		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
+		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
+		//add the characters here?
+		System.out.println(beginnerSword.getImage());
+		System.out.println(beginnerArcher);
+	}	
+	
+	public void banner()
+	{
+		
+		Hero.add(beginnerArcher);
+
 	}
 
 	public void lighting() {
@@ -37,7 +59,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 
 	public void getCard() {
 		
-		if (rate < 50) {
+		if (rate < 100) {
 			srare = true;
 			lightingCheck = true;
 		} else {
@@ -48,11 +70,16 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		Hero = new ArrayList<Hero>();
 		
 		//System.out.println("10");
 		StyledComponent.setButtonOutline(false);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/summoningbackground.png");
 		Graphic mech = new Graphic(475, 350, 650, 350,"resources/mech.jpg");
+		
+		
+		rng();
+		getCard();
 		
 		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
 
@@ -64,21 +91,13 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 				viewObjects.remove(mech);
 				viewObjects.add(skipAn);
 				viewObjects.add(lighting);
-				
-				MainGame.game.setScreen(MainGame.summon);
 				viewObjects.remove(back);
+				MainGame.game.setScreen(MainGame.summon);
+				
 			}
 		});
 		
 		
-		
-		
-		
-		rng();
-		getCard();
-		
-		
-
 		skipAn = new Button(0,0,getWidth() ,getHeight()," ", new Action() {
 
 				@Override
@@ -90,14 +109,12 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 					viewObjects.add(mech);
 					viewObjects.add(back);
 					viewObjects.remove(skipAn);
-					//skipAn.setVisible(false);
+					skipAn.setVisible(false);
 					
 				}
 			});
 		
 		viewObjects.add(skipAn);
-		
-		
 		
 		
 		lighting = new AnimatedComponent(0, 0, 1375, 1024);
