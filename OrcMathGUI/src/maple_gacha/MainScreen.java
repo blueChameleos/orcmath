@@ -56,13 +56,13 @@ public class MainScreen extends FullFunctionScreen {
 			viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
 			viewObjects.add(new Graphic((getWidth()/2)+133,155,226,339,"resources/border1.png"));
 		}
-		unit1 = new Graphic(0,0,1,1,"resources/border1.png");
-		unit2 = new Graphic(0,0,1,1,"resources/border1.png");
-		unit3 = new Graphic(0,0,1,1,"resources/border1.png");
+		unit1 = new Graphic(100,100,100,100,"resources/transparent.png");
+		unit2 = new Graphic(100,100,100,100,"resources/transparent.png");
+		unit3 = new Graphic(100,100,100,100,"resources/transparent.png");
 		reload();
-		viewObjects.add(unit1);
-		viewObjects.add(unit2);
-		viewObjects.add(unit3);
+		for(int i = 0; i < unitlist.length;i++) {
+			viewObjects.add(unitlist[i]);
+		}
 		featured = new AnimatedComponent((getWidth()/2)-325,510,650,350);
 		featured.addSequence("resources/banners.png", 5000,0,0,650,350,3);	
 		viewObjects.add(featured);
@@ -132,7 +132,7 @@ public class MainScreen extends FullFunctionScreen {
 		unitlist[1] = unit2;
 		unitlist[2] = unit3;
 		for(int i = 0; i < MainGame.currentTeam.size(); i++) {
-				unitlist[i] = new Graphic((getWidth()/2)-359+(i*246),175,206,319,MainGame.currentTeam.get(i).getImage());
+			unitlist[i] = new Graphic((getWidth()/2)-359+(i*246),175,206,319,MainGame.currentTeam.get(i).getImage());
 		}
 	}
 
