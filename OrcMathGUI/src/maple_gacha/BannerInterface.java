@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 public interface BannerInterface {
 	void summonBanner(int idx);
-	ArrayList<Hero> setPotentialChars();
+	void setPotentialChars();
 	int bannerType();
 }

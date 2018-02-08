@@ -232,7 +232,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 
 	@Override
-	public ArrayList<Hero> setPotentialChars() {
+	public void setPotentialChars() {
 		if(bannerType() == 0) {
 			int stuff = 1;
 			ArrayList<Hero> hero = new ArrayList<Hero>();
@@ -244,9 +244,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 			hero.add(MainGame.game.temp);
 			hero.add(MainGame.temp);
 			singleScreen.setStuff(hero);
-			return hero;
 		}
-		return null;
 		
 	}
 
