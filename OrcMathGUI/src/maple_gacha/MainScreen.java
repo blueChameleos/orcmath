@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sound.sampled.AudioInputStream;
@@ -36,14 +37,13 @@ public class MainScreen extends FullFunctionScreen {
 	private Button inventory;
 	private Button quit;
 	private TextArea name;
-	private Graphic[] unitlist;
-	private Graphic unit1;
-	private Graphic unit2;
-	private Graphic unit3;
+	public ArrayList<Graphic> unitlist;
+	public Graphic unit1;
+	public Graphic unit2;
+	public Graphic unit3;
 	public MainScreen(int width, int height) {
 		super(width, height);
 	}
-	
 	public void initAllObjects(List<Visible> viewObjects) {		
 		if(Math.random() > .5) {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home.jpg"));
@@ -56,18 +56,21 @@ public class MainScreen extends FullFunctionScreen {
 			viewObjects.add(new Graphic((getWidth()/2)-113,155,226,339,"resources/border1.png"));
 			viewObjects.add(new Graphic((getWidth()/2)+133,155,226,339,"resources/border1.png"));
 		}
-		unit1 = new Graphic(100,100,100,100,"resources/transparent.png");
-		unit2 = new Graphic(100,100,100,100,"resources/transparent.png");
-		unit3 = new Graphic(100,100,100,100,"resources/transparent.png");
-		reload();
-		for(int i = 0; i < unitlist.length;i++) {
-			viewObjects.add(unitlist[i]);
-		}
 		featured = new AnimatedComponent((getWidth()/2)-325,510,650,350);
 		featured.addSequence("resources/banners.png", 5000,0,0,650,350,3);	
 		viewObjects.add(featured);
 		Thread banner = new Thread(featured);
-		banner.start();
+		banner.start();		
+		unitlist = new ArrayList<Graphic>();
+		unit1 = new Graphic(100,100,100,100,"resources/transparent.png");
+		unit2 = new Graphic(100,100,100,100,"resources/transparent.png");
+		unit3 = new Graphic(100,100,100,100,"resources/transparent.png");		
+		unitlist.add(unit1);
+		unitlist.add(unit2);
+		unitlist.add(unit3);
+		for(int i = 0; i < unitlist.size(); i++) {
+			viewObjects.add(unitlist.get(i));
+		}
 		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
 			public void act() {
 //				MainGame.game.setScreen(MainGame.summon);
@@ -127,12 +130,9 @@ public class MainScreen extends FullFunctionScreen {
 	}
 	
 	public void reload() {
-		unitlist = new Graphic[3];
-		unitlist[0] = unit1;
-		unitlist[1] = unit2;
-		unitlist[2] = unit3;
+
 		for(int i = 0; i < MainGame.currentTeam.size(); i++) {
-			unitlist[i] = new Graphic((getWidth()/2)-359+(i*246),175,206,319,MainGame.currentTeam.get(i).getImage());
+			unitlist.set(i,new Graphic((getWidth()/2)-359+(i*246),175,206,319,MainGame.currentTeam.get(i).getImage()));
 		}
 	}
 
