@@ -22,6 +22,9 @@ public class MainGame extends GUIApplication {
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
+	public static Hero temp;
+	public static Hero temp1;
+	public static Hero temp2;
 	public static CharacterScreen cScreen;
 	public static BeginnerSelectionScreen bScreen;
 
@@ -59,7 +62,10 @@ public class MainGame extends GUIApplication {
 		beginnerArcher = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
 		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
-		//add the characters here?
+		
+		 temp = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
+		 temp1 = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
+		 temp2 = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
 		System.out.println(beginnerSword.getImage());
 		System.out.println(beginnerArcher);
 	}

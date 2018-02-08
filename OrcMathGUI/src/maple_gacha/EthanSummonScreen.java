@@ -18,6 +18,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class EthanSummonScreen extends FullFunctionScreen implements Runnable, BannerInterface {
 
 	private ArrayList<Graphic> banners;	
+	private ArrayList<Hero> heroes;
 	private int index;
 	private int nx;
 	private TextArea error;
@@ -168,6 +169,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		Button single = new Button((int) (getWidth() / 10 * 3.75), (int) (getHeight() / 2 * 1.4), 50, 50, "x1", Color.yellow, new Action() {
 			public void act() {
 				if(canSummon(0)) {
+					setPotentialChars();
 					count.setText("  " + getNx() + " NX");
 					MainGame.game.setScreen(new DavidGetCharacterSingle(getWidth(), getHeight()));
 //					MainGame.game.setScreen(MainGame.single);
@@ -196,6 +198,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 			@Override
 			public void act() {
+				MainGame.game.featured.setIndex(bannerType());
+				System.out.println(MainGame.game.featured.getIndex());
 				MainGame.game.setScreen(MainGame.featured);
 			}
 		});
@@ -229,16 +233,29 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 
 	@Override
-	public void setPotentialChars(ArrayList<Hero> chars, int type) {
-		// TODO Auto-generated method stub
+	public void setPotentialChars() {
+		if(bannerType() == 0) {
+//			Hero temp = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
+			System.out.println("Banner type is " + bannerType());
+			System.out.println(MainGame.game.temp);
+//			MainGame.game.addHero(MainGame.temp);
+//			heroes.add(MainGame.game.beginnerArcher);
+//			heroes.add(MainGame.game.temp1);
+//			heroes.add(MainGame.game.temp2);
+		}
 		
 	}
 
 
 	@Override
-	public void bannerType(int idx) {
-		// TODO Auto-generated method stub
+	public int bannerType() {
+		return getIndex();
 		
+	}
+
+
+	public int getIndex() {
+		return index;
 	}
 
 }
