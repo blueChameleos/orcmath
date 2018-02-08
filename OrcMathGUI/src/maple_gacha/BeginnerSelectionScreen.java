@@ -76,8 +76,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 			public void act() {
 				// TODO Auto-generated method stub
 				if (!MainGame.game.team.isEmpty()) {
-					MainGame.cScreen.reloadScreen();
-					MainGame.game.setScreen((MainGame.game.cScreen));
+					MainGame.game.setScreen((new CharacterScreen(getWidth(), getHeight())));
 				} else {
 					text.setText("You must choose a hero first!");
 					text.setX(300);
