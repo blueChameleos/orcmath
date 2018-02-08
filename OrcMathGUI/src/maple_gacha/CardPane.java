@@ -17,6 +17,7 @@ public class CardPane extends Pane implements Runnable {
 	private Hero hero;
 	private Graphic bg;
 	private Graphic charImg;
+	private Action hoverAction;
 	
 	public CardPane(FocusController focusController, int x, int y, int width, int height,Hero g) {
 		super(focusController, x, y, width, height);
@@ -43,7 +44,8 @@ public class CardPane extends Pane implements Runnable {
 		this.charImg.loadImages(img, 50, 50);
 		update();
 	}
-
+	
+	
 	@Override
 	public void run() {
 		charImg.loadImages(hero.getImage(), 100, 100);
@@ -78,5 +80,17 @@ public class CardPane extends Pane implements Runnable {
 		return hero;
 	}
 	
+	public boolean isHovered(int x, int y) {
+		return x > getX() && x < getX() + getWidth() && y > getY() && y < getY() + getHeight();
+	}
+	
+	public void hoverAction(){
+		if(hoverAction != null)hoverAction.act();
+	}
+	
+	
+	public void setHoverAction(Action hoverAction) {
+		this.hoverAction = hoverAction;
+	}
 
 }

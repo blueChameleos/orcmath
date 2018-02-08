@@ -54,6 +54,7 @@ public class CharacterScreen extends FullFunctionScreen {
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/cardSystem.png");
 		background.setVisible(true);
 		viewObjects.add(background);
+		idx = -1;
 		startPos = 0;
 		endPos =  MainGame.team.size();
 		if (MainGame.team.size() >= 5) {
@@ -91,6 +92,9 @@ public class CharacterScreen extends FullFunctionScreen {
 		});
 		viewObjects.add(arrow2);
 		
+		confirmation = new TextArea(745,580,475,320,"");
+		viewObjects.add(confirmation);
+		
 		clickList = new ArrayList<CardPane>();
 		clickG = new ArrayList<CardPane>();
 		
@@ -117,6 +121,22 @@ public class CharacterScreen extends FullFunctionScreen {
 					
 				}
 			});
+			clickG.get(i).setHoverAction(new Action() {
+				public void act() {
+					if(idx != number && (clickG.get(number).getHero() != null)) {
+						System.out.println(number);
+						idx = number;
+					confirmation.setText("Rank = " + clickG.get(number).getHero().getRank() + "\n" +
+							"Strength = " + clickG.get(number).getHero().getStrength() + "\n" + 
+							"Speed = " + clickG.get(number).getHero().getSpeed() + "\n" + 
+							"Attack = " + clickG.get(number).getHero().getAttack() + "\n" + 
+							"Defense = " + clickG.get(number).getHero().getDefense() + "\n" +
+							"HP = " + clickG.get(number).getHero().getHP() + "\n" +
+							"Unique ID = " + clickG.get(number).getHero().getUniqueID() + "\n");
+					}
+				}
+			});
+			
 			viewObjects.add(clickG.get(i));
 		}
 		
@@ -159,6 +179,7 @@ public class CharacterScreen extends FullFunctionScreen {
 			});
 			viewObjects.add(clickList.get(i));
 		}
+		
 		
 	}
 	public int findEquality(Hero hero) {
