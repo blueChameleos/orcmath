@@ -243,6 +243,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 			hero.add(MainGame.game.temp);
 			hero.add(MainGame.temp);
+			singleScreen.setStuff(hero);
 			return hero;
 		}
 		return null;
