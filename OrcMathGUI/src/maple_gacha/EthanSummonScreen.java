@@ -198,8 +198,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 			@Override
 			public void act() {
-				MainGame.game.featured.setIndex(bannerType());
-				System.out.println(MainGame.game.featured.getIndex());
+				MainGame.featured.setIndex(bannerType());
 				MainGame.game.setScreen(MainGame.featured);
 			}
 		});
@@ -233,8 +232,9 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 
 	@Override
-	public void setPotentialChars() {
+	public ArrayList<Hero> setPotentialChars() {
 		if(bannerType() == 0) {
+			int stuff = 1;
 			ArrayList<Hero> hero = new ArrayList<Hero>();
 			
 //			Hero temp = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
@@ -243,10 +243,9 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 			hero.add(MainGame.game.temp);
 			hero.add(MainGame.temp);
-//			hero.add(temp1);
-//			hero.add(temp2);
-			
+			return hero;
 		}
+		return null;
 		
 	}
 
