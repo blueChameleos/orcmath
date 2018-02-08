@@ -121,16 +121,16 @@ public class GBattleSystem implements Runnable {
 			order.add(e);
 		}
 
-		sortOrder(order);
+		sortOrder(order, 0, order.size());
 	}
 
-	private void sortOrder(ArrayList<Hero> heroList) {
-		int currentIdx = order.size();
-		int pivotSpeed = order.get(0).getSpeed();
+	private void sortOrder(ArrayList<Hero> heroList, int startIdx, int endIdx) {
+		int currentIdx = endIdx;
+		int pivotSpeed = heroList.get(startIdx).getSpeed();
 
 		if(heroList.size() > 1)
 		{
-			for(int i = 1; i< order.size(); i++)
+			for(int i = startIdx; i< endIdx; i++)
 			{
 				if(heroList.get(i).getSpeed() < pivotSpeed)
 				{
@@ -141,8 +141,8 @@ public class GBattleSystem implements Runnable {
 
 			currentIdx --;
 			swap(currentIdx, 0);
-			sortOrder((ArrayList<Hero>) order.subList(0, currentIdx));
-			sortOrder((ArrayList<Hero>) order.subList(currentIdx+1, order.size()));
+			sortOrder(heroList, startIdx, currentIdx);
+			sortOrder(heroList, currentIdx+1, endIdx);
 
 		}
 
