@@ -70,6 +70,7 @@ public class MainGame extends GUIApplication {
 		System.out.println(beginnerArcher);
 	}
 	
+	
 	public static void addHero(Hero hero) {
 		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());
 		team.add(newHero);
