@@ -80,7 +80,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-				
+				//ss
 				
 				viewObjects.remove(background);
 				viewObjects.remove(mech);
