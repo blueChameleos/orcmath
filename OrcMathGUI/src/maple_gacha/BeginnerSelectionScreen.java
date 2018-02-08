@@ -187,7 +187,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 			next.setFont(baseFont2);
 			retry.setFont(baseFont2);
 		} catch (Exception e) {
-
+ 
 		}
 
 		viewObjects.add(next);

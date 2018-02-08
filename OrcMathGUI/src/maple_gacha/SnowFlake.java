@@ -14,13 +14,12 @@ public class SnowFlake extends MovingComponent {
 		super((int)(Math.random()*w), (int)(Math.random()*h),50,50);
 		img = new Graphic(0,0,50,50, "resources/snowflake.png").getImage();
 		setVx(-.5);
-		setVy(1.5+Math.random()*2.0);
+		setVy(2 + Math.random()*3.0);
 		update();
 		Thread t = new Thread(this);
 		t.start();
-//		setY((int)(Math.random()*h));
 	}
-
+ 
 	@Override
 	public void drawImage(Graphics2D g) {
 		
