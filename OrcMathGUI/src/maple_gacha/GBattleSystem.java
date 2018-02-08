@@ -34,7 +34,7 @@ public class GBattleSystem implements Runnable {
 		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		currentEnemy = enemiesList[0][0];
 		gameSystem = new Thread(this);
-		gameSystem.run();
+//		gameSystem.run();
 	}
 
 	public void run() {
@@ -52,9 +52,9 @@ public class GBattleSystem implements Runnable {
 				MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
 				Hero target = mainParty[(int) Math.random()*mainParty.length];
 				int action = (int) (Math.random()*3);
-				order.get(i).useTurn(target, action);
+				/*order.get(i).useTurn(target, action);
 				BattleScreen.showAiTurn(order.get(i), target, action); //changes ai text-area to show events
-			}
+*/			}
 			else
 			{
 				//sleep until user does something.
@@ -62,7 +62,12 @@ public class GBattleSystem implements Runnable {
 				currentPlayer.setGuard(false);
 				
 				
-				MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
+				try {
+					MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		round++;
@@ -127,9 +132,9 @@ public class GBattleSystem implements Runnable {
 		int currentIdx = endIdx;
 		int pivotSpeed = heroList.get(startIdx).getSpeed();
 
-		if(heroList.size() > 1)
+		if(endIdx - startIdx >= 1)
 		{
-			for(int i = startIdx; i< endIdx; i++)
+			for(int i = startIdx+1; i< endIdx; i++)
 			{
 				if(heroList.get(i).getSpeed() < pivotSpeed)
 				{
@@ -139,9 +144,17 @@ public class GBattleSystem implements Runnable {
 			}
 
 			currentIdx --;
-			swap(currentIdx, 0);
-			sortOrder(heroList, startIdx, currentIdx);
-			sortOrder(heroList, currentIdx+1, endIdx);
+			swap(currentIdx, startIdx);
+			if(currentIdx != startIdx)
+			{
+				sortOrder(heroList, startIdx, currentIdx);
+				
+			}
+			if(currentIdx+1 < heroList.size())
+			{
+				sortOrder(heroList, currentIdx+1, endIdx);
+			}
+			
 
 		}
 

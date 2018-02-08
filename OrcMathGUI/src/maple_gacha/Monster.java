@@ -34,7 +34,7 @@ public class Monster extends Hero implements Character {
 	@Override
 	public void setHP(int hp) {
 		// TODO Auto-generated method stub
-		this.hp = hp;
+		super.setHP(hp);;
 	}
 
 	@Override
