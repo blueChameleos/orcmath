@@ -44,6 +44,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		Graphic charBg = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/charSelectBG.png");
 		charBg.setVisible(true);
 		viewObjects.add(charBg);
+		//ilikepp
 
 		begArcher = new ClickableCharacter(200, 500, 200, 200, MainGame.game.beginnerArcher.getImage(), null);
 		begSword = new ClickableCharacter(600, 500, 200 ,200, MainGame.game.beginnerSword.getImage(), null);
@@ -117,7 +118,6 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 
 				@Override
 				public void act() {
-					System.out.println(c.getImageLocation());
 					lightbulb.setVisible(true);
 					lightbulb.setX(c.getX() + 30);
 				}
@@ -214,6 +214,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		
 		
 		viewObjects.add(retry);
+		
 	}
 	
 	private void showChars() {
