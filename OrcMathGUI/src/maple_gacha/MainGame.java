@@ -58,6 +58,15 @@ public class MainGame extends GUIApplication {
 		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
+		addHero(beginnerSword);
+		addHero(beginnerWizard);
+		addHero(highTank);
+		addHero(beginnerSword);
+		addHero(beginnerWizard);
+		addHero(highTank);
+		addHero(beginnerSword);
+		addHero(beginnerWizard);
+		addHero(highTank);
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
@@ -67,7 +76,7 @@ public class MainGame extends GUIApplication {
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());			
 		setResizable(false);
-		setScreen(load);
+		setScreen(new CharacterScreen(getWidth(), getHeight()));
 	}
 	 
 	public static void main(String[] args) {

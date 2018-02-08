@@ -54,6 +54,42 @@ public class CharacterScreen extends FullFunctionScreen {
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/cardSystem.png");
 		background.setVisible(true);
 		viewObjects.add(background);
+		startPos = 0;
+		endPos =  MainGame.team.size();
+		if (MainGame.team.size() >= 5) {
+			endPos = 5;
+		}
+		
+		arrow1 = new ClickableGraphic(40,220,75,100,"resources/screenPics/arrow.jpg");
+		arrow1.setAction(new Action() {
+			
+			@Override
+			public void act() {
+				if (startPos > 0) {
+					System.out.println("aah");
+					startPos--;
+					endPos--;
+					changeScreen(startPos,endPos);
+				}
+				
+			}
+		});
+		viewObjects.add(arrow1);
+		arrow2 = new ClickableGraphic(1172,220,75,100,"resources/screenPics/arrow2"+ ".jpg");
+		
+		arrow2.setAction(new Action() {
+			
+			@Override
+			public void act() {
+				if (endPos < MainGame.team.size()) {
+					startPos++;
+					endPos++;
+					changeScreen(startPos,endPos);
+				}
+				
+			}
+		});
+		viewObjects.add(arrow2);
 		
 		clickList = new ArrayList<CardPane>();
 		clickG = new ArrayList<CardPane>();
@@ -68,19 +104,57 @@ public class CharacterScreen extends FullFunctionScreen {
 		clickG.add(c3);
 		for(int i = 0;i<3;i++) {
 			clickG.set(i, new CardPane(this,63+225*i,586,206,319,null));
+			int number = i;
+			clickG.get(i).setAction(new Action() {
+			
+				@Override
+				public void act() {
+					if(clickG.get(number).getHero() != null) {
+						MainGame.currentTeam.remove(clickG.get(number).getHero());
+						MainGame.team.get(findEquality(clickG.get(number).getHero())).setClickE();
+						reloadC1();
+					}
+					
+				}
+			});
+			viewObjects.add(clickG.get(i));
 		}
 		
-		for(int i = 0;i<MainGame.team.size();i++) {
+		for(int i = 0;i<5;i++) {
 			clickList.set(i, new CardPane(this,133+205*i,142,206,319,MainGame.team.get(i)));
 			clickList.get(i).setHero(MainGame.team.get(i));
 			clickList.get(i).run();
 			clickList.get(i).update();
+			int number = i;
 			clickList.get(i).setAction(new Action() {
-				
 				@Override
 				public void act() {
-					// TODO Auto-generated method stub
-					
+					int arrSize = MainGame.currentTeam.size();
+					if(arrSize == 0 ) {
+						if(clickList.get(number).getHero() != null && !MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE()){
+							MainGame.currentTeam.add(clickList.get(number).getHero());
+							clickG.get(0).setHero(clickList.get(number).getHero());
+							clickG.get(0).run();
+							clickG.get(0).update();
+							MainGame.team.get(findEquality(clickList.get(number).getHero())).setClickE();
+						}
+					}else if(arrSize == 1 ) {
+						if(clickList.get(number).getHero() != null && !MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE()){
+							MainGame.currentTeam.add(clickList.get(number).getHero());
+							clickG.get(1).setHero(clickList.get(number).getHero());
+							clickG.get(1).run();
+							clickG.get(1).update();
+							MainGame.team.get(findEquality(clickList.get(number).getHero())).setClickE();
+						}
+					}else if(arrSize == 2 ) {
+						if(clickList.get(number).getHero() != null && !MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE()){
+							MainGame.currentTeam.add(clickList.get(number).getHero());
+							clickG.get(2).setHero(clickList.get(number).getHero());
+							clickG.get(2).run();
+							clickG.get(2).update();
+							MainGame.team.get(findEquality(clickList.get(number).getHero())).setClickE();
+						}
+					}
 				}
 			});
 			viewObjects.add(clickList.get(i));
@@ -94,6 +168,32 @@ public class CharacterScreen extends FullFunctionScreen {
 			}
 		}
 		return 0;
+	}
+	
+	public void changeScreen(int start,int end) {
+		System.out.println("xd");
+		int checker = end - start;
+		int count = start;
+		for(int i=0;i<checker;i++) {//ss
+			clickList.get(i).setHero((MainGame.team.get(count)));
+			clickList.get(i).run();
+			count++;
+		}
+	}
+	public void reloadC1() {
+		int teamSize = MainGame.currentTeam.size();
+		clearC1();
+		for(int i=0;i<teamSize;i++) {
+			clickG.get(i).setHero((MainGame.currentTeam.get(i)));
+			clickG.get(i).run();
+		}
+	}
+	
+	public void clearC1() {
+		for(int i=0;i<3;i++) {
+			clickG.get(i).setHero(null);
+			clickG.get(i).hide();
+		}
 	}
 }
 	

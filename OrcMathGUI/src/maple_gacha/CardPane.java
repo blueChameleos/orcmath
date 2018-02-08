@@ -31,7 +31,7 @@ public class CardPane extends Pane implements Runnable {
 		setVisible(true);
 		bg = new Graphic(0, 0, getWidth(), getHeight(), "resources/Empty2.png");
 		viewObjects.add(bg);
-		charImg = new Graphic(60,50,200,200, "resources/cardPics/Agrade.png");
+		charImg = new Graphic(60,50,2,2, "resources/cardPics/Agrade.png");
 		viewObjects.add(charImg);
 		update();
 		
@@ -58,7 +58,12 @@ public class CardPane extends Pane implements Runnable {
 		else if(hero.getRank().equals("SS")) {
 			bg.loadImages("resources/cardPics/SSgrade.png", getWidth(), getHeight());
 		}
-		
+		update();
+	}
+	public void hide() {
+		bg.loadImages("resources/Empty2.png", 206, 319);
+		charImg.loadImages("resources/Empty2.png", 2, 2);
+		update();
 	}
 	public void setAction(Action action) {
 		this.action = action;
