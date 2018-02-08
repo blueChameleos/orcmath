@@ -1,5 +1,6 @@
 package maple_gacha;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	private int roundNum;
 	public static GBattleSystem backend;
 	public static BattleMenu userui;
+	public static ItemMenu itemui;
 	
 	public static ClickableGraphic heroPos1;
 	public static ClickableGraphic heroPos2;
@@ -56,7 +58,10 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 		clickHero.add(heroPos3);
 		userui = new BattleMenu(this,30,800);
 		userui.update();
+		itemui = new ItemMenu(this, 1000, 400);
+		itemui.setVisible(false);
 		viewObjects.add(userui);
+		viewObjects.add(itemui);
 		for(int i=0;i<MainGame.currentTeam.size();i++) {
 			int number = i;
 			clickHero.set(i, new ClickableGraphic(700+(i*100),600,playerSizeW,playerSizeH,MainGame.currentTeam.get(i).getImage()));

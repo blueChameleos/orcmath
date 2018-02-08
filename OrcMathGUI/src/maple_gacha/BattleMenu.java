@@ -21,12 +21,12 @@ public class BattleMenu extends Pane implements Runnable{
 	private static final int HEIGHT = 175;
 	public static TextLabel playerHP;
 	public static TextArea log;
-	public static ItemMenu itemmenu;
 	public static Graphic playerPortrait;
 	public static Button attackbutton;
 	public static Button defbutton;
 	public static Button skillbutton;
 	public static Button itembutton;
+	public static Button[] buttons = new Button[4];
 	
 	public BattleMenu(FocusController focusController, int x, int y) {
 		super(focusController, x, y, WIDTH, HEIGHT);
@@ -45,9 +45,12 @@ public class BattleMenu extends Pane implements Runnable{
 	public void initAllObjects(List<Visible> viewObjects){
 		this.setAlpha((float) 0.5);
 		this.setBackground(Color.BLUE);
-		log = new TextArea(250, 15, 700, 145, "What will ");
+		buttons[0] = attackbutton;
+		buttons[1] = defbutton;
+		buttons[2] = skillbutton;
+		buttons[3] = itembutton;
+		log = new TextArea(250, 15, 700, 145, "");
 		log.setBackgroundColor(Color.WHITE);
-		itemmenu = new ItemMenu(MainGame.game.battle, 25, 800);
 		playerPortrait = new Graphic(100,20,150,150,"resources/char.jpg");
 		viewObjects.add(playerPortrait);
 		attackbutton = new Button(900, 10, 120, 75, "Attack", new Action() {
@@ -62,6 +65,7 @@ public class BattleMenu extends Pane implements Runnable{
 			@Override
 			public void act() {
 				MainGame.game.battle.backend.getCurrentPlayer().setGuard(true);
+				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " guarded!");
 			}
 		});
 		defbutton.setBackgroundColor(Color.YELLOW);
@@ -76,13 +80,13 @@ public class BattleMenu extends Pane implements Runnable{
 		itembutton = new Button(1030, 10, 120, 75, "Item", new Action() {
 			@Override
 			public void act() {
-				itemmenu.setVisible(true);
+				MainGame.game.battle.itemui.setVisible(true);
 			}
 		});
 		itembutton.setBackgroundColor(Color.YELLOW);
 		
 		viewObjects.add(attackbutton);
-		viewObjects.add(defbutton);
+		viewObjects.add(defbutton);;
 		viewObjects.add(skillbutton);
 		viewObjects.add(itembutton);
 		viewObjects.add(log);
@@ -98,7 +102,7 @@ public class BattleMenu extends Pane implements Runnable{
 					log.setText(log.getText()+ text.substring(i, i+1));
 					BattleMenu.this.update();
 					try {
-						Thread.sleep(350);
+						Thread.sleep(1000/60);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

@@ -48,7 +48,6 @@ public class MainGame extends GUIApplication {
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());			
-		battle = new BattleScreen(getWidth(), getHeight());
 		setScreen(bScreen);
 	}
 
@@ -64,6 +63,10 @@ public class MainGame extends GUIApplication {
 		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
 		System.out.println(beginnerSword.getImage());
 		System.out.println(beginnerArcher);
+	}
+	
+	public void setBattle(BattleScreen battle) {
+		this.battle = battle;
 	}
 	
 	public static void createMobs() {
