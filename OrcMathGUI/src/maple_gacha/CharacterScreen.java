@@ -63,6 +63,7 @@ public class CharacterScreen extends FullFunctionScreen {
 		next = new Button(1100,925,140,80,"MENU",Color.yellow,new Action() {
 			@Override
 			public void act() {
+				MainGame.main.reload();
 				MainGame.game.setScreen(MainGame.main);
 				
 			}

@@ -1,8 +1,28 @@
 package maple_gacha;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import guiTeacher.GUIApplication;
+import maple_gacha.TestMusic.AL;
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
 
 public class MainGame extends GUIApplication {
 
@@ -27,7 +47,9 @@ public class MainGame extends GUIApplication {
 	public static Hero temp2;
 	public static CharacterScreen cScreen;
 	public static BeginnerSelectionScreen bScreen;
-
+	public static DavidGetCharacterSingle single;
+	public static DavidGetCharacterMulti multi;
+	private static Clip g;
 
 	
 	public MainGame(int width, int height) {
@@ -53,11 +75,41 @@ public class MainGame extends GUIApplication {
 	}
 	
 	public static void main(String[] args) {
+//		JFrame frame = new JFrame();
+//		frame.setSize(200, 200);
+//		frame.setLocationRelativeTo(null);
+//		JButton button = new JButton("Click me");
+//		frame.add(button);
+//		button.addActionListener(new AL());
+//		frame.setVisible(true);
+//		
+		playMusic("resources/maplestory music.wav");
+		
 		game = new MainGame(1280, 1024);
 		Thread runner = new Thread(game);
 		runner.start();
 	}
 
+	public static void playMusic(String musicPos) {
+		if (g!= null) {
+			g.stop();
+		}
+		try {
+	          File soundFile = new File(musicPos);
+	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
+	          g = AudioSystem.getClip();
+	         g.open(audioIn);
+	         g.start();
+	      } catch (UnsupportedAudioFileException e) {
+	         e.printStackTrace();
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      } catch (LineUnavailableException e) {
+	         e.printStackTrace();
+	      }
+	}
+	
+	
 	public static void createCharacters() {
 		beginnerArcher = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
