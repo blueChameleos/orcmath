@@ -104,17 +104,15 @@ public class MainGame extends GUIApplication {
 //		frame.add(button);
 //		button.addActionListener(new AL());
 //		frame.setVisible(true);
-//		
-		
-	 
+//			 
 		load = new LoadingScreen(getWidth(), getHeight());
 		battle = new BattleScreen(getWidth(), getHeight());
 		setScreen(battle);
 	}
 
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		game = new MainGame(1280, 1024);
-		Thread runner = new Thread(game); 
+		Thread runner = new Thread(game);
 		runner.start();
 		playMusic("resources/maplestory music.wav");
 	}
@@ -140,9 +138,9 @@ public class MainGame extends GUIApplication {
 	
 	
 	public static void createCharacters() {
-		beginnerArcher = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
-		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
+		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100);
+		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
+		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100);
 		
 		temp = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		temp1 = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
@@ -176,11 +174,11 @@ public class MainGame extends GUIApplication {
 		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
 		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
 	}
-	
+
 	public void setBattle(BattleScreen battle) {
 		this.battle = battle;
 	}
-	
+
 	public static void addHero(Hero hero) {
 		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());
 		team.add(newHero);
