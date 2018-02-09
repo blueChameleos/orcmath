@@ -31,18 +31,12 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	public static ClickableGraphic monsterPos2;
 	public static ClickableGraphic monsterPos3;
 	
+	public static Graphic pointer;
 	ArrayList<ClickableGraphic> clickHero;
 	ArrayList<ClickableGraphic> clickMonster;
 	
 	public BattleScreen(int width, int height) {
 		super(width, height);
-		Hero[] currentTeam = new Hero[MainGame.currentTeam.size()];
-		for(int i=0;i<currentTeam.length;i++) {
-			currentTeam[i] = MainGame.currentTeam.get(i);
-		}
-		
-		
-		backend = new GBattleSystem(1,currentTeam);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -62,6 +56,15 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 		itemui.setVisible(false);
 		viewObjects.add(userui);
 		viewObjects.add(itemui);
+		Hero[] currentTeam = new Hero[MainGame.currentTeam.size()];
+		for(int i=0;i<currentTeam.length;i++) {
+			currentTeam[i] = MainGame.currentTeam.get(i);
+		}
+		
+		pointer = new Graphic(0,0,2,2,"resources/yellowarrow.png");
+		viewObjects.add(pointer);
+		backend = new GBattleSystem(1,currentTeam);
+		
 		for(int i=0;i<MainGame.currentTeam.size();i++) {
 			int number = i;
 			clickHero.set(i, new ClickableGraphic(700+(i*100),600,playerSizeW,playerSizeH,MainGame.currentTeam.get(i).getImage()));
@@ -74,6 +77,24 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 			});
 			viewObjects.add(clickHero.get(i));
 		}
+		
+		for(int i=0;i<backend.getEnemiesList()[backend.getRound()].length;i++) {
+			ClickableGraphic g = new ClickableGraphic(100+(i*100),600,playerSizeW,playerSizeH,MainGame.currentTeam.get(i).getImage());
+			int number = i;
+			g.setAction(new Action() {
+				
+				@Override
+				public void act() {
+					backend.setCurrentEnemy(backend.getEnemiesList()[backend.getRound()][number]);
+					pointer.loadImages("resources/yellowarrow.png", 30, 30);
+					pointer.setX(g.getX()+30);
+					pointer.setY(g.getY()-30);
+					update();
+				}
+			} );
+			viewObjects.add(g);
+		}
+		
 	} 
 
 	private Graphic getRandomBackground() {

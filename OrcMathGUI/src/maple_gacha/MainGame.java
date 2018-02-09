@@ -49,7 +49,7 @@ public class MainGame extends GUIApplication {
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());
 		battle = new BattleScreen(getWidth(), getHeight());
-		setScreen(bScreen);
+		setScreen(battle);
 	}
 
 	public static void main(String[] args) {
