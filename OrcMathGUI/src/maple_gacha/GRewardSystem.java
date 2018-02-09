@@ -14,7 +14,7 @@ public class GRewardSystem {
 	
 	public void addExp(Character person, int exp)
 	{
-		person.setEXP(person.getEXP()+exp);
+		person.addEXP(exp);
 	}
 	
 	public void addRewards(int NX)
