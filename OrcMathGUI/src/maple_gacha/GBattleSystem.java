@@ -211,7 +211,11 @@ public class GBattleSystem implements Runnable {
 	private void setEnemiesNum(int enemiesNum) {
 		this.enemiesNum = enemiesNum;
 	}
-
+	
+	public int getRound() {
+		return this.round;
+	}
+	
 	public Monster[][] getEnemiesList() {
 		return enemiesList;
 	}

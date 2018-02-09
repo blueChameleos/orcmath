@@ -30,15 +30,16 @@ public class ItemMenu extends ScrollablePane {
 	
 	public void initAllObjects(List<Visible> viewObjects) {
 		this.setBackground(Color.BLUE);
+		this.itemlist = new ArrayList<Items>();
+		
 		int x = 30;
 		int y = 30;
-		addItems();
 		for(int i = 0; i < itemlist.size(); i++) {
 			int j = i;
 			Button item = new Button(x, y, 190, 60, itemlist.get(i).getName(), new Action() {
 				@Override
 				public void act() {
-//					MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
+					MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
 					MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
 				}
 			});
@@ -55,13 +56,5 @@ public class ItemMenu extends ScrollablePane {
 			}
 		});
 		viewObjects.add(cancel);
-	}
-
-	public void addItems() {
-		itemlist = new ArrayList<Items>();
-		for(int i = 0; i < 1; i++) {
-			itemlist.add(new IHealingItem(20, "Small Heal Potion"));
-		}
-		System.out.println(itemlist.get(0));
 	}
 }
