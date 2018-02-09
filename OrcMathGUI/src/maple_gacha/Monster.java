@@ -3,7 +3,7 @@ package maple_gacha;
 public class Monster extends Hero implements Character {
 
 	public Monster(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
-		super(img, rank, strength, speed, attack, defense, hp);
+		super(img, rank, strength, 1000000, attack, defense, hp);
 	}
 	
 	public Monster(int strength, int speed, int attack, int defense, int hp) {
@@ -12,7 +12,7 @@ public class Monster extends Hero implements Character {
 
 	@Override
 	public void attack() {
-		if(MainGame.game.battle.backend.getCurrentPlayer().getGuard(b)) {
+		if(MainGame.game.battle.backend.getCurrentPlayer().getGuard()) {
 			
 		}else {
 			
@@ -40,28 +40,6 @@ public class Monster extends Hero implements Character {
 	@Override
 	public void special() {
 		// TODO Auto-generated method stub
-		
-	}
-
-	public void useTurn(Hero target, int action) {
-		if( action == 1)
-		{
-			attack(target, this.attack);
-		}
-		else
-		{
-			if(action == 2)
-			{
-				defend();
-			}
-			else
-			{
-				if( action == 3)
-				{
-					useSkill();
-				}
-			}
-		}
 		
 	}
 }

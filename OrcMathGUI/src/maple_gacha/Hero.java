@@ -123,7 +123,7 @@ public class Hero implements Character, Serializable{
 		this.guarding = b;
 	}
 	
-	public boolean getGuard(boolean b)
+	public boolean getGuard()
 	{
 		return this.guarding;
 	}
