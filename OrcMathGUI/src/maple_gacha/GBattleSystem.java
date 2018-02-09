@@ -5,147 +5,179 @@ import java.util.ArrayList;
 
 public class GBattleSystem implements Runnable {
 
-	
-/*	things to do:
-		BattleSystem:
-			implement turns(user Turn) - change ui on AI turn (do today)
 
-			: ui change(figure out on friday)
-				update screen each turn 
+	/*	things to do:
 
 			user input on BattleScreen (Saturday + Sunday)
 
-
-			create wait system for front end + back end (stoping until the other finsihes job ie. user input and updating)
-
-			begin testign after merge.
-*/
+			begin testing after merge.
+	 */
 	private int enemiesNum;
-	private Image backgroundImage;
-	private Character[] mainParty;
+	private Hero[] mainParty;
 	private Monster[][] enemiesList; //round -> enemies 
-	private int round;
-	private ArrayList<Character> order = new ArrayList<Character>();
-	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
+	private int round = 0;
+	private ArrayList<Hero> order = new ArrayList<Hero>();
 	private Thread gameSystem;
+	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
-	private ArrayList<ArrayList<Items>> inventory = new ArrayList<ArrayList<Items>>();
-	private Character currentPlayer;
-	private Character currentEnemy;
+	private ArrayList<Items> inventory = new ArrayList<Items>();
+	private Hero currentPlayer;
+	private Monster currentEnemy;
+	private boolean waiting = false;
+	private boolean playing;
 
 	//creation of System
-	public Character getCurrentEnemy() {
-		return currentEnemy;
-	}
 
-	public void setCurrentEnemy(Character currentEnemy) {
-		this.currentEnemy = currentEnemy;
-	}
-
-	public Character getCurrentPlayer() {
-		return currentPlayer;
-	}
-
-	public void setCurrentPlayer(Character currentPlayer) {
-		this.currentPlayer = currentPlayer;
-	}
-
-	public GBattleSystem(int difficulty, Image backgrnd, Character[] mainParty)
+	public GBattleSystem(int difficulty, Hero[] mainParty)
 	{
 		changeDifficulty(difficulty); 
-		this.backgroundImage = backgrnd;
 		this.mainParty = mainParty;
-
+		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
+		currentEnemy = enemiesList[0][0];
 		gameSystem = new Thread(this);
-		gameSystem.start();
+		addItems();
+		gameSystem.run();
 	}
 
 	public void run() {
+		makeOrder();
 		playGame();
 	}
 
 	private void playGame() {
-		for(int i=0; i<order.size();i++)
+
+		while(playing)
 		{
-			currentPlayer = order.get(i);
-			if(currentPlayer instanceof Monster)
+			for(int i=0; i<order.size();i++)
 			{
-				BattleScreen.SwitchUIAI():
-				Character target = randomTarget();
-				int action = (int) (Math.random()*3)
-				order.get(i).attack(target, action);
-				BattleScreen.showAiTurn(order.get(i), target, action);
+				currentPlayer = order.get(i);
+
+				if(currentPlayer instanceof Monster)
+				{
+					MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
+					Hero target = mainParty[(int) Math.random()*mainParty.length];
+					int action = (int) (Math.random()*3);
+					/*order.get(i).useTurn(target, action);
+				BattleScreen.showAiTurn(order.get(i), target, action); //changes ai text-area to show events
+					 */			}
+				else
+				{
+					//sleep until user does something.
+					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
+					currentPlayer.setGuard(false);
+
+
+					try {
+						MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+	}
+	//when someone dies (all monster dies or heros)
+	public void checkChanges() {
+		int instancesOfMonster = 0;
+		int instancesOfHeros = 0;
+		for(int i = 0; i<order.size(); i++)
+		{
+			if(order.get(i) instanceof Monster)
+			{
+				instancesOfMonster ++;
 			}
 			else
 			{
-				//sleep until user does soemthing.
-				BattleScreen.SwitchAIUI();
-				BattleScreen.backend.gameSystem.sleep(Long.MAX_VALUE);
+				instancesOfHeros ++;
 			}
-			
-			
-			updateGame();
+		}
+		
+		if(instancesOfMonster == 0 || instancesOfHeros == 0)
+		{
+			newRound();
 		}
 	}
-	
-	private Character randomTarget() {
-		return mainParty[(int) Math.random()*mainParty.length];
+
+	private void newRound() {
+		round ++;
+		order = new ArrayList<Hero>();
+		makeOrder();
 	}
 
+	//testing items
+	public void addItems()
+	{
+		for(int i = 0; i<itemsList.length; i++)
+		{
+			inventory.add(itemsList[i]);
+		}
+	}
+
+	//difficulty
 	private void changeDifficulty(int difficulty) {
-		setRounds((int) Math.pow(difficulty, 1.5));
-		setEnemiesNum((int) Math.pow(difficulty, 1.3));
-		enemiesList = new Monster[round][enemiesNum];
+		setEnemiesNum((int) Math.pow(difficulty, 1.3 ));
+		enemiesList = new Monster[(int) Math.pow(difficulty, 1.5)][enemiesNum];
 
 		populateEnemies();
-		changeStats( Math.log((difficulty+1))+.5);
-
+		//		changeStats(Math.log((difficulty+1))+.5); //good function //good comment btw
 	}
 
 
 	private void changeStats(double d) {
-		for(Monster e: enemiesList)
+		for(Monster[] el: enemiesList)
 		{
-			e.setAttack((int)e.getAttack*d);
-			e.setHealth((int)e.getHealth*d);
-			e.setSpeed((int)e.getSpeed*d);
+			for(Monster e: el)
+			{
+				/*e.setAttack((int)e.getAttack()*d);
+				e.setHP((int)e.getHP()*d);
+				e.setSpeed((int)e.getSpeed()*d);*/
+			}
+
 		}
 	}
 
+	//end of difficulty	
+	//creating enemies
 	private void populateEnemies() {
-		for(int rounds = 0; rounds< enemiesList.length; i++)
+		for(int rounds = 0; rounds< enemiesList.length; rounds++)
 		{
-			for(int idx = 0; idx<enemiesList[rounds][idx].length; idx++)
+			for(int idx = 0; idx<enemiesList[rounds].length; idx++)
 			{
-				enemeisList[rounds][idx] = new Monster();
+				enemiesList[rounds][idx] = MainGame.game.mobs[(int) Math.random()*MainGame.game.mobs.length];
+
 			}
 		}
 	}
 
+
+	//begin of quicksort for specific round
 	private void makeOrder() {
-
-		for(Character c: mainParty)
+		order = new ArrayList<Hero>();
+		for(Hero c: mainParty)
 		{
-			order.add(c);
+			if(c.getHP() > 0)
+				order.add(c);
 		}
 
-		for(Enemies e: enemieslist[round])
+		for(Monster e: enemiesList[round])
 		{
-			order.add(e);
+			if(e.getHP() > 0)
+				order.add(e);
 		}
 
-		sortOrder(order);
+		sortOrder(order, 0, order.size());
 	}
 
-	private void sortOrder(ArrayList<Character> list) {
-		int currentIdx = order.size();
-		int pivotSpeed = order.get(0);
+	private void sortOrder(ArrayList<Hero> heroList, int startIdx, int endIdx) {
+		int currentIdx = endIdx;
+		int pivotSpeed = heroList.get(startIdx).getSpeed();
 
-		if(list.size() > 1)
+		if(endIdx - startIdx >= 1)
 		{
-			for(int i = 1; i< order.size(); i++)
+			for(int i = startIdx+1; i< endIdx; i++)
 			{
-				if(list.get(i).getSpeed() < pivotSpeed)
+				if(heroList.get(i).getSpeed() < pivotSpeed)
 				{
 					currentIdx --;
 					swap(currentIdx, i);
@@ -153,68 +185,103 @@ public class GBattleSystem implements Runnable {
 			}
 
 			currentIdx --;
-			swap(currentIdx, 0);
-			sortOrder((ArrayList<Character>) order.subList(0, currentIdx));
-			sortOrder((ArrayList<Character>) order.subList(currentIdx+1, order.size()));
+			swap(currentIdx, startIdx);
+			if(currentIdx != startIdx)
+			{
+				sortOrder(heroList, startIdx, currentIdx);
+
+			}
+			if(currentIdx+1 < heroList.size())
+			{
+				sortOrder(heroList, currentIdx+1, endIdx);
+			}
+
 
 		}
 
 	}
 
 	private void swap(int currentIdx, int i) {
-		Character holder = order.get(currentIdx);
+		Hero holder = order.get(currentIdx);
 		order.set(currentIdx, order.get(i));
 		order.set(i, holder);
 	}
 
-	@Override
+	// end of sort
 
+	public void useItem(Items item) {
+		if(item instanceof IProjectileAoe)
+		{
+			item.act(enemiesList[round], item.getValue());
+		}
+		else 
+		{
+			if(item instanceof IHealingItem)
+			{
+				item.act(currentPlayer, item.getValue());
+			}
+			else
+			{
+				item.act(currentEnemy, item.getValue());
+			}
 
-	private void updateGame() {
-		
+		}
+
+		inventory.remove(inventory.indexOf(item));
+
+		//next turn;
 	}
-	
+
+	//setters and getters.
 	private void setEnemiesNum(int enemiesNum) {
 		this.enemiesNum = enemiesNum;
 	}
 
-	private void setRounds(int round) {
-		this.round = round;
-	}
-
-	public void useItem(Items items) {
-		if(items instanceof IProjectileAoe)
-		{
-			items.act(enemiesList[round], items.getValue());
-		}
-		else 
-		{
-			items.act(currentEnemy, items.getValue());
-		}
-		
-		inventory.get(inventory.indexOf(items)).remove(0);
-		
-		//next turn;
+	public int getRound() {
+		return this.round;
 	}
 
 	public Monster[][] getEnemiesList() {
 		return enemiesList;
 	}
 
-	public ArrayList<ArrayList<Items>> getInventory() {
+	public ArrayList<Items> getInventory() {
 		return this.inventory;
 	}
 
-	public void setInventory(ArrayList<ArrayList<Items>> inventory) {
-		this.inventory = inventory;
-	}
-	
-	public ArrayList<Character> getCharacters(){
+	public ArrayList<Hero> getCharacters(){
 		return this.order;
 	}
-	
-	public int getRound() {
-		return this.round;
+
+	public Monster getCurrentEnemy() {
+		return currentEnemy;
 	}
 
+	public void setCurrentEnemy(Monster currentEnemy) {
+		this.currentEnemy = currentEnemy;
+	}
+
+	public Hero getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(Hero currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+	public void setWaiting(boolean waiting) {
+		this.waiting = waiting;
+	}
+
+	public void setInventory(ArrayList<Items> inventory) {
+		this.inventory = inventory;
+	}
+
+	public Thread getGameSystem() {
+		return gameSystem;
+	}
+
+	public void setPlaying(boolean playing) {
+		this.playing = playing;
+	}
 }

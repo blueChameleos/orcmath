@@ -43,12 +43,11 @@ public class MainGame extends GUIApplication {
 	public static ArrayList<Hero> currentTeam;
 	public static CharacterScreen cScreen;
 	public static BeginnerSelectionScreen bScreen;
-	public static DavidGetCharacterSingle single;
-	public static DavidGetCharacterMulti multi;
-	
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
+	public static DavidGetCharacterSingle single;
+	public static DavidGetCharacterMulti multi;
 	public static Hero temp;
 	public static Hero temp1;
 	public static Hero temp2;
@@ -79,7 +78,7 @@ public class MainGame extends GUIApplication {
 
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS				
-		createCharacters();		
+		createCharacters();
 		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
@@ -92,12 +91,13 @@ public class MainGame extends GUIApplication {
 		addHero(beginnerSword);
 		addHero(beginnerWizard);
 		addHero(highTank);
+		currentTeam.add(beginnerArcher);
+		currentTeam.add(beginnerSword);
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 //		featured = new FeaturedChar(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
-//		battle = new BattleScreen(getWidth(), getHeight());				
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());					
@@ -113,8 +113,8 @@ public class MainGame extends GUIApplication {
 //		button.addActionListener(new AL());
 //		frame.setVisible(true);
 //		
-		
-	 
+
+
 	public static void main(String[] args) {
 		game = new MainGame(1280, 1024);
 		Thread runner = new Thread(game);
@@ -168,7 +168,7 @@ public class MainGame extends GUIApplication {
 //		System.out.println(beginnerSword.getImage());
 //		System.out.println(beginnerArcher);
 	}
-	
+
 	public static void createMobs() {
 		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
 		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
@@ -179,7 +179,11 @@ public class MainGame extends GUIApplication {
 		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
 		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
 	}
-	
+
+	public void setBattle(BattleScreen battle) {
+		this.battle = battle;
+	}
+
 	
 	public static void addHero(Hero hero) {
 		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());

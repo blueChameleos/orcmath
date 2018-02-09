@@ -9,11 +9,11 @@ public class IProjectileAoe extends IProjectile {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void act(Enemy[] targets, int value)
+	public void act(Monster[] targets, int value)
 	{
-		for(int i = 0; i< targets.size(); i++)
+		for(int i = 0; i< targets.length; i++)
 		{
-			targets.get(i).setHP(targets.get(i).getHP() - value);
+			targets[i].setHP(targets[i].getHP() - value);
 		}
 	}
 }

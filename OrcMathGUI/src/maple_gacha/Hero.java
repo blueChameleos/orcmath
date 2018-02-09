@@ -1,6 +1,8 @@
 package maple_gacha;
 
-public class Hero implements Character {
+import java.io.Serializable;
+
+public class Hero implements Character, Serializable{
 
 	private String img;
 	private String rank;
@@ -13,7 +15,15 @@ public class Hero implements Character {
 	private int exp;
 	private int level;
 	private boolean clickE;
-
+	private boolean guarding;
+	private double defensePercentage = .1;
+	
+	public double getDefensePercentage() {
+		return defensePercentage;
+	}
+	public void setDefensePercentage(double defensePercentage) {
+		this.defensePercentage = defensePercentage;
+	}
 	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
 		this.img = img;
 		this.rank = rank;
@@ -46,8 +56,8 @@ public class Hero implements Character {
 	}
 
 	@Override
-	public void setHP() {
-		
+	public void setHP(int hp) {
+		this.hp = hp;
 	}
 
 	
@@ -143,5 +153,13 @@ public class Hero implements Character {
 
 	public void setClickE() {
 		clickE = !clickE;
+	}
+	public void setGuard(boolean b) {
+		this.guarding = b;
+	}
+	
+	public boolean getGuard()
+	{
+		return this.guarding;
 	}
 }
