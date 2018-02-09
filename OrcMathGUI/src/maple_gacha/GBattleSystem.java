@@ -35,6 +35,7 @@ public class GBattleSystem implements Runnable {
 		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		currentEnemy = enemiesList[0][0];
 		gameSystem = new Thread(this);
+		addItems();
 		//		gameSystem.run();
 	}
 
@@ -50,6 +51,7 @@ public class GBattleSystem implements Runnable {
 			for(int i=0; i<order.size();i++)
 			{
 				currentPlayer = order.get(i);
+				
 				if(currentPlayer instanceof Monster)
 				{
 					MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
@@ -75,6 +77,15 @@ public class GBattleSystem implements Runnable {
 			}
 		}
 		round++;
+	}
+	
+	//testing items
+	public void addItems()
+	{
+		for(int i = 0; i<itemsList.length; i++)
+		{
+			inventory.add(itemsList[i]);
+		}
 	}
 
 	//difficulty
