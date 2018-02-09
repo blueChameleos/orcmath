@@ -62,9 +62,9 @@ public class MainScreen extends FullFunctionScreen {
 		Thread banner = new Thread(featured);
 		banner.start();		
 		unitlist = new ArrayList<Graphic>();
-		unit1 = new Graphic((getWidth()/2)-359,155,226,339,"resources/transparent.png");
-		unit2 = new Graphic((getWidth()/2)-113,155,226,339,"resources/transparent.png");
-		unit3 = new Graphic((getWidth()/2)+133,155,226,339,"resources/transparent.png");		
+		unit1 = new Graphic((getWidth()/2)-339,175,226,339,"resources/transparent.png");
+		unit2 = new Graphic((getWidth()/2)-93,175,226,339,"resources/transparent.png");
+		unit3 = new Graphic((getWidth()/2)+183,175,226,339,"resources/transparent.png");		
 		unitlist.add(unit1);
 		unitlist.add(unit2);
 		unitlist.add(unit3);
