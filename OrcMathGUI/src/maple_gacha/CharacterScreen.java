@@ -54,22 +54,13 @@ public class CharacterScreen extends FullFunctionScreen {
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/cardSystem.png");
 		background.setVisible(true);
 		viewObjects.add(background);
-		next = new Button(1100,925,140,80,"MENU",Color.yellow,new Action() {
-			@Override
-			public void act() {
-				MainGame.main.reload();
-				MainGame.game.setScreen(MainGame.main);
-				
-			}
-			
-		});
-		viewObjects.add(next);
 		idx = -1;
 		startPos = 0;
 		endPos =  MainGame.team.size();
 		if (MainGame.team.size() >= 5) {
 			endPos = 5;
 		}
+		
 		arrow1 = new ClickableGraphic(40,220,75,100,"resources/screenPics/arrow.jpg");
 		arrow1.setAction(new Action() {
 			

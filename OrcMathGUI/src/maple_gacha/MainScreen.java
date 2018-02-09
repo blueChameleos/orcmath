@@ -90,7 +90,7 @@ public class MainScreen extends FullFunctionScreen {
 		});
 		inventory = new Button(((getWidth()/4)*3)-150,875,200,100,"Units",Color.yellow,new Action() {
 			public void act() {
-				MainGame.game.setScreen(MainGame.cScreen);
+				MainGame.game.setScreen(new CharacterScreen(getWidth(), getHeight()));
 				MainGame.playMusic("resources/khalid.wav");
 
 			}
