@@ -33,6 +33,7 @@ public class MainGame extends GUIApplication {
 	public static MainScreen main;	
 	public static LoadingScreen load;
 	public static EthanSummonScreen summon;
+//	public static FeaturedChar featured;
 	public static int width;
 	public static int height;
 	public static UnitSelectionScreen unitsel;
@@ -41,6 +42,9 @@ public class MainGame extends GUIApplication {
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
+	public static Hero temp;
+	public static Hero temp1;
+	public static Hero temp2;
 	public static CharacterScreen cScreen;
 	public static BeginnerSelectionScreen bScreen;
 	public static DavidGetCharacterSingle single;
@@ -61,11 +65,12 @@ public class MainGame extends GUIApplication {
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
+//		featured = new FeaturedChar(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
 //		battle = new BattleScreen(getWidth(), getHeight());				
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
-		load = new LoadingScreen(getWidth(), getHeight());			
+		load = new LoadingScreen(getWidth(), getHeight());		
 		setScreen(load);
 	}
 	
@@ -109,9 +114,14 @@ public class MainGame extends GUIApplication {
 		beginnerArcher = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
 		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
+		
+		 temp = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
+		 temp1 = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
+		 temp2 = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
 		System.out.println(beginnerSword.getImage());
 		System.out.println(beginnerArcher);
 	}
+	
 	
 	public static void addHero(Hero hero) {
 		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());

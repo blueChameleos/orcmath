@@ -23,7 +23,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 	}
 
 	public void printCard() {
-		
+
 	}
 
 	public void rng() {
@@ -31,9 +31,8 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 	}
 
 	public void getCard() {
-		if (rate < 25) {
+		if (rate < 100) {
 			srare = true;
-			lightingCount = false;
 		} else {
 			srare = false;
 		}
@@ -44,49 +43,38 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 		rng();
 		getCard();
 
-		back = new Button(600, 500, 100, 75, "Back", Color.YELLOW, new Action() {
+		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
 
-				MainScreen.main.setScreen(MainScreen.summon);
+				MainGame.game.setScreen(MainGame.summon);
 			}
 		});
 
 		viewObjects.add(back);
 
-		Graphic mech = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
-				"resources/mech.jpg");
+		Graphic mech = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,"resources/mech.jpg");
 
 		lighting = new AnimatedComponent(0, 0, 1375, 1024);
 		viewObjects.add(lighting);
 
 		if (srare == true) {
-			new Thread() {
-				
-				public void run() {
 
-					if (lightingCount == false) {
-						lighting.setRepeat(false);
-						lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
-						Thread light = new Thread(lighting);
-						light.start();
-						System.out.println("sss");
-						System.out.println("sss");
-						System.out.println("sss");
-						System.out.println("sss");
-						System.out.println("sss");
-						
-						printCard(); 
-					}
-				}
-			}.start();
-		} else {
-			System.out.println("trash");
-			System.out.println("trash");
-			System.out.println("trash");
-			System.out.println("trash");
-			System.out.println("trash");
+			lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
+			Thread light = new Thread(lighting);
+
+			light.start();
+
+			
+			viewObjects.add(mech);
+			viewObjects.add(back);
+			
+			
+		}
+		else {
+			viewObjects.add(mech);
+			viewObjects.add(back);
 		}
 	}
 }
