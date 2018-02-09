@@ -178,6 +178,15 @@ public class CharacterScreen extends FullFunctionScreen {
 				}
 			});
 			viewObjects.add(clickList.get(i));
+			next = new Button(1100,925,140,80,"MENU",Color.yellow,new Action() {
+				@Override
+				public void act() {
+					MainGame.game.setScreen(MainGame.main);
+					
+				}
+				
+			});
+			viewObjects.add(next);
 		}
 		
 		
