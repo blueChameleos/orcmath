@@ -52,23 +52,29 @@ public class FeaturedChar extends FullFunctionScreen{
 			StyledComponent.setBaseFont(baseFont);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		System.out.println(isReady() + " this is isready");
+		}		
+		
+//		TextArea title = new TextArea((int)(getWidth()/2 * .3), (int)(getHeight()/2 * .5), 150, 150, "Click the Character to check stats!");
+//		viewObjects.add(title);
+		//NOT READY TO SHOW YET.
 		
 		if(isReady()) {
-			System.out.println(MainGame.summon.getThings().get(0));
+//			System.out.println(MainGame.summon.getThings().get(0));
 			
 			TextArea descrip = new TextArea((int)(getWidth()/2 * .75), (int)(getHeight()/2 * .9), 150, 150, MainGame.summon.getThings().get(0).getRank() + " Rank");
 			viewObjects.add(descrip);
-			Graphic beg1 = new Graphic((int)(getWidth()/2 * .65), (int) (getHeight()/2) , 200, 200, MainGame.summon.getThings().get(0).getImage());
+			ClickableGraphic beg1 = new ClickableGraphic((int)(getWidth()/2 * .65), (int) (getHeight()/2) , 200, 200, MainGame.summon.getThings().get(0).getImage());
+			beg1.setAction(new Action() {
+				
+				@Override
+				public void act() {
+					//Display Stats.
+					TextArea stats = new TextArea((int)(getWidth()/2 * .65), (int) (getHeight()/2) , 200, 200, MainGame.summon.getThings().get(0).getImage());
+					
+				}
+			});
 			viewObjects.add(beg1);
 		}
-		
-		/*if(getIndex() == 0) {
-			Hero featuredChar1 = new Hero("resources/characterPics/Hero_HighTank.png","B", 10, 10, 10, 10, 100);
-			Graphic begArcher = new Graphic(getWidth()/2, (int) (getHeight()/2 * .9) , 200, 200, featuredChar1.getImage());
-			viewObjects.add(begArcher);
-		}*/
 		
 		Button goBack = new Button(50, 50, 150, 150, "Return", Color.yellow, new Action() {
 
