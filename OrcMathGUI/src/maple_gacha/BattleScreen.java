@@ -52,9 +52,6 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		int playerSizeW = 100;
 		Graphic background = getRandomBackground();
 		viewObjects.add(background);
-		
-		BattleMenu itemMenu = new BattleMenu(roundNum, roundNum, null, null);
-		itemMenu.setVisible(false);
 		Button attackbttn = new Button(getWidth() - 300, getHeight() - 400, 250, 200, "Attack", new Action() {
 			public void act() {
 				backend.getCharacters().get(backend.getRound()).attack(currentEnemy, value);

@@ -139,7 +139,10 @@ public class CharacterScreen extends FullFunctionScreen {
 			
 			viewObjects.add(clickG.get(i));
 		}
-		
+		for (int i =0;i<MainGame.currentTeam.size();i++) {
+			clickG.get(i).setHero((MainGame.currentTeam.get(i)));
+			clickG.get(i).run();
+		}
 		for(int i = 0;i<5;i++) {
 			clickList.set(i, new CardPane(this,133+205*i,142,206,319,MainGame.team.get(i)));
 			clickList.get(i).setHero(MainGame.team.get(i));
@@ -181,6 +184,7 @@ public class CharacterScreen extends FullFunctionScreen {
 			next = new Button(1100,925,140,80,"MENU",Color.yellow,new Action() {
 				@Override
 				public void act() {
+					MainGame.main.reload();
 					MainGame.game.setScreen(MainGame.main);
 					
 				}
