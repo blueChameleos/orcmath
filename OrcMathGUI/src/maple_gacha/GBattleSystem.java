@@ -24,7 +24,7 @@ public class GBattleSystem implements Runnable {
 	private Hero currentPlayer;
 	private Monster currentEnemy;
 	private boolean waiting = false;
-	private boolean stillInRound;
+	private boolean playing;
 
 	//creation of System
 
@@ -36,7 +36,7 @@ public class GBattleSystem implements Runnable {
 		currentEnemy = enemiesList[0][0];
 		gameSystem = new Thread(this);
 		addItems();
-		//		gameSystem.run();
+		gameSystem.run();
 	}
 
 	public void run() {
@@ -46,12 +46,12 @@ public class GBattleSystem implements Runnable {
 
 	private void playGame() {
 
-		while(stillInRound)
+		while(playing)
 		{
 			for(int i=0; i<order.size();i++)
 			{
 				currentPlayer = order.get(i);
-				
+
 				if(currentPlayer instanceof Monster)
 				{
 					MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
@@ -78,7 +78,34 @@ public class GBattleSystem implements Runnable {
 		}
 		round++;
 	}
-	
+	//when someone dies (all monster dies or heros)
+	private void checkChanges() {
+		int instancesOfMonster = 0;
+		int instancesOfHeros = 0;
+		for(int i = 0; i<order.size(); i++)
+		{
+			if(order.get(i) instanceof Monster)
+			{
+				instancesOfMonster ++;
+			}
+			else
+			{
+				instancesOfHeros ++;
+			}
+		}
+		
+		if(instancesOfMonster == 0 || instancesOfHeros == 0)
+		{
+			newRound();
+		}
+	}
+
+	private void newRound() {
+		round ++;
+		order = new ArrayList<Hero>();
+		makeOrder();
+	}
+
 	//testing items
 	public void addItems()
 	{
@@ -211,11 +238,11 @@ public class GBattleSystem implements Runnable {
 	private void setEnemiesNum(int enemiesNum) {
 		this.enemiesNum = enemiesNum;
 	}
-	
+
 	public int getRound() {
 		return this.round;
 	}
-	
+
 	public Monster[][] getEnemiesList() {
 		return enemiesList;
 	}
@@ -256,7 +283,7 @@ public class GBattleSystem implements Runnable {
 		return gameSystem;
 	}
 
-	public void setStillInRound(boolean stillInRound) {
-		this.stillInRound = stillInRound;
+	public void setPlaying(boolean playing) {
+		this.playing = playing;
 	}
 }
