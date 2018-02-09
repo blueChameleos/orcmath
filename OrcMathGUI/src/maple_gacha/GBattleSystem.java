@@ -76,7 +76,6 @@ public class GBattleSystem implements Runnable {
 				}
 			}
 		}
-		round++;
 	}
 	//when someone dies (all monster dies or heros)
 	private void checkChanges() {
