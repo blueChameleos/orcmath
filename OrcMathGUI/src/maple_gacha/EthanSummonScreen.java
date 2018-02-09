@@ -199,14 +199,10 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 			@Override
 			public void act() {
 				setPotentialChars();
-//				MainGame.featured.setIndex(bannerType());
 				FeaturedChar newFScreen = new FeaturedChar(getWidth(), getHeight());
 				newFScreen.setReady(true);
-				System.out.println(newFScreen.isReady());
-				System.out.println(newFScreen.isReady());
 				newFScreen.setIndex(bannerType());
 				MainGame.game.setScreen(newFScreen);
-//				MainGame.game.setScreen(MainGame.featured);
 			}
 		});
 		
@@ -240,23 +236,23 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 	@Override
 	public void setPotentialChars() {
+		ArrayList<Hero> hero = new ArrayList<Hero>();
 		if(bannerType() == 0) {
-			ArrayList<Hero> hero = new ArrayList<Hero>();
 			
 			Hero temp = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-//			Hero temp1 = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-//			Hero temp2 = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-
-//			hero.add(MainGame.game.temp);
 			hero.add(temp);
 			setThings(hero);
-//			MainGame.featured.setReady(true);
-//			MainGame.featured.update();
-//			System.out.println(MainGame.featured.isReady());
-//			System.out.println(hero);
-//			MainGame.featured.setThing(hero);
 		}
-		
+		if(bannerType() == 1) {
+			Hero temp = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
+			hero.add(temp);
+			setThings(hero);
+		}
+		if(bannerType() == 2) {
+			Hero temp = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
+			hero.add(temp);
+			setThings(hero);
+		}
 	}
 
 	public void setThings(ArrayList<Hero> thing){
