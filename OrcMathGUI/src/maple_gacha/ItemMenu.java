@@ -31,7 +31,6 @@ public class ItemMenu extends ScrollablePane {
 	public void initAllObjects(List<Visible> viewObjects) {
 		this.setBackground(Color.BLUE);
 		this.itemlist = new ArrayList<Items>();
-		
 		int x = 30;
 		int y = 30;
 		for(int i = 0; i < itemlist.size(); i++) {
@@ -49,7 +48,7 @@ public class ItemMenu extends ScrollablePane {
 			viewObjects.add(item);
 			y += 90;
 		}
-		cancel = new Button(x, 300, 190, 60, "Return", new Action() {
+		cancel = new Button(x, y, 190, 60, "Return", new Action() {
 			@Override
 			public void act() {
 				MainGame.game.battle.itemui.setVisible(false);
