@@ -58,6 +58,7 @@ public class BattleMenu extends Pane implements Runnable{
 			public void act() {
 				MainGame.game.battle.backend.getCurrentEnemy().setHP(MainGame.game.battle.backend.getCurrentEnemy().getHP() - MainGame.game.battle.backend.getCurrentPlayer().getAttack());
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " attacked " + MainGame.game.battle.backend.getCurrentEnemy() + "!");
+				MainGame.game.battle.backend.checkChanges();
 			}
 		});
 		attackbutton.setBackgroundColor(Color.YELLOW);
@@ -72,8 +73,9 @@ public class BattleMenu extends Pane implements Runnable{
 		skillbutton = new Button(900, 85, 120, 75, "Skill", new Action() {
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
-				
+				MainGame.game.battle.backend.getCurrentPlayer().special();
+				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used a special skill!");
+				MainGame.game.battle.backend.checkChanges();
 			}
 		});
 		skillbutton.setBackgroundColor(Color.YELLOW);

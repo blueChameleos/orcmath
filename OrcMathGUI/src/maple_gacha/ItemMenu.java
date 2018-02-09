@@ -40,6 +40,7 @@ public class ItemMenu extends ScrollablePane {
 				public void act() {
 					MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
 					MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
+					MainGame.game.battle.backend.checkChanges();
 				}
 			});
 			/*
