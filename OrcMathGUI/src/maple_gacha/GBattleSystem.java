@@ -189,7 +189,6 @@ public class GBattleSystem implements Runnable {
 			}
 			
 		}
-		
 		inventory.remove(inventory.indexOf(item));
 		
 		//next turn;
@@ -198,6 +197,10 @@ public class GBattleSystem implements Runnable {
 	//setters and getters.
 	private void setEnemiesNum(int enemiesNum) {
 		this.enemiesNum = enemiesNum;
+	}
+	
+	public int getRound() {
+		return this.round;
 	}
 	
 	public Monster[][] getEnemiesList() {

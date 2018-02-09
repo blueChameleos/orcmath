@@ -9,7 +9,7 @@ public class IHealingItem extends Items {
 	
 	public void act(Hero target, int value)
 	{
-		target.setHp(target.getHP()+value);
+		target.setHP(target.getHP()+value);
 	}
 
 }
