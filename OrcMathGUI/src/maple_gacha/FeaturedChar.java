@@ -12,6 +12,7 @@ import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.Component;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
+import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -33,12 +34,13 @@ public class FeaturedChar extends FullFunctionScreen{
 
 	public FeaturedChar(int width, int height) {
 		super(width, height);
+//		setReady(false);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		setReady(false);
+		setReady(true);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
 		
@@ -51,23 +53,28 @@ public class FeaturedChar extends FullFunctionScreen{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(isReady() + " this is isready");
 		
 		if(isReady()) {
-			Graphic beg1 = new Graphic(getWidth()/2, (int) (getHeight()/2 * .9) , 200, 200, MainGame.summon.getThings().get(0).getImage());
+			System.out.println(MainGame.summon.getThings().get(0));
+			
+			TextArea descrip = new TextArea((int)(getWidth()/2 * .75), (int)(getHeight()/2 * .9), 150, 150, MainGame.summon.getThings().get(0).getRank() + " Rank");
+			viewObjects.add(descrip);
+			Graphic beg1 = new Graphic((int)(getWidth()/2 * .65), (int) (getHeight()/2) , 200, 200, MainGame.summon.getThings().get(0).getImage());
 			viewObjects.add(beg1);
 		}
 		
-		if(getIndex() == 0) {
+		/*if(getIndex() == 0) {
 			Hero featuredChar1 = new Hero("resources/characterPics/Hero_HighTank.png","B", 10, 10, 10, 10, 100);
 			Graphic begArcher = new Graphic(getWidth()/2, (int) (getHeight()/2 * .9) , 200, 200, featuredChar1.getImage());
 			viewObjects.add(begArcher);
-		}
+		}*/
 		
 		Button goBack = new Button(50, 50, 150, 150, "Return", Color.yellow, new Action() {
 
 			@Override
 			public void act() {
-				begArcher.setVisible(false);
+//				begArcher.setVisible(false);
 				MainGame.game.setScreen(MainGame.summon);
 			}
 		});

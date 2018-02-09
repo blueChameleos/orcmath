@@ -94,7 +94,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		index = 0;
-		System.out.println(getNx());
+//		System.out.println(getNx());
 		setNx(999999);
 //		setNx(getNx());//for some reason I can't make this actually change on featuredchar thing.
 		banners = new ArrayList<Graphic>();
@@ -199,8 +199,14 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 			@Override
 			public void act() {
 				setPotentialChars();
-				MainGame.featured.setIndex(bannerType());
-				MainGame.game.setScreen(MainGame.featured);
+//				MainGame.featured.setIndex(bannerType());
+				FeaturedChar newFScreen = new FeaturedChar(getWidth(), getHeight());
+				newFScreen.setReady(true);
+				System.out.println(newFScreen.isReady());
+				System.out.println(newFScreen.isReady());
+				newFScreen.setIndex(bannerType());
+				MainGame.game.setScreen(newFScreen);
+//				MainGame.game.setScreen(MainGame.featured);
 			}
 		});
 		
@@ -244,15 +250,17 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 //			hero.add(MainGame.game.temp);
 			hero.add(temp);
 			setThings(hero);
-			MainGame.featured.setReady(true);
-			System.out.println(hero);
+//			MainGame.featured.setReady(true);
+//			MainGame.featured.update();
+//			System.out.println(MainGame.featured.isReady());
+//			System.out.println(hero);
 //			MainGame.featured.setThing(hero);
 		}
 		
 	}
 
 	public void setThings(ArrayList<Hero> thing){
-		thing = heroes;
+		heroes = thing;
 	}
 	
 	public ArrayList<Hero> getThings() {
