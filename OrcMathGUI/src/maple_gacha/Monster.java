@@ -7,7 +7,7 @@ public class Monster extends Hero implements Character {
 	}
 	
 	public Monster(int strength, int speed, int attack, int defense, int hp) {
-		super("resources/characterPics/Hero_BeginnerArcher.png", "SS", strength, speed, attack, defense, hp);
+		super("resources/characterPics/Boss_YetiRobot", "SS", strength, speed, attack, defense, hp);
 	}
 
 	@Override
