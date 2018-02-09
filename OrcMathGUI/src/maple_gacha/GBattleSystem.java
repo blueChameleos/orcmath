@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class GBattleSystem implements Runnable {
 
-	
-/*	things to do:
+
+	/*	things to do:
 
 			user input on BattleScreen (Saturday + Sunday)
 
 			begin testing after merge.
-*/
+	 */
 	private int enemiesNum;
 	private Hero[] mainParty;
 	private Monster[][] enemiesList; //round -> enemies 
@@ -24,6 +24,7 @@ public class GBattleSystem implements Runnable {
 	private Hero currentPlayer;
 	private Monster currentEnemy;
 	private boolean waiting = false;
+	private boolean stillInRound;
 
 	//creation of System
 
@@ -34,11 +35,7 @@ public class GBattleSystem implements Runnable {
 		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		currentEnemy = enemiesList[0][0];
 		gameSystem = new Thread(this);
-//		gameSystem.run();
-	}
-
-	public void setInventory(ArrayList<Items> inventory) {
-		this.inventory = inventory;
+		//		gameSystem.run();
 	}
 
 	public void run() {
@@ -47,42 +44,46 @@ public class GBattleSystem implements Runnable {
 	}
 
 	private void playGame() {
-		
-		for(int i=0; i<order.size();i++)
+
+		while(stillInRound)
 		{
-			currentPlayer = order.get(i);
-			if(currentPlayer instanceof Monster)
+			for(int i=0; i<order.size();i++)
 			{
-				MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
-				Hero target = mainParty[(int) Math.random()*mainParty.length];
-				int action = (int) (Math.random()*3);
-				/*order.get(i).useTurn(target, action);
+				currentPlayer = order.get(i);
+				if(currentPlayer instanceof Monster)
+				{
+					MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
+					Hero target = mainParty[(int) Math.random()*mainParty.length];
+					int action = (int) (Math.random()*3);
+					/*order.get(i).useTurn(target, action);
 				BattleScreen.showAiTurn(order.get(i), target, action); //changes ai text-area to show events
-*/			}
-			else
-			{
-				//sleep until user does something.
-				MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
-				currentPlayer.setGuard(false);
-				
-				
-				try {
-					MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					 */			}
+				else
+				{
+					//sleep until user does something.
+					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
+					currentPlayer.setGuard(false);
+
+
+					try {
+						MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 		}
 		round++;
 	}
+
 	//difficulty
 	private void changeDifficulty(int difficulty) {
 		setEnemiesNum((int) Math.pow(difficulty, 1.3 ));
 		enemiesList = new Monster[(int) Math.pow(difficulty, 1.5)][enemiesNum];
 
 		populateEnemies();
-//		changeStats(Math.log((difficulty+1))+.5); //good function //good comment btw
+		//		changeStats(Math.log((difficulty+1))+.5); //good function //good comment btw
 	}
 
 
@@ -95,7 +96,7 @@ public class GBattleSystem implements Runnable {
 				e.setHP((int)e.getHP()*d);
 				e.setSpeed((int)e.getSpeed()*d);*/
 			}
-			
+
 		}
 	}
 
@@ -107,12 +108,12 @@ public class GBattleSystem implements Runnable {
 			for(int idx = 0; idx<enemiesList[rounds].length; idx++)
 			{
 				enemiesList[rounds][idx] = MainGame.game.mobs[(int) Math.random()*MainGame.game.mobs.length];
-				
+
 			}
 		}
 	}
 
-	
+
 	//begin of quicksort for specific round
 	private void makeOrder() {
 
@@ -120,13 +121,13 @@ public class GBattleSystem implements Runnable {
 		for(Hero c: mainParty)
 		{
 			if(c.getHP() > 0)
-			order.add(c);
+				order.add(c);
 		}
 
 		for(Monster e: enemiesList[round])
 		{
 			if(e.getHP() > 0)
-			order.add(e);
+				order.add(e);
 		}
 
 		sortOrder(order, 0, order.size());
@@ -152,13 +153,13 @@ public class GBattleSystem implements Runnable {
 			if(currentIdx != startIdx)
 			{
 				sortOrder(heroList, startIdx, currentIdx);
-				
+
 			}
 			if(currentIdx+1 < heroList.size())
 			{
 				sortOrder(heroList, currentIdx+1, endIdx);
 			}
-			
+
 
 		}
 
@@ -169,7 +170,7 @@ public class GBattleSystem implements Runnable {
 		order.set(currentIdx, order.get(i));
 		order.set(i, holder);
 	}
-	
+
 	// end of sort
 
 	public void useItem(Items item) {
@@ -187,10 +188,11 @@ public class GBattleSystem implements Runnable {
 			{
 				item.act(currentEnemy, item.getValue());
 			}
-			
+
 		}
+
 		inventory.remove(inventory.indexOf(item));
-		
+
 		//next turn;
 	}
 
@@ -210,11 +212,11 @@ public class GBattleSystem implements Runnable {
 	public ArrayList<Items> getInventory() {
 		return this.inventory;
 	}
-	
+
 	public ArrayList<Hero> getCharacters(){
 		return this.order;
 	}
-	
+
 	public Monster getCurrentEnemy() {
 		return currentEnemy;
 	}
@@ -234,11 +236,16 @@ public class GBattleSystem implements Runnable {
 	public void setWaiting(boolean waiting) {
 		this.waiting = waiting;
 	}
-	
+
+	public void setInventory(ArrayList<Items> inventory) {
+		this.inventory = inventory;
+	}
 
 	public Thread getGameSystem() {
 		return gameSystem;
 	}
 
-
+	public void setStillInRound(boolean stillInRound) {
+		this.stillInRound = stillInRound;
+	}
 }
