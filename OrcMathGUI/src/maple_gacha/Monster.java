@@ -21,7 +21,7 @@ public class Monster extends Hero implements Character {
 	@Override
 	public int getHP() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.hp;
 	}
 
 	@Override
