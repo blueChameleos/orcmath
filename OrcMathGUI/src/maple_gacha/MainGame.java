@@ -74,7 +74,6 @@ public class MainGame extends GUIApplication {
 		mobs = new Monster[3];
 		for(int i = 0; i < 3; i++) {
 			mobs[i] = new Monster(1,1,1,1,1);
-			System.out.println(mobs[i]);
 		}
 	}
 	

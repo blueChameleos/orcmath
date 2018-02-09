@@ -43,7 +43,7 @@ public class BattleMenu extends Pane implements Runnable{
 	} 
 
 	public void initAllObjects(List<Visible> viewObjects){
-		this.setAlpha((float) 0.5);
+		this.setAlpha((float) 0.75);
 		this.setBackground(Color.BLUE);
 		buttons[0] = attackbutton;
 		buttons[1] = defbutton;
@@ -53,7 +53,7 @@ public class BattleMenu extends Pane implements Runnable{
 		log.setBackgroundColor(Color.WHITE);
 		playerPortrait = new Graphic(100,20,150,150,"resources/char.jpg");
 		viewObjects.add(playerPortrait);
-		attackbutton = new Button(900, 10, 120, 75, "Attack", new Action() {
+		attackbutton = new Button(900, 10, 120, 65, "Attack", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
 				MainGame.game.battle.backend.getCurrentEnemy().setHP(MainGame.game.battle.backend.getCurrentEnemy().getHP() - MainGame.game.battle.backend.getCurrentPlayer().getAttack());
@@ -61,16 +61,14 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.backend.checkChanges();
 			}
 		});
-		attackbutton.setBackgroundColor(Color.YELLOW);
-		defbutton = new Button(1030, 85, 120, 75, "Guard", new Action() {
+		defbutton = new Button(1030, 85, 120, 65, "Guard", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
 				MainGame.game.battle.backend.getCurrentPlayer().setGuard(true);
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " guarded!");
 			}
 		});
-		defbutton.setBackgroundColor(Color.YELLOW);
-		skillbutton = new Button(900, 85, 120, 75, "Skill", new Action() {
+		skillbutton = new Button(900, 85, 120, 65, "Skill", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
 				MainGame.game.battle.backend.getCurrentPlayer().special();
@@ -78,14 +76,12 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.backend.checkChanges();
 			}
 		});
-		skillbutton.setBackgroundColor(Color.YELLOW);
-		itembutton = new Button(1030, 10, 120, 75, "Item", new Action() {
+		itembutton = new Button(1030, 10, 120, 65, "Item", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
 				MainGame.game.battle.itemui.setVisible(true);
 			}
 		});
-		itembutton.setBackgroundColor(Color.YELLOW);
 		
 		viewObjects.add(attackbutton);
 		viewObjects.add(defbutton);;

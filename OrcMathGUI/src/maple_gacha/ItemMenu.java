@@ -49,7 +49,7 @@ public class ItemMenu extends ScrollablePane {
 			viewObjects.add(item);
 			y += 90;
 		}
-		cancel = new Button(x, y, 190, 60, "Return", new Action() {
+		cancel = new Button(x, y, 190, 60, "Return", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
 				MainGame.game.battle.itemui.setVisible(false);

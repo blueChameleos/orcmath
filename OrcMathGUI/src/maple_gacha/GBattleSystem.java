@@ -153,7 +153,6 @@ public class GBattleSystem implements Runnable {
 
 	//begin of quicksort for specific round
 	private void makeOrder() {
-
 		order = new ArrayList<Hero>();
 		for(Hero c: mainParty)
 		{
