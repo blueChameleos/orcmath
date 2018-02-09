@@ -38,17 +38,16 @@ public class MainGame extends GUIApplication {
 	public static int height;
 	public static UnitSelectionScreen unitsel;
 	public static ArrayList<Hero> team;
-	public static ArrayList<Monster> mobs;
 	public static ArrayList<Monster> boss;
 	public static ArrayList<Hero> currentTeam;
 	public static CharacterScreen cScreen;
 	public static BeginnerSelectionScreen bScreen;
-	public static DavidGetCharacterSingle single;
-	public static DavidGetCharacterMulti multi;
-	
+	public static Monster[] mobs;
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
+	public static DavidGetCharacterSingle single;
+	public static DavidGetCharacterMulti multi;
 	public static Hero temp;
 	public static Hero temp1;
 	public static Hero temp2;
@@ -79,31 +78,24 @@ public class MainGame extends GUIApplication {
 
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS				
-		createCharacters();		
+		createCharacters();
 		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
 		addHero(beginnerSword);
 		addHero(beginnerWizard);
 		addHero(highTank);
-		addHero(beginnerSword);
-		addHero(beginnerWizard);
-		addHero(highTank);
-		addHero(beginnerSword);
-		addHero(beginnerWizard);
-		addHero(highTank);
+		currentTeam.add(beginnerArcher);
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 //		featured = new FeaturedChar(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
-//		battle = new BattleScreen(getWidth(), getHeight());				
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());					
 		setResizable(false);	
 		setScreen(load);	
-	}
 	
 //		JFrame frame = new JFrame();
 //		frame.setSize(200, 200);
@@ -115,9 +107,14 @@ public class MainGame extends GUIApplication {
 //		
 		
 	 
-	public static void main(String[] args) {
+		load = new LoadingScreen(getWidth(), getHeight());
+		battle = new BattleScreen(getWidth(), getHeight());
+		setScreen(battle);
+	}
+
+	public static void main(String[] args){
 		game = new MainGame(1280, 1024);
-		Thread runner = new Thread(game);
+		Thread runner = new Thread(game); 
 		runner.start();
 		playMusic("resources/maplestory music.wav");
 	}
@@ -180,6 +177,9 @@ public class MainGame extends GUIApplication {
 		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
 	}
 	
+	public void setBattle(BattleScreen battle) {
+		this.battle = battle;
+	}
 	
 	public static void addHero(Hero hero) {
 		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());

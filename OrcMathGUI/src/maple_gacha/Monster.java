@@ -3,13 +3,20 @@ package maple_gacha;
 public class Monster extends Hero implements Character {
 
 	public Monster(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
-		super(img, rank, strength, speed, attack, defense, hp);
+		super(img, rank, strength, 1000000, attack, defense, hp);
+	}
+	
+	public Monster(int strength, int speed, int attack, int defense, int hp) {
+		super("resources/characterPics/Boss_YetiRobot", "SS", strength, speed, attack, defense, hp);
 	}
 
 	@Override
 	public void attack() {
-		// TODO Auto-generated method stub
-		
+		if(MainGame.game.battle.backend.getCurrentPlayer().getGuard()) {
+			
+		}else {
+			
+		}
 	}
 
 	@Override
@@ -25,9 +32,9 @@ public class Monster extends Hero implements Character {
 	}
 
 	@Override
-	public void setHP() {
+	public void setHP(int hp) {
 		// TODO Auto-generated method stub
-		
+		super.setHP(hp);;
 	}
 
 	@Override
@@ -35,5 +42,4 @@ public class Monster extends Hero implements Character {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

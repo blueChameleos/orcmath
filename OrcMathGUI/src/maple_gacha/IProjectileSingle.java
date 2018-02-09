@@ -7,7 +7,7 @@ public class IProjectileSingle extends IProjectile {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void act(Character target, int value) {
+	public void act(Monster target, int value) {
 		target.setHP(target.getHP()- value);
 	}
 }

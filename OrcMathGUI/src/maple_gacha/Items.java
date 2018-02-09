@@ -1,10 +1,11 @@
 package maple_gacha;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import guiTeacher.components.Action;
 
-public class Items {
+public class Items implements Serializable{
 	
 	private String name;
 	private int value;
@@ -23,22 +24,17 @@ public class Items {
 		this.name = name;
 	}
 
-	public void act(Character target, int value) {
-		// TODO Auto-generated method stub
+	public void act(Monster[] enemiesList, int value) {
 		
 	}
 	
-	public void act(ArrayList<Enemy> targets, int value)
+	public void act(Hero target, int value)
 	{
 		
 	}
 	
 	public int getValue() {
 		return this.value;
-	}
-
-	public int getValue() {
-		return value;
 	}
 
 }
