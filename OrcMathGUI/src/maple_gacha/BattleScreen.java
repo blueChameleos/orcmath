@@ -98,7 +98,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable{
 	} 
 
 	private Graphic getRandomBackground() {
-		return new Graphic(0,0, getWidth(), getHeight(), "resources/b_background"+0+".jpg");
+		return new Graphic(0,0, getWidth(), getHeight(), "resources/winter.png");
 	}
 	
 	@Override
