@@ -9,6 +9,7 @@ import guiTeacher.components.AnimatedComponent;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
+import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -25,6 +26,8 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	public static Hero Sword;
 	public static Hero Wizard;
 	public ArrayList<Hero> stuff;
+	
+	private Button back1;
 
 	
 	public ArrayList<Hero> getStuff() {
@@ -39,21 +42,16 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		super(width, height);
 	}
 	
-	public static void createCharacters() {
-		Archer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-		Sword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
-		Wizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
-		//add the characters here?
-		System.out.println(Sword.getImage());
-		System.out.println(Archer);
-	}	
+
 	
 	
 
 	public void lighting() {
+		lighting.setRepeat(false);
 		lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
 		Thread light = new Thread(lighting);
 		light.start();
+		
 
 	}
 
@@ -74,37 +72,59 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		asdf = new ArrayList<Hero>();
 		
+		asdf = new ArrayList<Hero>();
+		asdf.add(MainGame.beginnerArcher);
+		
+				
 		StyledComponent.setButtonOutline(false);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/summoningbackground.png");
-		Graphic mech = new Graphic(475, 350, 650, 350,"resources/mech.jpg");
 		
+
+		
+		back1 = new Button(600, 900, 100, 75, "Back", Color.WHITE, new Action() {
+
+			@Override
+			public void act() {
+
+				
+			}
+		});
+		
+		
+		viewObjects.add(back1);
+
+		//TextArea descrip = new TextArea((int)(getWidth()/2 * .75), (int)(getHeight()/2 * .9), 150, 150, MainGame.summon.getThings().get(0).getRank());
 		
 		rng();
 		getCard();
 		banner();
-		contains(asdf);
+		
+		
+		Graphic bannerCard = new Graphic(475, 350, 650, 350,MainGame.summon.getThings().get(0).getImage());
+		
+		viewObjects.add(bannerCard);
 		
 		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
-				//ss
 				
-				viewObjects.remove(background);
-				viewObjects.remove(mech);
-				viewObjects.add(skipAn);
-				viewObjects.add(lighting);
-				viewObjects.remove(back);
+				
+				//viewObjects.remove(background);
+				//viewObjects.remove(mech);
+				//viewObjects.add(skipAn);
+				//viewObjects.add(lighting);
+				//viewObjects.remove(back);
 				MainGame.game.setScreen(MainGame.summon);
 				
 			}
 		});
 		
-		viewObjects.add(back);
+		
+		
 
-		skipAn = new Button(0,0,getWidth() ,getHeight()," ", new Action() {
+/*		skipAn = new Button(0,0,getWidth() ,getHeight()," ", new Action() {
 
 				@Override
 				public void act() {
@@ -118,9 +138,9 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 					skipAn.setVisible(false);
 					
 				}
-			});
+			});*/
 		
-		viewObjects.add(skipAn);
+		//viewObjects.add(skipAn);
 		
 		
 		lighting = new AnimatedComponent(0, 0, 1375, 1024);
@@ -131,11 +151,29 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 			public void run() {	
 
 				if (srare == true) {
-					lighting();
+					
+					
+					//viewObjects.add(background);
+					
+					lighting.setRepeat(false);
+					lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
+					Thread light = new Thread(lighting);
+					light.start();
+					
+					
+					//MainGame.addHero(asdf.get((int) (Math.random()*asdf.size())));
+
 				}
 				
 			}
 		}.start();
+		
+		
+		
+       // MainGame.main.getThings().loadImages(MainGame.summon.getThings().get(0).getImage(), getWidth()/2-359, 155);
+        
+		//MainGame.game.addHero(MainGame.summon.getThings().get(0).getImage(),MainGame.summon.getThings().get(0).getRank(),MainGame.summon.getThings().get(0).getStrength(),MainGame.summon.getThings().get(0).getSpeed(),MainGame.summon.getThings().get(0).getAttack(),MainGame.summon.getThings().get(0).getDefense(),MainGame.summon.getThings().get(0).getHP());
+		
 		
 	}
 	public void banner()
@@ -152,22 +190,5 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 
 	}
 	
-	public boolean contains(ArrayList<Hero> asdf)
-	{
-		asdf.add(Wizard);
-		
-		for(Hero Wizard: asdf)
-		{
-			System.out.println("The "+asdf.get(0)+true);
-			
-		}
-		return true;
-		
-	}
-
 	
 }
-		
-	
-	
-
