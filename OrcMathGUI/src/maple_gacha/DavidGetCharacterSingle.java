@@ -140,7 +140,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 				}
 			});*/
 		
-		//viewObjects.add(skipAn);
+		//viewObjects.add(skipAn)
 		
 		
 		lighting = new AnimatedComponent(0, 0, 1375, 1024);
