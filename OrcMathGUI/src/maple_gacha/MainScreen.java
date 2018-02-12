@@ -62,9 +62,9 @@ public class MainScreen extends FullFunctionScreen {
 		Thread banner = new Thread(featured);
 		banner.start();		
 		unitlist = new ArrayList<Graphic>();
-		unit1 = new Graphic((getWidth()/2)-339,175,226,339,"resources/transparent.png");
-		unit2 = new Graphic((getWidth()/2)-93,175,226,339,"resources/transparent.png");
-		unit3 = new Graphic((getWidth()/2)+183,175,226,339,"resources/transparent.png");		
+		unit1 = new Graphic((getWidth()-605)/2,225,226,339,"resources/transparent.png");
+		unit2 = new Graphic((getWidth()-113)/2,225,226,339,"resources/transparent.png");
+		unit3 = new Graphic((getWidth()+379)/2,225,226,339,"resources/transparent.png");		
 		unitlist.add(unit1);
 		unitlist.add(unit2);
 		unitlist.add(unit3);
@@ -138,10 +138,10 @@ public class MainScreen extends FullFunctionScreen {
 //		}
 		for(int i = 0; i < 3; i++) {
             if (MainGame.currentTeam.size() > i) {
-            	unitlist.get(i).loadImages(MainGame.currentTeam.get(i).getImage(), (getWidth()/2)-359+(i*256), 175);
+            	unitlist.get(i).loadImages(MainGame.currentTeam.get(i).getImage(), (getWidth()/2)-359+(i*246), 175);
             }else {
             	System.out.println("aah");
-            	unitlist.get(i).loadImages("resources/transparent.png", (getWidth()/2)-359+(i*256), 175);
+            	unitlist.get(i).loadImages("resources/transparent.png", (getWidth()/2)-359+(i*246)+113, 175);
             }
         }
 
