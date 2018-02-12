@@ -106,8 +106,8 @@ public class MainGame extends GUIApplication {
 //		frame.setVisible(true);
 //			 
 		load = new LoadingScreen(getWidth(), getHeight());
-		battle = new BattleScreen(getWidth(), getHeight());
-		setScreen(battle);
+		//battle = new BattleScreen(getWidth(), getHeight());
+		setScreen(main);
 	}
 
 	public static void main(String[] args) {
