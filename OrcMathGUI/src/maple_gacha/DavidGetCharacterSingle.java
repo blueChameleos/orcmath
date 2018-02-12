@@ -161,7 +161,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 					light.start();
 					
 					
-					//MainGame.addHero(asdf.get((int) (Math.random()*asdf.size())));
+					MainGame.addHero(asdf.get((int) (Math.random()*asdf.size())));
 
 				}
 				
