@@ -132,10 +132,6 @@ public class MainScreen extends FullFunctionScreen {
 	}
 	
 	public void reload() {
-
-//		for(int i = 0; i < MainGame.currentTeam.size(); i++) {
-//			unitlist.set(i,new Graphic((getWidth()/2)-359+(i*246),175,206,319,MainGame.currentTeam.get(i).getImage()));
-//		}
 		for(int i = 0; i < 3; i++) {
             if (MainGame.currentTeam.size() > i) {
             	unitlist.get(i).loadImages(MainGame.currentTeam.get(i).getImage(), (getWidth()/2)-359+(i*246), 175);
