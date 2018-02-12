@@ -105,9 +105,9 @@ public class MainGame extends GUIApplication {
 //		button.addActionListener(new AL());
 //		frame.setVisible(true);
 //			 
-		load = new LoadingScreen(getWidth(), getHeight());
-		//battle = new BattleScreen(getWidth(), getHeight());
-		setScreen(main);
+//		load = new LoadingScreen(getWidth(), getHeight());
+//		battle = new BattleScreen(getWidth(), getHeight());
+//		setScreen(load);
 	}
 
 	public static void main(String[] args) {
