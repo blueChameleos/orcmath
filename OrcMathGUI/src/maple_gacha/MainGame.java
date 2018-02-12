@@ -76,7 +76,7 @@ public class MainGame extends GUIApplication {
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());			
 		setResizable(false);
-		setScreen(new CharacterScreen(getWidth(), getHeight()));
+		setScreen(load);
 	}
 	 
 	public static void main(String[] args) {
