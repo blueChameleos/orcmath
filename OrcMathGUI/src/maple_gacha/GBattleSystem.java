@@ -45,7 +45,6 @@ public class GBattleSystem implements Runnable {
 	}
 
 	private void playGame() {
-
 		while(playing)
 		{
 			for(int i=0; i<order.size();i++)
@@ -83,20 +82,51 @@ public class GBattleSystem implements Runnable {
 		int instancesOfHeros = 0;
 		for(int i = 0; i<order.size(); i++)
 		{
-			if(order.get(i) instanceof Monster)
+			System.out.println(order.get(i));
+			if(order.get(i).getHP() <= 0)
 			{
-				instancesOfMonster ++;
+				order.remove(i);
+				i--;
 			}
 			else
 			{
-				instancesOfHeros ++;
+				if(order.get(i) instanceof Monster)
+				{
+					instancesOfMonster ++;
+				}
+				else
+				{
+					instancesOfHeros ++;
+				}
 			}
+
 		}
-		
+
 		if(instancesOfMonster == 0 || instancesOfHeros == 0)
 		{
-			newRound();
+			if(round == enemiesList.length-1)
+			{
+				endGame();
+			}
+			else
+			{
+				newRound();
+			}
+
 		}
+	}
+
+	private void endGame() {
+		while(MainGame.battle.userui.printingText) {
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		//		showRewards();
+		MainGame.battle.userui.updateLog("asfjaskjfaskjfgjkgs");
 	}
 
 	private void newRound() {
@@ -159,6 +189,8 @@ public class GBattleSystem implements Runnable {
 			if(c.getHP() > 0)
 				order.add(c);
 		}
+
+		System.out.println(enemiesList.length);
 
 		for(Monster e: enemiesList[round])
 		{

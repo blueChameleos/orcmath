@@ -46,7 +46,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		for (int i = 0; i < currentTeam.length; i++) {
 			currentTeam[i] = MainGame.currentTeam.get(i);
 		}
-		backend = new GBattleSystem(1, currentTeam);
+		backend = new GBattleSystem(2, currentTeam);
 
 		int playerSizeH = 100;
 		int playerSizeW = 100;
@@ -79,8 +79,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		}
 
 		for (int i = 0; i < backend.getEnemiesList()[backend.getRound()].length; i++) {
-			ClickableGraphic g = new ClickableGraphic(100 + (i * 100), 600, playerSizeW, playerSizeH,
-					MainGame.currentTeam.get(i).getImage());
+			// backend.getEnemiesList()[backend.getRound()][i].getImage()
+			ClickableGraphic g = new ClickableGraphic(100 + (i * 100), 600, playerSizeW, playerSizeH, "resources/characterPics/Boss_Killer.png");
 			int number = i;
 			g.setAction(new Action() {
 

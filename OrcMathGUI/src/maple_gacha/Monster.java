@@ -22,13 +22,13 @@ public class Monster extends Hero implements Character {
 	@Override
 	public String getImage() {
 		// TODO Auto-generated method stub
-		return null;
+		return super.getImage();
 	}
  
 	@Override
 	public int getHP() {
 		// TODO Auto-generated method stub
-		return 0;
+		return super.getHP();
 	}
 
 	@Override

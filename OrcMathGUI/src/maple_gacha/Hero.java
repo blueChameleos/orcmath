@@ -31,7 +31,7 @@ public class Hero implements Character, Serializable{
 		this.attack = attack;
 		this.defense = defense;
 		this.hp = hp;
-		this.uniqueID = (int) (Math.random() * 1000000 + 10000) - (int) (Math.random() * 5000);
+		this.uniqueID = (int) (Math.random() * 10000000 + 10000) - (int) (Math.random() * 50000);
 		this.exp = 0;
 	}
 //s

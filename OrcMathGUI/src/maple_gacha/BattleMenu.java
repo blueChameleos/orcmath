@@ -15,11 +15,13 @@ import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
 public class BattleMenu extends Pane implements Runnable{
-	
+
 	private static final long serialVersionUID = 6116383819049095100L;
 	private static final int WIDTH = 1180;
 	private static final int HEIGHT = 175;
 	public static TextLabel playerHP;
+	public static Thread printer;
+	public static boolean printingText;
 	public static TextArea log;
 	public static Graphic playerPortrait;
 	public static Button attackbutton;
@@ -27,7 +29,7 @@ public class BattleMenu extends Pane implements Runnable{
 	public static Button skillbutton;
 	public static Button itembutton;
 	public static Button[] buttons = new Button[4];
-	
+
 	public BattleMenu(FocusController focusController, int x, int y) {
 		super(focusController, x, y, WIDTH, HEIGHT);
 	}
@@ -82,17 +84,17 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.itemui.setVisible(true);
 			}
 		});
-		
+
 		viewObjects.add(attackbutton);
 		viewObjects.add(defbutton);;
 		viewObjects.add(skillbutton);
 		viewObjects.add(itembutton);
 		viewObjects.add(log);
 	}
-	
+
 	public void playText(String text) {
-		Thread printer = new Thread(new Runnable() {
-			
+		printer = new Thread(new Runnable() {
+
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
@@ -106,21 +108,52 @@ public class BattleMenu extends Pane implements Runnable{
 						e.printStackTrace();
 					}
 				}
-				
+				printingText = false;
+			}
+		});
+		while(printingText) {
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		printer.start();
+	}
+
+	public void updateLog(String text) {
+		log.setText("");
+		printer = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				for(int i = 0; i < text.length(); i++) {
+					log.setText(log.getText()+ text.substring(i, i+1));
+					BattleMenu.this.update();
+					try {
+						Thread.sleep(1000/60);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				printingText = false;
 			}
 		});
 		printer.start();
 	}
-	
-	public void updateLog(String text) {
-		log.setText("");
-		playText(text);
-	}
-	
+
 	public void updateHPBars() {
 		//updates both hp bars not sure how to do it rn
 	}
-	
+
 	public void updateImgs() {
 		//updates the current player img
 	}
@@ -128,6 +161,6 @@ public class BattleMenu extends Pane implements Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
