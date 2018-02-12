@@ -156,6 +156,7 @@ public class CharacterScreen extends FullFunctionScreen {
 			clickList.get(i).setAction(new Action() {
 				@Override
 				public void act() {
+					System.out.println(clickList.get(number).getHero().isClickE());
 					int arrSize = MainGame.currentTeam.size();
 					if(arrSize == 0 ) {
 						if(clickList.get(number).getHero() != null && !MainGame.team.get(findEquality(clickList.get(number).getHero())).isClickE()){

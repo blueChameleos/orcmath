@@ -85,7 +85,6 @@ public class MainGame extends GUIApplication {
 		addHero(beginnerSword);
 		addHero(beginnerWizard);
 		addHero(highTank);
-		currentTeam.add(beginnerArcher);
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
@@ -107,7 +106,7 @@ public class MainGame extends GUIApplication {
 //			 
 		load = new LoadingScreen(getWidth(), getHeight());
 		//battle = new BattleScreen(getWidth(), getHeight());
-		setScreen(main);
+		setScreen(load);
 	}
 
 	public static void main(String[] args) {
