@@ -7,6 +7,7 @@ import java.util.List;
 import guiTeacher.components.Action;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.Pane;
+import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Clickable;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
@@ -17,6 +18,8 @@ public class CardPane extends Pane implements Runnable {
 	private Hero hero;
 	private Graphic bg;
 	private Graphic charImg;
+	private TextArea name;
+	private TextArea grade;
 	private Action hoverAction;
 	
 	public CardPane(FocusController focusController, int x, int y, int width, int height,Hero g) {
@@ -34,6 +37,9 @@ public class CardPane extends Pane implements Runnable {
 		viewObjects.add(bg);
 		charImg = new Graphic(60,50,2,2, "resources/cardPics/Agrade.png");
 		viewObjects.add(charImg);
+		
+		name = new TextArea()
+		
 		update();
 		
 	}
@@ -48,6 +54,7 @@ public class CardPane extends Pane implements Runnable {
 	
 	@Override
 	public void run() {
+		
 		charImg.loadImages(hero.getImage(), 100, 100);
 		if (hero.getRank().equals("A") ) {
 			bg.loadImages("resources/cardPics/Agrade.png", getWidth(), getHeight());

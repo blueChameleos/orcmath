@@ -107,7 +107,8 @@ public class CharacterScreen extends FullFunctionScreen {
 		clickG.add(c2);
 		clickG.add(c3);
 		for(int i = 0;i<3;i++) {
-			clickG.set(i, new CardPane(this,63+225*i,586,206,319,null));
+			clickG.set(i, new CardPane(this,66
+					+225*i,586,198,315,null));
 			int number = i;
 			clickG.get(i).setAction(new Action() {
 			
@@ -141,7 +142,7 @@ public class CharacterScreen extends FullFunctionScreen {
 		}
 		
 		for(int i = 0;i<5;i++) {
-			clickList.set(i, new CardPane(this,133+205*i,142,206,319,MainGame.team.get(i)));
+			clickList.set(i, new CardPane(this,133+205*i,142,195,310,MainGame.team.get(i)));
 			clickList.get(i).setHero(MainGame.team.get(i));
 			clickList.get(i).run();
 			clickList.get(i).update();
