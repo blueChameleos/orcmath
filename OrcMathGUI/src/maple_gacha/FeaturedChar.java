@@ -59,13 +59,13 @@ public class FeaturedChar extends FullFunctionScreen{
 			e.printStackTrace();
 		}	
 		
-		stats = new TextArea(getWidth()/2, (int) (getHeight()/2 * .25), 250, 250, "");
+		stats = new TextArea(getWidth()/2, (int) (getHeight()/2 * .75), 250, 250, "");
 		stats.setVisible(false);
 		viewObjects.add(stats);
 		
 		if(isReady()) {
 			
-			Button displayStats = new Button(getWidth()/2, (int) (getHeight()/2 * .75), 75, 75, "Show/hide stats", Color.YELLOW, new Action() {
+			Button displayStats = new Button(getWidth()/2, (int) (getHeight()/2 * 1.5), 75, 75, "Show/hide stats", Color.YELLOW, new Action() {
 				
 				@Override
 				public void act() {

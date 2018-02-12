@@ -238,18 +238,19 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	public void setPotentialChars() {
 		ArrayList<Hero> hero = new ArrayList<Hero>();
 		if(bannerType() == 0) {
-			
-			Hero temp = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100);
-			hero.add(temp);
+			Hero temp1 = MainGame.beginnerArcher;
+//			Hero temp = MainGame.mediumWizard;
+//			hero.add(temp);
+			hero.add(temp1);
 			setThings(hero);
 		}
 		if(bannerType() == 1) {
-			Hero temp = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
+			Hero temp = MainGame.beginnerSword;
 			hero.add(temp);
 			setThings(hero);
 		}
 		if(bannerType() == 2) {
-			Hero temp = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100);
+			Hero temp = MainGame.beginnerWizard;
 			hero.add(temp);
 			setThings(hero);
 		}
