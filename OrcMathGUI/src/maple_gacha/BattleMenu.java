@@ -91,42 +91,6 @@ public class BattleMenu extends Pane implements Runnable{
 		viewObjects.add(itembutton);
 		viewObjects.add(log);
 	}
-
-	public void playText(String text) {
-		printer = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				for(int i = 0; i < text.length(); i++) {
-					log.setText(log.getText()+ text.substring(i, i+1));
-					BattleMenu.this.update();
-					try {
-						Thread.sleep(1000/60);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				printingText = false;
-			}
-		});
-		while(printingText) {
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		printer.start();
-	}
 	
 	public void showItemMenu() {
 		Thread animator = new Thread(new Runnable() {
@@ -180,11 +144,11 @@ public class BattleMenu extends Pane implements Runnable{
 	}
 
 	public void updateLog(String text) {
-		log.setText("");
 		printer = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+				log.setText("");
 				for(int i = 0; i < text.length(); i++) {
 					log.setText(log.getText()+ text.substring(i, i+1));
 					BattleMenu.this.update();
@@ -196,6 +160,7 @@ public class BattleMenu extends Pane implements Runnable{
 					}
 				}
 				printingText = false;
+				printer = null;
 			}
 		});
 		printer.start();

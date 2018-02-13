@@ -75,8 +75,6 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		itemui.setVisible(false);
 		viewObjects.add(userui);
 		viewObjects.add(itemui);
-		pointer = new Graphic(0, 0, 2, 2, "resources/yellowarrow.png");
-		viewObjects.add(pointer);
 		for (int i = 0; i < MainGame.currentTeam.size(); i++) {
 			int number = i;
 			clickHero.set(i, new ClickableGraphic(700 + (i * 100), 600, playerSizeW, playerSizeH,
@@ -112,6 +110,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 
 			viewObjects.add(g);
 		}
+		
+		backend.setPlaying(true);
 
 	}
 

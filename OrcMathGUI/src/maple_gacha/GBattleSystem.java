@@ -47,18 +47,15 @@ public class GBattleSystem implements Runnable {
 	private void playGame() {
 		while(playing)
 		{
-			for(int i=0; i<order.size();i++)
+			for(int i = 0; i < order.size(); i++)
 			{
 				currentPlayer = order.get(i);
-
 				if(currentPlayer instanceof Monster)
 				{
-					MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
 					Hero target = mainParty[(int) Math.random()*mainParty.length];
-					int action = (int) (Math.random()*3);
 					target.setHP(target.getHP() - currentPlayer.getAttack());
+					System.out.println(target.getHP());
 					MainGame.battle.userui.updateLog(currentPlayer + " attacked " + target + "!");
-					
 				}
 				else
 				{
