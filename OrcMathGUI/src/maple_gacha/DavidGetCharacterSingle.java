@@ -21,21 +21,22 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	public double rate;
 	private Button skipAn;
 	public boolean lightingCheck;
-	public ArrayList<Hero> asdf;
+	public ArrayList<Hero> resistance;
 	public static Hero Archer;
 	public static Hero Sword;
 	public static Hero Wizard;
-	public ArrayList<Hero> stuff;
-	
+	public ArrayList<Hero> red;
+	public ArrayList<Hero> og;
+	public int cardNum;
 	private Button back1;
 
 	
 	public ArrayList<Hero> getStuff() {
-		return stuff;
+		return resistance;
 	}
 
 	public void setStuff(ArrayList<Hero> stuff) {
-		this.stuff = stuff;
+		this.resistance = stuff;
 	}
 
 	public DavidGetCharacterSingle(int width, int height) {
@@ -73,54 +74,53 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		
-		asdf = new ArrayList<Hero>();
-		asdf.add(MainGame.beginnerArcher);
+		rng();
+		getCard();
+		//check();
+		
+		resistance = new ArrayList<Hero>();
+		resistance.add(MainGame.highTank);
+		resistance.add(MainGame.highAssassin);
+		resistance.add(MainGame.highSirandHorse);
+
 		
 				
 		StyledComponent.setButtonOutline(false);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/summoningbackground.png");
 		
-
-		
+		cardNum = (int) (Math.random()*resistance.size());
+		System.out.println(cardNum);
 		back1 = new Button(600, 900, 100, 75, "Back", Color.WHITE, new Action() {
 
 			@Override
 			public void act() {
 
-				
+				MainGame.game.setScreen(MainGame.summon);
+
 			}
 		});
 		
 		
-		viewObjects.add(back1);
 
 		//TextArea descrip = new TextArea((int)(getWidth()/2 * .75), (int)(getHeight()/2 * .9), 150, 150, MainGame.summon.getThings().get(0).getRank());
 		
-		rng();
-		getCard();
-		banner();
+		Graphic bannerCard = new Graphic(475, 350, 650, 350,resistance.get(cardNum).getImage());
 		
 		
-		Graphic bannerCard = new Graphic(475, 350, 650, 350,MainGame.summon.getThings().get(0).getImage());
-		
-		viewObjects.add(bannerCard);
 		
 		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
 				
-				
-				//viewObjects.remove(background);
-				//viewObjects.remove(mech);
-				//viewObjects.add(skipAn);
-				//viewObjects.add(lighting);
-				//viewObjects.remove(back);
 				MainGame.game.setScreen(MainGame.summon);
 				
 			}
 		});
 		
+		back.setVisible(false);
+		back.setEnabled(false);
+		viewObjects.add(back);
 		
 		
 
@@ -160,9 +160,20 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 					Thread light = new Thread(lighting);
 					light.start();
 					
+					try {
+						Thread.sleep(6000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
-					MainGame.addHero(asdf.get((int) (Math.random()*asdf.size())));
-
+					viewObjects.remove(lighting);
+					viewObjects.add(bannerCard);
+					MainGame.addHero(resistance.get(cardNum));
+					
+					back.setVisible(true);
+					back.setEnabled(true);
+					System.out.println("back button addded");
 				}
 				
 			}
@@ -176,17 +187,17 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		
 		
 	}
-	public void banner()
+	public void check()
 	{
 		
-		asdf.add(Archer);
-		asdf.add(Sword);
-		asdf.add(Wizard);
+		resistance.add(Archer);
+		resistance.add(Sword);
+		resistance.add(Wizard);
 		
 		
-		System.out.println("Character added "+asdf.get(0));
-		System.out.println("Character added "+asdf.get(1));
-		System.out.println("Character added "+asdf.get(2));
+		System.out.println("Character added "+resistance.get(0));
+		System.out.println("Character added "+resistance.get(1));
+		System.out.println("Character added "+resistance.get(2));
 
 	}
 	
