@@ -133,6 +133,10 @@ public class BattleMenu extends Pane implements Runnable{
 			
 			@Override
 			public void run() {
+				attackbutton.setEnabled(false);
+				defbutton.setEnabled(false);
+				skillbutton.setEnabled(false);
+				itembutton.setEnabled(false);
 				while(MainGame.game.battle.itemui.getAlpha() < 0.99) {
 					MainGame.game.battle.itemui.setAlpha((float)(MainGame.game.battle.itemui.getAlpha() + 0.01));
 					try {
@@ -151,10 +155,14 @@ public class BattleMenu extends Pane implements Runnable{
 	}
 	
 	public void hideItemMenu() {
-Thread animator = new Thread(new Runnable() {
-			
+		Thread animator = new Thread(new Runnable() {
 			@Override
 			public void run() {
+				attackbutton.setEnabled(true);
+				defbutton.setEnabled(true);
+				skillbutton.setEnabled(true);
+				itembutton.setEnabled(true);
+				MainGame.game.battle.itemui.setAlpha(1);
 				while(MainGame.game.battle.itemui.getAlpha() > 0) {
 					MainGame.game.battle.itemui.setAlpha((float)(MainGame.game.battle.itemui.getAlpha() - 0.01));
 					try {
