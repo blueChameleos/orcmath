@@ -19,6 +19,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 	private ArrayList<Graphic> banners;	
 	private ArrayList<Hero> heroes;
+	private int[] bannerName;
 	private int index;
 	private int nx;
 	private TextArea error;
@@ -95,6 +96,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		BANNER_WIDTH = (int) (getWidth() / 10 * 2.5);
+		BANNER_HEIGHT = (int) (getHeight() / 2 * .65);
 		index = 0;
 //		System.out.println(getNx());
 		setNx(999999);
@@ -121,20 +124,19 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		count.setText("  " + nx + " NX");
 		viewObjects.add(count);
 		
-		error = new TextArea((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 10 * 1.5), 150, 150, "You do not have enough nx!");
+		error = new TextArea(BANNER_WIDTH, BANNER_HEIGHT, 150, 150, "You do not have enough nx!");
 		viewObjects.add(error);
 		error.setVisible(false);
 		
-		Graphic banner = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
+		Graphic banner = new Graphic(BANNER_WIDTH, BANNER_HEIGHT, 650, 350,
 				"resources/banner.jpg");
 		add(banner);
 
-		//This should probably be part of the arraylist somehow?
-		Graphic banner1 = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350,
+		Graphic banner1 = new Graphic(BANNER_WIDTH, BANNER_HEIGHT, 650, 350,
 				"resources/banner1.jpg");
 		add(banner1);
 		
-		Graphic banner2 = new Graphic((int) (getWidth() / 10 * 2.5), (int) (getHeight() / 2 * .65), 650, 350, "resources/banner2.jpeg");
+		Graphic banner2 = new Graphic(BANNER_WIDTH, BANNER_HEIGHT, 650, 350, "resources/banner2.jpeg");
 		add(banner2);
 		
 		viewObjects.add(banners.get(0));
