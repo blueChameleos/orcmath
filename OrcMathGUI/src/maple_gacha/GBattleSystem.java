@@ -56,9 +56,10 @@ public class GBattleSystem implements Runnable {
 					MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
 					Hero target = mainParty[(int) Math.random()*mainParty.length];
 					int action = (int) (Math.random()*3);
-					/*order.get(i).useTurn(target, action);
-				BattleScreen.showAiTurn(order.get(i), target, action); //changes ai text-area to show events
-					 */			}
+					target.setHP(target.getHP() - currentPlayer.getAttack());
+					MainGame.battle.userui.updateLog(currentPlayer + " attacked " + target + "!");
+					
+				}
 				else
 				{
 					//sleep until user does something.

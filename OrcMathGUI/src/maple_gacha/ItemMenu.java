@@ -38,17 +38,19 @@ public class ItemMenu extends ScrollablePane {
 			int j = i;
 			Button item;
 			if(itemlist.get(j) instanceof IHealingItem) {
-				item = new Button(x, y, 190, 60, itemlist.get(i).getName(), Color.GREEN, new Action() {
+				item = new Button(x, y, 190, 60, itemlist.get(j).getName(), Color.GREEN, new Action() {
 					@Override
 					public void act() {
+						System.out.println(itemlist.get(j).getName());
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
 						MainGame.battle.userui.hideItemMenu();
+						System.out.println(itemlist.get(j).getName());
 						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
 						MainGame.game.battle.backend.checkChanges();
 					}
 				});
 			}else {
-				item = new Button(x, y, 190, 60, itemlist.get(i).getName(), Color.ORANGE, new Action() {
+				item = new Button(x, y, 190, 60, itemlist.get(j).getName(), Color.ORANGE, new Action() {
 					@Override
 					public void act() {
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
@@ -58,9 +60,6 @@ public class ItemMenu extends ScrollablePane {
 					}
 				});
 			}
-			/*
-			 * add designs later
-			 */
 			viewObjects.add(item);
 			y += 90;
 		}
