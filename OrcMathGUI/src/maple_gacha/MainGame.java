@@ -156,7 +156,7 @@ public class MainGame extends GUIApplication {
 		mediumHighSchoolGirl = new Hero("resources/characterPics/HeroAHighSchoolGirl.png", "S", 20, 20, 20, 20, 150);
 		
 		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200);
-		highPrincess = new Hero("resources/charcterPics/HeroSPrincess.png", "SS", 30, 30, 30, 30, 200);
+		highPrincess = new Hero("resources/characterPics/HeroSPrincess.png", "SS", 30, 30, 30, 30, 200);
 		highAssassin = new Hero("resources/characterPics/HeroSAssassin.png", "SS", 30, 30, 30, 30, 200);
 		highSirandHorse = new Hero("resources/characterPics/HeroSBraveSirandHorse.png", "SS", 30, 30, 30, 30, 200);
 		
