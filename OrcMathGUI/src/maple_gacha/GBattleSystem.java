@@ -66,7 +66,9 @@ public class GBattleSystem implements Runnable {
 					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 					currentPlayer.setGuard(false);
 
-
+					currentEnemy = enemiesList[round][(int) Math.random()*enemiesList[round].length];
+					
+					
 					try {
 						MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
 					} catch (InterruptedException e) {

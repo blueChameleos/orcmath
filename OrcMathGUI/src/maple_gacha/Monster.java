@@ -42,4 +42,9 @@ public class Monster extends Hero implements Character {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String toString()
+	{
+		return "Monster";
+	}
 }
