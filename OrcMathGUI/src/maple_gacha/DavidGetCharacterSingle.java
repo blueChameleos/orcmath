@@ -66,7 +66,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 			srare = false;
 		}
 	}
-
+	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
