@@ -117,6 +117,7 @@ public class CharacterScreen extends FullFunctionScreen {
 					if(clickG.get(number).getHero() != null) {
 						MainGame.currentTeam.remove(clickG.get(number).getHero());
 						MainGame.team.get(findEquality(clickG.get(number).getHero())).setClickE();
+						confirmation.setText("");
 						reloadC1();
 					}
 					
@@ -124,19 +125,21 @@ public class CharacterScreen extends FullFunctionScreen {
 			});
 			clickG.get(i).setHoverAction(new Action() {
 				public void act() {
-					if(idx != number && (clickG.get(number).getHero() != null)) {
+					
+						if(idx != number && (clickG.get(number).getHero() != null)) {
 						System.out.println(number);
 						idx = number;
-					confirmation.setText("Rank = " + clickG.get(number).getHero().getRank() + "\n" +
+						confirmation.setText("Rank = " + clickG.get(number).getHero().getRank() + "\n" +
 							"Strength = " + clickG.get(number).getHero().getStrength() + "\n" + 
 							"Speed = " + clickG.get(number).getHero().getSpeed() + "\n" + 
 							"Attack = " + clickG.get(number).getHero().getAttack() + "\n" + 
 							"Defense = " + clickG.get(number).getHero().getDefense() + "\n" +
-							"HP = " + clickG.get(number).getHero().getHP() + "\n" +
-							"Unique ID = " + clickG.get(number).getHero().getUniqueID() + "\n");
+							"HP = " + clickG.get(number).getHero().getHP());
+						}
 					}
+					
 				}
-			});
+			);
 			
 			viewObjects.add(clickG.get(i));
 		}

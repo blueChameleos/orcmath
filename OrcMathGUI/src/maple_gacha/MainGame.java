@@ -86,18 +86,18 @@ public class MainGame extends GUIApplication {
 	}
 
 	public static void createCharacters() {
-		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100);
-		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
-		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100);
+		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100, "Archer");
+		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100,"Swordsman");
+		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100,"Wizard");
 		
-		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150);
-		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150);
-		mediumWitch = new Hero("resources/characterPics/HeroAitch.png", "A", 20, 20, 20, 20, 150);
-		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150);
-		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "A", 20, 20, 20, 20, 150);
+		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150,"Wizard");
+		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150, "Axeman");
+		mediumWitch = new Hero("resources/characterPics/HeroAitch.png", "A", 20, 20, 20, 20, 150, "Witch");
+		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150, "Wolf Girl");
+		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "A", 20, 20, 20, 20, 150, "Cannoneer");
 		
-		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200);
-		highPrincess = new Hero("resources/charcterPics/HeroSPrincess.png", "S", 30, 30, 30, 30, 200);
+		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200, "Tank");
+		highPrincess = new Hero("resources/charcterPics/HeroSPrincess.png", "S", 30, 30, 30, 30, 200, "Princess" );
 		
 		
 		 
@@ -109,18 +109,18 @@ public class MainGame extends GUIApplication {
 	}
 	
 	public static void createMobs() {
-		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
-		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
-		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
-		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
-		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
-		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
-		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
-		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
+		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20, "Blowfish");
+		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20,"Demon" );
+		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20, "Devil");
+		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20,"Invidia");
+		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20, "Yeti");
+		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20, "Psy");
+		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20,"Dragon");
+		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20,"Alien");
 	}
 	
 	public static void addHero(Hero hero) {
-		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());
+		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP(),hero.getName());
 		team.add(newHero);
 	}
 }

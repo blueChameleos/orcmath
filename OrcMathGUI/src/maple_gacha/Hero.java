@@ -13,8 +13,9 @@ public class Hero implements Character {
 	private int exp;
 	private int level;
 	private boolean clickE;
+	private String name;
 
-	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
+	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp, String name) {
 		this.img = img;
 		this.rank = rank;
 		this.strength = strength;
@@ -25,6 +26,7 @@ public class Hero implements Character {
 		this.uniqueID = (int) (Math.random() * 1000000 + 10000) - (int) (Math.random() * 5000);
 		this.exp = 0;
 		this.level = 1;
+		this.setName(name);
 	}
 //s
 	@Override
@@ -143,5 +145,11 @@ public class Hero implements Character {
 
 	public void setClickE() {
 		clickE = !clickE;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -20,6 +20,7 @@ public class CardPane extends Pane implements Runnable {
 	private Graphic charImg;
 	private TextArea name;
 	private TextArea grade;
+	private TextArea level;
 	private Action hoverAction;
 	
 	public CardPane(FocusController focusController, int x, int y, int width, int height,Hero g) {
@@ -38,7 +39,14 @@ public class CardPane extends Pane implements Runnable {
 		charImg = new Graphic(60,50,2,2, "resources/cardPics/Agrade.png");
 		viewObjects.add(charImg);
 		
-		name = new TextArea()
+		
+		grade = new TextArea(66,200,70,30,"");
+		viewObjects.add(grade);
+		name = new TextArea(60,160,100,60,"");
+		viewObjects.add(name);
+		level = new TextArea(66,245,70,30,"");
+		viewObjects.add(level);
+		
 		
 		update();
 		
@@ -58,20 +66,41 @@ public class CardPane extends Pane implements Runnable {
 		charImg.loadImages(hero.getImage(), 100, 100);
 		if (hero.getRank().equals("A") ) {
 			bg.loadImages("resources/cardPics/Agrade.png", getWidth(), getHeight());
+			name.setText(hero.getName());
+			grade.setText("Rank: " + hero.getRank());
+			level.setText("Level " + Integer.toString(hero.getLevel()));
+			
 		}else if(hero.getRank().equals("B")) {
 			bg.loadImages("resources/cardPics/Bgrade.png", getWidth(), getHeight());
+			name.setText(hero.getName());
+			grade.setText("Rank: " + hero.getRank());
+			level.setText("Level " + Integer.toString(hero.getLevel()));
+			
 		}
 		else if(hero.getRank().equals("S")) {
 			bg.loadImages("resources/cardPics/Sgrade.png", getWidth(), getHeight());
+			name.setText(hero.getName());
+			grade.setText("Rank: " + hero.getRank());
+			level.setText("Level " + Integer.toString(hero.getLevel()));
+			
 		}
 		else if(hero.getRank().equals("SS")) {
 			bg.loadImages("resources/cardPics/SSgrade.png", getWidth(), getHeight());
+			name.setText(hero.getName());
+			grade.setText("Rank: " + hero.getRank());
+			level.setText("Level " + Integer.toString(hero.getLevel()));
+			
 		}
+		//Integer.toString(hero.getLevel())
+		
 		update();
 	}
 	public void hide() {
 		bg.loadImages("resources/Empty2.png", 206, 319);
 		charImg.loadImages("resources/Empty2.png", 2, 2);
+		name.setText("");
+		grade.setText("");
+		level.setText("");
 		update();
 	}
 	public void setAction(Action action) {
