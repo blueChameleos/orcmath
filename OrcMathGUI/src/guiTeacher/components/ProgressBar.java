@@ -16,7 +16,7 @@ public class ProgressBar extends StyledComponent {
 
 	public ProgressBar(int x, int y, int w, int h) {
 		super(x, y, w, h);
-		setVisible(false);//does not appear until task begins
+		setVisible(true);//does not appear until task begins
 		barColor = getTabColor();
 		incompleteColor = getBackgroundColor();
 
