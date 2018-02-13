@@ -47,7 +47,7 @@ public class CharacterImage extends Component implements Clickable {
 		return x > getX() && x < getX() + getWidth() && y > getY() && y < getY() + getHeight();
 	}
 
-	@Override
+	@Override 
 	public void act() {
 		// TODO Auto-generated method stub
 		if(action != null) {

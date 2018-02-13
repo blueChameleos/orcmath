@@ -10,7 +10,7 @@ public class HpBar extends Component {
 
 	private int hp;
 	
-	public int getHp() {
+	public int getHp() { 
 		return hp;
 	}
 

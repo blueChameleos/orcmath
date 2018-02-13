@@ -11,6 +11,6 @@ public class HeroImage extends CharacterImage {
 		// TODO Auto-generated constructor stub
 	}
 	public void drawCheckMark(Graphics2D g) {
-		
+		 
 	}
 }

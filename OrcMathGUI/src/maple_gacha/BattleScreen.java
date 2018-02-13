@@ -41,7 +41,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	ArrayList<ClickableGraphic> clickHero;
 	ArrayList<ClickableGraphic> clickMonster;
 
-
+  
 
 	public BattleScreen(int width, int height) {
 		super(width, height);
