@@ -152,13 +152,13 @@ public class MainGame extends GUIApplication {
 		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150);
 		mediumWitch = new Hero("resources/characterPics/HeroAitch.png", "A", 20, 20, 20, 20, 150);
 		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150);
-		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "A", 20, 20, 20, 20, 150);
-		mediumHighSchoolGirl = new Hero("resources/characterPics/HeroAHighSchoolGirl.png", "A", 20, 20, 20, 20, 150);
+		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "S", 20, 20, 20, 20, 150);
+		mediumHighSchoolGirl = new Hero("resources/characterPics/HeroAHighSchoolGirl.png", "S", 20, 20, 20, 20, 150);
 		
 		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200);
-		highPrincess = new Hero("resources/charcterPics/HeroSPrincess.png", "S", 30, 30, 30, 30, 200);
-		highAssassin = new Hero("resources/characterPics/HeroSAssassin.png", "S", 30, 30, 30, 30, 200);
-		highSirandHorse = new Hero("resources/characterPics/HeroSBraveSirandHorse.png", "S", 30, 30, 30, 30, 200);
+		highPrincess = new Hero("resources/charcterPics/HeroSPrincess.png", "SS", 30, 30, 30, 30, 200);
+		highAssassin = new Hero("resources/characterPics/HeroSAssassin.png", "SS", 30, 30, 30, 30, 200);
+		highSirandHorse = new Hero("resources/characterPics/HeroSBraveSirandHorse.png", "SS", 30, 30, 30, 30, 200);
 		
 		
 		 

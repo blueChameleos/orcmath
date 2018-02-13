@@ -24,6 +24,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	private TextArea error;
 	private TextArea count;
 	private static DavidGetCharacterSingle singleScreen;
+	private int BANNER_WIDTH;
+	private int BANNER_HEIGHT;
 
 
 	public EthanSummonScreen(int width, int height) {
@@ -169,10 +171,10 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		Button single = new Button((int) (getWidth() / 10 * 3.75), (int) (getHeight() / 2 * 1.4), 50, 50, "x1", Color.yellow, new Action() {
 			public void act() {
 				if(canSummon(0)) {
+					//0 = single summon
 					setPotentialChars();
 					count.setText("  " + getNx() + " NX");
 					MainGame.game.setScreen(new DavidGetCharacterSingle(getWidth(), getHeight()));
-//					MainGame.game.setScreen(MainGame.single);
 				}else {
 					cantSummon();
 				}
@@ -185,6 +187,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 			@Override
 			public void act() {
+				//0 = singlesummon
 				if(canSummon(1)) {
 					count.setText("  " + getNx() + " NX");
 					MainGame.game.setScreen(new DavidGetCharacterMulti(getWidth(), getHeight()));
@@ -238,10 +241,10 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	public void setPotentialChars() {
 		ArrayList<Hero> hero = new ArrayList<Hero>();
 		if(bannerType() == 0) {
-			hero.add(MainGame.highTank);
+			hero.add(MainGame.highPrincess);
 			hero.add(MainGame.beginnerSword);
 			hero.add(MainGame.mediumAxe);
-			hero.add(MainGame.highPrincess);
+			hero.add(MainGame.highTank);
 			hero.add(MainGame.bCoolGuys);
 			
 			setThings(hero);
