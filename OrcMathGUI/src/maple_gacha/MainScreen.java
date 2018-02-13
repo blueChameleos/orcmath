@@ -85,6 +85,12 @@ public class MainScreen extends FullFunctionScreen {
 				MainGame.game.setScreen(MainGame.summon);
 				MainGame.playMusic("resources/khalid.wav");
 
+				
+				
+				
+				
+				
+				
 			}
 			
 		});
