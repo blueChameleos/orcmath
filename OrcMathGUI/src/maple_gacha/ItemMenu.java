@@ -31,11 +31,12 @@ public class ItemMenu extends ScrollablePane {
 	public void initAllObjects(List<Visible> viewObjects) {
 		this.setBackground(Color.BLUE);
 		this.itemlist = new ArrayList<Items>();
+		this.itemlist = MainGame.battle.backend.getInventory();
 		int x = 30;
 		int y = 30;
 		for(int i = 0; i < itemlist.size(); i++) {
 			int j = i;
-			Button item = new Button(x, y, 190, 60, itemlist.get(i).getName(), new Action() {
+			Button item = new Button(x, y, 190, 60, itemlist.get(i).getName(), Color.YELLOW, new Action() {
 				@Override
 				public void act() {
 					MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
