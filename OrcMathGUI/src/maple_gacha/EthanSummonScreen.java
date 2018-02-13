@@ -239,8 +239,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		ArrayList<Hero> hero = new ArrayList<Hero>();
 		if(bannerType() == 0) {
 			Hero temp1 = MainGame.beginnerArcher;
-//			Hero temp = MainGame.mediumWizard;
-//			hero.add(temp);
+			Hero temp = MainGame.highTank;
+			hero.add(temp);
 			hero.add(temp1);
 			setThings(hero);
 		}

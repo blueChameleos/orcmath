@@ -48,17 +48,14 @@ public class MainGame extends GUIApplication {
 	public static Hero beginnerWizard;
 	public static DavidGetCharacterSingle single;
 	public static DavidGetCharacterMulti multi;
-	public static Hero temp;
-	public static Hero temp1;
-	public static Hero temp2;
 	private static Clip g;
-	private static Hero mediumWizard;
-	private static Hero mediumAxe;
-	private static Hero mediumWitch;
-	private static Hero mediumWolfGirl;
-	private static Hero mediumCannonMan;
-	private static Hero highTank;
-	private static Hero highPrincess;
+	public static Hero mediumWizard;
+	public static Hero mediumAxe;
+	public static Hero mediumWitch;
+	public static Hero mediumWolfGirl;
+	public static Hero mediumCannonMan;
+	public static Hero highTank;
+	public static Hero highPrincess;
 
 	private static Monster minionBlowfish;
 	private static Monster minionDemon;
@@ -142,9 +139,6 @@ public class MainGame extends GUIApplication {
 		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
 		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100);
 		
-		temp = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-		temp1 = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
-		temp2 = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
 		
 		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150);
 		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150);
