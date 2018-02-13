@@ -54,7 +54,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		for (int i = 0; i < currentTeam.length; i++) {
 			currentTeam[i] = MainGame.currentTeam.get(i);
 		}
-		backend = new GBattleSystem(2, currentTeam);
+		backend = new GBattleSystem(5, currentTeam);
 
 		int playerSizeH = 100;
 		int playerSizeW = 100;

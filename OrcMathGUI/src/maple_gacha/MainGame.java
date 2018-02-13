@@ -22,6 +22,7 @@ public class MainGame extends GUIApplication {
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
+	
 	public static CharacterScreen cScreen;
 	public static BeginnerSelectionScreen bScreen;
 	public static DavidGetCharacterSingle single;

@@ -98,10 +98,6 @@ public class Hero implements Character, Serializable{
 		return defense;
 	}
 
-	public int getHp() {
-		return hp;
-	}
-
 	public int getUniqueID() {
 		return uniqueID;
 	}
