@@ -127,6 +127,7 @@ public class GBattleSystem implements Runnable {
 		}
 		//		showRewards();
 		MainGame.battle.userui.updateLog("asfjaskjfaskjfgjkgs");
+		MainGame.game.setScreen(MainGame.game.main);
 	}
 
 	private void newRound() {
@@ -175,7 +176,6 @@ public class GBattleSystem implements Runnable {
 			for(int idx = 0; idx<enemiesList[rounds].length; idx++)
 			{
 				enemiesList[rounds][idx] = MainGame.game.mobs[(int) Math.random()*MainGame.game.mobs.length];
-
 			}
 		}
 	}

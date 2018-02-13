@@ -59,6 +59,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		userui = new BattleMenu(this, 30, 800);
 		userui.update();
 		itemui = new ItemMenu(this, 1000, 400);
+		itemui.setAlpha(0);
 		itemui.setVisible(false);
 		viewObjects.add(userui);
 		viewObjects.add(itemui);

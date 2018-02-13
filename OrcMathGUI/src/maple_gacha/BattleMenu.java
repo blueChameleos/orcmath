@@ -51,7 +51,7 @@ public class BattleMenu extends Pane implements Runnable{
 		buttons[1] = defbutton;
 		buttons[2] = skillbutton;
 		buttons[3] = itembutton;
-		log = new TextArea(250, 15, 700, 145, "");
+		log = new TextArea(250, 15, 630, 145, "");
 		log.setBackgroundColor(Color.WHITE);
 		playerPortrait = new Graphic(100,20,150,150,"resources/char.jpg");
 		viewObjects.add(playerPortrait);
@@ -81,7 +81,25 @@ public class BattleMenu extends Pane implements Runnable{
 		itembutton = new Button(1030, 10, 120, 65, "Item", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
+				Thread animator = new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						while(MainGame.game.battle.itemui.getAlpha() < 0.99) {
+							MainGame.game.battle.itemui.setAlpha((float)(MainGame.game.battle.itemui.getAlpha() + 0.01));
+							try {
+								Thread.sleep(5);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						MainGame.game.battle.itemui.setAlpha(1);
+					}
+				});
+				MainGame.game.battle.itemui.setAlpha(0);
 				MainGame.game.battle.itemui.setVisible(true);
+				animator.start();
 			}
 		});
 

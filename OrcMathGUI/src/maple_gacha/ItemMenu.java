@@ -36,24 +36,52 @@ public class ItemMenu extends ScrollablePane {
 		int y = 30;
 		for(int i = 0; i < itemlist.size(); i++) {
 			int j = i;
-			Button item = new Button(x, y, 190, 60, itemlist.get(i).getName(), Color.YELLOW, new Action() {
-				@Override
-				public void act() {
-					MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
-					MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
-					MainGame.game.battle.backend.checkChanges();
-				}
-			});
+			Button item;
+			if(itemlist.get(j) instanceof IHealingItem) {
+				item = new Button(x, y, 190, 60, itemlist.get(i).getName(), Color.GREEN, new Action() {
+					@Override
+					public void act() {
+						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
+						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
+						MainGame.game.battle.backend.checkChanges();
+					}
+				});
+			}else {
+				item = new Button(x, y, 190, 60, itemlist.get(i).getName(), Color.ORANGE, new Action() {
+					@Override
+					public void act() {
+						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
+						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
+						MainGame.game.battle.backend.checkChanges();
+					}
+				});
+			}
 			/*
 			 * add designs later
 			 */
 			viewObjects.add(item);
 			y += 90;
 		}
-		cancel = new Button(x, y, 190, 60, "Return", Color.YELLOW, new Action() {
+		cancel = new Button(x, y, 190, 60, "Return", Color.RED, new Action() {
 			@Override
 			public void act() {
-				MainGame.game.battle.itemui.setVisible(false);
+				Thread animator = new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						while(MainGame.game.battle.itemui.getAlpha() > 0) {
+							MainGame.game.battle.itemui.setAlpha((float)(MainGame.game.battle.itemui.getAlpha() - 0.01));
+							try {
+								Thread.sleep(5);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						MainGame.game.battle.itemui.setVisible(false);
+					}
+				});
+				animator.start();
 			}
 		});
 		viewObjects.add(cancel);
