@@ -89,8 +89,8 @@ public class FeaturedChar extends FullFunctionScreen{
 			});
 			viewObjects.add(displayStats);
 			
-			TextArea descrip = new TextArea((int)(getWidth()/2 * .65), (int)(getHeight()/2 * .9), 150, 150, MainGame.summon.getThings()
-					.get(0).getRank() + " Rank");
+			TextArea descrip = new TextArea((int)(getWidth()/2 * .65), (int)(getHeight()/2 * .9), 150, 150, "Rank: " + MainGame.summon.getThings()
+					.get(0).getRank());
 			viewObjects.add(descrip);
 			ClickableGraphic beg1 = new ClickableGraphic((int)(getWidth()/2 * .7), (int) (getHeight()/2) , 200, 200, MainGame.summon.getThings()
 					.get(0).getImage());
