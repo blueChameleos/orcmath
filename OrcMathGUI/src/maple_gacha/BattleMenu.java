@@ -81,25 +81,7 @@ public class BattleMenu extends Pane implements Runnable{
 		itembutton = new Button(1030, 10, 120, 65, "Item", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
-				Thread animator = new Thread(new Runnable() {
-					
-					@Override
-					public void run() {
-						while(MainGame.game.battle.itemui.getAlpha() < 0.99) {
-							MainGame.game.battle.itemui.setAlpha((float)(MainGame.game.battle.itemui.getAlpha() + 0.01));
-							try {
-								Thread.sleep(5);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-						MainGame.game.battle.itemui.setAlpha(1);
-					}
-				});
-				MainGame.game.battle.itemui.setAlpha(0);
-				MainGame.game.battle.itemui.setVisible(true);
-				animator.start();
+				showItemMenu();
 			}
 		});
 
@@ -144,6 +126,49 @@ public class BattleMenu extends Pane implements Runnable{
 			e.printStackTrace();
 		}
 		printer.start();
+	}
+	
+	public void showItemMenu() {
+		Thread animator = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while(MainGame.game.battle.itemui.getAlpha() < 0.99) {
+					MainGame.game.battle.itemui.setAlpha((float)(MainGame.game.battle.itemui.getAlpha() + 0.01));
+					try {
+						Thread.sleep(5);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				MainGame.game.battle.itemui.setAlpha(1);
+			}
+		});
+		MainGame.game.battle.itemui.setAlpha(0);
+		MainGame.game.battle.itemui.setVisible(true);
+		animator.start();
+	}
+	
+	public void hideItemMenu() {
+Thread animator = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while(MainGame.game.battle.itemui.getAlpha() > 0) {
+					MainGame.game.battle.itemui.setAlpha((float)(MainGame.game.battle.itemui.getAlpha() - 0.01));
+					try {
+						Thread.sleep(5);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		MainGame.game.battle.itemui.setAlpha(1);
+		MainGame.game.battle.itemui.setVisible(false);
+		animator.start();
 	}
 
 	public void updateLog(String text) {

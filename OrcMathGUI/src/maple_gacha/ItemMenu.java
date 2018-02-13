@@ -42,6 +42,7 @@ public class ItemMenu extends ScrollablePane {
 					@Override
 					public void act() {
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
+						MainGame.battle.userui.hideItemMenu();
 						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
 						MainGame.game.battle.backend.checkChanges();
 					}
@@ -51,6 +52,7 @@ public class ItemMenu extends ScrollablePane {
 					@Override
 					public void act() {
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
+						MainGame.battle.userui.hideItemMenu();
 						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
 						MainGame.game.battle.backend.checkChanges();
 					}
@@ -65,23 +67,7 @@ public class ItemMenu extends ScrollablePane {
 		cancel = new Button(x, y, 190, 60, "Return", Color.RED, new Action() {
 			@Override
 			public void act() {
-				Thread animator = new Thread(new Runnable() {
-					
-					@Override
-					public void run() {
-						while(MainGame.game.battle.itemui.getAlpha() > 0) {
-							MainGame.game.battle.itemui.setAlpha((float)(MainGame.game.battle.itemui.getAlpha() - 0.01));
-							try {
-								Thread.sleep(5);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-						MainGame.game.battle.itemui.setVisible(false);
-					}
-				});
-				animator.start();
+				MainGame.battle.userui.hideItemMenu();
 			}
 		});
 		viewObjects.add(cancel);
