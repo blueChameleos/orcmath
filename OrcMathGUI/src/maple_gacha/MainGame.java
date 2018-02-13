@@ -46,6 +46,8 @@ public class MainGame extends GUIApplication {
 	public static Hero beginnerArcher;
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
+	public static Hero bCoolGuys;
+	public static Hero bFanWoman;
 	public static DavidGetCharacterSingle single;
 	public static DavidGetCharacterMulti multi;
 	private static Clip g;
@@ -54,8 +56,11 @@ public class MainGame extends GUIApplication {
 	public static Hero mediumWitch;
 	public static Hero mediumWolfGirl;
 	public static Hero mediumCannonMan;
+	public static Hero mediumHighSchoolGirl;
 	public static Hero highTank;
 	public static Hero highPrincess;
+	public static Hero highAssassin;
+	public static Hero highSirandHorse;
 
 	private static Monster minionBlowfish;
 	private static Monster minionDemon;
@@ -138,6 +143,9 @@ public class MainGame extends GUIApplication {
 		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
 		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100);
+	
+		bCoolGuys = new Hero("resources/characterPics/HeroBCoolGuy.png", "B", 10, 10, 10, 10, 100);
+		bFanWoman = new Hero("resources/characterPics/HeroBFanWoman.png", "B", 10, 10, 10, 10, 100);
 		
 		
 		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150);
@@ -145,9 +153,12 @@ public class MainGame extends GUIApplication {
 		mediumWitch = new Hero("resources/characterPics/HeroAitch.png", "A", 20, 20, 20, 20, 150);
 		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150);
 		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "A", 20, 20, 20, 20, 150);
+		mediumHighSchoolGirl = new Hero("resources/characterPics/HeroAHighSchoolGirl.png", "A", 20, 20, 20, 20, 150);
 		
 		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200);
 		highPrincess = new Hero("resources/charcterPics/HeroSPrincess.png", "S", 30, 30, 30, 30, 200);
+		highAssassin = new Hero("resources/characterPics/HeroSAssassin.png", "S", 30, 30, 30, 30, 200);
+		highSirandHorse = new Hero("resources/characterPics/HeroSBraveSirandHorse.png", "S", 30, 30, 30, 30, 200);
 		
 		
 		 
