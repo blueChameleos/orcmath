@@ -10,7 +10,7 @@ public class MainGame extends GUIApplication {
 	
 	public static MainGame game;
 	public static BattleScreen battle;
-	public static MainScreen main;	
+	public static MainScreen main;	 
 	public static LoadingScreen load;
 	public static EthanSummonScreen summon;
 	public static int width;

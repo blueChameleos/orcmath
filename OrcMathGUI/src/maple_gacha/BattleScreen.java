@@ -11,6 +11,8 @@ import guiTeacher.components.Button;
 import guiTeacher.components.ClickableCharacter;
 import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.Graphic;
+import guiTeacher.components.ProgressBar;
+import guiTeacher.interfaces.Task;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ComponentContainer;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -22,6 +24,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public static GBattleSystem backend;
 	public static BattleMenu userui;
 	public static ItemMenu itemui;
+	private CharacterImage currentlySelectedCharacterImage;
 
 	public static ClickableGraphic heroPos1;
 	public static ClickableGraphic heroPos2;
@@ -31,9 +34,14 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public static ClickableGraphic monsterPos2;
 	public static ClickableGraphic monsterPos3;
 
-	public static Graphic pointer;
+
+	public static HpBar eHp1;
+
+
 	ArrayList<ClickableGraphic> clickHero;
 	ArrayList<ClickableGraphic> clickMonster;
+
+  
 
 	public BattleScreen(int width, int height) {
 		super(width, height);
@@ -52,10 +60,14 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		int playerSizeW = 100;
 		Graphic background = getRandomBackground();
 		viewObjects.add(background);
+
 		clickHero = new ArrayList<ClickableGraphic>();
 		clickHero.add(heroPos1);
 		clickHero.add(heroPos2);
 		clickHero.add(heroPos3);
+
+		
+
 		userui = new BattleMenu(this, 30, 800);
 		userui.update();
 		itemui = new ItemMenu(this, 1000, 400);
@@ -81,19 +93,23 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 
 		for (int i = 0; i < backend.getEnemiesList()[backend.getRound()].length; i++) {
 			// backend.getEnemiesList()[backend.getRound()][i].getImage()
-			ClickableGraphic g = new ClickableGraphic(100 + (i * 100), 600, playerSizeW, playerSizeH, "resources/characterPics/Boss_Killer.png");
+			CharacterImage g = new CharacterImage(100 + (i * 100), 600,
+					"resources/characterPics/Boss_Killer.png", null);
 			int number = i;
+			
 			g.setAction(new Action() {
-
 				@Override
 				public void act() {
+					if (currentlySelectedCharacterImage != null) {
+						currentlySelectedCharacterImage.setSelected(false);
+					}
 					backend.setCurrentEnemy(backend.getEnemiesList()[backend.getRound()][number]);
-					pointer.loadImages("resources/yellowarrow.png", 30, 30);
-					pointer.setX(g.getX() + 30);
-					pointer.setY(g.getY() - 30);
+					g.setSelected(true);
+					currentlySelectedCharacterImage = g;
 					update();
 				}
 			});
+
 			viewObjects.add(g);
 		}
 
