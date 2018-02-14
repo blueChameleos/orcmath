@@ -61,6 +61,8 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.backend.getCurrentEnemy().setHP(MainGame.game.battle.backend.getCurrentEnemy().getHP() - MainGame.game.battle.backend.getCurrentPlayer().getAttack());
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " attacked " + MainGame.game.battle.backend.getCurrentEnemy() + "!");
 				MainGame.game.battle.backend.checkChanges();
+				MainGame.game.battle.backend.setWaiting(false);
+				MainGame.game.battle.game.interrupt();
 			}
 		});
 		defbutton = new Button(1030, 85, 120, 65, "Guard", Color.YELLOW, new Action() {
@@ -68,6 +70,8 @@ public class BattleMenu extends Pane implements Runnable{
 			public void act() {
 				MainGame.game.battle.backend.getCurrentPlayer().setGuard(true);
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " guarded!");
+				MainGame.game.battle.backend.setWaiting(false);
+				MainGame.game.battle.game.interrupt();
 			}
 		});
 		skillbutton = new Button(900, 85, 120, 65, "Skill", Color.YELLOW, new Action() {
@@ -76,6 +80,8 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.backend.getCurrentPlayer().special();
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used a special skill!");
 				MainGame.game.battle.backend.checkChanges();
+				MainGame.game.battle.backend.setWaiting(false);
+				MainGame.game.battle.game.interrupt();
 			}
 		});
 		itembutton = new Button(1030, 10, 120, 65, "Item", Color.YELLOW, new Action() {
@@ -126,6 +132,7 @@ public class BattleMenu extends Pane implements Runnable{
 				defbutton.setEnabled(true);
 				skillbutton.setEnabled(true);
 				itembutton.setEnabled(true);
+				MainGame.game.battle.backend.setWaiting(false);
 				MainGame.game.battle.itemui.setAlpha(1);
 				while(MainGame.game.battle.itemui.getAlpha() > 0) {
 					MainGame.game.battle.itemui.setAlpha((float)(MainGame.game.battle.itemui.getAlpha() - 0.01));
@@ -159,8 +166,6 @@ public class BattleMenu extends Pane implements Runnable{
 						e.printStackTrace();
 					}
 				}
-				printingText = false;
-				printer = null;
 			}
 		});
 		printer.start();

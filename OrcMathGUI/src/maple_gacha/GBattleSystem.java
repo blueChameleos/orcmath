@@ -34,9 +34,7 @@ public class GBattleSystem implements Runnable {
 		this.mainParty = mainParty;
 		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		currentEnemy = enemiesList[0][0];
-		gameSystem = new Thread(this);
 		addItems();
-		gameSystem.run();
 	}
 
 	public void run() {
@@ -47,27 +45,27 @@ public class GBattleSystem implements Runnable {
 	private void playGame() {
 		while(playing)
 		{
+			System.out.println(playing);
 			for(int i = 0; i < order.size(); i++)
 			{
 				currentPlayer = order.get(i);
-				if(currentPlayer instanceof Monster)
+				if(currentPlayer.getClass() == Monster.class)
 				{
 					Hero target = mainParty[(int) Math.random()*mainParty.length];
+					System.out.println(target.getHP());
 					target.setHP(target.getHP() - currentPlayer.getAttack());
 					System.out.println(target.getHP());
 					MainGame.battle.userui.updateLog(currentPlayer + " attacked " + target + "!");
+					checkChanges();
 				}
 				else
 				{
-					//sleep until user does something.
+					waiting = true;
 					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 					currentPlayer.setGuard(false);
-
 					currentEnemy = enemiesList[round][(int) Math.random()*enemiesList[round].length];
-					
-					
 					try {
-						MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
+						MainGame.battle.game.sleep(Long.MAX_VALUE);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -82,7 +80,6 @@ public class GBattleSystem implements Runnable {
 		int instancesOfHeros = 0;
 		for(int i = 0; i<order.size(); i++)
 		{
-			System.out.println(order.get(i));
 			if(order.get(i).getHP() <= 0)
 			{
 				order.remove(i);
@@ -117,14 +114,6 @@ public class GBattleSystem implements Runnable {
 	}
 
 	private void endGame() {
-		while(MainGame.battle.userui.printingText) {
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		//		showRewards();
 		MainGame.battle.userui.updateLog("asfjaskjfaskjfgjkgs");
 		MainGame.game.setScreen(MainGame.game.main);
@@ -189,8 +178,6 @@ public class GBattleSystem implements Runnable {
 			if(c.getHP() > 0)
 				order.add(c);
 		}
-
-		System.out.println(enemiesList.length);
 
 		for(Monster e: enemiesList[round])
 		{

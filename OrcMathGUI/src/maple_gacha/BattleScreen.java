@@ -24,6 +24,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public static GBattleSystem backend;
 	public static BattleMenu userui;
 	public static ItemMenu itemui;
+	public static Thread game;
 	private CharacterImage currentlySelectedCharacterImage;
 
 	public static ClickableGraphic heroPos1;
@@ -54,7 +55,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		for (int i = 0; i < currentTeam.length; i++) {
 			currentTeam[i] = MainGame.currentTeam.get(i);
 		}
-		backend = new GBattleSystem(5, currentTeam);
+		backend = new GBattleSystem(3, currentTeam);
 
 		int playerSizeH = 100;
 		int playerSizeW = 100;
@@ -65,8 +66,6 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		clickHero.add(heroPos1);
 		clickHero.add(heroPos2);
 		clickHero.add(heroPos3);
-
-		
 
 		userui = new BattleMenu(this, 30, 800);
 		userui.update();
@@ -112,7 +111,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		}
 		
 		backend.setPlaying(true);
-
+		game = new Thread(backend);
+		game.start();
 	}
 
 	private Graphic getRandomBackground() {
@@ -121,7 +121,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 
 	@Override
 	public void run() {
-
+		
 	}
 
 	public void SwitchUIAI() {

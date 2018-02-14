@@ -74,7 +74,7 @@ public class MainGame extends GUIApplication {
 	public static void createMobs() {
 		mobs = new Monster[200];
 		for(int i = 0; i < mobs.length; i++) {
-			mobs[i] = new Monster(500,500,500,500,500);
+			mobs[i] = new Monster(1,500,1,1,500);
 		}
 	}
 	
