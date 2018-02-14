@@ -107,7 +107,6 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 			public void run() {
 
 				if (srare == true) {
-					// viewObjects.add(background);
 
 					lighting.setRepeat(false);
 					lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
