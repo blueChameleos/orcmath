@@ -34,6 +34,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public static ClickableGraphic heroPos2;
 	public static ClickableGraphic heroPos3;
 
+	public static ClickableCharacter g;
+	
 	public static ClickableGraphic monsterPos1;
 	public static ClickableGraphic monsterPos2;
 	public static ClickableGraphic monsterPos3;
@@ -42,6 +44,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 
 	ArrayList<ClickableGraphic> clickHero;
 	ArrayList<ClickableGraphic> clickMonster;
+	
+	ArrayList<CharacterImage> monsterImg;
 
 	public BattleScreen(int width, int height) {
 		super(width, height);
@@ -61,6 +65,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		Graphic background = getRandomBackground();
 		viewObjects.add(background);
 
+		monsterImg = new ArrayList<CharacterImage>();
+		
 		clickHero = new ArrayList<ClickableGraphic>();
 		clickHero.add(heroPos1);
 		clickHero.add(heroPos2);
@@ -105,7 +111,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 					update();
 				}
 			});
-
+			monsterImg.add(g);
 			viewObjects.add(g);
 		}
 		fader = new Pane(this,0,0,getWidth(),getHeight());
@@ -140,7 +146,10 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		});
 		animator.start();
 	}
-
+	
+	public void updateHp() {
+		
+	}
 	public void SwitchUIAI() {
 
 	}
