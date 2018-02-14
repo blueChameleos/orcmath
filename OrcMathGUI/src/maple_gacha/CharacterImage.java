@@ -21,7 +21,8 @@ public class CharacterImage extends Component implements Clickable {
 		super(x, y, 100, 150);
 		image = new Graphic(0,30,100,100,imgLocation);
 		bar = new HpBar(10,130);
-		bar.setHp(100);
+		bar.setMax(a.returnMaxHp());
+		bar.setHp(a.getHP());
 		bar.update();
 		checkMark.update();
 		this.hero = a;
@@ -42,7 +43,7 @@ public class CharacterImage extends Component implements Clickable {
 
 	public void drawCheckMark(Graphics2D g) {
 		if(selected) {
-			g.drawImage(checkMark.getImage(), checkMark.getX(), checkMark.getY(), null);
+			g.drawImage(checkMark.getImage(), checkMark.getX()+30, checkMark.getY(), null);
 		}
 	}
 
@@ -74,8 +75,9 @@ public class CharacterImage extends Component implements Clickable {
 		update();
 	}
 	
-	public void setHp(int hp) {
+	public void setHp() {
 		bar.setHp(hero.getHP());
+		update();
 	}
 	
 	public int getHp() {

@@ -41,10 +41,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public static ClickableGraphic monsterPos3;
 
 	public static HpBar eHp1;
-
-	ArrayList<ClickableGraphic> clickHero;
-	ArrayList<ClickableGraphic> clickMonster;
 	
+	ArrayList<CharacterImage> heroImg;
 	ArrayList<CharacterImage> monsterImg;
 
 	public BattleScreen(int width, int height) {
@@ -66,11 +64,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		viewObjects.add(background);
 
 		monsterImg = new ArrayList<CharacterImage>();
-		
-		clickHero = new ArrayList<ClickableGraphic>();
-		clickHero.add(heroPos1);
-		clickHero.add(heroPos2);
-		clickHero.add(heroPos3);
+		heroImg = new ArrayList<CharacterImage>();
 
 		userui = new BattleMenu(this, 30, 800);
 		userui.update();
@@ -81,22 +75,22 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		viewObjects.add(itemui);
 		for (int i = 0; i < MainGame.currentTeam.size(); i++) {
 			int number = i;
-			clickHero.set(i, new ClickableGraphic(700 + (i * 100), 600, playerSizeW, playerSizeH,
-					MainGame.currentTeam.get(i).getImage()));
-			clickHero.get(i).setAction(new Action() {
+			CharacterImage g = new CharacterImage(700 + (i * 100), 600,MainGame.currentTeam.get(i).getImage(),MainGame.currentTeam.get(i));
+			g.setAction(new Action() {
 				@Override
 				public void act() {
 					userui.playerPortrait.loadImages(MainGame.currentTeam.get(number).getImage(), 150, 150);
 					userui.update();
 				}
 			});
-			viewObjects.add(clickHero.get(i));
+			viewObjects.add(g);
+					
 		}
 
 		for (int i = 0; i < backend.getEnemiesList()[backend.getRound()].length; i++) {
 			// backend.getEnemiesList()[backend.getRound()][i].getImage()
 			CharacterImage g = new CharacterImage(100 + (i * 100), 600,
-					"resources/characterPics/Boss_Killer.png", null);
+					"resources/characterPics/Boss_Killer.png", backend.getEnemiesList()[backend.getRound()][i]);
 			int number = i;
 			
 			g.setAction(new Action() {
@@ -148,7 +142,9 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	}
 	
 	public void updateHp() {
-		
+		for (int i=0;i < monsterImg.size();i++) {
+			monsterImg.get(i).setHp();
+		}
 	}
 	public void SwitchUIAI() {
 

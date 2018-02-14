@@ -59,10 +59,12 @@ public class BattleMenu extends Pane implements Runnable{
 			@Override
 			public void act() {
 				MainGame.game.battle.backend.getCurrentEnemy().setHP(MainGame.game.battle.backend.getCurrentEnemy().getHP() - MainGame.game.battle.backend.getCurrentPlayer().getAttack());
+				MainGame.game.battle.updateHp();
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " attacked " + MainGame.game.battle.backend.getCurrentEnemy() + "!");
 				MainGame.game.battle.backend.checkChanges();
 				MainGame.game.battle.backend.setWaiting(false);
 				MainGame.game.battle.game.interrupt();
+				
 			}
 		});
 		defbutton = new Button(1030, 85, 120, 65, "Guard", Color.YELLOW, new Action() {
