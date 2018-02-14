@@ -41,10 +41,12 @@ public class MainScreen extends FullFunctionScreen {
 	public Graphic unit1;
 	public Graphic unit2;
 	public Graphic unit3;
+	public boolean plo;
 	public MainScreen(int width, int height) {
 		super(width, height);
 	}
 	public void initAllObjects(List<Visible> viewObjects) {		
+		plo = false;
 		if(Math.random() > .5) {
 			viewObjects.add(new Graphic(0, 0, getWidth(),getHeight(),"resources/home.jpg"));
 			viewObjects.add(new Graphic((getWidth()/2)-359,155,226,339,"resources/border6.png"));
@@ -74,7 +76,11 @@ public class MainScreen extends FullFunctionScreen {
 		}
 		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
 			public void act() {
-				MainGame.playMusic("resources/khalid.wav");
+				if(!plo) {
+					MainGame.playMusic("resources/everythingelse.wav");
+					plo = true;
+				}
+		//		MainGame.playMusic("resources/everythingelse.wav");
 				MainGame.game.setBattle(new BattleScreen(getWidth(), getHeight()));
 				MainGame.game.setScreen(MainGame.game.battle);
 			}
@@ -83,21 +89,23 @@ public class MainScreen extends FullFunctionScreen {
 		summonb = new Button(getWidth()/2-100,875,200,100,"Summon",Color.yellow,new Action() {
 			public void act() {
 				MainGame.game.setScreen(MainGame.summon);
-				MainGame.playMusic("resources/khalid.wav");
-
+				if(!plo) {
+					MainGame.playMusic("resources/everythingelse.wav");
+					plo = true;
+				}
 				
-				
-				
-				
-				
-				
+	//			MainGame.playMusic("resources/everythingelse.wav");	
 			}
 			
 		});
 		inventory = new Button(((getWidth()/4)*3)-150,875,200,100,"Units",Color.yellow,new Action() {
 			public void act() {
 				MainGame.game.setScreen(new CharacterScreen(getWidth(), getHeight()));
-				MainGame.playMusic("resources/khalid.wav");
+				if(!plo) {
+					MainGame.playMusic("resources/everythingelse.wav");
+					plo = true;
+				}
+		//		MainGame.playMusic("resources/everythingelse.wav");
 
 			}
 			
