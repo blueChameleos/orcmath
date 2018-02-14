@@ -1,8 +1,6 @@
 # maple_gacha
 The definitive Maplestory gacha game!
 
-backup code
-{
 package maple_gacha;
 
 import java.awt.Image;
