@@ -52,6 +52,7 @@ public class ItemMenu extends ScrollablePane {
 					public void act() {
 						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
+						MainGame.game.battle.updateHp();
 						MainGame.battle.userui.hideItemMenu();
 						MainGame.game.battle.backend.checkChanges();
 						MainGame.battle.itemui.initAllObjects(viewObjects);
@@ -63,6 +64,7 @@ public class ItemMenu extends ScrollablePane {
 					public void act() {
 						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
+						MainGame.game.battle.updateHp();
 						MainGame.battle.userui.hideItemMenu();
 						MainGame.game.battle.backend.checkChanges();
 						MainGame.battle.itemui.initAllObjects(viewObjects);

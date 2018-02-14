@@ -143,7 +143,13 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	
 	public void updateHp() {
 		for (int i=0;i < monsterImg.size();i++) {
+			if (monsterImg.get(i).getHp() <= 0) {
+				System.out.println("hide");
+				monsterImg.get(i).hideImage();
+				update();
+			}
 			monsterImg.get(i).setHp();
+			
 		}
 	}
 	public void SwitchUIAI() {

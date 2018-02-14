@@ -1,6 +1,7 @@
 package maple_gacha;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Component;
@@ -29,7 +30,10 @@ public class CharacterImage extends Component implements Clickable {
 		update();
 	}
 	
-	
+	public void hideImage() {
+		setVisible(false);
+		update();
+	}
 	public void setHero(Hero hero) {
 		this.hero = hero;
 	}
