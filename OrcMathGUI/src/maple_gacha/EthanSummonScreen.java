@@ -1,7 +1,6 @@
 package maple_gacha;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +26,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	private static DavidGetCharacterSingle singleScreen;
 	private int BANNER_WIDTH;
 	private int BANNER_HEIGHT;
+	private CustomCursor customCursor;
+	private EthanSummonScreen hi;
 
 
 	public EthanSummonScreen(int width, int height) {
@@ -96,6 +97,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		customCursor = new CustomCursor(this); //for some odd reason the cursor doesn't update unless you minimize the GUI and come back
 		BANNER_WIDTH = (int) (getWidth() / 10 * 2.5);
 		BANNER_HEIGHT = (int) (getHeight() / 2 * .65);
 		index = 0;
@@ -254,7 +256,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		if(bannerType() == 1) {
 			hero.add(MainGame.highAssassin);
 			hero.add(MainGame.beginnerArcher);
-			hero.add(MainGame.mediumCannonMan);
+			hero.add(MainGame.mediumWitch);
 			hero.add(MainGame.mediumHighSchoolGirl);
 			hero.add(MainGame.bFanWoman);
 			
