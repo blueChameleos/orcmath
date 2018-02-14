@@ -1,8 +1,9 @@
-#maple_gacha
+# maple_gacha
 The definitive Maplestory gacha game!
 
 backup code
-{package maple_gacha;
+{
+package maple_gacha;
 
 import java.awt.Image;
 import java.util.ArrayList;
@@ -311,4 +312,5 @@ public class GBattleSystem implements Runnable {
 		this.playing = playing;
 	}
 }
+
 }
