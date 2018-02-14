@@ -23,7 +23,7 @@ public class Monster extends Hero implements Character {
 	public String getImage() {
 		// TODO Auto-generated method stub
 		return super.getImage();
-	}
+	} 
  
 	@Override
 	public int getHP() {
@@ -36,7 +36,10 @@ public class Monster extends Hero implements Character {
 		// TODO Auto-generated method stub
 		super.setHP(hp);;
 	}
-
+	
+	public int getMaxHp() {
+		return super.returnMaxHp();
+	}
 	@Override
 	public void special() {
 		// TODO Auto-generated method stub

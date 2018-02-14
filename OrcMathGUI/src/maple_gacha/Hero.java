@@ -10,12 +10,13 @@ public class Hero implements Character, Serializable{
 	private int speed;
 	private int attack;
 	private int defense;
-	private int hp;
+	private int hp; 
 	private int uniqueID;
 	private int exp;
 	private boolean clickE;
 	private boolean guarding;
 	private double defensePercentage = .1;
+	private int maxHp;
 	
 	public double getDefensePercentage() {
 		return defensePercentage;
@@ -31,6 +32,7 @@ public class Hero implements Character, Serializable{
 		this.attack = attack;
 		this.defense = defense;
 		this.hp = hp;
+		maxHp = hp;
 		this.uniqueID = (int) (Math.random() * 10000000 + 10000) - (int) (Math.random() * 50000);
 		this.exp = 0;
 	}
@@ -47,6 +49,9 @@ public class Hero implements Character, Serializable{
 		return this.img;
 	}
 
+	public int returnMaxHp() {
+		return maxHp;
+	}
 	@Override
 	public int getHP() {
 		// TODO Auto-generated method stub

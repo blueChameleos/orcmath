@@ -34,14 +34,16 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public static ClickableGraphic heroPos2;
 	public static ClickableGraphic heroPos3;
 
+	public static ClickableCharacter g;
+	
 	public static ClickableGraphic monsterPos1;
 	public static ClickableGraphic monsterPos2;
 	public static ClickableGraphic monsterPos3;
 
 	public static HpBar eHp1;
-
-	ArrayList<ClickableGraphic> clickHero;
-	ArrayList<ClickableGraphic> clickMonster;
+	
+	ArrayList<CharacterImage> heroImg;
+	ArrayList<CharacterImage> monsterImg;
 
 	public BattleScreen(int width, int height) {
 		super(width, height);
@@ -61,10 +63,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		Graphic background = getRandomBackground();
 		viewObjects.add(background);
 
-		clickHero = new ArrayList<ClickableGraphic>();
-		clickHero.add(heroPos1);
-		clickHero.add(heroPos2);
-		clickHero.add(heroPos3);
+		monsterImg = new ArrayList<CharacterImage>();
+		heroImg = new ArrayList<CharacterImage>();
 
 		userui = new BattleMenu(this, 30, 800);
 		userui.update();
@@ -75,22 +75,22 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		viewObjects.add(itemui);
 		for (int i = 0; i < MainGame.currentTeam.size(); i++) {
 			int number = i;
-			clickHero.set(i, new ClickableGraphic(700 + (i * 100), 600, playerSizeW, playerSizeH,
-					MainGame.currentTeam.get(i).getImage()));
-			clickHero.get(i).setAction(new Action() {
-				@Override
+			CharacterImage g = new CharacterImage(700 + (i * 100), 600,MainGame.currentTeam.get(i).getImage(),MainGame.currentTeam.get(i));
+			g.setAction(new Action() {
+				@Override 
 				public void act() {
 					userui.playerPortrait.loadImages(MainGame.currentTeam.get(number).getImage(), 150, 150);
 					userui.update();
 				}
 			});
-			viewObjects.add(clickHero.get(i));
+			viewObjects.add(g);
+					
 		}
 
 		for (int i = 0; i < backend.getEnemiesList()[backend.getRound()].length; i++) {
 			// backend.getEnemiesList()[backend.getRound()][i].getImage()
 			CharacterImage g = new CharacterImage(100 + (i * 100), 600,
-					"resources/characterPics/Boss_Killer.png", null);
+					"resources/characterPics/Boss_Killer.png", backend.getEnemiesList()[backend.getRound()][i]);
 			int number = i;
 			
 			g.setAction(new Action() {
@@ -105,7 +105,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 					update();
 				}
 			});
-
+			monsterImg.add(g);
 			viewObjects.add(g);
 		}
 		fader = new Pane(this,0,0,getWidth(),getHeight());
@@ -140,36 +140,30 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		animator.start();
 	}
 	
-	public void fadeOut() {
-		Thread animator = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(fader.getAlpha() < 0.99) {
-					fader.setAlpha((float)(fader.getAlpha()+0.01));
-					try {
-						Thread.sleep(1000/60);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				fader.setAlpha(1);
+	public void updateHp() {
+		for (int i=0;i < monsterImg.size();i++) {
+			if (monsterImg.get(i).getHp() <= 0) {
+				System.out.println("hide");
+				monsterImg.get(i).hideImage();
+				update();
 			}
-		});
-		animator.start();
+			monsterImg.get(i).setHp();
+			
+		}
 	}
-
-	@Override
-	public void run() {
-		
-	}
-
+	
 	public void SwitchUIAI() {
 
 	}
 
 	public void SwitchAIUI() {
 
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

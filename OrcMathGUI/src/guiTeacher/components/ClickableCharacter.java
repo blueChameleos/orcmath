@@ -64,14 +64,14 @@ public class ClickableCharacter extends Graphic implements Clickable {
 	public boolean isHovered(int x, int y) {
 		return x > getX() && x < getX() + getWidth() && y > getY() && y < getY() + getHeight();
 	}
+	public void hoverAction(){
+		//most Components don't do anything on hover
+	}
 
 	public void act() {
 		if(action != null)action.act();
 	}
 	
-	public void hoverAction(){
-		//most Components don't do anything on hover
-	}
 	
 	public String getImageLocation() {
 		return this.imageLocation;

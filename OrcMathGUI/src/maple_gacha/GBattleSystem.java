@@ -78,6 +78,7 @@ public class GBattleSystem implements Runnable {
 	}
 	//when someone dies (all monster dies or heros)
 	public void checkChanges() {
+		MainGame.game.battle.updateHp();
 		int instancesOfMonster = 0;
 		int instancesOfHeros = 0;
 		for(int i = 0; i<order.size(); i++)

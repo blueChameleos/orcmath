@@ -34,7 +34,7 @@ public class MainGame extends GUIApplication {
 		super(width, height);
 		setVisible(true);
 	} 
-
+ 
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS				
 		createCharacters();

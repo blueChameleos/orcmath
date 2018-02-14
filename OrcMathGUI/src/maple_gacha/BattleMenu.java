@@ -60,6 +60,7 @@ public class BattleMenu extends Pane implements Runnable{
 			public void act() {
 				MainGame.game.battle.game.interrupt();
 				MainGame.game.battle.backend.getCurrentEnemy().setHP(MainGame.game.battle.backend.getCurrentEnemy().getHP() - MainGame.game.battle.backend.getCurrentPlayer().getAttack());
+				MainGame.game.battle.updateHp();
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " attacked " + MainGame.game.battle.backend.getCurrentEnemy() + "!");
 				MainGame.game.battle.backend.checkChanges();
 				MainGame.game.battle.backend.setWaiting(false);
