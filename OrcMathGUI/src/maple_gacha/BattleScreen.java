@@ -10,7 +10,9 @@ import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.ClickableCharacter;
 import guiTeacher.components.ClickableGraphic;
+import guiTeacher.components.Component;
 import guiTeacher.components.Graphic;
+import guiTeacher.components.Pane;
 import guiTeacher.components.ProgressBar;
 import guiTeacher.interfaces.Task;
 import guiTeacher.interfaces.Visible;
@@ -24,6 +26,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public static GBattleSystem backend;
 	public static BattleMenu userui;
 	public static ItemMenu itemui;
+	public static Pane fader;
 	public static Thread game;
 	private CharacterImage currentlySelectedCharacterImage;
 
@@ -35,14 +38,10 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public static ClickableGraphic monsterPos2;
 	public static ClickableGraphic monsterPos3;
 
-
 	public static HpBar eHp1;
-
 
 	ArrayList<ClickableGraphic> clickHero;
 	ArrayList<ClickableGraphic> clickMonster;
-
-  
 
 	public BattleScreen(int width, int height) {
 		super(width, height);
@@ -109,7 +108,10 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 
 			viewObjects.add(g);
 		}
-		
+		fader = new Pane(this,0,0,getWidth(),getHeight());
+		fader.setBackground(Color.BLACK);
+		viewObjects.add(fader);
+		run();
 		backend.setPlaying(true);
 		game = new Thread(backend);
 		game.start();
@@ -121,7 +123,22 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 
 	@Override
 	public void run() {
-		
+		Thread animator = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while(fader.getAlpha() > 0.01) {
+					fader.setAlpha((float)(fader.getAlpha()-0.01));
+					try {
+						Thread.sleep(1000/60);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				fader.setAlpha(0);
+			}
+		});
+		animator.start();
 	}
 
 	public void SwitchUIAI() {
