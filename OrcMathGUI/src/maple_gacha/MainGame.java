@@ -3,6 +3,7 @@ package maple_gacha;
 import java.util.ArrayList;
 
 import guiTeacher.GUIApplication;
+import guiTeacher.userInterfaces.Screen;
 
 public class MainGame extends GUIApplication {
 
@@ -63,8 +64,6 @@ public class MainGame extends GUIApplication {
 		beginnerArcher = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
 		beginnerWizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
-		System.out.println(beginnerSword.getImage());
-		System.out.println(beginnerArcher);
 	}
 	
 	public void setBattle(BattleScreen battle) {
@@ -74,7 +73,7 @@ public class MainGame extends GUIApplication {
 	public static void createMobs() {
 		mobs = new Monster[200];
 		for(int i = 0; i < mobs.length; i++) {
-			mobs[i] = new Monster(1,500,1,1,500);
+			mobs[i] = new Monster(1,500,30,1,500);
 		}
 	}
 	

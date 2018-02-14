@@ -58,30 +58,30 @@ public class BattleMenu extends Pane implements Runnable{
 		attackbutton = new Button(900, 10, 120, 65, "Attack", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
+				MainGame.game.battle.game.interrupt();
 				MainGame.game.battle.backend.getCurrentEnemy().setHP(MainGame.game.battle.backend.getCurrentEnemy().getHP() - MainGame.game.battle.backend.getCurrentPlayer().getAttack());
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " attacked " + MainGame.game.battle.backend.getCurrentEnemy() + "!");
 				MainGame.game.battle.backend.checkChanges();
 				MainGame.game.battle.backend.setWaiting(false);
-				MainGame.game.battle.game.interrupt();
 			}
 		});
 		defbutton = new Button(1030, 85, 120, 65, "Guard", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
+				MainGame.game.battle.game.interrupt();
 				MainGame.game.battle.backend.getCurrentPlayer().setGuard(true);
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " guarded!");
 				MainGame.game.battle.backend.setWaiting(false);
-				MainGame.game.battle.game.interrupt();
 			}
 		});
 		skillbutton = new Button(900, 85, 120, 65, "Skill", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
+				MainGame.game.battle.game.interrupt();
 				MainGame.game.battle.backend.getCurrentPlayer().special();
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used a special skill!");
 				MainGame.game.battle.backend.checkChanges();
 				MainGame.game.battle.backend.setWaiting(false);
-				MainGame.game.battle.game.interrupt();
 			}
 		});
 		itembutton = new Button(1030, 10, 120, 65, "Item", Color.YELLOW, new Action() {
@@ -151,6 +151,9 @@ public class BattleMenu extends Pane implements Runnable{
 	}
 
 	public void updateLog(String text) {
+		while(printer != null) {
+			
+		}
 		printer = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -166,6 +169,7 @@ public class BattleMenu extends Pane implements Runnable{
 						e.printStackTrace();
 					}
 				}
+				printer = null;
 			}
 		});
 		printer.start();

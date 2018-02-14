@@ -45,6 +45,7 @@ public class GBattleSystem implements Runnable {
 	private void playGame() {
 		while(playing)
 		{
+			System.out.println(order.toString());
 			System.out.println(playing);
 			for(int i = 0; i < order.size(); i++)
 			{
@@ -65,10 +66,11 @@ public class GBattleSystem implements Runnable {
 					currentPlayer.setGuard(false);
 					currentEnemy = enemiesList[round][(int) Math.random()*enemiesList[round].length];
 					try {
+						System.out.println("Backend is waiting for response from front end");
 						MainGame.battle.game.sleep(Long.MAX_VALUE);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						System.out.println("Backend has resumed running");
 					}
 				}
 			}
@@ -116,6 +118,7 @@ public class GBattleSystem implements Runnable {
 	private void endGame() {
 		//		showRewards();
 		MainGame.battle.userui.updateLog("asfjaskjfaskjfgjkgs");
+		MainGame.game.battle.fadeOut();
 		MainGame.game.setScreen(MainGame.game.main);
 	}
 

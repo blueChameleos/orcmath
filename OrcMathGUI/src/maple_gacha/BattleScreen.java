@@ -111,7 +111,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		fader = new Pane(this,0,0,getWidth(),getHeight());
 		fader.setBackground(Color.BLACK);
 		viewObjects.add(fader);
-		run();
+		fadeIn();
 		backend.setPlaying(true);
 		game = new Thread(backend);
 		game.start();
@@ -120,9 +120,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	private Graphic getRandomBackground() {
 		return new Graphic(0, 0, getWidth(), getHeight(), "resources/winter.png");
 	}
-
-	@Override
-	public void run() {
+	
+	public void fadeIn() {
 		Thread animator = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -139,6 +138,30 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 			}
 		});
 		animator.start();
+	}
+	
+	public void fadeOut() {
+		Thread animator = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while(fader.getAlpha() < 0.99) {
+					fader.setAlpha((float)(fader.getAlpha()+0.01));
+					try {
+						Thread.sleep(1000/60);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				fader.setAlpha(1);
+			}
+		});
+		animator.start();
+	}
+
+	@Override
+	public void run() {
+		
 	}
 
 	public void SwitchUIAI() {
