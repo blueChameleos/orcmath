@@ -10,7 +10,7 @@ public class Hero implements Character, Serializable{
 	private int speed;
 	private int attack;
 	private int defense;
-	private int hp;
+	private int hp; 
 	private int uniqueID;
 	private int exp;
 	private boolean clickE;

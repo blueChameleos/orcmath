@@ -77,7 +77,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 			int number = i;
 			CharacterImage g = new CharacterImage(700 + (i * 100), 600,MainGame.currentTeam.get(i).getImage(),MainGame.currentTeam.get(i));
 			g.setAction(new Action() {
-				@Override
+				@Override 
 				public void act() {
 					userui.playerPortrait.loadImages(MainGame.currentTeam.get(number).getImage(), 150, 150);
 					userui.update();

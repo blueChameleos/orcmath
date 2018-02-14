@@ -23,7 +23,7 @@ public class Monster extends Hero implements Character {
 	public String getImage() {
 		// TODO Auto-generated method stub
 		return super.getImage();
-	}
+	} 
  
 	@Override
 	public int getHP() {

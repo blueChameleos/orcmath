@@ -8,14 +8,14 @@ import guiTeacher.components.Component;
 
 public class HpBar extends Component {
 
-	private int hp;
+	private int hp; 
 	private int maxHp;
 	
 	public int getHp() { 
 		return hp;
 	}
 	
-	public void setHp(int hp) {
+	public void setHp(int hp) { 
 		this.hp = hp;
 		update();
 	}
