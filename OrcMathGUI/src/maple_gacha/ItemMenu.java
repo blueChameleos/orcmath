@@ -18,17 +18,26 @@ public class ItemMenu extends ScrollablePane {
 	private static final int HEIGHT = 600;
 	public static Button cancel;
 	public ArrayList<Items> itemlist;
-	
+
 	public ItemMenu(FocusController focusController, int x, int y, int width, int height) {
 		super(focusController, x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public ItemMenu(FocusController focusController, int x, int y) {
 		super(focusController, x, y, WIDTH, HEIGHT);
 	}
-	
+
 	public void initAllObjects(List<Visible> viewObjects) {
+
+		if(viewObjects.size() > 0)
+		{
+			for(int i =(viewObjects.size()-1); i >=0; i--)
+			{
+				viewObjects.remove(i);
+			}
+		}
+		
 		this.setBackground(Color.BLUE);
 		this.itemlist = new ArrayList<Items>();
 		this.itemlist = MainGame.battle.backend.getInventory();
@@ -45,6 +54,7 @@ public class ItemMenu extends ScrollablePane {
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
 						MainGame.battle.userui.hideItemMenu();
 						MainGame.game.battle.backend.checkChanges();
+						MainGame.battle.itemui.initAllObjects(viewObjects);
 					}
 				});
 			}else {
@@ -55,6 +65,7 @@ public class ItemMenu extends ScrollablePane {
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
 						MainGame.battle.userui.hideItemMenu();
 						MainGame.game.battle.backend.checkChanges();
+						MainGame.battle.itemui.initAllObjects(viewObjects);
 					}
 				});
 			}
