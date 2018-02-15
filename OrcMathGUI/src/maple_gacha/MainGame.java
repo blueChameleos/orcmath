@@ -29,6 +29,23 @@ public class MainGame extends GUIApplication {
 	public static DavidGetCharacterSingle single;
 	public static DavidGetCharacterMulti multi;
 
+	public static ArrayList<Monster> avaliableMonster;
+	private static Monster minionBlowfish;
+
+	private static Monster minionDemon;
+
+	private static Monster minionDevil;
+
+	private static Monster minionInvidia;
+
+	private static Monster minionYeti;
+
+	private static Monster minionPsy;
+
+	private static Monster minionDragon;
+
+	private static Monster minionAlien;
+
 	
 	public MainGame(int width, int height) {
 		super(width, height);
@@ -38,6 +55,7 @@ public class MainGame extends GUIApplication {
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS				
 		createCharacters();
+		createMobChar();
 		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
@@ -73,12 +91,37 @@ public class MainGame extends GUIApplication {
 	public static void createMobs() {
 		mobs = new Monster[200];
 		for(int i = 0; i < mobs.length; i++) {
-			mobs[i] = new Monster(1,500,30,1,500);
+			addMonster(avaliableMonster.get((int)(Math.random()*avaliableMonster.size())),i);
 		}
+	}
+	
+	public static void createMobChar() {
+		avaliableMonster = new  ArrayList<Monster>();
+		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionBlowfish);
+		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionDemon);
+		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionDevil);
+		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionInvidia);
+		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionYeti);
+		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionPsy);
+		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionDragon);
+		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionAlien);
 	}
 	
 	public static void addHero(Hero hero) {
 		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());
 		team.add(newHero);
+	}
+	
+	public static void addMonster(Monster monster,int i) {
+		Monster newMonster = new Monster(monster.getImage(),monster.getRank(),monster.getStrength(),monster.getSpeed(),monster.getAttack(),monster.getDefense(),monster.getHP());
+		mobs[i] = newMonster;
 	}
 }
