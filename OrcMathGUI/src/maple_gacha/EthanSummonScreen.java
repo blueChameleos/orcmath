@@ -18,7 +18,6 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 	private ArrayList<Graphic> banners;
 	private ArrayList<Hero> heroes;
-	private int[] bannerName;
 	private int index;
 	private int nx;
 	private TextArea error;
@@ -27,7 +26,6 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	private int BANNER_WIDTH;
 	private int BANNER_HEIGHT;
 	private CustomCursor customCursor;
-	private EthanSummonScreen hi;
 
 	public EthanSummonScreen(int width, int height) {
 		super(width, height);
@@ -77,10 +75,12 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		// type 0 is single type 1 is multi
 		if (nx >= 5 && type == 0) {
 			setNx(getNx() - 5);
+			error.setVisible(false);
 			return true;
 		} else {
 			if (nx >= 25 && type == 1) {
 				setNx(getNx() - 25);
+				error.setVisible(false);
 				return true;
 			}
 		}
@@ -94,8 +94,8 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		customCursor = new CustomCursor(this); 
-		// for some odd reason the cursor doesn't update unless you minimize the
-		// GUI and come back
+		//the cursor doesn't update unless you minimize the
+		// GUI and maximize it again.
 		BANNER_WIDTH = (int) (getWidth() / 10 * 2.5);
 		BANNER_HEIGHT = (int) (getHeight() / 2 * .65);
 		index = 0;
@@ -122,7 +122,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		count.setText("  " + nx + " NX");
 		viewObjects.add(count);
 
-		error = new TextArea(BANNER_WIDTH, BANNER_HEIGHT, 150, 150, "You do not have enough nx!");
+		error = new TextArea(200, 200, 150, 150, "You do not have enough nx!");
 		viewObjects.add(error);
 		error.setVisible(false);
 
