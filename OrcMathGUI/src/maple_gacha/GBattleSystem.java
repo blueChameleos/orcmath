@@ -34,9 +34,7 @@ public class GBattleSystem implements Runnable {
 		this.mainParty = mainParty;
 		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
 		currentEnemy = enemiesList[0][0];
-		gameSystem = new Thread(this);
 		addItems();
-		gameSystem.run();
 	}
 
 	public void run() {
@@ -45,64 +43,114 @@ public class GBattleSystem implements Runnable {
 	}
 
 	private void playGame() {
-
+		disableButtons();
 		while(playing)
 		{
-			for(int i=0; i<order.size();i++)
+			System.out.println(order.toString());
+			System.out.println(playing);
+			for(int i = 0; i < order.size(); i++)
 			{
 				currentPlayer = order.get(i);
-
-				if(currentPlayer instanceof Monster)
+				if(currentPlayer.getClass() == Monster.class)
 				{
-					MainGame.battle.SwitchUIAI(); //switch user interface to the ai turn
-					Hero target = mainParty[(int) Math.random()*mainParty.length];
-					int action = (int) (Math.random()*3);
-					/*order.get(i).useTurn(target, action);
-				BattleScreen.showAiTurn(order.get(i), target, action); //changes ai text-area to show events
-					 */			}
+					disableButtons();
+					Hero target = order.get((int)(Math.random()*order.size()));
+					while(target.getClass() == Monster.class) {
+						target = order.get((int)(Math.random()*order.size()));
+					}
+					System.out.println(target.getHP());
+					target.setHP(target.getHP() - currentPlayer.getAttack());
+					System.out.println(target.getHP());
+					MainGame.battle.userui.updateLog(currentPlayer + " attacked " + target + "!");
+				}
 				else
 				{
-					//sleep until user does something.
+					enableButtons();
+					waiting = true;
 					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 					currentPlayer.setGuard(false);
-
-
+					currentEnemy = enemiesList[round][(int) Math.random()*enemiesList[round].length];
 					try {
-						MainGame.battle.backend.gameSystem.sleep(Long.MAX_VALUE);
+						System.out.println("Backend is waiting for response from front end");
+						MainGame.battle.game.sleep(Long.MAX_VALUE);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						System.out.println("Backend has resumed running");
 					}
+				}
+				checkChanges();
+				if(!playing) {
+					break;
 				}
 			}
 		}
 	}
+	
+	public void enableButtons() {
+		MainGame.game.battle.userui.attackbutton.setEnabled(true);
+		MainGame.game.battle.userui.defbutton.setEnabled(true);
+		MainGame.game.battle.userui.skillbutton.setEnabled(true);
+		MainGame.game.battle.userui.itembutton.setEnabled(true);
+	}
+
+	public void disableButtons() {
+		MainGame.game.battle.userui.attackbutton.setEnabled(false);
+		MainGame.game.battle.userui.defbutton.setEnabled(false);
+		MainGame.game.battle.userui.skillbutton.setEnabled(false);
+		MainGame.game.battle.userui.itembutton.setEnabled(false);
+	}
+
 	//when someone dies (all monster dies or heros)
 	public void checkChanges() {
+//		MainGame.game.battle.updateHp();
 		int instancesOfMonster = 0;
 		int instancesOfHeros = 0;
 		for(int i = 0; i<order.size(); i++)
 		{
-			if(order.get(i) instanceof Monster)
+			if(order.get(i).getHP() <= 0)
 			{
-				instancesOfMonster ++;
+				order.remove(i);
+				i--;
 			}
 			else
 			{
-				instancesOfHeros ++;
+				if(order.get(i) instanceof Monster)
+				{
+					instancesOfMonster ++;
+				}
+				else
+				{
+					instancesOfHeros ++;
+				}
 			}
+
 		}
-		
+
 		if(instancesOfMonster == 0 || instancesOfHeros == 0)
 		{
-			newRound();
+			if(round == enemiesList.length-1 || instancesOfHeros == 0)
+			{
+				endGame();
+			}
+			else
+			{
+				newRound();
+			}
+
 		}
+	}
+
+	private void endGame() {
+		//		showRewards();
+		playing = false;
+		MainGame.game.setScreen(MainGame.game.main);
 	}
 
 	private void newRound() {
 		round ++;
 		order = new ArrayList<Hero>();
 		makeOrder();
+		MainGame.battle.nextRound();
 	}
 
 	//testing items
@@ -144,8 +192,7 @@ public class GBattleSystem implements Runnable {
 		{
 			for(int idx = 0; idx<enemiesList[rounds].length; idx++)
 			{
-				enemiesList[rounds][idx] = MainGame.game.mobs[(int) Math.random()*MainGame.game.mobs.length];
-
+				enemiesList[rounds][idx] = MainGame.mobs[(int)(Math.random()*MainGame.mobs.length)];
 			}
 		}
 	}

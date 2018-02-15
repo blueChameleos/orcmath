@@ -29,7 +29,7 @@ public class MainScreen extends FullFunctionScreen {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
 
 	private AnimatedComponent featured;
 	private Button dungeon;
@@ -37,10 +37,20 @@ public class MainScreen extends FullFunctionScreen {
 	private Button inventory;
 	private Button quit;
 	private TextArea name;
+<<<<<<< HEAD
 	public ArrayList<Graphic> unitlist;
 	public Graphic unit1;
 	public Graphic unit2;
 	public Graphic unit3;
+=======
+	private Button temp1;
+	private Button temp2;
+	private Button temp3;
+	private Button temp4;
+	private Button temp5;
+	private Button temp6;
+ 
+>>>>>>> refs/heads/gacha_battle
 	public MainScreen(int width, int height) {
 		super(width, height);
 	}

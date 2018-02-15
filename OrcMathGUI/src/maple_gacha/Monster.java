@@ -22,24 +22,33 @@ public class Monster extends Hero implements Character {
 	@Override
 	public String getImage() {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		return super.getImage();
+	} 
  
 	@Override
 	public int getHP() {
 		// TODO Auto-generated method stub
-		return this.hp;
+		return super.getHP();
 	}
 
 	@Override
 	public void setHP(int hp) {
 		// TODO Auto-generated method stub
 		super.setHP(hp);;
+		MainGame.battle.updateHp();
 	}
-
+	
+	public int getMaxHp() {
+		return super.returnMaxHp();
+	}
 	@Override
 	public void special() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public String toString()
+	{
+		return "Monster";
 	}
 }

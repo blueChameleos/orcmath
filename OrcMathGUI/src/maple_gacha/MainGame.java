@@ -1,28 +1,11 @@
 package maple_gacha;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 
 import guiTeacher.GUIApplication;
-import maple_gacha.TestMusic.AL;
-import sun.audio.AudioData;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-import sun.audio.ContinuousAudioDataStream;
 
 public class MainGame extends GUIApplication {
 
@@ -30,7 +13,7 @@ public class MainGame extends GUIApplication {
 	
 	public static MainGame game;
 	public static BattleScreen battle;
-	public static MainScreen main;	
+	public static MainScreen main;	 
 	public static LoadingScreen load;
 	public static EthanSummonScreen summon;
 //	public static FeaturedChar featured;
@@ -119,6 +102,12 @@ public class MainGame extends GUIApplication {
 	public static void playMusic(String musicPos) {
 		if (g!= null) {
 			g.stop();
+	
+	
+	public static void createMobs() {
+		mobs = new Monster[200];
+		for(int i = 0; i < mobs.length; i++) {
+			mobs[i] = new Monster(1,500,30,1,500);
 		}
 		try {
 	          File soundFile = new File(musicPos);

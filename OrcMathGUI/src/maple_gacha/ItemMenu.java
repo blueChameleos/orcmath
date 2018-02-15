@@ -18,41 +18,68 @@ public class ItemMenu extends ScrollablePane {
 	private static final int HEIGHT = 600;
 	public static Button cancel;
 	public ArrayList<Items> itemlist;
-	
+
 	public ItemMenu(FocusController focusController, int x, int y, int width, int height) {
 		super(focusController, x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public ItemMenu(FocusController focusController, int x, int y) {
 		super(focusController, x, y, WIDTH, HEIGHT);
 	}
-	
+
 	public void initAllObjects(List<Visible> viewObjects) {
+
+		if(viewObjects.size() > 0)
+		{
+			for(int i =(viewObjects.size()-1); i >=0; i--)
+			{
+				viewObjects.remove(i);
+			}
+		}
+		
 		this.setBackground(Color.BLUE);
 		this.itemlist = new ArrayList<Items>();
+		this.itemlist = MainGame.battle.backend.getInventory();
 		int x = 30;
 		int y = 30;
 		for(int i = 0; i < itemlist.size(); i++) {
 			int j = i;
-			Button item = new Button(x, y, 190, 60, itemlist.get(i).getName(), new Action() {
-				@Override
-				public void act() {
-					MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
-					MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
-					MainGame.game.battle.backend.checkChanges();
-				}
-			});
-			/*
-			 * add designs later
-			 */
+			Button item;
+			if(itemlist.get(j) instanceof IHealingItem) {
+				item = new Button(x, y, 190, 60, itemlist.get(j).getName(), Color.GREEN, new Action() {
+					@Override
+					public void act() {
+						MainGame.game.battle.game.interrupt();
+						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
+						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
+						MainGame.game.battle.updateHp();
+						MainGame.battle.userui.hideItemMenu();
+						MainGame.game.battle.backend.checkChanges();
+						MainGame.battle.itemui.initAllObjects(viewObjects);
+					}
+				});
+			}else {
+				item = new Button(x, y, 190, 60, itemlist.get(j).getName(), Color.ORANGE, new Action() {
+					@Override
+					public void act() {
+						MainGame.game.battle.game.interrupt();
+						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
+						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
+						MainGame.game.battle.updateHp();
+						MainGame.battle.userui.hideItemMenu();
+						MainGame.game.battle.backend.checkChanges();
+						MainGame.battle.itemui.initAllObjects(viewObjects);
+					}
+				});
+			}
 			viewObjects.add(item);
 			y += 90;
 		}
-		cancel = new Button(x, y, 190, 60, "Return", Color.YELLOW, new Action() {
+		cancel = new Button(x, y, 190, 60, "Return", Color.RED, new Action() {
 			@Override
 			public void act() {
-				MainGame.game.battle.itemui.setVisible(false);
+				MainGame.battle.userui.hideItemMenu();
 			}
 		});
 		viewObjects.add(cancel);
