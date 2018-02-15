@@ -152,7 +152,7 @@ public class MainGame extends GUIApplication {
 //		System.out.println(beginnerArcher);
 	}
 	
-	public static void createMobs() {
+	public static void createMobs1() {
 		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
 		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
 		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
