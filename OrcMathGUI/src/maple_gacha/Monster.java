@@ -35,6 +35,7 @@ public class Monster extends Hero implements Character {
 	public void setHP(int hp) {
 		// TODO Auto-generated method stub
 		super.setHP(hp);;
+		MainGame.battle.updateHp();
 	}
 	
 	public int getMaxHp() {

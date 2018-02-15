@@ -61,6 +61,7 @@ public class Hero implements Character, Serializable{
 	@Override
 	public void setHP(int hp) {
 		this.hp = hp;
+		MainGame.battle.updateHp();
 	}
 
 	@Override
