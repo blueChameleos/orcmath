@@ -66,19 +66,18 @@ public class MainGame extends GUIApplication {
 		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
-		addHero(beginnerSword);
-		addHero(beginnerWizard);
-		addHero(highTank);
+		currentTeam.add(beginnerArcher);
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 //		featured = new FeaturedChar(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
+		battle = new BattleScreen(getWidth(),getHeight());
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
-		load = new LoadingScreen(getWidth(), getHeight());					
+		load = new LoadingScreen(getWidth(), getHeight());		
 		setResizable(false);	
-		setScreen(load);	
+		setScreen(battle);	
 	
 //		JFrame frame = new JFrame();
 //		frame.setSize(200, 200);
@@ -88,26 +87,23 @@ public class MainGame extends GUIApplication {
 //		button.addActionListener(new AL());
 //		frame.setVisible(true);
 //			 
-		load = new LoadingScreen(getWidth(), getHeight());
-		//battle = new BattleScreen(getWidth(), getHeight());
-		setScreen(load);
 	}
 
 	public static void main(String[] args) {
 		game = new MainGame(1280, 1024);
 		Thread runner = new Thread(game);
 		runner.start();
-//		playMusic("resources/maplestory music.wav");
+		playMusic("resources/maplestory music.wav");
 	}
 
-//	public static void playMusic(String musicPos) {
-//		if (g!= null) {
-//			g.stop();
-//		}
-//	}
+	public static void playMusic(String musicPos) {
+		if (g!= null) {
+			g.stop();
+		}
+	}
 	
 	public static void createMobs() {
-		mobs = new Monster[200];
+		mobs = new Monster[100];
 		for(int i = 0; i < mobs.length; i++) {
 			addMonster(avaliableMonster.get((int)(Math.random()*avaliableMonster.size())),i);
 		}
@@ -131,10 +127,6 @@ public class MainGame extends GUIApplication {
 		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
 		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100);
 		
-		temp = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-		temp1 = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
-		temp2 = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
-		
 		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150);
 		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150);
 		mediumWitch = new Hero("resources/characterPics/HeroAitch.png", "A", 20, 20, 20, 20, 150);
@@ -154,14 +146,14 @@ public class MainGame extends GUIApplication {
 	}
 	
 	public static void createMobs1() {
-		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
+	//	minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
 		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
 		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
 		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
 		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
 		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
 		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
-		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
+		minionAlien = new Monster("resources/characterPics/MinionWeirdAlien.png", "B", 10, 10, 10, 10, 20);
 	}
 
 	public void setBattle(BattleScreen battle) {
@@ -170,8 +162,8 @@ public class MainGame extends GUIApplication {
 
 	public static void createMobChar() {
 		avaliableMonster = new  ArrayList<Monster>();
-		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
-		avaliableMonster.add(minionBlowfish);
+		//minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
+	//	avaliableMonster.add(minionBlowfish);
 		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
 		avaliableMonster.add(minionDemon);
 		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
@@ -184,7 +176,7 @@ public class MainGame extends GUIApplication {
 		avaliableMonster.add(minionPsy);
 		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
 		avaliableMonster.add(minionDragon);
-		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
+		minionAlien = new Monster("resources/characterPics/MinionWeirdAlien.png", "B", 10, 10, 10, 10, 20);
 		avaliableMonster.add(minionAlien);
 	}
 
