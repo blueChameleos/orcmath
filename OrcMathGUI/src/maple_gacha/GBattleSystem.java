@@ -43,6 +43,7 @@ public class GBattleSystem implements Runnable {
 	}
 
 	private void playGame() {
+		disableButtons();
 		while(playing)
 		{
 			System.out.println(order.toString());
@@ -52,6 +53,7 @@ public class GBattleSystem implements Runnable {
 				currentPlayer = order.get(i);
 				if(currentPlayer.getClass() == Monster.class)
 				{
+					disableButtons();
 					Hero target = order.get((int)(Math.random()*order.size()));
 					while(target.getClass() == Monster.class) {
 						target = order.get((int)(Math.random()*order.size()));
@@ -63,6 +65,7 @@ public class GBattleSystem implements Runnable {
 				}
 				else
 				{
+					enableButtons();
 					waiting = true;
 					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 					currentPlayer.setGuard(false);
@@ -82,6 +85,21 @@ public class GBattleSystem implements Runnable {
 			}
 		}
 	}
+	
+	public void enableButtons() {
+		MainGame.game.battle.userui.attackbutton.setEnabled(true);
+		MainGame.game.battle.userui.defbutton.setEnabled(true);
+		MainGame.game.battle.userui.skillbutton.setEnabled(true);
+		MainGame.game.battle.userui.itembutton.setEnabled(true);
+	}
+
+	public void disableButtons() {
+		MainGame.game.battle.userui.attackbutton.setEnabled(false);
+		MainGame.game.battle.userui.defbutton.setEnabled(false);
+		MainGame.game.battle.userui.skillbutton.setEnabled(false);
+		MainGame.game.battle.userui.itembutton.setEnabled(false);
+	}
+
 	//when someone dies (all monster dies or heros)
 	public void checkChanges() {
 //		MainGame.game.battle.updateHp();
