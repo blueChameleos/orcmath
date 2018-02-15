@@ -52,7 +52,10 @@ public class GBattleSystem implements Runnable {
 				currentPlayer = order.get(i);
 				if(currentPlayer.getClass() == Monster.class)
 				{
-					Hero target = mainParty[(int) Math.random()*mainParty.length];
+					Hero target = order.get((int)(Math.random()*order.size()));
+					while(target.getClass() == Monster.class) {
+						target = order.get((int)(Math.random()*order.size()));
+					}
 					System.out.println(target.getHP());
 					target.setHP(target.getHP() - currentPlayer.getAttack());
 					System.out.println(target.getHP());
@@ -73,11 +76,15 @@ public class GBattleSystem implements Runnable {
 						System.out.println("Backend has resumed running");
 					}
 				}
+				if(!playing) {
+					break;
+				}
 			}
 		}
 	}
 	//when someone dies (all monster dies or heros)
 	public void checkChanges() {
+		System.out.println("ASDASFSAFASF");
 		MainGame.game.battle.updateHp();
 		int instancesOfMonster = 0;
 		int instancesOfHeros = 0;
@@ -104,7 +111,7 @@ public class GBattleSystem implements Runnable {
 
 		if(instancesOfMonster == 0 || instancesOfHeros == 0)
 		{
-			if(round == enemiesList.length-1)
+			if(round == enemiesList.length-1 || instancesOfHeros == 0)
 			{
 				endGame();
 			}
@@ -118,8 +125,7 @@ public class GBattleSystem implements Runnable {
 
 	private void endGame() {
 		//		showRewards();
-		MainGame.battle.userui.updateLog("asfjaskjfaskjfgjkgs");
-		MainGame.game.battle.fadeOut();
+		playing = false;
 		MainGame.game.setScreen(MainGame.game.main);
 	}
 

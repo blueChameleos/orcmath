@@ -50,6 +50,7 @@ public class ItemMenu extends ScrollablePane {
 				item = new Button(x, y, 190, 60, itemlist.get(j).getName(), Color.GREEN, new Action() {
 					@Override
 					public void act() {
+						MainGame.game.battle.game.interrupt();
 						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
 						MainGame.game.battle.updateHp();
@@ -62,6 +63,7 @@ public class ItemMenu extends ScrollablePane {
 				item = new Button(x, y, 190, 60, itemlist.get(j).getName(), Color.ORANGE, new Action() {
 					@Override
 					public void act() {
+						MainGame.game.battle.game.interrupt();
 						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
 						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
 						MainGame.game.battle.updateHp();
