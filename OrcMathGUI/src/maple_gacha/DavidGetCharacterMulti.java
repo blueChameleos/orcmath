@@ -1,6 +1,7 @@
 package maple_gacha;
 
 import java.awt.Color;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,10 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 	public ArrayList<Hero> resistance;
 	public int cardNum;
 	public int bannerNum;
+	public int cardNum1;
+	public int cardNum2;
+	public ArrayList<Number> num;
 	
-
 	public ArrayList<Hero> getStuff() {
 		return resistance;
 	}
@@ -37,21 +40,13 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 		super(width, height);
 	}
 
-	public void lighting() {
-		lighting.setRepeat(false);
-		lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
-		Thread light = new Thread(lighting);
-		light.start();
-
-	}
-
 	public void rng() {
 		rate = (int) Math.floor(Math.random() * 101);
 	}
 
 	public void getCard() {
 
-		if (rate < 5) {
+		if (rate < 100) {
 			srare = true;
 			lightingCheck = true;
 		} else {
@@ -59,31 +54,45 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 		}
 	}
 	
+	public ArrayList<Number> cardNum(int x)
+	{
+		cardNum = (int) (Math.random() * x);
+		
+		cardNum1 = (int) (Math.random() * x);
+		
+		cardNum2 = (int) (Math.random() * x);
+		
+		num.add(cardNum);
+		num.add(cardNum1);
+		num.add(cardNum2);
+
+		return num;
+	}
+	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+
+		num = new ArrayList<Number>();
 
 		getBanner();
 		rng();
 		getCard();
 
-
 		StyledComponent.setButtonOutline(false);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
-		viewObjects.add(background);
-		cardNum = (int) (Math.random() * resistance.size());
-		System.out.println(cardNum);
-		
+		System.out.println(cardNum);		
 
 		// TextArea descrip = new TextArea((int)(getWidth()/2 * .75),
 		// (int)(getHeight()/2 * .9), 150, 150,
 		// MainGame.summon.getThings().get(0).getRank());
+		//cardNum = (int) (Math.random() * resistance.size());
 
-		Graphic bannerCard1 = new Graphic(475, 350, 350, 650, resistance.get(cardNum).getImage());
-		Graphic bannerCard2 = new Graphic(475, 350, 650, 650, resistance.get(cardNum).getImage());
-		Graphic bannerCard3 = new Graphic(475, 350, 650, 650, resistance.get(cardNum).getImage());
+		Graphic bannerCard1 = new Graphic(475, 350, 350, 650, resistance.get((int) cardNum(resistance.size()).get(0)).getImage());
+		Graphic bannerCard2 = new Graphic(475, 350, 650, 650, resistance.get((int) cardNum(resistance.size()).get(1)).getImage());
+		Graphic bannerCard3 = new Graphic(475, 350, 650, 650, resistance.get((int) cardNum(resistance.size()).get(2)).getImage());
 
 		
-		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
+		back = new Button(600, 800, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
@@ -109,7 +118,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 				if (srare == true) {
 
 					lighting.setRepeat(false);
-					lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
+					lighting.addSequence("resources/summoninganimation (1) (1).png", 150, 0, 0, 1374, 1023, 21);
 					Thread light = new Thread(lighting);
 					light.start();
 
@@ -121,32 +130,53 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 					}
 
 					viewObjects.remove(lighting);
+					
+					viewObjects.add(background);
+					
 					viewObjects.add(bannerCard1);
 					viewObjects.add(bannerCard2);
 					viewObjects.add(bannerCard3);
 
 
-					MainGame.addHero(resistance.get(cardNum));
+					MainGame.addHero(resistance.get((int) cardNum(resistance.size()).get(0)));
+					MainGame.addHero(resistance.get((int) cardNum(resistance.size()).get(1)));
+					MainGame.addHero(resistance.get((int) cardNum(resistance.size()).get(2)));
+
 
 					back.setVisible(true);
 					back.setEnabled(true);
-				} else {
-
-					cardNum = (int) (Math.random() * resistanceB.size());
+					
+					
+					try {
+						Thread.sleep(6000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 					background.setVisible(true);
+					
+				} else {
+					
+					//cardNum = (int) (Math.random() * resistanceB.size());
+					
 
-					Graphic bannerCardB1 = new Graphic(475, 350, 650, 350, resistanceB.get(cardNum).getImage());
-					Graphic bannerCardB2 = new Graphic(475, 350, 650, 350, resistanceB.get(cardNum).getImage());
-					Graphic bannerCardB3 = new Graphic(475, 350, 650, 350, resistanceB.get(cardNum).getImage());
+					Graphic bannerCardB1 = new Graphic(200, 200, 650, 350, resistanceB.get((int) cardNum(resistanceB.size()).get(0)).getImage());
+					Graphic bannerCardB2 = new Graphic(800, 200, 650, 350, resistanceB.get((int) cardNum(resistanceB.size()).get(1)).getImage());
+					Graphic bannerCardB3 = new Graphic(600, 400, 650, 350,resistanceB.get((int) cardNum(resistanceB.size()).get(2)).getImage());
 					viewObjects.add(bannerCardB1);
 					viewObjects.add(bannerCardB2);					
 					viewObjects.add(bannerCardB3);
 					
 
 					
-					MainGame.addHero(resistanceB.get(cardNum));
+					MainGame.addHero(resistanceB.get((int) cardNum(resistanceB.size()).get(0)));
+					MainGame.addHero(resistanceB.get((int) cardNum(resistanceB.size()).get(1)));
+					MainGame.addHero(resistanceB.get((int) cardNum(resistanceB.size()).get(2)));
+
 					back.setVisible(true);
 					back.setEnabled(true);
+					background.setVisible(true);
 					
 
 				}
