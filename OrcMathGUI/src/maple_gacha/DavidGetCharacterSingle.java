@@ -9,6 +9,7 @@ import guiTeacher.components.AnimatedComponent;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
+import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -18,39 +19,27 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	private AnimatedComponent lighting;
 	public boolean srare;
 	public double rate;
-	private Button skipAn;
 	public boolean lightingCheck;
-	public ArrayList<Hero> asdf;
-	public static Hero Archer;
-	public static Hero Sword;
-	public static Hero Wizard;
-	public ArrayList<Hero> stuff;
-
+	public ArrayList<Hero> resistanceB;
+	public ArrayList<Hero> resistance;
+	public int cardNum;
+	public int bannerNum;
 	
+
 	public ArrayList<Hero> getStuff() {
-		return stuff;
+		return resistance;
 	}
 
 	public void setStuff(ArrayList<Hero> stuff) {
-		this.stuff = stuff;
+		this.resistance = stuff;
 	}
 
 	public DavidGetCharacterSingle(int width, int height) {
 		super(width, height);
 	}
-	
-	public static void createCharacters() {
-		Archer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
-		Sword = new Hero("resources/characterPics/Hero_BeginnerSword.png", "B", 10, 10, 10, 10, 100);
-		Wizard = new Hero("resources/characterPics/Hero_BeginnerWizard.png", "B", 10, 10, 10, 10, 100);
-		//add the characters here?
-		System.out.println(Sword.getImage());
-		System.out.println(Archer);
-	}	
-	
-	
 
 	public void lighting() {
+		lighting.setRepeat(false);
 		lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
 		Thread light = new Thread(lighting);
 		light.start();
@@ -62,8 +51,8 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	}
 
 	public void getCard() {
-		
-		if (rate < 100) {
+
+		if (rate < 5) {
 			srare = true;
 			lightingCheck = true;
 		} else {
@@ -71,103 +60,142 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		}
 	}
 	
-	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		asdf = new ArrayList<Hero>();
-		
-		StyledComponent.setButtonOutline(false);
-		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/summoningbackground.png");
-		Graphic mech = new Graphic(475, 350, 650, 350,"resources/mech.jpg");
-		
-		
+
+		getBanner();
 		rng();
 		getCard();
-		banner();
-		contains(asdf);
+
+
+		StyledComponent.setButtonOutline(false);
+		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
+		viewObjects.add(background);
+		cardNum = (int) (Math.random() * resistance.size());
+		System.out.println(cardNum);
 		
+
+		// TextArea descrip = new TextArea((int)(getWidth()/2 * .75),
+		// (int)(getHeight()/2 * .9), 150, 150,
+		// MainGame.summon.getThings().get(0).getRank());
+
+		Graphic bannerCard = new Graphic(475, 350, 350, 650, resistance.get(cardNum).getImage());
+
 		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
-				//ss
-				
-				viewObjects.remove(background);
-				viewObjects.remove(mech);
-				viewObjects.add(skipAn);
-				viewObjects.add(lighting);
-				viewObjects.remove(back);
+
+				resistanceB.clear();
+				resistance.clear();
 				MainGame.game.setScreen(MainGame.summon);
-				
+
 			}
 		});
-		
+
+		back.setVisible(false);
+		back.setEnabled(false);
 		viewObjects.add(back);
 
-		skipAn = new Button(0,0,getWidth() ,getHeight()," ", new Action() {
-
-				@Override
-				public void act() {
-						
-					viewObjects.remove(lighting);
-					
-					viewObjects.add(background);
-					viewObjects.add(mech);
-					viewObjects.add(back);
-					viewObjects.remove(skipAn);
-					skipAn.setVisible(false);
-					
-				}
-			});
-		
-		viewObjects.add(skipAn);
-		
-		
 		lighting = new AnimatedComponent(0, 0, 1375, 1024);
 		viewObjects.add(lighting);
 
 		new Thread() {
-			
-			public void run() {	
+
+			public void run() {
 
 				if (srare == true) {
-					lighting();
+
+					lighting.setRepeat(false);
+					lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
+					Thread light = new Thread(lighting);
+					light.start();
+
+					try {
+						Thread.sleep(6000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					viewObjects.remove(lighting);
+					viewObjects.add(bannerCard);
+					MainGame.addHero(resistance.get(cardNum));
+
+					back.setVisible(true);
+					back.setEnabled(true);
+				} else {
+
+					cardNum = (int) (Math.random() * resistanceB.size());
+					background.setVisible(true);
+
+					Graphic bannerCardB = new Graphic(475, 350, 350, 650, resistanceB.get(cardNum).getImage());
+					viewObjects.add(bannerCardB);
+					MainGame.addHero(resistanceB.get(cardNum));
+					back.setVisible(true);
+					back.setEnabled(true);
+					
+
 				}
-				
 			}
 		}.start();
-		
-	}
-	public void banner()
-	{
-		
-		asdf.add(Archer);
-		asdf.add(Sword);
-		asdf.add(Wizard);
-		
-		
-		System.out.println("Character added "+asdf.get(0));
-		System.out.println("Character added "+asdf.get(1));
-		System.out.println("Character added "+asdf.get(2));
+
+		// MainGame.main.getThings().loadImages(MainGame.summon.getThings().get(0).getImage(),
+		// getWidth()/2-359, 155);
+
+		// MainGame.game.addHero(MainGame.summon.getThings().get(0).getImage(),MainGame.summon.getThings().get(0).getRank(),MainGame.summon.getThings().get(0).getStrength(),MainGame.summon.getThings().get(0).getSpeed(),MainGame.summon.getThings().get(0).getAttack(),MainGame.summon.getThings().get(0).getDefense(),MainGame.summon.getThings().get(0).getHP());
 
 	}
-	
-	public boolean contains(ArrayList<Hero> asdf)
-	{
-		asdf.add(Wizard);
+
+	private void getBanner() {
+		bannerNum = MainGame.summon.bannerType();
+		System.out.println(bannerNum);
+
 		
-		for(Hero Wizard: asdf)
+		if(bannerNum == 0)
 		{
-			System.out.println("The "+asdf.get(0)+true);
+			resistance = new ArrayList<Hero>();
+			resistance.add(MainGame.highPrincess);//SS
+			resistance.add(MainGame.highTank);//S
+
+			resistanceB = new ArrayList<Hero>();
+			resistanceB.add(MainGame.bCoolGuys);//A
+			resistanceB.add(MainGame.mediumAxe);//A
+			resistanceB.add(MainGame.beginnerSword);//B
+
 			
+			System.out.println("RESISTANCE BANNER HAS BEEN CREATED");
 		}
-		return true;
 		
+		if(bannerNum == 1)
+		{
+			resistance = new ArrayList<Hero>();
+			resistance.add(MainGame.highAssassin);//SS
+			resistance.add(MainGame.mediumHighSchoolGirl);//S
+			
+			resistanceB = new ArrayList<Hero>();
+			resistanceB.add(MainGame.bFanWoman);//A
+			resistanceB.add(MainGame.mediumWitch);//A
+			resistanceB.add(MainGame.beginnerArcher);//B
+			
+			System.out.println("RED BANNER HAS BEEN CREATED");
+		}
+		
+		if(bannerNum == 2)
+		{
+			resistance = new ArrayList<Hero>();
+			resistance.add(MainGame.highSirandHorse);//SS
+			resistance.add(MainGame.mediumCannonMan);//S
+			
+			resistanceB = new ArrayList<Hero>();
+			resistanceB.add(MainGame.mediumWizard);//A
+			resistanceB.add(MainGame.mediumWolfGirl);//A
+			resistanceB.add(MainGame.beginnerWizard);//B
+
+			
+			System.out.println("OG BANNER HAS BEEN CREATED");
+
+		}
 	}
 
-	
 }
-		
-	
-	
-

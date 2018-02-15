@@ -27,21 +27,27 @@ public class MainGame extends GUIApplication {
 	public static BeginnerSelectionScreen bScreen;
 	public static Monster[] mobs;
 	public static Hero beginnerArcher;
+
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
+	public static Hero bCoolGuys;
+	public static Hero bFanWoman;
+
 	public static DavidGetCharacterSingle single;
 	public static DavidGetCharacterMulti multi;
-	public static Hero temp;
-	public static Hero temp1;
-	public static Hero temp2;
 	private static Clip g;
-	private static Hero mediumWizard;
-	private static Hero mediumAxe;
-	private static Hero mediumWitch;
-	private static Hero mediumWolfGirl;
-	private static Hero mediumCannonMan;
-	private static Hero highTank;
-	private static Hero highPrincess;
+
+	public static Hero mediumWizard;
+	public static Hero mediumAxe;
+	public static Hero mediumWitch;
+	public static Hero mediumWolfGirl;
+	public static Hero mediumCannonMan;
+	public static Hero mediumHighSchoolGirl;
+	public static Hero highTank;
+	public static Hero highPrincess;
+	public static Hero highAssassin;
+	public static Hero highSirandHorse;
+
 	private static Monster minionBlowfish;
 	private static Monster minionDemon;
 	private static Monster minionDevil;
@@ -87,6 +93,11 @@ public class MainGame extends GUIApplication {
 //		button.addActionListener(new AL());
 //		frame.setVisible(true);
 //			 
+
+
+		load = new LoadingScreen(getWidth(), getHeight());
+		//battle = new BattleScreen(getWidth(), getHeight());
+		setScreen(main);
 	}
 
 	public static void main(String[] args) {
@@ -126,15 +137,23 @@ public class MainGame extends GUIApplication {
 		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
 		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100);
+	
+		bCoolGuys = new Hero("resources/characterPics/HeroBCoolGuy.png", "B", 10, 10, 10, 10, 100);
+		bFanWoman = new Hero("resources/characterPics/HeroBFanWoman.png", "B", 10, 10, 10, 10, 100);
 		
+
+
 		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150);
 		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150);
 		mediumWitch = new Hero("resources/characterPics/HeroAitch.png", "A", 20, 20, 20, 20, 150);
 		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150);
-		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "A", 20, 20, 20, 20, 150);
+		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "S", 20, 20, 20, 20, 150);
+		mediumHighSchoolGirl = new Hero("resources/characterPics/HeroAHighSchoolGirl.png", "S", 20, 20, 20, 20, 150);
 		
 		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200);
-		highPrincess = new Hero("resources/charcterPics/HeroSPrincess.png", "S", 30, 30, 30, 30, 200);
+		highPrincess = new Hero("resources/characterPics/HeroSPrincess.png", "SS", 30, 30, 30, 30, 200);
+		highAssassin = new Hero("resources/characterPics/HeroSAssassin.png", "SS", 30, 30, 30, 30, 200);
+		highSirandHorse = new Hero("resources/characterPics/HeroSBraveSirandHorse.png", "SS", 30, 30, 30, 30, 200);
 		
 		
 		 

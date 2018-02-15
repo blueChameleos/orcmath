@@ -2,6 +2,8 @@ package maple_gacha;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,8 @@ public class FeaturedChar extends FullFunctionScreen{
 	private Graphic begArcher;
 	private ArrayList<Hero> thing;
 	private boolean ready;
+	private TextArea stats;
+	private int toggle;
 
 
 	public boolean isReady() {
@@ -40,6 +44,7 @@ public class FeaturedChar extends FullFunctionScreen{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		toggle = 0;
 		setReady(true);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
@@ -52,28 +57,46 @@ public class FeaturedChar extends FullFunctionScreen{
 			StyledComponent.setBaseFont(baseFont);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}	
 		
-//		TextArea title = new TextArea((int)(getWidth()/2 * .3), (int)(getHeight()/2 * .5), 150, 150, "Click the Character to check stats!");
-//		viewObjects.add(title);
-		//NOT READY TO SHOW YET.
+		stats = new TextArea(getWidth()/2, (int) (getHeight()/2 * .9), 250, 250, "");
+		stats.setVisible(false);
+		viewObjects.add(stats);
 		
 		if(isReady()) {
-//			System.out.println(MainGame.summon.getThings().get(0));
 			
-			TextArea descrip = new TextArea((int)(getWidth()/2 * .75), (int)(getHeight()/2 * .9), 150, 150, MainGame.summon.getThings().get(0).getRank() + " Rank");
-			viewObjects.add(descrip);
-			ClickableGraphic beg1 = new ClickableGraphic((int)(getWidth()/2 * .65), (int) (getHeight()/2) , 200, 200, MainGame.summon.getThings().get(0).getImage());
-			beg1.setAction(new Action() {
+			Button displayStats = new Button(getWidth()/2, (int) (getHeight()/2 * .65), 125, 100, "Show/hide stats", Color.YELLOW, new Action() {
 				
 				@Override
 				public void act() {
-					//Display Stats.
-					TextArea stats = new TextArea((int)(getWidth()/2 * .65), (int) (getHeight()/2) , 200, 200, MainGame.summon.getThings().get(0).getImage());
+					if(toggle == 0) {
+						stats.setVisible(true);
+						stats.setText("RANK: " + MainGame.summon.getThings().get(0).getRank() + "\n"
+						+ "STR: " + MainGame.summon.getThings().get(0).getStrength() + "\n"
+						+ "SPD: "  + MainGame.summon.getThings().get(0).getSpeed() + "\n"
+						+ "ATK: " + MainGame.summon.getThings().get(0).getStrength() + "\n"
+						+ "DEF: "+ MainGame.summon.getThings().get(0).getDefense()+ "\n"
+						+ "HP: " + MainGame.summon.getThings().get(0).getHP() + "\n"
+						+ "ID: " + MainGame.summon.getThings().get(0).getID()
+								);
+						toggle = 1;
+					}else {
+						stats.setVisible(false);
+						toggle = 0;
+					}
 					
 				}
 			});
+			viewObjects.add(displayStats);
+			
+			TextArea descrip = new TextArea((int)(getWidth()/2 * .65), (int)(getHeight()/2 * .9), 150, 150, "Rank: " + MainGame.summon.getThings()
+					.get(0).getRank());
+			viewObjects.add(descrip);
+			ClickableGraphic beg1 = new ClickableGraphic((int)(getWidth()/2 * .7), (int) (getHeight()/2) , 200, 200, MainGame.summon.getThings()
+					.get(0).getImage());
 			viewObjects.add(beg1);
+			
+			
 		}
 		
 		Button goBack = new Button(50, 50, 150, 150, "Return", Color.yellow, new Action() {

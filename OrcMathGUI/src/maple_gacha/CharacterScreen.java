@@ -145,13 +145,13 @@ public class CharacterScreen extends FullFunctionScreen {
 		}
 		for(int i = 0;i<5;i++) {
 			if (MainGame.team.size() > i) {
-				clickList.set(i, new CardPane(this,133+205*i,142,206,319,MainGame.team.get(i)));
-				clickList.get(i).setHero(MainGame.team.get(i));
-				clickList.get(i).run();
-				clickList.get(i).update();
-			} else {
-				clickList.set(i, new CardPane(this,133+205*i,142,206,319,null));
-			}
+							clickList.set(i, new CardPane(this,133+205*i,142,206,319,MainGame.team.get(i)));
+								clickList.get(i).setHero(MainGame.team.get(i));
+							clickList.get(i).run();
+							clickList.get(i).update();
+							} else {
+							clickList.set(i, new CardPane(this,133+205*i,142,206,319,null));
+							}
 			int number = i;
 			clickList.get(i).setAction(new Action() {
 				@Override
