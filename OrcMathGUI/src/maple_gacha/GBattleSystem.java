@@ -132,6 +132,7 @@ public class GBattleSystem implements Runnable {
 		round ++;
 		order = new ArrayList<Hero>();
 		makeOrder();
+		MainGame.battle.nextRound();
 	}
 
 	//testing items
@@ -173,7 +174,7 @@ public class GBattleSystem implements Runnable {
 		{
 			for(int idx = 0; idx<enemiesList[rounds].length; idx++)
 			{
-				enemiesList[rounds][idx] = MainGame.game.mobs[(int) Math.random()*MainGame.game.mobs.length];
+				enemiesList[rounds][idx] = MainGame.mobs[(int)(Math.random()*MainGame.mobs.length)];
 			}
 		}
 	}

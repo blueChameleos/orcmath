@@ -143,12 +143,33 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public void updateHp() {
 		for (int i=0;i < monsterImg.size();i++) {
 			if (monsterImg.get(i).getHp() <= 0) {
-				System.out.println("hide");
 				monsterImg.get(i).hideImage();
 				update();
 			}
+			monsterImg.get(i).setHp();		
+		}
+	}
+	public void nextRound() {
+		for (int i = 0; i < backend.getEnemiesList()[backend.getRound()].length; i++) {
+			// backend.getEnemiesList()[backend.getRound()][i].getImage()
+			System.out.println(backend.getRound());
+			int number = i;
+			monsterImg.get(i).setVisible(true);
+			update();
+			monsterImg.get(i).setHero(backend.getEnemiesList()[backend.getRound()][i]);
 			monsterImg.get(i).setHp();
-			
+			monsterImg.get(i).setAction(new Action() {
+				@Override
+				public void act() {
+					if (currentlySelectedCharacterImage != null) {
+						currentlySelectedCharacterImage.setSelected(false);
+					}
+					backend.setCurrentEnemy(backend.getEnemiesList()[backend.getRound()][number]);
+					monsterImg.get(number).setSelected(true);
+					currentlySelectedCharacterImage = monsterImg.get(number);
+					update();
+				}
+			});
 		}
 	}
 	
