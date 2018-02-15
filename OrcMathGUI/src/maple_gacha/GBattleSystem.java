@@ -60,7 +60,6 @@ public class GBattleSystem implements Runnable {
 					target.setHP(target.getHP() - currentPlayer.getAttack());
 					System.out.println(target.getHP());
 					MainGame.battle.userui.updateLog(currentPlayer + " attacked " + target + "!");
-					checkChanges();
 				}
 				else
 				{
@@ -76,6 +75,7 @@ public class GBattleSystem implements Runnable {
 						System.out.println("Backend has resumed running");
 					}
 				}
+				checkChanges();
 				if(!playing) {
 					break;
 				}
@@ -84,8 +84,7 @@ public class GBattleSystem implements Runnable {
 	}
 	//when someone dies (all monster dies or heros)
 	public void checkChanges() {
-		System.out.println("ASDASFSAFASF");
-		MainGame.game.battle.updateHp();
+//		MainGame.game.battle.updateHp();
 		int instancesOfMonster = 0;
 		int instancesOfHeros = 0;
 		for(int i = 0; i<order.size(); i++)
