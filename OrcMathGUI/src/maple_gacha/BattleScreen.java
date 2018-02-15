@@ -83,6 +83,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 					userui.update();
 				}
 			});
+			heroImg.add(g);
 			viewObjects.add(g);
 					
 		}
@@ -147,6 +148,13 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 				update();
 			}
 			monsterImg.get(i).setHp();		
+		}
+		for (int i=0;i < heroImg.size();i++) {
+			if (heroImg.get(i).getHp() <= 0) {
+				heroImg.get(i).hideImage();
+				update();
+			}
+			heroImg.get(i).setHp();		
 		}
 	}
 	public void nextRound() {
