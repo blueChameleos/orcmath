@@ -42,7 +42,6 @@ public class MainGame extends GUIApplication {
 	private static Hero mediumCannonMan;
 	private static Hero highTank;
 	private static Hero highPrincess;
-
 	private static Monster minionBlowfish;
 	private static Monster minionDemon;
 	private static Monster minionDevil;
@@ -51,6 +50,7 @@ public class MainGame extends GUIApplication {
 	private static Monster minionPsy;
 	private static Monster minionDragon;
 	private static Monster minionAlien;
+	public static ArrayList<Monster> avaliableMonster;
 	
 
 	
@@ -62,6 +62,7 @@ public class MainGame extends GUIApplication {
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS				
 		createCharacters();
+		createMobChar();
 		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
@@ -96,35 +97,35 @@ public class MainGame extends GUIApplication {
 		game = new MainGame(1280, 1024);
 		Thread runner = new Thread(game);
 		runner.start();
-		playMusic("resources/maplestory music.wav");
+//		playMusic("resources/maplestory music.wav");
 	}
 
-	public static void playMusic(String musicPos) {
-		if (g!= null) {
-			g.stop();
-	
+//	public static void playMusic(String musicPos) {
+//		if (g!= null) {
+//			g.stop();
+//		}
+//	}
 	
 	public static void createMobs() {
 		mobs = new Monster[200];
 		for(int i = 0; i < mobs.length; i++) {
-			mobs[i] = new Monster(1,500,30,1,500);
+			addMonster(avaliableMonster.get((int)(Math.random()*avaliableMonster.size())),i);
 		}
-		try {
-	          File soundFile = new File(musicPos);
-	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
-	          g = AudioSystem.getClip();
-	         g.open(audioIn);
-	         g.start();
-	      } catch (UnsupportedAudioFileException e) {
-	         e.printStackTrace();
-	      } catch (IOException e) {
-	         e.printStackTrace();
-	      } catch (LineUnavailableException e) {
-	         e.printStackTrace();
-	      }
+//		try {
+//	          File soundFile = new File(musicPos);
+//	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
+//	          g = AudioSystem.getClip();
+//	         g.open(audioIn);
+//	         g.start();
+//	      } catch (UnsupportedAudioFileException e) {
+//	         e.printStackTrace();
+//	      } catch (IOException e) {
+//	         e.printStackTrace();
+//	      } catch (LineUnavailableException e) {
+//	         e.printStackTrace();
+//	      }
 	}
-	
-	
+
 	public static void createCharacters() {
 		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
@@ -167,8 +168,33 @@ public class MainGame extends GUIApplication {
 		this.battle = battle;
 	}
 
+	public static void createMobChar() {
+		avaliableMonster = new  ArrayList<Monster>();
+		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionBlowfish);
+		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionDemon);
+		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionDevil);
+		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionInvidia);
+		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionYeti);
+		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionPsy);
+		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionDragon);
+		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionAlien);
+	}
+
 	public static void addHero(Hero hero) {
 		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());
 		team.add(newHero);
+	}
+	
+	public static void addMonster(Monster monster,int i) {
+		Monster newMonster = new Monster(monster.getImage(),monster.getRank(),monster.getStrength(),monster.getSpeed(),monster.getAttack(),monster.getDefense(),monster.getHP());
+		mobs[i] = newMonster;
 	}
 }
