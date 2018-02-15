@@ -13,7 +13,7 @@ public class SnowFlake extends MovingComponent {
 	public SnowFlake(int w, int h) {
 		super((int)(Math.random()*w), (int)(Math.random()*h),50,50);
 		img = new Graphic(0,0,50,50, "resources/snowflake.png").getImage();
-		setVx(-.5);
+		setVx(-1 * (.5 + Math.random()* 1));
 		setVy(2 + Math.random()*3.0);
 		update();
 		Thread t = new Thread(this);

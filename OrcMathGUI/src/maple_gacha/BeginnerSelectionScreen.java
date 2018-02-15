@@ -134,6 +134,7 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 
 				text.setX(410);
 				begArcher.setX(560);
+				lightbulb.setX(begArcher.getX() + 30);
 				text.setText("You chose the archer!");
 
 				retry.setVisible(true);
@@ -155,6 +156,8 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				retry.setVisible(true);
 				next.setVisible(true);
 				text.setX(410);
+				lightbulb.setX(begSword.getX() + 30);
+
 
 			}
 
@@ -173,6 +176,8 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				retry.setVisible(true);
 				next.setVisible(true);
 				text.setX(410);
+				lightbulb.setX(begWizard.getX() + 30);
+
 
 			}
 		});

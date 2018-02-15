@@ -12,6 +12,7 @@ public class MainGame extends GUIApplication {
 	private static final long serialVersionUID = 6853186922252287821L;
 	
 	public static MainGame game;
+	public static Money money;
 	public static BattleScreen battle;
 	public static MainScreen main;	 
 	public static LoadingScreen load;
@@ -83,8 +84,7 @@ public class MainGame extends GUIApplication {
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());		
 		setResizable(false);	
-		setScreen(battle);	
-	
+		setScreen(load);	
 //		JFrame frame = new JFrame();
 //		frame.setSize(200, 200);
 //		frame.setLocationRelativeTo(null);
@@ -93,11 +93,17 @@ public class MainGame extends GUIApplication {
 //		button.addActionListener(new AL());
 //		frame.setVisible(true);
 //			 
+<<<<<<< HEAD
 
 
 		load = new LoadingScreen(getWidth(), getHeight());
 		//battle = new BattleScreen(getWidth(), getHeight());
 		setScreen(main);
+=======
+//		load = new LoadingScreen(getWidth(), getHeight());
+//		battle = new BattleScreen(getWidth(), getHeight());
+//		setScreen(load);
+>>>>>>> branch 'gacha_develop' of https://github.com/blueChameleos/orcmath.git
 	}
 
 	public static void main(String[] args) {
