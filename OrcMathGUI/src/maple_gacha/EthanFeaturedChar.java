@@ -18,7 +18,7 @@ import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class FeaturedChar extends FullFunctionScreen{
+public class EthanFeaturedChar extends FullFunctionScreen{
 	private ArrayList<Hero> chars;
 	private int index;
 	private Graphic begArcher;
@@ -36,7 +36,7 @@ public class FeaturedChar extends FullFunctionScreen{
 		this.ready = ready;
 	}
 
-	public FeaturedChar(int width, int height) {
+	public EthanFeaturedChar(int width, int height) {
 		super(width, height);
 //		setReady(false);
 		// TODO Auto-generated constructor stub
