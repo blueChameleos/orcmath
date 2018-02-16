@@ -13,7 +13,7 @@ import guiTeacher.components.StyledComponent;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class DavidGetCharacterMulti extends FullFunctionScreen {
+public class DavidGetCharacterMulti extends FullFunctionScreen implements BannerInterface{
 
 	private Button back;
 	private AnimatedComponent lighting;
@@ -239,5 +239,23 @@ public class DavidGetCharacterMulti extends FullFunctionScreen {
 			System.out.println("OG BANNER HAS BEEN CREATED");
 
 		}
+	}
+
+	@Override
+	public void summonBanner(int idx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPotentialChars() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int bannerType() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
