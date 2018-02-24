@@ -43,7 +43,7 @@ public class GBattleSystem implements Runnable {
 	}
 
 	private void playGame() {
-		disableButtons();
+//		disableButtons();
 		while(playing)
 		{
 			System.out.println(order.toString());
@@ -53,7 +53,7 @@ public class GBattleSystem implements Runnable {
 				currentPlayer = order.get(i);
 				if(currentPlayer.getClass() == Monster.class)
 				{
-					disableButtons();
+//					disableButtons();
 					Hero target = order.get((int)(Math.random()*order.size()));
 					while(target.getClass() == Monster.class) {
 						target = order.get((int)(Math.random()*order.size()));
@@ -61,12 +61,12 @@ public class GBattleSystem implements Runnable {
 					System.out.println(target.getHP());
 					target.setHP(target.getHP() - currentPlayer.getAttack());
 					System.out.println(target.getHP());
-					MainGame.battle.userui.updateLog(currentPlayer + " attacked " + target + "!");
+//					MainGame.battle.userui.updateLog(currentPlayer + " attacked " + target + "!");
 				}
 				else
 				{
-					enableButtons();
-					waiting = true;
+//					enableButtons();
+					MainGame.battle.userui.updateLog("It's " + currentPlayer + "'s turn!");
 					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 					currentPlayer.setGuard(false);
 					currentEnemy = enemiesList[round][(int) Math.random()*enemiesList[round].length];
@@ -81,6 +81,12 @@ public class GBattleSystem implements Runnable {
 				checkChanges();
 				if(!playing) {
 					break;
+				}
+				try {
+					MainGame.game.battle.game.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}
@@ -102,7 +108,7 @@ public class GBattleSystem implements Runnable {
 
 	//when someone dies (all monster dies or heros)
 	public void checkChanges() {
-//		MainGame.game.battle.updateHp();
+		MainGame.game.battle.updateHp();
 		int instancesOfMonster = 0;
 		int instancesOfHeros = 0;
 		for(int i = 0; i<order.size(); i++)

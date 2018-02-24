@@ -152,9 +152,6 @@ public class BattleMenu extends Pane implements Runnable{
 	}
 
 	public void updateLog(String text) {
-		while(printer != null) {
-			
-		}
 		printer = new Thread(new Runnable() {
 			@Override
 			public void run() {
