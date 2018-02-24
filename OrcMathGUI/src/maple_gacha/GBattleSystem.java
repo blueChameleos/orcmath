@@ -44,7 +44,7 @@ public class GBattleSystem implements Runnable {
 				currentPlayer = order.get(i);
 				if(currentPlayer.getClass() == Monster.class)
 				{
-//					disableButtons();
+					disableButtons();
 					Hero target = order.get((int)(Math.random()*order.size()));
 					while(target.getClass() == Monster.class) {
 						target = order.get((int)(Math.random()*order.size()));
@@ -52,11 +52,11 @@ public class GBattleSystem implements Runnable {
 					System.out.println(target.getHP());
 					target.setHP(target.getHP() - currentPlayer.getAttack());
 					System.out.println(target.getHP());
-//					MainGame.battle.userui.updateLog(currentPlayer + " attacked " + target + "!");
+					MainGame.battle.userui.updateLog(currentPlayer + " attacked " + target + "!");
 				}
 				else
 				{
-//					enableButtons();
+					enableButtons();
 					MainGame.battle.userui.updateLog("It's " + currentPlayer + "'s turn!");
 					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 					currentPlayer.setGuard(false);
@@ -74,10 +74,11 @@ public class GBattleSystem implements Runnable {
 					break;
 				}
 				try {
-					MainGame.game.battle.game.sleep(2000);
+					disableButtons();
+					MainGame.game.battle.game.sleep(3000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("Unnatural interruption from unknown source");
 				}
 			}
 		}

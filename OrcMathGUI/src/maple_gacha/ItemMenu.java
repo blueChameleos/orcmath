@@ -56,6 +56,7 @@ public class ItemMenu extends ScrollablePane {
 						MainGame.game.battle.updateHp();
 						MainGame.battle.userui.hideItemMenu();
 						MainGame.game.battle.backend.checkChanges();
+						MainGame.battle.backend.disableButtons();
 						MainGame.battle.itemui.initAllObjects(viewObjects);
 					}
 				});
@@ -69,6 +70,7 @@ public class ItemMenu extends ScrollablePane {
 						MainGame.game.battle.updateHp();
 						MainGame.battle.userui.hideItemMenu();
 						MainGame.game.battle.backend.checkChanges();
+						MainGame.battle.backend.disableButtons();
 						MainGame.battle.itemui.initAllObjects(viewObjects);
 					}
 				});

@@ -64,6 +64,7 @@ public class BattleMenu extends Pane implements Runnable{
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " attacked " + MainGame.game.battle.backend.getCurrentEnemy() + "!");
 				MainGame.game.battle.backend.checkChanges();
 				MainGame.game.battle.backend.setWaiting(false);
+				MainGame.battle.backend.disableButtons();
 			}
 		});
 		defbutton = new Button(1030, 85, 120, 65, "Guard", Color.YELLOW, new Action() {
@@ -73,6 +74,7 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.backend.getCurrentPlayer().setGuard(true);
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " guarded!");
 				MainGame.game.battle.backend.setWaiting(false);
+				MainGame.battle.backend.disableButtons();
 			}
 		});
 		skillbutton = new Button(900, 85, 120, 65, "Skill", Color.YELLOW, new Action() {
@@ -83,6 +85,7 @@ public class BattleMenu extends Pane implements Runnable{
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used a special skill!");
 				MainGame.game.battle.backend.checkChanges();
 				MainGame.game.battle.backend.setWaiting(false);
+				MainGame.battle.backend.disableButtons();
 			}
 		});
 		itembutton = new Button(1030, 10, 120, 65, "Item", Color.YELLOW, new Action() {
