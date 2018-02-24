@@ -5,19 +5,11 @@ import java.util.ArrayList;
 
 public class GBattleSystem implements Runnable {
 
-
-	/*	things to do:
-
-			user input on BattleScreen (Saturday + Sunday)
-
-			begin testing after merge.
-	 */
 	private int enemiesNum;
 	private Hero[] mainParty;
 	private Monster[][] enemiesList; //round -> enemies 
 	private int round = 0;
 	private ArrayList<Hero> order = new ArrayList<Hero>();
-	private Thread gameSystem;
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
 	private ArrayList<Items> inventory = new ArrayList<Items>();
@@ -43,7 +35,6 @@ public class GBattleSystem implements Runnable {
 	}
 
 	private void playGame() {
-//		disableButtons();
 		while(playing)
 		{
 			System.out.println(order.toString());
@@ -328,10 +319,6 @@ public class GBattleSystem implements Runnable {
 
 	public void setInventory(ArrayList<Items> inventory) {
 		this.inventory = inventory;
-	}
-
-	public Thread getGameSystem() {
-		return gameSystem;
 	}
 
 	public void setPlaying(boolean playing) {
