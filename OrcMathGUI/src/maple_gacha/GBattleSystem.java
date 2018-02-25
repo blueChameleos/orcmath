@@ -73,7 +73,7 @@ public class GBattleSystem implements Runnable {
 					MainGame.battle.userui.updateLog("It's " + currentPlayer + "'s turn!");
 					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 					currentPlayer.setGuard(false);
-					currentEnemy = enemiesList[round][(int) Math.random()*enemiesList[round].length];
+					currentEnemy = enemiesList[round][(int) (Math.random()*enemiesList[round].length)];
 					try {
 						System.out.println("Backend is waiting for response from front end");
 						MainGame.battle.game.sleep(Long.MAX_VALUE);
