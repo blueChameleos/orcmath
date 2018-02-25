@@ -13,7 +13,7 @@ import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class DavidGetCharacterSingle extends FullFunctionScreen {
+public class DavidGetCharacterSingle extends FullFunctionScreen implements BannerInterface{
 
 	private Button back;
 	private AnimatedComponent lighting;
@@ -24,6 +24,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	public ArrayList<Hero> resistance;
 	public int cardNum;
 	public int bannerNum;
+	private CustomCursor customCursor;
 	
 
 	public ArrayList<Hero> getStuff() {
@@ -62,6 +63,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		customCursor = new CustomCursor(this); 
 
 		getBanner();
 		rng();
@@ -71,6 +73,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		StyledComponent.setButtonOutline(false);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
+		background.setVisible(false);
 		cardNum = (int) (Math.random() * resistance.size());
 		System.out.println(cardNum);
 		
@@ -79,9 +82,9 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 		// (int)(getHeight()/2 * .9), 150, 150,
 		// MainGame.summon.getThings().get(0).getRank());
 
-		Graphic bannerCard = new Graphic(475, 350, 350, 650, resistance.get(cardNum).getImage());
+		Graphic bannerCard = new Graphic(475, 350, 100, 200, resistance.get(cardNum).getImage());
 
-		back = new Button(600, 900, 100, 75, "Back", Color.YELLOW, new Action() {
+		back = new Button(600, 500, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
@@ -112,28 +115,40 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 					light.start();
 
 					try {
-						Thread.sleep(6000);
+						Thread.sleep(5000);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 
 					viewObjects.remove(lighting);
+					
+					
+					
 					viewObjects.add(bannerCard);
+					
+					
 					MainGame.addHero(resistance.get(cardNum));
 
 					back.setVisible(true);
 					back.setEnabled(true);
+					
+					background.setVisible(true);
+
 				} else {
 
 					cardNum = (int) (Math.random() * resistanceB.size());
 					background.setVisible(true);
 
-					Graphic bannerCardB = new Graphic(475, 350, 350, 650, resistanceB.get(cardNum).getImage());
+					Graphic bannerCardB = new Graphic(475, 350, 100, 200, resistanceB.get(cardNum).getImage());
+					
 					viewObjects.add(bannerCardB);
+					
 					MainGame.addHero(resistanceB.get(cardNum));
+					
 					back.setVisible(true);
 					back.setEnabled(true);
+					background.setVisible(true);
 					
 
 				}
@@ -196,6 +211,24 @@ public class DavidGetCharacterSingle extends FullFunctionScreen {
 			System.out.println("OG BANNER HAS BEEN CREATED");
 
 		}
+	}
+
+	@Override
+	public void summonBanner(int idx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPotentialChars() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int bannerType() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
