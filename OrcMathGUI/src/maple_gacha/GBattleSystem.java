@@ -30,11 +30,24 @@ public class GBattleSystem implements Runnable {
 	}
 
 	public void run() {
+		try {
+			MainGame.battle.game.sleep(Long.MAX_VALUE);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			System.out.println("The game has started");
+		}
 		makeOrder();
 		playGame();
 	}
 
-	private void playGame() {
+	public void playGame() {
+		MainGame.battle.userui.updateLog("Monsters have appeared!");
+		try {
+			MainGame.battle.game.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("An unnatural interruption has occurred. This should not ever happen");
+		}
 		while(playing)
 		{
 			System.out.println(order.toString());
@@ -138,14 +151,14 @@ public class GBattleSystem implements Runnable {
 		}
 	}
 
-	private void endGame() {
-		//		showRewards();
+	public void endGame() {
+//		showRewards();
 		playing = false;
 		MainGame.game.setScreen(MainGame.game.main);
 	}
 
 	private void newRound() {
-		round ++;
+		round++;
 		order = new ArrayList<Hero>();
 		makeOrder();
 		MainGame.battle.nextRound();
@@ -170,7 +183,7 @@ public class GBattleSystem implements Runnable {
 	}
 
 
-	private void changeStats(double d) {
+	public void changeStats(double d) {
 		for(Monster[] el: enemiesList)
 		{
 			for(Monster e: el)
