@@ -24,6 +24,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 	public ArrayList<Hero> resistance;
 	public int cardNum;
 	public int bannerNum;
+	private CustomCursor customCursor;
 	
 
 	public ArrayList<Hero> getStuff() {
@@ -62,6 +63,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		customCursor = new CustomCursor(this); 
 
 		getBanner();
 		rng();

@@ -27,6 +27,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 	public int cardNum1;
 	public int cardNum2;
 	public ArrayList<Number> num;
+	private CustomCursor customCursor;
 	
 	public ArrayList<Hero> getStuff() {
 		return resistance;
@@ -71,6 +72,8 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		customCursor = new CustomCursor(this); 
+		
 
 		num = new ArrayList<Number>();
 

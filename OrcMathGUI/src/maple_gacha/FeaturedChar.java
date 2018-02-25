@@ -21,11 +21,10 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class FeaturedChar extends FullFunctionScreen{
 	private ArrayList<Hero> chars;
 	private int index;
-	private Graphic begArcher;
-	private ArrayList<Hero> thing;
 	private boolean ready;
 	private TextArea stats;
 	private int toggle;
+	private CustomCursor customCursor;
 
 
 	public boolean isReady() {
@@ -44,6 +43,7 @@ public class FeaturedChar extends FullFunctionScreen{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		customCursor = new CustomCursor(this);
 		toggle = 0;
 		setReady(true);
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
