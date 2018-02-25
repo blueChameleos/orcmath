@@ -93,17 +93,11 @@ public class MainGame extends GUIApplication {
 //		button.addActionListener(new AL());
 //		frame.setVisible(true);
 //			 
-<<<<<<< HEAD
 
 
 		load = new LoadingScreen(getWidth(), getHeight());
 		//battle = new BattleScreen(getWidth(), getHeight());
 		setScreen(main);
-=======
-//		load = new LoadingScreen(getWidth(), getHeight());
-//		battle = new BattleScreen(getWidth(), getHeight());
-//		setScreen(load);
->>>>>>> branch 'gacha_develop' of https://github.com/blueChameleos/orcmath.git
 	}
 
 	public static void main(String[] args) {
