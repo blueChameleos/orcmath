@@ -1,36 +1,20 @@
 package maple_gacha;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 
 import guiTeacher.GUIApplication;
-import maple_gacha.TestMusic.AL;
-import sun.audio.AudioData;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-import sun.audio.ContinuousAudioDataStream;
 
 public class MainGame extends GUIApplication {
 
 	private static final long serialVersionUID = 6853186922252287821L;
 	
 	public static MainGame game;
+	public static Money money;
 	public static BattleScreen battle;
-	public static MainScreen main;	
+	public static MainScreen main;	 
 	public static LoadingScreen load;
 	public static EthanSummonScreen summon;
 //	public static FeaturedChar featured;
@@ -44,13 +28,16 @@ public class MainGame extends GUIApplication {
 	public static BeginnerSelectionScreen bScreen;
 	public static Monster[] mobs;
 	public static Hero beginnerArcher;
+
 	public static Hero beginnerSword;
 	public static Hero beginnerWizard;
 	public static Hero bCoolGuys;
 	public static Hero bFanWoman;
+
 	public static DavidGetCharacterSingle single;
 	public static DavidGetCharacterMulti multi;
 	private static Clip g;
+
 	public static Hero mediumWizard;
 	public static Hero mediumAxe;
 	public static Hero mediumWitch;
@@ -70,6 +57,7 @@ public class MainGame extends GUIApplication {
 	private static Monster minionPsy;
 	private static Monster minionDragon;
 	private static Monster minionAlien;
+	public static ArrayList<Monster> avaliableMonster;
 	
 
 	
@@ -81,24 +69,22 @@ public class MainGame extends GUIApplication {
 	public void initScreen() {
 		//NOTE ADD MAIN SCREEN LATER GUYS				
 		createCharacters();
+		createMobChar();
 		createMobs();
 		team = new ArrayList<Hero>();
 		currentTeam = new ArrayList<Hero>();
-		addHero(beginnerSword);
-		addHero(beginnerWizard);
-		addHero(highTank);
 		currentTeam.add(beginnerArcher);
 		setLocationRelativeTo(null);
 		bScreen = new BeginnerSelectionScreen(getWidth(), getHeight());		
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 //		featured = new FeaturedChar(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
+		battle = new BattleScreen(getWidth(),getHeight());
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
-		load = new LoadingScreen(getWidth(), getHeight());					
+		load = new LoadingScreen(getWidth(), getHeight());		
 		setResizable(false);	
 		setScreen(load);	
-	
 //		JFrame frame = new JFrame();
 //		frame.setSize(200, 200);
 //		frame.setLocationRelativeTo(null);
@@ -107,6 +93,8 @@ public class MainGame extends GUIApplication {
 //		button.addActionListener(new AL());
 //		frame.setVisible(true);
 //			 
+
+
 		load = new LoadingScreen(getWidth(), getHeight());
 		//battle = new BattleScreen(getWidth(), getHeight());
 		setScreen(main);
@@ -123,22 +111,28 @@ public class MainGame extends GUIApplication {
 		if (g!= null) {
 			g.stop();
 		}
-		try {
-	          File soundFile = new File(musicPos);
-	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
-	          g = AudioSystem.getClip();
-	         g.open(audioIn);
-	         g.start();
-	      } catch (UnsupportedAudioFileException e) {
-	         e.printStackTrace();
-	      } catch (IOException e) {
-	         e.printStackTrace();
-	      } catch (LineUnavailableException e) {
-	         e.printStackTrace();
-	      }
 	}
 	
-	
+	public static void createMobs() {
+		mobs = new Monster[100];
+		for(int i = 0; i < mobs.length; i++) {
+			addMonster(avaliableMonster.get((int)(Math.random()*avaliableMonster.size())),i);
+		}
+//		try {
+//	          File soundFile = new File(musicPos);
+//	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
+//	          g = AudioSystem.getClip();
+//	         g.open(audioIn);
+//	         g.start();
+//	      } catch (UnsupportedAudioFileException e) {
+//	         e.printStackTrace();
+//	      } catch (IOException e) {
+//	         e.printStackTrace();
+//	      } catch (LineUnavailableException e) {
+//	         e.printStackTrace();
+//	      }
+	}
+
 	public static void createCharacters() {
 		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100);
 		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
@@ -147,7 +141,8 @@ public class MainGame extends GUIApplication {
 		bCoolGuys = new Hero("resources/characterPics/HeroBCoolGuy.png", "B", 10, 10, 10, 10, 100);
 		bFanWoman = new Hero("resources/characterPics/HeroBFanWoman.png", "B", 10, 10, 10, 10, 100);
 		
-		
+
+
 		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150);
 		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150);
 		mediumWitch = new Hero("resources/characterPics/HeroAitch.png", "A", 20, 20, 20, 20, 150);
@@ -169,23 +164,48 @@ public class MainGame extends GUIApplication {
 //		System.out.println(beginnerArcher);
 	}
 	
-	public static void createMobs() {
-		minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
+	public static void createMobs1() {
+	//	minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
 		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
 		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
 		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
 		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
 		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
 		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
-		minionAlien = new Monster("resources/characterPics/WeirdAlien.png", "B", 10, 10, 10, 10, 20);
+		minionAlien = new Monster("resources/characterPics/MinionWeirdAlien.png", "B", 10, 10, 10, 10, 20);
 	}
 
 	public void setBattle(BattleScreen battle) {
 		this.battle = battle;
 	}
 
+	public static void createMobChar() {
+		avaliableMonster = new  ArrayList<Monster>();
+		//minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
+	//	avaliableMonster.add(minionBlowfish);
+		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionDemon);
+		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionDevil);
+		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionInvidia);
+		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionYeti);
+		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionPsy);
+		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionDragon);
+		minionAlien = new Monster("resources/characterPics/MinionWeirdAlien.png", "B", 10, 10, 10, 10, 20);
+		avaliableMonster.add(minionAlien);
+	}
+
 	public static void addHero(Hero hero) {
 		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());
 		team.add(newHero);
+	}
+	
+	public static void addMonster(Monster monster,int i) {
+		Monster newMonster = new Monster(monster.getImage(),monster.getRank(),monster.getStrength(),monster.getSpeed(),monster.getAttack(),monster.getDefense(),monster.getHP());
+		mobs[i] = newMonster;
 	}
 }
