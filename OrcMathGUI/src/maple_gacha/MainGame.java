@@ -83,8 +83,6 @@ public class MainGame extends GUIApplication {
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());		
-		setResizable(false);	
-		setScreen(load);	
 //		JFrame frame = new JFrame();
 //		frame.setSize(200, 200);
 //		frame.setLocationRelativeTo(null);
@@ -145,7 +143,7 @@ public class MainGame extends GUIApplication {
 
 		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150);
 		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150);
-		mediumWitch = new Hero("resources/characterPics/HeroAitch.png", "A", 20, 20, 20, 20, 150);
+		mediumWitch = new Hero("resources/characterPics/HeroAWitch.png", "A", 20, 20, 20, 20, 150);
 		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150);
 		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "S", 20, 20, 20, 20, 150);
 		mediumHighSchoolGirl = new Hero("resources/characterPics/HeroAHighSchoolGirl.png", "S", 20, 20, 20, 20, 150);
@@ -165,11 +163,10 @@ public class MainGame extends GUIApplication {
 	}
 	
 	public static void createMobs1() {
-	//	minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
 		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
 		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
 		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
-		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		minionYeti = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
 		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
 		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
 		minionAlien = new Monster("resources/characterPics/MinionWeirdAlien.png", "B", 10, 10, 10, 10, 20);
@@ -181,15 +178,13 @@ public class MainGame extends GUIApplication {
 
 	public static void createMobChar() {
 		avaliableMonster = new  ArrayList<Monster>();
-		//minionBlowfish = new Monster("resources/characterPics/MinionBlowfish.png", "B", 10, 10, 10, 10, 20);
-	//	avaliableMonster.add(minionBlowfish);
 		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
 		avaliableMonster.add(minionDemon);
 		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
 		avaliableMonster.add(minionDevil);
 		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
 		avaliableMonster.add(minionInvidia);
-		minionYeti = new Monster("resoruces/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		minionYeti = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
 		avaliableMonster.add(minionYeti);
 		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
 		avaliableMonster.add(minionPsy);
@@ -197,6 +192,9 @@ public class MainGame extends GUIApplication {
 		avaliableMonster.add(minionDragon);
 		minionAlien = new Monster("resources/characterPics/MinionWeirdAlien.png", "B", 10, 10, 10, 10, 20);
 		avaliableMonster.add(minionAlien);
+		for(int i=1;i<avaliableMonster.size();i++) {
+			System.out.println(avaliableMonster.get(i).getImage());
+		}
 	}
 
 	public static void addHero(Hero hero) {

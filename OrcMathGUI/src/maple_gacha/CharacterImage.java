@@ -20,6 +20,7 @@ public class CharacterImage extends Component implements Clickable {
 	
 	public CharacterImage(int x, int y, String imgLocation, Hero a) {
 		super(x, y, 100, 150);
+		System.out.println(imgLocation+"wr");
 		image = new Graphic(0,30,100,100,imgLocation);
 		bar = new HpBar(10,130);
 		bar.setMax(a.returnMaxHp());
