@@ -15,6 +15,7 @@ public class Hero implements Character, Serializable{
 	private int exp;
 	private int level;
 	private boolean clickE;
+
 	private boolean guarding;
 	private double defensePercentage = .1;
 	private int maxHp;
@@ -25,7 +26,10 @@ public class Hero implements Character, Serializable{
 	public void setDefensePercentage(double defensePercentage) {
 		this.defensePercentage = defensePercentage;
 	}
-	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp) {
+	private String name;
+
+	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp, String name) {
+
 		this.img = img;
 		this.rank = rank;
 		this.strength = strength;
@@ -37,6 +41,7 @@ public class Hero implements Character, Serializable{
 		this.uniqueID = (int) (Math.random() * 10000000 + 10000) - (int) (Math.random() * 50000);
 		this.exp = 0;
 		this.level = 1;
+		this.setName(name);
 	}
 //s
 	@Override
@@ -163,5 +168,11 @@ public class Hero implements Character, Serializable{
 	public boolean getGuard()
 	{
 		return this.guarding;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -114,6 +114,7 @@ public class MainGame extends GUIApplication {
 	public static void createMobs() {
 		mobs = new Monster[100];
 		for(int i = 0; i < mobs.length; i++) {
+			System.out.println(avaliableMonster.get((int)(Math.random()*avaliableMonster.size())));
 			addMonster(avaliableMonster.get((int)(Math.random()*avaliableMonster.size())),i);
 		}
 //		try {
@@ -131,28 +132,21 @@ public class MainGame extends GUIApplication {
 //	      }
 	}
 
+
 	public static void createCharacters() {
-		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100);
-		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100);
-		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100);
-	
-		bCoolGuys = new Hero("resources/characterPics/HeroBCoolGuy.png", "B", 10, 10, 10, 10, 100);
-		bFanWoman = new Hero("resources/characterPics/HeroBFanWoman.png", "B", 10, 10, 10, 10, 100);
+		beginnerArcher = new Hero("resources/characterPics/HeroBArcher.png", "B", 10, 10, 10, 10, 100, "Archer");
+		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100,"Swordsman");
+		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100,"Wizard");
+		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150,"Wizard");
+		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150, "Axeman");
+		mediumWitch = new Hero("resources/characterPics/HeroAWitch.png", "A", 20, 20, 20, 20, 150, "Witch");
+		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150, "Wolf Girl");
+		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "A", 20, 20, 20, 20, 150, "Cannoneer");
 		
 
+		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200, "Tank");
+		highPrincess = new Hero("resources/charcterPics/HeroSPrincess.png", "S", 30, 30, 30, 30, 200, "Princess" );
 
-		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150);
-		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150);
-		mediumWitch = new Hero("resources/characterPics/HeroAWitch.png", "A", 20, 20, 20, 20, 150);
-		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150);
-		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "S", 20, 20, 20, 20, 150);
-		mediumHighSchoolGirl = new Hero("resources/characterPics/HeroAHighSchoolGirl.png", "S", 20, 20, 20, 20, 150);
-		
-		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200);
-		highPrincess = new Hero("resources/characterPics/HeroSPrincess.png", "SS", 30, 30, 30, 30, 200);
-		highAssassin = new Hero("resources/characterPics/HeroSAssassin.png", "SS", 30, 30, 30, 30, 200);
-		highSirandHorse = new Hero("resources/characterPics/HeroSBraveSirandHorse.png", "SS", 30, 30, 30, 30, 200);
-		
 		
 		 
 		
@@ -162,15 +156,6 @@ public class MainGame extends GUIApplication {
 //		System.out.println(beginnerArcher);
 	}
 	
-	public static void createMobs1() {
-		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
-		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
-		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
-		minionYeti = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
-		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
-		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
-		minionAlien = new Monster("resources/characterPics/MinionWeirdAlien.png", "B", 10, 10, 10, 10, 20);
-	}
 
 	public void setBattle(BattleScreen battle) {
 		this.battle = battle;
@@ -178,19 +163,19 @@ public class MainGame extends GUIApplication {
 
 	public static void createMobChar() {
 		avaliableMonster = new  ArrayList<Monster>();
-		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20);
+		minionDemon = new Monster("resources/characterPics/MinionDemonMors.png", "B", 10, 10, 10, 10, 20,"Demon");
 		avaliableMonster.add(minionDemon);
-		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20);
+		minionDevil = new Monster("resources/characterPics/MinionDevilMaz.png", "B", 10, 10, 10, 10, 20,"Devil");
 		avaliableMonster.add(minionDevil);
-		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		minionInvidia = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20,"Invidia");
 		avaliableMonster.add(minionInvidia);
-		minionYeti = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20);
+		minionYeti = new Monster("resources/characterPics/MinionInvidia.png", "B", 10, 10, 10, 10, 20,"Yeti");
 		avaliableMonster.add(minionYeti);
-		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20);
+		minionPsy = new Monster("resources/characterPics/MinionPSY.png", "B", 10, 10, 10, 10, 20,"Psy");
 		avaliableMonster.add(minionPsy);
-		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20);
+		minionDragon = new Monster("resources/characterPics/MinionStormDragon.png", "B", 10, 10, 10, 10, 20,"Dragon");
 		avaliableMonster.add(minionDragon);
-		minionAlien = new Monster("resources/characterPics/MinionWeirdAlien.png", "B", 10, 10, 10, 10, 20);
+		minionAlien = new Monster("resources/characterPics/MinionWeirdAlien.png", "B", 10, 10, 10, 10, 20,"Alien");
 		avaliableMonster.add(minionAlien);
 		for(int i=1;i<avaliableMonster.size();i++) {
 			System.out.println(avaliableMonster.get(i).getImage());
@@ -198,12 +183,12 @@ public class MainGame extends GUIApplication {
 	}
 
 	public static void addHero(Hero hero) {
-		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP());
+		Hero newHero = new Hero(hero.getImage(),hero.getRank(),hero.getStrength(),hero.getSpeed(),hero.getAttack(),hero.getDefense(),hero.getHP(),hero.getName());
 		team.add(newHero);
 	}
 	
 	public static void addMonster(Monster monster,int i) {
-		Monster newMonster = new Monster(monster.getImage(),monster.getRank(),monster.getStrength(),monster.getSpeed(),monster.getAttack(),monster.getDefense(),monster.getHP());
+		Monster newMonster = new Monster(monster.getImage(),monster.getRank(),monster.getStrength(),monster.getSpeed(),monster.getAttack(),monster.getDefense(),monster.getHP(),monster.getName());
 		mobs[i] = newMonster;
 	}
 }

@@ -32,7 +32,7 @@ public class GBattleSystem implements Runnable {
 	{
 		changeDifficulty(difficulty); 
 		this.mainParty = mainParty;
-		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100);
+		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100,"HiHero");
 		currentEnemy = enemiesList[0][0];
 		addItems();
 	}

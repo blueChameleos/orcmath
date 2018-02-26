@@ -92,7 +92,6 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 
 		for (int i = 0; i < backend.getEnemiesList()[backend.getRound()].length; i++) {
 			// backend.getEnemiesList()[backend.getRound()][i].getImage()
-			System.out.println(backend.getEnemiesList()[backend.getRound()][i].getImage());
 			CharacterImage g = new CharacterImage(100 + (i * 100), 600,
 					backend.getEnemiesList()[backend.getRound()][i].getImage(), backend.getEnemiesList()[backend.getRound()][i]);
 			int number = i;
