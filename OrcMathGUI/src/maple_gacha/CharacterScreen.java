@@ -51,7 +51,7 @@ public class CharacterScreen extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) { // this runs before beginnerselection updates the team class. 
-		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/screenPics/cardSystem.png");
+		Graphic background = new Graphic(0, 0, 1280, 1040, "resources/screenPics/cardSystem.png");
 		background.setVisible(true);
 		viewObjects.add(background);
 		idx = -1;
