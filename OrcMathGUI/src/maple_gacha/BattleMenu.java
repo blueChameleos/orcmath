@@ -23,6 +23,7 @@ public class BattleMenu extends Pane implements Runnable{
 	public static Thread printer;
 	public static boolean printingText;
 	public static TextArea log;
+	public static Pane logBackground;
 	public static Graphic playerPortrait;
 	public static Button attackbutton;
 	public static Button defbutton;
@@ -51,6 +52,8 @@ public class BattleMenu extends Pane implements Runnable{
 		buttons[1] = defbutton;
 		buttons[2] = skillbutton;
 		buttons[3] = itembutton;
+		logBackground = new Pane(MainGame.battle, 240, 15, 640, 145);
+		viewObjects.add(logBackground);
 		log = new TextArea(250, 15, 630, 145, "");
 		log.setBackgroundColor(Color.WHITE);
 		playerPortrait = new Graphic(100,20,150,150,"resources/char.jpg");
@@ -64,6 +67,7 @@ public class BattleMenu extends Pane implements Runnable{
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " attacked " + MainGame.game.battle.backend.getCurrentEnemy() + "!");
 				MainGame.game.battle.backend.checkChanges();
 				MainGame.game.battle.backend.setWaiting(false);
+				MainGame.battle.backend.disableButtons();
 			}
 		});
 		defbutton = new Button(1030, 85, 120, 65, "Guard", Color.YELLOW, new Action() {
@@ -73,6 +77,7 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.backend.getCurrentPlayer().setGuard(true);
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " guarded!");
 				MainGame.game.battle.backend.setWaiting(false);
+				MainGame.battle.backend.disableButtons();
 			}
 		});
 		skillbutton = new Button(900, 85, 120, 65, "Skill", Color.YELLOW, new Action() {
@@ -83,6 +88,7 @@ public class BattleMenu extends Pane implements Runnable{
 				updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used a special skill!");
 				MainGame.game.battle.backend.checkChanges();
 				MainGame.game.battle.backend.setWaiting(false);
+				MainGame.battle.backend.disableButtons();
 			}
 		});
 		itembutton = new Button(1030, 10, 120, 65, "Item", Color.YELLOW, new Action() {
@@ -152,9 +158,6 @@ public class BattleMenu extends Pane implements Runnable{
 	}
 
 	public void updateLog(String text) {
-		while(printer != null) {
-			
-		}
 		printer = new Thread(new Runnable() {
 			@Override
 			public void run() {

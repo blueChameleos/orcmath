@@ -5,19 +5,11 @@ import java.util.ArrayList;
 
 public class GBattleSystem implements Runnable {
 
-
-	/*	things to do:
-
-			user input on BattleScreen (Saturday + Sunday)
-
-			begin testing after merge.
-	 */
 	private int enemiesNum;
 	private Hero[] mainParty;
 	private Monster[][] enemiesList; //round -> enemies 
 	private int round = 0;
 	private ArrayList<Hero> order = new ArrayList<Hero>();
-	private Thread gameSystem;
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
 	private ArrayList<Items> inventory = new ArrayList<Items>();
@@ -38,12 +30,24 @@ public class GBattleSystem implements Runnable {
 	}
 
 	public void run() {
+		try {
+			MainGame.battle.game.sleep(Long.MAX_VALUE);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			System.out.println("The game has started");
+		}
 		makeOrder();
 		playGame();
 	}
 
-	private void playGame() {
-		disableButtons();
+	public void playGame() {
+		MainGame.battle.userui.updateLog("Monsters have appeared!");
+		try {
+			MainGame.battle.game.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("An unnatural interruption has occurred. This should not ever happen");
+		}
 		while(playing)
 		{
 			System.out.println(order.toString());
@@ -66,10 +70,10 @@ public class GBattleSystem implements Runnable {
 				else
 				{
 					enableButtons();
-					waiting = true;
+					MainGame.battle.userui.updateLog("It's " + currentPlayer + "'s turn!");
 					MainGame.battle.SwitchAIUI(); //switch Ai interface to user interface
 					currentPlayer.setGuard(false);
-					currentEnemy = enemiesList[round][(int) Math.random()*enemiesList[round].length];
+					currentEnemy = enemiesList[round][(int) (Math.random()*enemiesList[round].length)];
 					try {
 						System.out.println("Backend is waiting for response from front end");
 						MainGame.battle.game.sleep(Long.MAX_VALUE);
@@ -81,6 +85,13 @@ public class GBattleSystem implements Runnable {
 				checkChanges();
 				if(!playing) {
 					break;
+				}
+				try {
+					disableButtons();
+					MainGame.game.battle.game.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Unnatural interruption from unknown source");
 				}
 			}
 		}
@@ -102,7 +113,7 @@ public class GBattleSystem implements Runnable {
 
 	//when someone dies (all monster dies or heros)
 	public void checkChanges() {
-//		MainGame.game.battle.updateHp();
+		MainGame.game.battle.updateHp();
 		int instancesOfMonster = 0;
 		int instancesOfHeros = 0;
 		for(int i = 0; i<order.size(); i++)
@@ -140,14 +151,14 @@ public class GBattleSystem implements Runnable {
 		}
 	}
 
-	private void endGame() {
-		//		showRewards();
+	public void endGame() {
+//		showRewards();
 		playing = false;
 		MainGame.game.setScreen(MainGame.game.main);
 	}
 
 	private void newRound() {
-		round ++;
+		round++;
 		order = new ArrayList<Hero>();
 		makeOrder();
 		MainGame.battle.nextRound();
@@ -172,7 +183,7 @@ public class GBattleSystem implements Runnable {
 	}
 
 
-	private void changeStats(double d) {
+	public void changeStats(double d) {
 		for(Monster[] el: enemiesList)
 		{
 			for(Monster e: el)
@@ -322,10 +333,6 @@ public class GBattleSystem implements Runnable {
 
 	public void setInventory(ArrayList<Items> inventory) {
 		this.inventory = inventory;
-	}
-
-	public Thread getGameSystem() {
-		return gameSystem;
 	}
 
 	public void setPlaying(boolean playing) {

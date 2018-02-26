@@ -27,6 +27,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 	public static BattleMenu userui;
 	public static ItemMenu itemui;
 	public static Pane fader;
+	public static Graphic hider;
 	public static Thread game;
 	private CharacterImage currentlySelectedCharacterImage;
 
@@ -111,13 +112,12 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 			monsterImg.add(g);
 			viewObjects.add(g);
 		}
-		fader = new Pane(this,0,0,getWidth(),getHeight());
-		fader.setBackground(Color.BLACK);
-		viewObjects.add(fader);
-		fadeIn();
+		hider = new Graphic(0,0,getWidth(),getHeight(),"resources/hider.jpg");
+		viewObjects.add(hider);
 		backend.setPlaying(true);
 		game = new Thread(backend);
 		game.start();
+		fadeIn();
 	}
 
 	private Graphic getRandomBackground() {
@@ -128,8 +128,8 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		Thread animator = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				while(fader.getAlpha() > 0.01) {
-					fader.setAlpha((float)(fader.getAlpha()-0.01));
+				while(hider.getAlpha() > 0.01) {
+					hider.setAlpha((float)(hider.getAlpha()-0.01));
 					try {
 						Thread.sleep(1000/60);
 					} catch (InterruptedException e) {
@@ -137,10 +137,29 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 						e.printStackTrace();
 					}
 				}
-				fader.setAlpha(0);
+				hider.setAlpha(0);
+				game.interrupt();
 			}
 		});
 		animator.start();
+	}
+	
+	public void fadeOut() {
+		Thread animator = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while(hider.getAlpha() < 0.99) {
+					hider.setAlpha((float)(hider.getAlpha()+0.01));
+					try {
+						Thread.sleep(1000/60);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					hider.setAlpha((float) 1.0);
+				}
+			}
+		});
 	}
 	
 	public void updateHp() {
