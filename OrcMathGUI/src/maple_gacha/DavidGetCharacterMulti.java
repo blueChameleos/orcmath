@@ -47,7 +47,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 
 	public void getCard() {
 
-		if (rate < 5) {
+		if (rate < 1) {
 			srare = true;
 			lightingCheck = true;
 		} else {
@@ -128,7 +128,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 					light.start();
 
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(4000);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -152,12 +152,6 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 					back.setEnabled(true);
 					
 					
-					try {
-						Thread.sleep(3000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 					
 					background.setVisible(true);
 					
