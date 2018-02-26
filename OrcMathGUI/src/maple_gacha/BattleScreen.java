@@ -179,12 +179,20 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		}
 	}
 	public void nextRound() {
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		for (int i = 0; i < backend.getEnemiesList()[backend.getRound()].length; i++) {
 			// backend.getEnemiesList()[backend.getRound()][i].getImage()
-			System.out.println(backend.getRound());
 			int number = i;
 			monsterImg.get(i).setVisible(true);
 			update();
+			System.out.println(monsterImg.get(i).isVisible());
 			monsterImg.get(i).setHero(backend.getEnemiesList()[backend.getRound()][i]);
 			monsterImg.get(i).setHp();
 			monsterImg.get(i).setAction(new Action() {
