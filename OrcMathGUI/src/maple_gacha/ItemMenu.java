@@ -27,6 +27,17 @@ public class ItemMenu extends ScrollablePane {
 	public ItemMenu(FocusController focusController, int x, int y) {
 		super(focusController, x, y, WIDTH, HEIGHT);
 	}
+	
+	public void useItem(Hero caller, Items item, List<Visible> viewObjects) {
+		MainGame.game.battle.game.interrupt();
+		MainGame.game.battle.userui.updateLog(caller + " used " + item.getName() + "!");
+		MainGame.game.battle.backend.useItem(item);//uses the item
+		MainGame.game.battle.updateHp();
+		MainGame.battle.userui.hideItemMenu();
+		MainGame.game.battle.backend.checkChanges();
+		MainGame.battle.backend.disableButtons();
+		MainGame.battle.itemui.initAllObjects(viewObjects);
+	}
 
 	public void initAllObjects(List<Visible> viewObjects) {
 
@@ -50,26 +61,14 @@ public class ItemMenu extends ScrollablePane {
 				item = new Button(x, y, 190, 60, itemlist.get(j).getName(), Color.GREEN, new Action() {
 					@Override
 					public void act() {
-						MainGame.game.battle.game.interrupt();
-						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
-						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
-						MainGame.game.battle.updateHp();
-						MainGame.battle.userui.hideItemMenu();
-						MainGame.game.battle.backend.checkChanges();
-						MainGame.battle.itemui.initAllObjects(viewObjects);
+						useItem(MainGame.game.battle.backend.getCurrentPlayer(),itemlist.get(j),viewObjects);
 					}
 				});
 			}else {
 				item = new Button(x, y, 190, 60, itemlist.get(j).getName(), Color.ORANGE, new Action() {
 					@Override
 					public void act() {
-						MainGame.game.battle.game.interrupt();
-						MainGame.game.battle.userui.updateLog(MainGame.game.battle.backend.getCurrentPlayer() + " used " + itemlist.get(j).getName() + "!");
-						MainGame.game.battle.backend.useItem(itemlist.get(j));//uses the item
-						MainGame.game.battle.updateHp();
-						MainGame.battle.userui.hideItemMenu();
-						MainGame.game.battle.backend.checkChanges();
-						MainGame.battle.itemui.initAllObjects(viewObjects);
+						useItem(MainGame.game.battle.backend.getCurrentPlayer(),itemlist.get(j),viewObjects);
 					}
 				});
 			}
