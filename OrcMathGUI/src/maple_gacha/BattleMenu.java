@@ -23,6 +23,7 @@ public class BattleMenu extends Pane implements Runnable{
 	public static Thread printer;
 	public static boolean printingText;
 	public static TextArea log;
+	public static Pane logBackground;
 	public static Graphic playerPortrait;
 	public static Button attackbutton;
 	public static Button defbutton;
@@ -51,6 +52,8 @@ public class BattleMenu extends Pane implements Runnable{
 		buttons[1] = defbutton;
 		buttons[2] = skillbutton;
 		buttons[3] = itembutton;
+		logBackground = new Pane(MainGame.battle, 240, 15, 640, 145);
+		viewObjects.add(logBackground);
 		log = new TextArea(250, 15, 630, 145, "");
 		log.setBackgroundColor(Color.WHITE);
 		playerPortrait = new Graphic(100,20,150,150,"resources/char.jpg");
