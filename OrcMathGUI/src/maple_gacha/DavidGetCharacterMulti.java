@@ -57,15 +57,12 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 	
 	public ArrayList<Number> cardNum(int x)
 	{
-		cardNum = (int) (Math.random() * x);
-		
-		cardNum1 = (int) (Math.random() * x);
-		
-		cardNum2 = (int) (Math.random() * x);
-		
-		num.add(cardNum);
-		num.add(cardNum1);
-		num.add(cardNum2);
+		//generate the cards pull from a fixed pool of cards after the rarity is determined
+		for(int i=0; i<5; i++)
+		{
+			cardNum = (int)(Math.random() * x);
+			num.add(cardNum);
+		}
 
 		return num;
 	}
@@ -85,17 +82,15 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
 		background.setVisible(false);
-		System.out.println(cardNum);		
-
+				
+		
+		
 		// TextArea descrip = new TextArea((int)(getWidth()/2 * .75),
 		// (int)(getHeight()/2 * .9), 150, 150,
 		// MainGame.summon.getThings().get(0).getRank());
 		//cardNum = (int) (Math.random() * resistance.size());
 
-		Graphic bannerCard1 = new Graphic(500, 300, 100, 200, resistance.get((int) cardNum(resistance.size()).get(0)).getImage());
-		Graphic bannerCard2 = new Graphic(300, 400, 100, 200, resistance.get((int) cardNum(resistance.size()).get(1)).getImage());
-		Graphic bannerCard3 = new Graphic(300, 100, 100, 200, resistance.get((int) cardNum(resistance.size()).get(2)).getImage());
-
+		
 		
 		back = new Button(600, 500, 100, 75, "Back", Color.YELLOW, new Action() {
 
@@ -122,6 +117,10 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 
 				if (srare == true) {
 
+					System.out.println("Character "+cardNum(resistance.size()).get(0));
+					System.out.println("Character "+cardNum(resistance.size()).get(1));
+					System.out.println("Character "+cardNum(resistance.size()).get(2));
+					
 					lighting.setRepeat(false);
 					lighting.addSequence("resources/summoninganimation (1) (1).png", 150, 0, 0, 1374, 1023, 21);
 					Thread light = new Thread(lighting);
@@ -136,16 +135,25 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 
 					viewObjects.remove(lighting);
 					
-					
+					Graphic bannerCard1 = new Graphic(300, 300, 100, 200, resistance.get((int) cardNum(resistance.size()).get(0)).getImage());
+					Graphic bannerCard2 = new Graphic(500, 300, 100, 200, resistance.get((int) cardNum(resistance.size()).get(1)).getImage());
+					Graphic bannerCard3 = new Graphic(700, 300, 100, 200, resistance.get((int) cardNum(resistance.size()).get(2)).getImage());
+					Graphic bannerCard4 = new Graphic(400, 500, 100, 200, resistance.get((int) cardNum(resistance.size()).get(3)).getImage());
+					Graphic bannerCard5 = new Graphic(600, 500, 100, 200, resistance.get((int) cardNum(resistance.size()).get(4)).getImage());
 					
 					viewObjects.add(bannerCard1);
 					viewObjects.add(bannerCard2);
 					viewObjects.add(bannerCard3);
+					viewObjects.add(bannerCard5);
+					viewObjects.add(bannerCard4);
+
 
 
 					MainGame.addHero(resistance.get((int) cardNum(resistance.size()).get(0)));
 					MainGame.addHero(resistance.get((int) cardNum(resistance.size()).get(1)));
 					MainGame.addHero(resistance.get((int) cardNum(resistance.size()).get(2)));
+					MainGame.addHero(resistance.get((int) cardNum(resistance.size()).get(3)));
+					MainGame.addHero(resistance.get((int) cardNum(resistance.size()).get(4)));
 
 
 					back.setVisible(true);
@@ -159,20 +167,29 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 					
 					//cardNum = (int) (Math.random() * resistanceB.size());
 					
+					
+					System.out.println("Character "+cardNum(resistanceB.size()).get(0));
+					System.out.println("Character "+cardNum(resistanceB.size()).get(1));
+					System.out.println("Character "+cardNum(resistanceB.size()).get(2));
 
 					Graphic bannerCardB1 = new Graphic(500,300,100,200, resistanceB.get((int) cardNum(resistanceB.size()).get(0)).getImage());
 					Graphic bannerCardB2 = new Graphic(300,400,100,200, resistanceB.get((int) cardNum(resistanceB.size()).get(1)).getImage());
 					Graphic bannerCardB3 = new Graphic(300,100,100,200, resistanceB.get((int) cardNum(resistanceB.size()).get(2)).getImage());
+					Graphic bannerCardB4 = new Graphic(300,100,100,200, resistanceB.get((int) cardNum(resistanceB.size()).get(2)).getImage());
+					Graphic bannerCardB5 = new Graphic(300,100,100,200, resistanceB.get((int) cardNum(resistanceB.size()).get(2)).getImage());
+
 					viewObjects.add(bannerCardB1);
 					viewObjects.add(bannerCardB2);					
 					viewObjects.add(bannerCardB3);
-					
+					viewObjects.add(bannerCardB4);
+					viewObjects.add(bannerCardB5);
 
 					
 					MainGame.addHero(resistanceB.get((int) cardNum(resistanceB.size()).get(0)));
 					MainGame.addHero(resistanceB.get((int) cardNum(resistanceB.size()).get(1)));
 					MainGame.addHero(resistanceB.get((int) cardNum(resistanceB.size()).get(2)));
-
+					MainGame.addHero(resistanceB.get((int) cardNum(resistanceB.size()).get(3)));
+					MainGame.addHero(resistanceB.get((int) cardNum(resistanceB.size()).get(4)));
 					back.setVisible(true);
 					back.setEnabled(true);
 					background.setVisible(true);

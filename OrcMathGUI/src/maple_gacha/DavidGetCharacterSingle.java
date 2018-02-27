@@ -24,6 +24,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 	public ArrayList<Hero> resistance;
 	public int cardNum;
 	public int bannerNum;
+	public int cardNumB;
 	private CustomCursor customCursor;
 	
 
@@ -52,7 +53,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 	}
 
 	public void getCard() {
-
+		//the rate of getting a s or higher card
 		if (rate < 1) {
 			srare = true;
 			lightingCheck = true;
@@ -74,6 +75,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "resources/abc.png");
 		viewObjects.add(background);
 		background.setVisible(false);
+		
 		cardNum = (int) (Math.random() * resistance.size());
 		System.out.println(cardNum);
 		
@@ -108,7 +110,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 			public void run() {
 
 				if (srare == true) {
-
+					//the animation can be a bit slow
 					lighting.setRepeat(false);
 					lighting.addSequence("resources/summoninganimation (1) (1).png", 200, 0, 0, 1374, 1023, 21);
 					Thread light = new Thread(lighting);
@@ -137,14 +139,15 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 
 				} else {
 
-					cardNum = (int) (Math.random() * resistanceB.size());
+					cardNumB = (int) (Math.random() * resistanceB.size());
+					System.out.println("character "+cardNumB);
 					background.setVisible(true);
 
-					Graphic bannerCardB = new Graphic(475, 350, 100, 200, resistanceB.get(cardNum).getImage());
+					Graphic bannerCardB = new Graphic(475, 350, 100, 200, resistanceB.get(cardNumB).getImage());
 					
 					viewObjects.add(bannerCardB);
 					
-					MainGame.addHero(resistanceB.get(cardNum));
+					MainGame.addHero(resistanceB.get(cardNumB));
 					
 					back.setVisible(true);
 					back.setEnabled(true);
@@ -164,7 +167,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 
 	private void getBanner() {
 		bannerNum = MainGame.summon.bannerType();
-		System.out.println(bannerNum);
+		//System.out.println(bannerNum);
 
 		
 		if(bannerNum == 0)

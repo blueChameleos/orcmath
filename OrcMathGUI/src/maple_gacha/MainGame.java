@@ -140,23 +140,21 @@ public class MainGame extends GUIApplication {
 		beginnerSword = new Hero("resources/characterPics/HeroBSwordMan.png", "B", 10, 10, 10, 10, 100,"Swordsman");
 		beginnerWizard = new Hero("resources/characterPics/HeroBWizard.png", "B", 10, 10, 10, 10, 100,"Wizard");
 
-		bCoolGuys = new Hero("resources/characterPics/HeroBCoolGuy.png", "B", 10, 10, 10, 10, 100,"Cool Guy");
-		bFanWoman = new Hero("resources/characterPics/HeroBFanWoman.png", "B", 10, 10, 10, 10, 100,"Fan Girl");
-		
+		bCoolGuys = new Hero("resources/characterPics/HeroBCoolGuy.png", "A", 20, 20, 20, 20, 150,"Cool Guy");
+		bFanWoman = new Hero("resources/characterPics/HeroBFanWoman.png", "A", 20, 20, 20, 20, 150,"Fan Girl");
 		mediumWizard = new Hero("resources/characterPics/HeroALilWizard.png", "A", 20, 20 ,20 ,20 , 150,"Wizard");
 		mediumAxe = new Hero("resources/characterPics/HeroAAxeBoy.png", "A", 20, 20, 20, 20, 150, "Axeman");
 		mediumWitch = new Hero("resources/characterPics/HeroAWitch.png", "A", 20, 20, 20, 20, 150, "Witch");
 		mediumWolfGirl = new Hero("resources/characterPics/HeroAWolfandGirl.png", "A", 20, 20, 20, 20, 150, "Wolf Girl");
-		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "A", 20, 20, 20, 20, 150, "Cannoneer");
-
+		
+		mediumCannonMan = new Hero("resources/characterPics/HeroACannonMan.png", "S", 30, 30, 30, 30, 200, "Cannoneer");
+		mediumHighSchoolGirl = new Hero("resources/characterPics/HeroAHighSchoolGirl.png","S",30, 30, 30, 30, 200,"High Girl");
 		highTank = new Hero("resources/characterPics/HeroSTank.png", "S", 30, 30, 30, 30, 200,"The Tank");
-		highPrincess = new Hero("resources/characterPics/HeroSPrincess.png", "SS", 30, 30, 30, 30, 200,"Hime Sama");
-		highAssassin = new Hero("resources/characterPics/HeroSAssassin.png", "SS", 30, 30, 30, 30, 200,"Zed");
-		highSirandHorse = new Hero("resources/characterPics/HeroSBraveSirandHorse.png", "SS", 30, 30, 30, 30, 200,"Hecarim with Jarvan");
-		 
 		
-		 
-		
+		highPrincess = new Hero("resources/characterPics/HeroSPrincess.png", "SS", 40, 40, 40, 40, 250,"Hime Sama");
+		highAssassin = new Hero("resources/characterPics/HeroSAssassin.png", "SS", 40, 40, 40, 40, 250,"Zed");
+		highSirandHorse = new Hero("resources/characterPics/HeroSBraveSirandHorse.png", "SS", 40, 40, 40, 40, 250,"Hecarim with Jarvan");
+
 //		System.out.println(beginnerSword.getImage());
 //		System.out.println(beginnerArcher);
 	}
