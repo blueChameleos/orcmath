@@ -68,7 +68,6 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		monsterImg = new ArrayList<CharacterImage>();
 		heroImg = new ArrayList<CharacterImage>();
 		
-		
 		userui = new BattleMenu(this, 30, 800);
 		userui.update();
 		itemui = new ItemMenu(this, 1000, 400);
@@ -158,6 +157,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 					}
 					hider.setAlpha((float) 1.0);
 				}
+				MainGame.battle.game.interrupt();
 			}
 		});
 	}

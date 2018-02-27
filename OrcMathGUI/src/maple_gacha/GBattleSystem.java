@@ -154,6 +154,16 @@ public class GBattleSystem implements Runnable {
 	public void endGame() {
 //		showRewards();
 		playing = false;
+		MainGame.battle.fadeOut();
+		for(int i = 0; i < mainParty.length; i++) {
+			mainParty[i].setHP(mainParty[i].returnMaxHp());
+		}
+		try {
+			MainGame.battle.game.sleep(Long.MAX_VALUE);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Battle has ended.");
+		}
 		MainGame.game.setScreen(MainGame.game.main);
 	}
 

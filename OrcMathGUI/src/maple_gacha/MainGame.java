@@ -81,7 +81,7 @@ public class MainGame extends GUIApplication {
 		summon = new EthanSummonScreen(getWidth(),getHeight());
 //		featured = new FeaturedChar(getWidth(),getHeight());
 		unitsel = new UnitSelectionScreen(getWidth(), getHeight());
-		battle = new BattleScreen(getWidth(),getHeight());
+//		battle = new BattleScreen(getWidth(),getHeight());
 		main = new MainScreen(getWidth(), getHeight());	
 		cScreen = new CharacterScreen(getWidth(), getHeight());	
 		load = new LoadingScreen(getWidth(), getHeight());		
