@@ -115,7 +115,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 
 		
 		
-		back = new Button(600, 500, 100, 75, "Back", Color.YELLOW, new Action() {
+		back = new Button(600, 700, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
@@ -160,11 +160,11 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 
 					viewObjects.remove(lighting);
 					
-					Graphic bannerCard1 = new Graphic(300, 300, 100, 200, banner.get((int) cardNum().get(0)).getImage());
-					Graphic bannerCard2 = new Graphic(500, 300, 100, 200, banner.get((int) cardNum().get(1)).getImage());
-					Graphic bannerCard3 = new Graphic(700, 300, 100, 200, banner.get((int) cardNum().get(2)).getImage());
-					Graphic bannerCard4 = new Graphic(400, 500, 100, 200, banner.get((int) cardNum().get(3)).getImage());
-					Graphic bannerCard5 = new Graphic(600, 500, 100, 200, banner.get((int) cardNum().get(4)).getImage());
+					Graphic bannerCard1 = new Graphic(400, 300, 100, 200, banner.get((int) cardNum().get(0)).getImage());
+					Graphic bannerCard2 = new Graphic(600, 300, 100, 200, banner.get((int) cardNum().get(1)).getImage());
+					Graphic bannerCard3 = new Graphic(800, 300, 100, 200, banner.get((int) cardNum().get(2)).getImage());
+					Graphic bannerCard4 = new Graphic(500, 500, 100, 200, banner.get((int) cardNum().get(3)).getImage());
+					Graphic bannerCard5 = new Graphic(700, 500, 100, 200, banner.get((int) cardNum().get(4)).getImage());
 					
 					viewObjects.add(bannerCard1);
 					viewObjects.add(bannerCard2);
@@ -200,11 +200,11 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 					System.out.println("Character "+cardNum().get(4));
 					
 
-					Graphic bannerCardB1 = new Graphic(300,300,100,200, banner.get((int) cardNum().get(0)).getImage());
-					Graphic bannerCardB2 = new Graphic(500,300,100,200, banner.get((int) cardNum().get(1)).getImage());
-					Graphic bannerCardB3 = new Graphic(700,300,100,200, banner.get((int) cardNum().get(2)).getImage());
-					Graphic bannerCardB4 = new Graphic(400,500,100,200, banner.get((int) cardNum().get(3)).getImage());
-					Graphic bannerCardB5 = new Graphic(600,500,100,200, banner.get((int) cardNum().get(4)).getImage());
+					Graphic bannerCardB1 = new Graphic(400,300,100,200, banner.get((int) cardNum().get(0)).getImage());
+					Graphic bannerCardB2 = new Graphic(600,300,100,200, banner.get((int) cardNum().get(1)).getImage());
+					Graphic bannerCardB3 = new Graphic(800,300,100,200, banner.get((int) cardNum().get(2)).getImage());
+					Graphic bannerCardB4 = new Graphic(500,500,100,200, banner.get((int) cardNum().get(3)).getImage());
+					Graphic bannerCardB5 = new Graphic(700,500,100,200, banner.get((int) cardNum().get(4)).getImage());
 
 					viewObjects.add(bannerCardB1);
 					viewObjects.add(bannerCardB2);					

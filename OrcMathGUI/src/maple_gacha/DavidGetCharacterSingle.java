@@ -84,9 +84,9 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 		// (int)(getHeight()/2 * .9), 150, 150,
 		// MainGame.summon.getThings().get(0).getRank());
 
-		Graphic bannerCard = new Graphic(475, 350, 100, 200, banner.get(cardNum).getImage());
+		Graphic bannerCard = new Graphic(600, 350, 100, 200, banner.get(cardNum).getImage());
 
-		back = new Button(600, 500, 100, 75, "Back", Color.YELLOW, new Action() {
+		back = new Button(600, 700, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
@@ -144,7 +144,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 					System.out.println("character "+cardNumB);
 					background.setVisible(true);
 
-					Graphic bannerCardB = new Graphic(475, 350, 100, 200, banner.get(cardNumB).getImage());
+					Graphic bannerCardB = new Graphic(600, 350, 100, 200, banner.get(cardNumB).getImage());
 					
 					viewObjects.add(bannerCardB);
 					
