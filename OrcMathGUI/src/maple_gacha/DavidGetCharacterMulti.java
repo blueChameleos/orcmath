@@ -46,7 +46,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 
 	public void getCardType() {
 
-		if (rate < 100) {
+		if (rate < 1) {
 			srare = true;
 			lightingCheck = true;
 		} else {
