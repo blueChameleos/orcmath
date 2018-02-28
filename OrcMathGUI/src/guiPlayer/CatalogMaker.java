@@ -9,6 +9,7 @@ public class CatalogMaker {
 	private ArrayList<Monsters> catalog;
 
 	public CatalogMaker() {
+
 		catalog = new ArrayList<Monsters>();
 		//catalog.add(Monsters("Great Jaggi", 2600, ))
 		
@@ -26,6 +27,49 @@ public class CatalogMaker {
 		String data = "name,baseHP,jumpRes,koRes,mountRes,fireRes,iceRes,waterRes,thunderRes,dragonRes,poisonRes,sleepRes,blastRes,type,size\n";
 		for(Monsters m: catalog) {
 			data += m.toString() + "\n";
+
+		//instantiate the catalog
+		catalog = new ArrayList<Book>();
+	}
+
+	private static void displayMessage(String message){
+		System.out.println(message);
+	}
+
+	private void menu() {
+		displayMessage("Would you like to \"load\" a save file or \"create\" a new list? ");
+		String[] allowedEntry = {"load","create"};
+		String input = getEntry(allowedEntry);
+		if(input.equals("load")){
+			load();
+		}else{
+			create();
+		}
+	}
+
+	public ArrayList<Book> getBooks(){
+		return catalog;
+	}
+	
+	public Book getBook(int index){
+		return catalog.get(index);
+	}
+	
+	private void create() {
+
+		boolean running = true;
+		while(running){
+			showCatalog();
+			displayMessage("Would you like to \"add\", \"save\", or \"quit\"?");
+			String[] allowedEntry = {"add","save","quit"};
+			String selection = getEntry(allowedEntry);
+			if(selection.equals("add")){
+				add();
+			}else if(selection.equals("save")){
+				save();
+			}else{
+				running = false;
+			}
 		}
 		return data;
 	}
@@ -33,8 +77,40 @@ public class CatalogMaker {
 	public void addNewItem(String name, int baseHP, int jumpRes, int koRes, int blastRes, int mountRes, String type, double size) {
 		catalog.add(new Monsters(name, baseHP, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, type, size));
 	}
-	
+
 	public void testSaveContent(String fileName) {
+
+	private int getIntegerInput() {
+		
+		int value = 0;
+		boolean valid = false;
+		while(!valid){
+			String text = in.nextLine();
+			try{
+				value = Integer.parseInt(text);
+				valid = true;
+			}catch(NumberFormatException nfe){
+				displayMessage("You must enter an integer.");
+			}
+		}
+		return value;
+	}
+
+	private static String getStringInput(){
+		String text = in.nextLine();
+		while(text.isEmpty()){
+			displayMessage("You must enter a non-empty String.");
+			text = in.nextLine();
+		}
+		return text;
+	}
+
+
+	public void addBook(Book b){
+		catalog.add(b);
+	}
+
+	public void save() {
 		try{    
 			FileWriter fw=new FileWriter(fileName);    
 			for(Monsters m : catalog) {
@@ -56,5 +132,55 @@ public class CatalogMaker {
 	public ArrayList<Monsters> getCatalog() {
 		return catalog;
 	}
-	
+	private  void showCatalog() {
+		displayMessage("The catalog contains these Books:\n");
+		for(Book b: catalog){
+			displayMessage("   "+b.toString()+"\n");
+		}
+	}
+
+	private void load() {
+		String fileName = "";
+		//empty the catalog to prepare for a new load
+		catalog = new ArrayList<Book>();
+		//use this boolean to control the while loop. The user should have multiple chances to enter a correct filename
+		boolean opened = false;
+		while(!opened){
+			
+				System.out.println("Enter a file to open");
+				fileName = in.nextLine();
+				opened = read(new File(fileName));
+
+			
+		}
+		create();
+
+	}
+
+	public boolean read(File f){
+		try{
+			FileReader fileReader = new FileReader(f);
+			String line = "";
+			//a BufferedReader enables us to read teh file one line at a time
+			BufferedReader br = new BufferedReader(fileReader);
+			while ((line = br.readLine()) != null) {
+
+				String[] param = line.split(",");
+				//add a new Book for each line in the save file
+				catalog.add(new Book(param[0],param[1],Integer.parseInt(param[2])));
+
+
+
+			}
+			br.close();
+			return true;
+		}catch(Exception e){
+			System.out.println("The file name you specified does not exist.");
+			return false;
+		}
+	}
+
+	public void removeBook(Book b) {
+		catalog.remove(b);
+	}
 }

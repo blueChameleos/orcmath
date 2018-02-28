@@ -253,10 +253,10 @@ public class ScrollablePane extends ComponentContainer implements Clickable, Scr
 		parentScreen.moveScrollFocus(this);	
 		
 		if(upArrow.contains(xRelative, yRelative)){
-			scrollY(-25);
+			scrollY(-100);
 		}
 		else if(downArrow.contains(xRelative, yRelative)){
-			scrollY(25);
+			scrollY(100);
 		}else{
 			for(Clickable c: clickables){
 				if(c.isHovered(xRelative+contentX, yRelative+contentY)){
@@ -272,10 +272,10 @@ public class ScrollablePane extends ComponentContainer implements Clickable, Scr
 	public void press(){
 		scrollValue = 0;
 		if(upArrow.contains(xRelative, yRelative)){
-			scrollValue = -25;
+			scrollValue = -100;
 		}
 		else if(downArrow.contains(xRelative, yRelative)){
-			scrollValue = 25;
+			scrollValue = 100;
 		}
 		if(scrollValue != 0){
 			Thread scroll = new Thread(new Runnable(){
@@ -407,6 +407,10 @@ public class ScrollablePane extends ComponentContainer implements Clickable, Scr
 		
 	}
 
+	public void move(int newX, int newY, int durationMS){
+		Visible.move(this, newX, newY, durationMS);
+	}
+	
 
 
 
