@@ -20,8 +20,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 	public boolean srare;
 	public double rate;
 	public boolean lightingCheck;
-	public ArrayList<Hero> resistanceB;
-	public ArrayList<Hero> resistance;
+	public ArrayList<Hero> banner;
 	public int cardNum;
 	public int bannerNum;
 	public int cardNumB;
@@ -29,11 +28,11 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 	
 
 	public ArrayList<Hero> getStuff() {
-		return resistance;
+		return banner;
 	}
 
 	public void setStuff(ArrayList<Hero> stuff) {
-		this.resistance = stuff;
+		this.banner = stuff;
 	}
 
 	public DavidGetCharacterSingle(int width, int height) {
@@ -76,7 +75,8 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 		viewObjects.add(background);
 		background.setVisible(false);
 		
-		cardNum = (int) (Math.random() * resistance.size());
+		cardNum =  0 + (int)(Math.random() * ((1) + 1));
+
 		System.out.println(cardNum);
 		
 
@@ -84,15 +84,14 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 		// (int)(getHeight()/2 * .9), 150, 150,
 		// MainGame.summon.getThings().get(0).getRank());
 
-		Graphic bannerCard = new Graphic(475, 350, 100, 200, resistance.get(cardNum).getImage());
+		Graphic bannerCard = new Graphic(475, 350, 100, 200, banner.get(cardNum).getImage());
 
 		back = new Button(600, 500, 100, 75, "Back", Color.YELLOW, new Action() {
 
 			@Override
 			public void act() {
 
-				resistanceB.clear();
-				resistance.clear();
+				banner.clear();
 				MainGame.game.setScreen(MainGame.summon);
 
 			}
@@ -130,7 +129,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 					viewObjects.add(bannerCard);
 					
 					
-					MainGame.addHero(resistance.get(cardNum));
+					MainGame.addHero(banner.get(cardNum));
 
 					back.setVisible(true);
 					back.setEnabled(true);
@@ -139,15 +138,17 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 
 				} else {
 
-					cardNumB = (int) (Math.random() * resistanceB.size());
+			        
+
+					cardNumB = 2 + (int)(Math.random() * ((4 - 2) + 1));
 					System.out.println("character "+cardNumB);
 					background.setVisible(true);
 
-					Graphic bannerCardB = new Graphic(475, 350, 100, 200, resistanceB.get(cardNumB).getImage());
+					Graphic bannerCardB = new Graphic(475, 350, 100, 200, banner.get(cardNumB).getImage());
 					
 					viewObjects.add(bannerCardB);
 					
-					MainGame.addHero(resistanceB.get(cardNumB));
+					MainGame.addHero(banner.get(cardNumB));
 					
 					back.setVisible(true);
 					back.setEnabled(true);
@@ -172,14 +173,12 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 		
 		if(bannerNum == 0)
 		{
-			resistance = new ArrayList<Hero>();
-			resistance.add(MainGame.highPrincess);//SS
-			resistance.add(MainGame.highTank);//S
-
-			resistanceB = new ArrayList<Hero>();
-			resistanceB.add(MainGame.bCoolGuys);//A
-			resistanceB.add(MainGame.mediumAxe);//A
-			resistanceB.add(MainGame.beginnerSword);//B
+			banner = new ArrayList<Hero>();
+			banner.add(MainGame.highPrincess);//SS
+			banner.add(MainGame.highTank);//S
+			banner.add(MainGame.bCoolGuys);//A
+			banner.add(MainGame.mediumAxe);//A
+			banner.add(MainGame.beginnerSword);//B
 
 			
 			System.out.println("RESISTANCE BANNER HAS BEEN CREATED");
@@ -187,28 +186,24 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 		
 		if(bannerNum == 1)
 		{
-			resistance = new ArrayList<Hero>();
-			resistance.add(MainGame.highAssassin);//SS
-			resistance.add(MainGame.mediumHighSchoolGirl);//S
-			
-			resistanceB = new ArrayList<Hero>();
-			resistanceB.add(MainGame.bFanWoman);//A
-			resistanceB.add(MainGame.mediumWitch);//A
-			resistanceB.add(MainGame.beginnerArcher);//B
+			banner = new ArrayList<Hero>();
+			banner.add(MainGame.highAssassin);//SS
+			banner.add(MainGame.mediumHighSchoolGirl);//S
+			banner.add(MainGame.bFanWoman);//A
+			banner.add(MainGame.mediumWitch);//A
+			banner.add(MainGame.beginnerArcher);//B
 			
 			System.out.println("RED BANNER HAS BEEN CREATED");
 		}
 		
 		if(bannerNum == 2)
 		{
-			resistance = new ArrayList<Hero>();
-			resistance.add(MainGame.highSirandHorse);//SS
-			resistance.add(MainGame.mediumCannonMan);//S
-			
-			resistanceB = new ArrayList<Hero>();
-			resistanceB.add(MainGame.mediumWizard);//A
-			resistanceB.add(MainGame.mediumWolfGirl);//A
-			resistanceB.add(MainGame.beginnerWizard);//B
+			banner = new ArrayList<Hero>();
+			banner.add(MainGame.highSirandHorse);//SS
+			banner.add(MainGame.mediumCannonMan);//S
+			banner.add(MainGame.mediumWizard);//A
+			banner.add(MainGame.mediumWolfGirl);//A
+			banner.add(MainGame.beginnerWizard);//B
 
 			
 			System.out.println("OG BANNER HAS BEEN CREATED");
