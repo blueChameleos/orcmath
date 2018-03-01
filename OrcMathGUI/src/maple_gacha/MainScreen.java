@@ -25,7 +25,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 import holiday.HolidayCard;
 import sun.audio.AudioPlayer;
 
-public class MainScreen extends FullFunctionScreen {
+public class MainScreen extends LightingScreen {
 	/**
 	 * 
 	 */
@@ -143,6 +143,8 @@ public class MainScreen extends FullFunctionScreen {
 		viewObjects.add(summonb);
 		viewObjects.add(inventory);
 		viewObjects.add(quit);
+		super.initAllObjects(viewObjects);
+		fadeIn();
 	}
 	
 	public void reload() {
