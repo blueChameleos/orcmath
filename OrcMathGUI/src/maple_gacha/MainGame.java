@@ -1,9 +1,15 @@
 package maple_gacha;
 
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import guiTeacher.GUIApplication;
 
@@ -111,6 +117,19 @@ public class MainGame extends GUIApplication {
 		if (g!= null) {
 			g.stop();
 		}
+		try {
+	          File soundFile = new File(musicPos);
+	          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
+	          g = AudioSystem.getClip();
+	         g.open(audioIn);
+	         g.start();
+	      } catch (UnsupportedAudioFileException e) {
+	         e.printStackTrace();
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      } catch (LineUnavailableException e) {
+	         e.printStackTrace();
+	      }
 	}
 	
 	public static void createMobs() {
