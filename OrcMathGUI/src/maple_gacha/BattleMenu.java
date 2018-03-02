@@ -58,7 +58,7 @@ public class BattleMenu extends Pane implements Runnable{
 		log.setBackgroundColor(Color.WHITE);
 		playerPortrait = new Graphic(100,20,150,150,"resources/char.jpg");
 		viewObjects.add(playerPortrait);
-		attackbutton = new Button(900, 10, 120, 65, "Attack", Color.YELLOW, new Action() {
+		attackbutton = new GraphicButton(900, 10, 120, 65, "Attack", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
 				MainGame.game.battle.game.interrupt();
@@ -69,8 +69,8 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.backend.setWaiting(false);
 				MainGame.battle.backend.disableButtons();
 			}
-		});
-		defbutton = new Button(1030, 85, 120, 65, "Guard", Color.YELLOW, new Action() {
+		}, "/attack.png");
+		defbutton = new GraphicButton(1030, 85, 120, 65, "Guard", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
 				MainGame.game.battle.game.interrupt();
@@ -79,8 +79,8 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.backend.setWaiting(false);
 				MainGame.battle.backend.disableButtons();
 			}
-		});
-		skillbutton = new Button(900, 85, 120, 65, "Skill", Color.YELLOW, new Action() {
+		}, "/defense.png");
+		skillbutton = new GrahpicButton(900, 85, 120, 65, "Skill", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
 				MainGame.game.battle.game.interrupt();
@@ -90,13 +90,13 @@ public class BattleMenu extends Pane implements Runnable{
 				MainGame.game.battle.backend.setWaiting(false);
 				MainGame.battle.backend.disableButtons();
 			}
-		});
-		itembutton = new Button(1030, 10, 120, 65, "Item", Color.YELLOW, new Action() {
+		}, "/skill.png");
+		itembutton = new GraphicButton(1030, 10, 120, 65, "Item", Color.YELLOW, new Action() {
 			@Override
 			public void act() {
 				showItemMenu();
 			}
-		});
+		}, "/Item.png");
 
 		viewObjects.add(attackbutton);
 		viewObjects.add(defbutton);;
