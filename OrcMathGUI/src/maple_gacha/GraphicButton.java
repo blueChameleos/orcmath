@@ -17,7 +17,7 @@ import guiTeacher.components.Graphic;
 public class GraphicButton extends Button {
 
 	private BufferedImage playImage;
-	
+
 	public GraphicButton(int x, int y, int w, int h, String text, Color color, Action action) {
 		super(x, y, w, h, text, action);
 		try {
@@ -26,11 +26,25 @@ public class GraphicButton extends Button {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		update();
 	}
-	
+
 	public void drawButton(Graphics2D g, boolean hover)
 	{
-		g.drawImage(playImage, getX(), getY(), null);
+		if(playImage != null)
+		{
+			double widthScale = 1;
+			double heightScale =1;
+			if(getWidth() < playImage.getHeight())
+			{
+				widthScale = ((double) getWidth())/playImage.getWidth();
+			}
+			if(getHeight() < playImage.getHeight())
+			{
+				heightScale = ((double)getHeight())/playImage.getHeight();
+			}
+			g.drawImage(playImage, 0, 0, (int)(playImage.getWidth()*widthScale),(int) (playImage.getHeight()*heightScale) ,null);
+		}
 		super.drawButton(g, hover);
 	}
 
