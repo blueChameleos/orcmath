@@ -26,7 +26,7 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 	public int cardNumB;
 	private CustomCursor customCursor;
 	
-
+	
 	public ArrayList<Hero> getStuff() {
 		return banner;
 	}
@@ -80,8 +80,6 @@ public class DavidGetCharacterSingle extends FullFunctionScreen implements Banne
 		System.out.println(cardNum);
 		
 
-		// TextArea descrip = new TextArea((int)(getWidth()/2 * .75),
-		// (int)(getHeight()/2 * .9), 150, 150,
 		// MainGame.summon.getThings().get(0).getRank());
 
 		Graphic bannerCard = new Graphic(600, 350, 100, 200, banner.get(cardNum).getImage());
