@@ -23,10 +23,10 @@ public class LoadingScreen extends FullFunctionScreen {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Button play;
-	private Button quit;
+	private CustomButtonFront play;
+	private CustomButtonFront quit;
 	// private Button loadgame;
-	private Button newgame;
+	private CustomButtonFront newgame;
 	private TextArea name;
 
 	public LoadingScreen(int width, int height) {
@@ -36,12 +36,14 @@ public class LoadingScreen extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		StyledComponent.setButtonOutline(true);
-		newgame = new Button(getWidth() / 2 - 100, 462, 200, 75, "New Game", Color.cyan, new Action() {
+		newgame = new CustomButtonFront(getWidth() / 2 - 100, 462, 200, 75);
+		newgame.setAction(new Action() {
 			public void act() {
 				MainGame.game.setScreen(MainGame.bScreen);
 			}
 
 		});
+		newgame.setName("New Game");
 		// loadgame = new Button(getWidth()/2 - 100,550,200,75,"Load
 		// Game",Color.cyan,new Action() {
 		// public void act() {
@@ -51,15 +53,17 @@ public class LoadingScreen extends FullFunctionScreen {
 		// });
 		newgame.setVisible(false);
 		// loadgame.setVisible(false);
-		play = new Button(540, 462, 200, 75, "PLAY", Color.green, new Action() {
+		play = new CustomButtonFront(540, 462, 200, 75); 
+		play.setAction(new Action() {
 			public void act() {
-				play.setEnabled(false);
 				viewObjects.remove(play);
 				newgame.setVisible(true);
 				// loadgame.setVisible(true);
 			}
 		});
-		quit = new Button(1000, 900, 200, 50, "QUIT", Color.red, new Action() {
+		play.setName("PLAY");
+		quit = new CustomButtonFront(1000, 900, 200, 50);
+		quit.setAction(new Action() {
 
 			@Override
 			public void act() {
@@ -67,6 +71,7 @@ public class LoadingScreen extends FullFunctionScreen {
 			}
 
 		});
+		quit.setName("QUIT");
 		name = new TextArea(480, 200, 600, 200, "GachaStory");
 		try {
 			File fontFile = new File("resources//Bobbleboddy.ttf");

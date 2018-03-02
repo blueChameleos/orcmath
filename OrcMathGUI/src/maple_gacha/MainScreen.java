@@ -32,10 +32,10 @@ public class MainScreen extends FullFunctionScreen {
 	private static final long serialVersionUID = 1L; 
 
 	private AnimatedComponent featured;
-	private Button dungeon;
-	private Button summonb;
-	private Button inventory;
-	private Button quit;
+	private CustomButtonFront dungeon;
+	private CustomButtonFront summonb;
+	private CustomButtonFront inventory;
+	private CustomButtonFront quit;
 	private TextArea name;
 	public ArrayList<Graphic> unitlist;
 	public Graphic unit1;
@@ -74,7 +74,8 @@ public class MainScreen extends FullFunctionScreen {
 		for(int i = 0; i < unitlist.size(); i++) {
 			viewObjects.add(unitlist.get(i));
 		}
-		dungeon = new Button((getWidth()/4)-50,875,200,100,"Dungeons",Color.yellow,new Action() {
+		dungeon = new CustomButtonFront((getWidth()/4)-50,875,200,100);
+		dungeon.setAction(new Action() {	
 			public void act() {
 				if(!plo) {
 					MainGame.playMusic("resources/everythingelse.wav");
@@ -83,10 +84,11 @@ public class MainScreen extends FullFunctionScreen {
 		//		MainGame.playMusic("resources/everythingelse.wav");
 				MainGame.game.setBattle(new BattleScreen(getWidth(), getHeight()));
 				MainGame.game.setScreen(MainGame.game.battle);
-			}
-			
+			}			
 		});
-		summonb = new Button(getWidth()/2-100,875,200,100,"Summon",Color.yellow,new Action() {
+		dungeon.setName("Dungeons");
+		summonb = new CustomButtonFront(getWidth()/2-100,875,200,100);
+		summonb.setAction(new Action() {
 			public void act() {
 				MainGame.game.setScreen(MainGame.summon);
 				if(!plo) {
@@ -98,7 +100,9 @@ public class MainScreen extends FullFunctionScreen {
 			}
 			
 		});
-		inventory = new Button(((getWidth()/4)*3)-150,875,200,100,"Units",Color.yellow,new Action() {
+		summonb.setName("Summon");
+		inventory = new CustomButtonFront(((getWidth()/4)*3)-150,875,200,100);
+		inventory.setAction(new Action() {
 			public void act() {
 				MainGame.game.setScreen(new CharacterScreen(getWidth(), getHeight()));
 				if(!plo) {
@@ -110,11 +114,14 @@ public class MainScreen extends FullFunctionScreen {
 			}
 			
 		});
-		quit = new Button(getWidth()-175,getHeight()-100,150,75,"QUIT",Color.red,new Action() {
+		inventory.setName("Units");
+		quit = new CustomButtonFront(getWidth()-175,getHeight()-100,150,75);
+		quit.setAction(new Action() {
 			public void act() {
 				System.exit(1);
 			}
 		});
+		quit.setName("QUIT");
 		name = new TextArea(480,10,600,200,"GachaStory");		
 		try {		
 			File fontFile = new File("resources//Bobbleboddy.ttf");
