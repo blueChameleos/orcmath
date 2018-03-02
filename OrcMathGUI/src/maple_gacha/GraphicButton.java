@@ -44,7 +44,6 @@ public class GraphicButton extends Button {
 				heightScale = ((double)getHeight())/playImage.getHeight();
 			}
 			g.drawImage(playImage, 0, 0, (int)(playImage.getWidth()*widthScale),(int) (playImage.getHeight()*heightScale) ,null);
-
 		}
 		super.drawButton(g, hover);
 	}
