@@ -18,6 +18,8 @@ public class CustomButtonFront extends Component implements Clickable{
 	private String name;
 	private Font bfont;
 	private float fsize;
+	private int x;
+	private int y;
 	
 	public CustomButtonFront(int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -26,6 +28,8 @@ public class CustomButtonFront extends Component implements Clickable{
 		fsize = 20;
 		// TODO Auto-generated constructor stub
 		update();
+		this.x = x;
+		this.y = y;
 	}
 
 	@Override
@@ -67,7 +71,7 @@ public class CustomButtonFront extends Component implements Clickable{
 	public void update(Graphics2D g) {
 		// TODO Auto-generated method stub
 		g.drawImage(buttonimg.getImage(), buttonimg.getX(), buttonimg.getY(), null);
-		g.drawString(name, buttonimg.getX(), buttonimg.getY());
+		g.drawString(name, x, y);
 		g.setFont(bfont);
 	}
 
