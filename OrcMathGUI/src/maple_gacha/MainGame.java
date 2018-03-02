@@ -103,7 +103,7 @@ public class MainGame extends GUIApplication {
 
 		load = new LoadingScreen(getWidth(), getHeight());
 		//battle = new BattleScreen(getWidth(), getHeight());
-		setScreen(main);
+		setScreen(load);
 	}
 
 	public static void main(String[] args) {

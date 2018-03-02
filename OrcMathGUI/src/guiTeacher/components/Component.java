@@ -32,7 +32,7 @@ public abstract class Component implements Visible {
 	private int w;
 	private int h;
 	private float alpha;
-	private BufferedImage image;
+	private BufferedImage buttonimg;
 	private BufferedImage buffer;
 	private Color foreground;
 	private Color background;
@@ -50,7 +50,7 @@ public abstract class Component implements Visible {
 		foreground = Color.black;
 		visible = true;
 		background = null;
-		image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		buttonimg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 	}
 	
 	
@@ -65,7 +65,7 @@ public abstract class Component implements Visible {
 
 
 	public BufferedImage getImage() {
-		return image;
+		return buttonimg;
 	}
 	
 	public void setContainer(Visible container){
@@ -73,7 +73,7 @@ public abstract class Component implements Visible {
 	}
 
 	public void clear(){
-		image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+		buttonimg = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
 //		return image.createGraphics();
 	}
 	
@@ -124,7 +124,7 @@ public abstract class Component implements Visible {
 	
 	public Graphics2D resize(){
 		clear();
-		return image.createGraphics();
+		return buttonimg.createGraphics();
 	}
 	
 	public void update(){
@@ -132,7 +132,7 @@ public abstract class Component implements Visible {
 		Graphics2D g = buffer.createGraphics();
 		applyStyles(g);
 		update(g);
-		image.createGraphics().drawImage(buffer, 0, 0, null);
+		buttonimg.createGraphics().drawImage(buffer, 0, 0, null);
 		if(containingComponent != null)containingComponent.update();
 	}
 	
