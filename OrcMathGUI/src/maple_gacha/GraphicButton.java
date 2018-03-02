@@ -16,12 +16,20 @@ import guiTeacher.components.Graphic;
 
 public class GraphicButton extends Button {
 
-	private BufferedImage playImage;
+	private GraphicButton nextButton;
+	private BufferedImage image;
 
 	public GraphicButton(int x, int y, int w, int h, String text, Color color, Action action) {
 		super(x, y, w, h, text, action);
+		nextButton = new GraphicButton(x, y, w, h, text, color, action, "/maplePlayButton.png");
+		update();
+	}
+
+
+	public GraphicButton(int x, int y, int w, int h, String text, Color color, Action action, String imageAdress) {
+		super(x, y, w, h ,text, action);
 		try {
-			playImage = ImageIO.read(getClass().getResourceAsStream("/maplePlayButton.png"));
+			image = ImageIO.read(getClass().getResourceAsStream(imageAdress));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -31,19 +39,31 @@ public class GraphicButton extends Button {
 
 	public void drawButton(Graphics2D g, boolean hover)
 	{
-		if(playImage != null)
+		if(image != null)
 		{
 			double widthScale = 1;
 			double heightScale =1;
-			if(getWidth() < playImage.getHeight())
+			int width = getWidth();
+			int imageWidth = image.getWidth();
+			int height = getHeight();
+			int imageHeight = image.getHeight();
+			if(getWidth() < image.getWidth())
 			{
-				widthScale = ((double) getWidth())/playImage.getWidth();
+				widthScale = ((double) getWidth())/image.getWidth();
 			}
-			if(getHeight() < playImage.getHeight())
+			if(getHeight() < image.getHeight())
 			{
-				heightScale = ((double)getHeight())/playImage.getHeight();
+				heightScale = ((double)getHeight())/image.getHeight();
 			}
-			g.drawImage(playImage, 0, 0, (int)(playImage.getWidth()*widthScale),(int) (playImage.getHeight()*heightScale) ,null);
+			if(getWidth() > image.getWidth())
+			{
+				widthScale = ((double) getWidth())/image.getWidth();
+			}
+			if(getHeight() > image.getHeight())
+			{
+				heightScale = ((double)getHeight())/image.getHeight();
+			}
+			g.drawImage(image, 0, 0, (int)(image.getWidth()*widthScale),(int) (image.getHeight()*heightScale) ,null);
 		}
 		super.drawButton(g, hover);
 	}

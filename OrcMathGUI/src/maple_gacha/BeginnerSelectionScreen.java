@@ -49,13 +49,24 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 		begSword = new ClickableCharacter(600, 500, 200, 200, MainGame.game.beginnerSword.getImage(), null);
 		begWizard = new ClickableCharacter(1000, 500, 200, 200, MainGame.game.beginnerWizard.getImage(), null);
 
-		Button next = new Button(670, 780, 70, 70, "Next", or, null);
+		Button next = new GraphicButton(670, 780, 70, 70, null, or, new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				if (!MainGame.game.team.isEmpty()) {
+					MainGame.game.setScreen(new CharacterScreen(getWidth(), getHeight()));
+				} else {
+					text.setText("You must choose a hero first!");
+					text.setX(300);
+				}
+
+			}
+
+		}, "/backButton.png");
 		next.setVisible(false);
 
-		Button retry = new Button(595, 780, 70, 70, "Redo", or, null);
-		retry.setVisible(false);
-
-		retry.setAction(new Action() {
+		Button retry = new GraphicButton(595, 780, 70, 70, null, or, new Action() {
 
 			@Override
 			public void act() {
@@ -65,7 +76,8 @@ public class BeginnerSelectionScreen extends FullFunctionScreen {
 				text.setText("Choose your hero!");
 			}
 
-		});
+		}, "/retryButton.png");
+		retry.setVisible(false);
 
 		// ClickableGraphic next = new ClickableGraphic(500, 780, 500 ,125,
 		// "resources/characterPics/playbutton.png");
