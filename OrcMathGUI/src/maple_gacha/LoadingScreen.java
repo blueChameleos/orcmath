@@ -23,7 +23,6 @@ public class LoadingScreen extends FullFunctionScreen {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private CustomButtonFront play;
 	private CustomButtonFront quit;
 	// private Button loadgame;
 	private CustomButtonFront newgame;
@@ -51,17 +50,7 @@ public class LoadingScreen extends FullFunctionScreen {
 		// }
 		//
 		// });
-		newgame.setVisible(false);
 		// loadgame.setVisible(false);
-		play = new CustomButtonFront(540, 462, 200, 75); 
-		play.setAction(new Action() {
-			public void act() {
-				viewObjects.remove(play);
-				newgame.setVisible(true);
-				// loadgame.setVisible(true);
-			}
-		});
-		play.setName("PLAY");
 		quit = new CustomButtonFront(1000, 900, 200, 50);
 		quit.setAction(new Action() {
 
@@ -79,8 +68,6 @@ public class LoadingScreen extends FullFunctionScreen {
 			Font baseFont = font.deriveFont(16f);
 			quit.setFont(baseFont);
 			quit.setSize(24);
-			play.setFont(baseFont);
-			play.setSize(48);
 			// loadgame.setFont(baseFont);
 			// loadgame.setSize(36);
 			newgame.setFont(baseFont);
@@ -95,7 +82,6 @@ public class LoadingScreen extends FullFunctionScreen {
 		}
 		viewObjects.add(new Graphic(0, 0, getWidth(), getHeight(), "resources/homescreen.png"));
 		viewObjects.add(new Graphic(750, 160, 150, 150, "resources/mapleleaf.png"));
-		viewObjects.add(play);
 		viewObjects.add(quit);
 		viewObjects.add(name);
 		// viewObjects.add(loadgame);
