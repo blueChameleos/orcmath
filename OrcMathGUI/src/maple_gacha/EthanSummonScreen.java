@@ -14,7 +14,7 @@ import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class EthanSummonScreen extends FullFunctionScreen implements Runnable, BannerInterface {
+public class EthanSummonScreen extends FullFunctionScreen implements Runnable, BannerInterface, Summoning {
 
 	private ArrayList<Graphic> banners;
 	private ArrayList<Hero> heroes;
@@ -71,7 +71,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		this.nx = nx;
 	}
 
-	private boolean canSummon(int type) {
+	public boolean canSummon(int type) {
 		// type 0 is single type 1 is multi
 		if (nx >= 5 && type == 0) {
 			setNx(getNx() - 5);
@@ -87,7 +87,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		return false;
 	}
 
-	private void cantSummon() {
+	public void cantSummon() {
 		error.setVisible(true);
 	}
 
