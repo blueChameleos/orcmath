@@ -23,7 +23,7 @@ public class CustomButtonFront extends Component implements Clickable{
 	
 	public CustomButtonFront(int x, int y, int w, int h) {
 		super(x, y, w, h);
-		buttonimg = new Graphic(0,0,w,h,"resources/finalbutton.jpg");
+		buttonimg = new Graphic(0,0,w,h,"resources/finalbutton3.png");
 		name = "";
 		fsize = 20;
 		// TODO Auto-generated constructor stub
@@ -74,6 +74,6 @@ public class CustomButtonFront extends Component implements Clickable{
 		g.drawString(name, x, y);
 		g.setFont(bfont);
 	}
-
+	
 	
 }
