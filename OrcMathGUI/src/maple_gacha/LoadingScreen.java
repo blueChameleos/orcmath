@@ -62,7 +62,7 @@ public class LoadingScreen extends FullFunctionScreen {
 			}
 
 		});
-		quittext = new TextArea(945, 950,200,75, "Quit");
+		quittext = new TextArea(1050,900,200,75, "Quit");
 		name = new TextArea(480, 200, 600, 200, "GachaStory");
 		try {
 			File fontFile = new File("resources//Bobbleboddy.ttf");

@@ -45,6 +45,7 @@ public class MainScreen extends FullFunctionScreen {
 	private TextArea dungeontext;
 	private TextArea summontext;
 	private TextArea unitstext;
+	private TextArea quittext;
 
 	public MainScreen(int width, int height) {
 		super(width, height);
@@ -90,7 +91,7 @@ public class MainScreen extends FullFunctionScreen {
 				MainGame.game.setScreen(MainGame.game.battle);
 			}			
 		});
-		dungeontext = new TextArea((getWidth()/4)+5,895,200,100,"Dungeon");
+		dungeontext = new TextArea((getWidth()/4)+5,885,200,100,"Dungeon");
 		summonb = new CustomButtonFront(getWidth()/2-100,875,200,100);
 		summonb.setAction(new Action() {
 			public void act() {
@@ -104,7 +105,7 @@ public class MainScreen extends FullFunctionScreen {
 			}
 			
 		});
-		summontext = new TextArea((getWidth()/2)-45,895,200,100,"Summon");
+		summontext = new TextArea((getWidth()/2)-45,885,200,100,"Summon");
 		inventory = new CustomButtonFront(((getWidth()/4)*3)-150,875,200,100);
 		inventory.setAction(new Action() {
 			public void act() {
@@ -118,14 +119,14 @@ public class MainScreen extends FullFunctionScreen {
 			}
 			
 		});
-		unitstext = new TextArea(((getWidth()/4)*3)-95,985,200,100,"Units");
+		unitstext = new TextArea(((getWidth()/4)*3)-75,885,200,100,"Units");
 		quit = new CustomButtonFront(getWidth()-175,getHeight()-100,150,75);
 		quit.setAction(new Action() {
 			public void act() {
 				System.exit(1);
 			}
 		});
-		quit.setName("QUIT");
+		quittext = new TextArea(getWidth()-120,getHeight()-100,150,75,"QUIT");
 		name = new TextArea(480,10,600,200,"GachaStory");		
 		try {		
 			File fontFile = new File("resources//Bobbleboddy.ttf");
@@ -157,6 +158,7 @@ public class MainScreen extends FullFunctionScreen {
 		viewObjects.add(dungeontext);
 		viewObjects.add(summontext);
 		viewObjects.add(unitstext);
+		viewObjects.add(quittext);
 	}
 	
 	public void reload() {

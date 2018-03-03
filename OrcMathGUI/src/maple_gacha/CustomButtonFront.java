@@ -27,9 +27,9 @@ public class CustomButtonFront extends Component implements Clickable{
 		name = "";
 		fsize = 20;
 		// TODO Auto-generated constructor stub
-		update();
 		this.x = x;
-		this.y = y;
+		this.y = y;		
+		update();
 	}
 
 	@Override
@@ -50,6 +50,7 @@ public class CustomButtonFront extends Component implements Clickable{
 	public void setAction(Action a) {
 		// TODO Auto-generated method stub
 		this.baction = a;
+		update();
 	}
 
 	public void setName(String s) {
@@ -65,6 +66,7 @@ public class CustomButtonFront extends Component implements Clickable{
 	public void setSize(float size){
 		this.fsize = size;
 		setFont(bfont.deriveFont(size));
+		update();
 	}
 	
 	@Override
