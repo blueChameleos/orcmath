@@ -27,7 +27,9 @@ public class LoadingScreen extends FullFunctionScreen {
 	// private Button loadgame;
 	private CustomButtonFront newgame;
 	private TextArea name;
-
+	private TextArea newgametext;
+	private TextArea quittext;
+	
 	public LoadingScreen(int width, int height) {
 		super(width, height);
 	}
@@ -42,7 +44,7 @@ public class LoadingScreen extends FullFunctionScreen {
 			}
 
 		});
-		newgame.setName("New Game");
+		newgametext = new TextArea(getWidth()/2 - 45, 472,200,75, "New Game");
 		// loadgame = new Button(getWidth()/2 - 100,550,200,75,"Load
 		// Game",Color.cyan,new Action() {
 		// public void act() {
@@ -60,7 +62,7 @@ public class LoadingScreen extends FullFunctionScreen {
 			}
 
 		});
-		quit.setName("QUIT");
+		quittext = new TextArea(945, 950,200,75, "Quit");
 		name = new TextArea(480, 200, 600, 200, "GachaStory");
 		try {
 			File fontFile = new File("resources//Bobbleboddy.ttf");
@@ -86,6 +88,8 @@ public class LoadingScreen extends FullFunctionScreen {
 		viewObjects.add(name);
 		// viewObjects.add(loadgame);
 		viewObjects.add(newgame);
+		viewObjects.add(newgametext);
+		viewObjects.add(quittext);
 	}
 
 }

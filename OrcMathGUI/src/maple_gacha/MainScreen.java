@@ -42,6 +42,10 @@ public class MainScreen extends FullFunctionScreen {
 	public Graphic unit2;
 	public Graphic unit3;
 	public boolean plo;
+	private TextArea dungeontext;
+	private TextArea summontext;
+	private TextArea unitstext;
+
 	public MainScreen(int width, int height) {
 		super(width, height);
 	}
@@ -86,7 +90,7 @@ public class MainScreen extends FullFunctionScreen {
 				MainGame.game.setScreen(MainGame.game.battle);
 			}			
 		});
-		dungeon.setName("Dungeons");
+		dungeontext = new TextArea((getWidth()/4)+5,895,200,100,"Dungeon");
 		summonb = new CustomButtonFront(getWidth()/2-100,875,200,100);
 		summonb.setAction(new Action() {
 			public void act() {
@@ -100,7 +104,7 @@ public class MainScreen extends FullFunctionScreen {
 			}
 			
 		});
-		summonb.setName("Summon");
+		summontext = new TextArea((getWidth()/2)-45,895,200,100,"Summon");
 		inventory = new CustomButtonFront(((getWidth()/4)*3)-150,875,200,100);
 		inventory.setAction(new Action() {
 			public void act() {
@@ -114,7 +118,7 @@ public class MainScreen extends FullFunctionScreen {
 			}
 			
 		});
-		inventory.setName("Units");
+		unitstext = new TextArea(((getWidth()/4)*3)-95,985,200,100,"Units");
 		quit = new CustomButtonFront(getWidth()-175,getHeight()-100,150,75);
 		quit.setAction(new Action() {
 			public void act() {
@@ -150,6 +154,9 @@ public class MainScreen extends FullFunctionScreen {
 		viewObjects.add(summonb);
 		viewObjects.add(inventory);
 		viewObjects.add(quit);
+		viewObjects.add(dungeontext);
+		viewObjects.add(summontext);
+		viewObjects.add(unitstext);
 	}
 	
 	public void reload() {
