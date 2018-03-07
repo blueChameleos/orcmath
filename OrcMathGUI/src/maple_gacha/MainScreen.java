@@ -23,7 +23,6 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import holiday.HolidayCard;
-import sun.audio.AudioPlayer;
 
 public class MainScreen extends FullFunctionScreen {
 	/**

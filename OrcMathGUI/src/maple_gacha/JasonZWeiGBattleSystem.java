@@ -3,7 +3,7 @@ package maple_gacha;
 import java.awt.Image;
 import java.util.ArrayList;
 
-public class GBattleSystem implements Runnable {
+public class JasonZWeiGBattleSystem implements Runnable {
 
 	private int enemiesNum;
 	private Hero[] mainParty;
@@ -20,7 +20,7 @@ public class GBattleSystem implements Runnable {
 
 	//creation of System
 
-	public GBattleSystem(int difficulty, Hero[] mainParty)
+	public JasonZWeiGBattleSystem(int difficulty, Hero[] mainParty)
 	{
 		changeDifficulty(difficulty); 
 		this.mainParty = mainParty;
@@ -40,6 +40,7 @@ public class GBattleSystem implements Runnable {
 		playGame();
 	}
 
+	//wei
 	public void playGame() {
 		MainGame.battle.userui.updateLog("Monsters have appeared!");
 		try {
@@ -111,6 +112,7 @@ public class GBattleSystem implements Runnable {
 		MainGame.game.battle.userui.itembutton.setEnabled(false);
 	}
 
+	//jason
 	//when someone dies (all monster dies or heros)
 	public void checkChanges() {
 		MainGame.game.battle.updateHp();
@@ -151,6 +153,7 @@ public class GBattleSystem implements Runnable {
 		}
 	}
 
+	//wei
 	public void endGame() {
 //		showRewards();
 		playing = false;
@@ -167,6 +170,7 @@ public class GBattleSystem implements Runnable {
 		MainGame.game.setScreen(MainGame.game.main);
 	}
 
+	//jason
 	private void newRound() {
 		round++;
 		order = new ArrayList<Hero>();
@@ -182,7 +186,7 @@ public class GBattleSystem implements Runnable {
 			inventory.add(itemsList[i]);
 		}
 	}
-
+	//jason
 	//difficulty
 	private void changeDifficulty(int difficulty) {
 		setEnemiesNum((int) Math.pow(difficulty, 1.3 ));
@@ -207,6 +211,7 @@ public class GBattleSystem implements Runnable {
 	}
 
 	//end of difficulty	
+	//jason
 	//creating enemies
 	private void populateEnemies() {
 		for(int rounds = 0; rounds< enemiesList.length; rounds++)
@@ -219,6 +224,7 @@ public class GBattleSystem implements Runnable {
 	}
 
 
+	//jason
 	//begin of quicksort for specific round
 	private void makeOrder() {
 		order = new ArrayList<Hero>();
@@ -237,6 +243,7 @@ public class GBattleSystem implements Runnable {
 		sortOrder(order, 0, order.size());
 	}
 
+	//jason
 	private void sortOrder(ArrayList<Hero> heroList, int startIdx, int endIdx) {
 		int currentIdx = endIdx;
 		int pivotSpeed = heroList.get(startIdx).getSpeed();

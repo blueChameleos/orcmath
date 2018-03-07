@@ -23,9 +23,9 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 
 	private static final long serialVersionUID = 2809999782648181302L;
 	private int roundNum;
-	public static GBattleSystem backend;
-	public static BattleMenu userui;
-	public static ItemMenu itemui;
+	public static JasonZWeiGBattleSystem backend;
+	public static WeiBattleMenu userui;
+	public static WeiItemMenu itemui;
 	public static Pane fader;
 	public static Graphic hider;
 	public static Thread game;
@@ -57,7 +57,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		for (int i = 0; i < currentTeam.length; i++) {
 			currentTeam[i] = MainGame.currentTeam.get(i);
 		}
-		backend = new GBattleSystem(3, currentTeam);
+		backend = new JasonZWeiGBattleSystem(3, currentTeam);
 
 		int playerSizeH = 100;
 		int playerSizeW = 100;
@@ -68,9 +68,9 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 		monsterImg = new ArrayList<CharacterImage>();
 		heroImg = new ArrayList<CharacterImage>();
 		
-		userui = new BattleMenu(this, 30, 800);
+		userui = new WeiBattleMenu(this, 30, 800);
 		userui.update();
-		itemui = new ItemMenu(this, 1000, 400);
+		itemui = new WeiItemMenu(this, 1000, 400);
 		itemui.setAlpha(0);
 		itemui.setVisible(false);
 		viewObjects.add(userui);

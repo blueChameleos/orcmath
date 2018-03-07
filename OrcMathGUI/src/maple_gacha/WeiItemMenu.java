@@ -11,7 +11,7 @@ import guiTeacher.components.ScrollablePane;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
-public class ItemMenu extends ScrollablePane {
+public class WeiItemMenu extends ScrollablePane {
 
 	private static final long serialVersionUID = -8249216153895539555L;
 	private static final int WIDTH = 250;
@@ -19,12 +19,12 @@ public class ItemMenu extends ScrollablePane {
 	public static Button cancel;
 	public ArrayList<Items> itemlist;
 
-	public ItemMenu(FocusController focusController, int x, int y, int width, int height) {
+	public WeiItemMenu(FocusController focusController, int x, int y, int width, int height) {
 		super(focusController, x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ItemMenu(FocusController focusController, int x, int y) {
+	public WeiItemMenu(FocusController focusController, int x, int y) {
 		super(focusController, x, y, WIDTH, HEIGHT);
 	}
 	

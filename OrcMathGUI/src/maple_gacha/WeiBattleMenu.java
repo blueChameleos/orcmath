@@ -14,7 +14,7 @@ import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
-public class BattleMenu extends Pane implements Runnable{
+public class WeiBattleMenu extends Pane implements Runnable{
 
 	private static final long serialVersionUID = 6116383819049095100L;
 	private static final int WIDTH = 1180;
@@ -31,16 +31,16 @@ public class BattleMenu extends Pane implements Runnable{
 	public static Button itembutton;
 	public static Button[] buttons = new Button[4];
 
-	public BattleMenu(FocusController focusController, int x, int y) {
+	public WeiBattleMenu(FocusController focusController, int x, int y) {
 		super(focusController, x, y, WIDTH, HEIGHT);
 	}
 
-	public BattleMenu(FocusController focusController, int x, int y, int width, int height) {
+	public WeiBattleMenu(FocusController focusController, int x, int y, int width, int height) {
 		super(focusController, x, y, WIDTH, HEIGHT);
 		// TODO Auto-generated constructor stub
 	}
 
-	public BattleMenu(FocusController focusController, int x, int y, int width, int height, ArrayList<Visible> initWithObjects) {
+	public WeiBattleMenu(FocusController focusController, int x, int y, int width, int height, ArrayList<Visible> initWithObjects) {
 		super(focusController, x, y, width, height, initWithObjects);
 		// TODO Auto-generated constructor stub
 	} 
@@ -165,7 +165,7 @@ public class BattleMenu extends Pane implements Runnable{
 				log.setText("");
 				for(int i = 0; i < text.length(); i++) {
 					log.setText(log.getText()+ text.substring(i, i+1));
-					BattleMenu.this.update();
+					WeiBattleMenu.this.update();
 					try {
 						Thread.sleep(1000/60);
 					} catch (InterruptedException e) {
