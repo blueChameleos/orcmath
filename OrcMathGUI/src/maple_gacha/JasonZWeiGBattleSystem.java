@@ -178,6 +178,7 @@ public class JasonZWeiGBattleSystem implements Runnable {
 		MainGame.battle.nextRound();
 	}
 
+	//wei
 	//testing items
 	public void addItems()
 	{
@@ -196,7 +197,7 @@ public class JasonZWeiGBattleSystem implements Runnable {
 		//		changeStats(Math.log((difficulty+1))+.5); //good function //good comment btw
 	}
 
-
+	
 	public void changeStats(double d) {
 		for(Monster[] el: enemiesList)
 		{
@@ -283,7 +284,8 @@ public class JasonZWeiGBattleSystem implements Runnable {
 	}
 
 	// end of sort
-
+	
+	//wei
 	public void useItem(Items item) {
 		if(item instanceof IProjectileAoe)
 		{
