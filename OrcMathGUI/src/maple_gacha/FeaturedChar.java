@@ -19,7 +19,7 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class FeaturedChar extends FullFunctionScreen{
-	private ArrayList<Hero> chars;
+	private ArrayList<JohnsonHero> chars;
 	private int index;
 	private boolean ready;
 	private TextArea stats;

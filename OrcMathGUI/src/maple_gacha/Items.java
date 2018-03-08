@@ -28,7 +28,7 @@ public class Items implements Serializable{
 		
 	}
 	
-	public void act(Hero target, int value)
+	public void act(JohnsonHero target, int value)
 	{
 		
 	}

@@ -28,7 +28,7 @@ public class WeiItemMenu extends ScrollablePane {
 		super(focusController, x, y, WIDTH, HEIGHT);
 	}
 	
-	public void useItem(Hero caller, Items item, List<Visible> viewObjects) {
+	public void useItem(JohnsonHero caller, Items item, List<Visible> viewObjects) {
 		MainGame.game.battle.game.interrupt();
 		MainGame.game.battle.userui.updateLog(caller + " used " + item.getName() + "!");
 		MainGame.game.battle.backend.useItem(item);//uses the item

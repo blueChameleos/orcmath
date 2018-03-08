@@ -53,7 +53,7 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		Hero[] currentTeam = new Hero[MainGame.currentTeam.size()];
+		JohnsonHero[] currentTeam = new JohnsonHero[MainGame.currentTeam.size()];
 		for (int i = 0; i < currentTeam.length; i++) {
 			currentTeam[i] = MainGame.currentTeam.get(i);
 		}

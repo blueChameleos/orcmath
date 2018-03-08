@@ -1,6 +1,6 @@
 package maple_gacha;
 
-public class Monster extends Hero implements Character {
+public class Monster extends JohnsonHero implements Character {
 
 
 	public Monster(String img, String rank, int strength, int speed, int attack, int defense, int hp, String name) {

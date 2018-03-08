@@ -6,25 +6,25 @@ import java.util.ArrayList;
 public class JasonZWeiGBattleSystem implements Runnable {
 
 	private int enemiesNum;
-	private Hero[] mainParty;
+	private JohnsonHero[] mainParty;
 	private Monster[][] enemiesList; //round -> enemies 
 	private int round = 0;
-	private ArrayList<Hero> order = new ArrayList<Hero>();
+	private ArrayList<JohnsonHero> order = new ArrayList<JohnsonHero>();
 	private ArrayList<ArrayList<String>> changes = new ArrayList<ArrayList<String>>();
 	private Items[] itemsList = {new IHealingItem(20, "Small Heal Potion"), new IHealingItem(50, "Medium Healing Potion"), new IHealingItem( 100, "Huge Healing Potion"), new IHealingItem(300, "Cheat Heal"), new IProjectileAoe(30, "Molotov"),new IProjectileAoe(50, "Grenade"), new IProjectileAoe(100, "Pms Ray"), new IProjectileSingle(40, "Syringe"), new IProjectileSingle(80, "Javelin"), new IProjectileSingle(15, "Shuriken")};
 	private ArrayList<Items> inventory = new ArrayList<Items>();
-	private Hero currentPlayer;
+	private JohnsonHero currentPlayer;
 	private Monster currentEnemy;
 	private boolean waiting = false;
 	private boolean playing;
 
 	//creation of System
 
-	public JasonZWeiGBattleSystem(int difficulty, Hero[] mainParty)
+	public JasonZWeiGBattleSystem(int difficulty, JohnsonHero[] mainParty)
 	{
 		changeDifficulty(difficulty); 
 		this.mainParty = mainParty;
-		currentPlayer = new Hero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100,"HiHero");
+		currentPlayer = new JohnsonHero("resources/characterPics/Hero_BeginnerArcher.png", "B", 10, 10, 10, 10, 100,"HiHero");
 		currentEnemy = enemiesList[0][0];
 		addItems();
 	}
@@ -59,7 +59,7 @@ public class JasonZWeiGBattleSystem implements Runnable {
 				if(currentPlayer.getClass() == Monster.class)
 				{
 					disableButtons();
-					Hero target = order.get((int)(Math.random()*order.size()));
+					JohnsonHero target = order.get((int)(Math.random()*order.size()));
 					while(target.getClass() == Monster.class) {
 						target = order.get((int)(Math.random()*order.size()));
 					}
@@ -173,7 +173,7 @@ public class JasonZWeiGBattleSystem implements Runnable {
 	//jason
 	private void newRound() {
 		round++;
-		order = new ArrayList<Hero>();
+		order = new ArrayList<JohnsonHero>();
 		makeOrder();
 		MainGame.battle.nextRound();
 	}
@@ -228,8 +228,8 @@ public class JasonZWeiGBattleSystem implements Runnable {
 	//jason
 	//begin of quicksort for specific round
 	private void makeOrder() {
-		order = new ArrayList<Hero>();
-		for(Hero c: mainParty)
+		order = new ArrayList<JohnsonHero>();
+		for(JohnsonHero c: mainParty)
 		{
 			if(c.getHP() > 0)
 				order.add(c);
@@ -245,7 +245,7 @@ public class JasonZWeiGBattleSystem implements Runnable {
 	}
 
 	//jason
-	private void sortOrder(ArrayList<Hero> heroList, int startIdx, int endIdx) {
+	private void sortOrder(ArrayList<JohnsonHero> heroList, int startIdx, int endIdx) {
 		int currentIdx = endIdx;
 		int pivotSpeed = heroList.get(startIdx).getSpeed();
 
@@ -278,7 +278,7 @@ public class JasonZWeiGBattleSystem implements Runnable {
 	}
 
 	private void swap(int currentIdx, int i) {
-		Hero holder = order.get(currentIdx);
+		JohnsonHero holder = order.get(currentIdx);
 		order.set(currentIdx, order.get(i));
 		order.set(i, holder);
 	}
@@ -326,7 +326,7 @@ public class JasonZWeiGBattleSystem implements Runnable {
 		return this.inventory;
 	}
 
-	public ArrayList<Hero> getCharacters(){
+	public ArrayList<JohnsonHero> getCharacters(){
 		return this.order;
 	}
 
@@ -338,11 +338,11 @@ public class JasonZWeiGBattleSystem implements Runnable {
 		this.currentEnemy = currentEnemy;
 	}
 
-	public Hero getCurrentPlayer() {
+	public JohnsonHero getCurrentPlayer() {
 		return currentPlayer;
 	}
 
-	public void setCurrentPlayer(Hero currentPlayer) {
+	public void setCurrentPlayer(JohnsonHero currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
 

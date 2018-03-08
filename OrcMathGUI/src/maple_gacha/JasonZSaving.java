@@ -17,7 +17,7 @@ public class JasonZSaving {
 			ObjectOutputStream writer = new ObjectOutputStream(saveFile);
 			
 			ArrayList<Items> inventory = MainGame.game.battle.backend.getInventory();
-			ArrayList<Hero> heros = MainGame.team;
+			ArrayList<JohnsonHero> heros = MainGame.team;
 			
 			writer.writeObject(inventory);
 			writer.writeObject(heros);
@@ -34,16 +34,16 @@ public class JasonZSaving {
 	public void getInformation(String fileName)
 	{
 		ArrayList<Items> loadedItems = new ArrayList<Items>();
-		ArrayList<Hero> team = new ArrayList<Hero>();
+		ArrayList<JohnsonHero> team = new ArrayList<JohnsonHero>();
 		try {
 			FileInputStream loadFile = new FileInputStream(fileName);
 			ObjectInputStream reader = new ObjectInputStream(loadFile);
 			ArrayList<Object> obj = (ArrayList<Object>) reader.readObject();
 			for(int i =0; i< obj.size(); i++)
 			{
-				if(obj.get(i) instanceof Hero)
+				if(obj.get(i) instanceof JohnsonHero)
 				{
-					team.add((Hero) obj.get(i));
+					team.add((JohnsonHero) obj.get(i));
 				}
 				else
 				if(obj.get(i) instanceof Items)

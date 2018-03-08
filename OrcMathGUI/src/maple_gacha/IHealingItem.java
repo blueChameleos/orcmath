@@ -7,7 +7,7 @@ public class IHealingItem extends Items {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void act(Hero target, int value)
+	public void act(JohnsonHero target, int value)
 	{
 		target.setHP(target.getHP()+value);
 	}

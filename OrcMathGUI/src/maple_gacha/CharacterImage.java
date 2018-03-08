@@ -14,11 +14,11 @@ public class CharacterImage extends Component implements Clickable {
 	private HpBar bar;
 	private boolean selected;
 	private Action action;
-	private Hero hero;
+	private JohnsonHero hero;
 	public static Graphic checkMark = new Graphic(0, 0, 30, 30, "resources/yellowarrow.png");
 
 	
-	public CharacterImage(int x, int y, String imgLocation, Hero a) {
+	public CharacterImage(int x, int y, String imgLocation, JohnsonHero a) {
 		super(x, y, 100, 150);
 		System.out.println(imgLocation+"wr");
 		image = new Graphic(0,30,100,100,imgLocation);
@@ -35,7 +35,7 @@ public class CharacterImage extends Component implements Clickable {
 		setVisible(false);
 		update();
 	}
-	public void setHero(Hero hero) {
+	public void setHero(JohnsonHero hero) {
 		this.hero = hero;
 	}
 	@Override

@@ -12,10 +12,10 @@ import guiTeacher.interfaces.Clickable;
 import guiTeacher.interfaces.FocusController;
 import guiTeacher.interfaces.Visible;
 
-public class CardPane extends Pane implements Runnable {
+public class JohnsonCardPane extends Pane implements Runnable {
 	
 	private Action action;
-	private Hero hero;
+	private JohnsonHero hero;
 	private Graphic bg;
 	private Graphic charImg;
 	private TextArea name;
@@ -23,7 +23,7 @@ public class CardPane extends Pane implements Runnable {
 	private TextArea level;
 	private Action hoverAction;
 	
-	public CardPane(FocusController focusController, int x, int y, int width, int height,Hero g) {
+	public JohnsonCardPane(FocusController focusController, int x, int y, int width, int height,JohnsonHero g) {
 		super(focusController, x, y, width, height);
 		System.out.println("xd");
 		this.hero = g;
@@ -51,7 +51,7 @@ public class CardPane extends Pane implements Runnable {
 		update();
 		
 	}
-	public void setHero(Hero hero) {
+	public void setHero(JohnsonHero hero) {
 		this.hero = hero;
 	}
 	public void setImage(String img) {
@@ -112,7 +112,7 @@ public class CardPane extends Pane implements Runnable {
 		if(action != null)action.act();
 	}
 	
-	public Hero getHero() {
+	public JohnsonHero getHero() {
 		return hero;
 	}
 	

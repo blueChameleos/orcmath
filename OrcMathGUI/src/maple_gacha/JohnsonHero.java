@@ -2,7 +2,7 @@ package maple_gacha;
 
 import java.io.Serializable;
 
-public class Hero implements Character, Serializable{
+public class JohnsonHero implements Character, Serializable{
 
 	private String img;
 	private String rank;
@@ -28,7 +28,7 @@ public class Hero implements Character, Serializable{
 	}
 	private String name;
 
-	public Hero(String img, String rank, int strength, int speed, int attack, int defense, int hp, String name) {
+	public JohnsonHero(String img, String rank, int strength, int speed, int attack, int defense, int hp, String name) {
 
 		this.img = img;
 		this.rank = rank;

@@ -25,22 +25,22 @@ public class CharacterScreen extends FullFunctionScreen {
 	private int idx;
 	private ClickableGraphic arrow1;
 	private ClickableGraphic arrow2;
-	private CardPane g1;
-	private CardPane g2;
-	private CardPane g3;
-	private CardPane g4;
-	private CardPane g5;
+	private JohnsonCardPane g1;
+	private JohnsonCardPane g2;
+	private JohnsonCardPane g3;
+	private JohnsonCardPane g4;
+	private JohnsonCardPane g5;
 
-	private CardPane c1;
-	private CardPane c2;
-	private CardPane c3;
+	private JohnsonCardPane c1;
+	private JohnsonCardPane c2;
+	private JohnsonCardPane c3;
 
 	private TextArea confirmation;
 
 	private Button next;
 	// m
-	ArrayList<CardPane> clickList;
-	ArrayList<CardPane> clickG;
+	ArrayList<JohnsonCardPane> clickList;
+	ArrayList<JohnsonCardPane> clickG;
 
 	public CharacterScreen(int width, int height) {
 		super(width, height);
@@ -94,8 +94,8 @@ public class CharacterScreen extends FullFunctionScreen {
 		confirmation = new TextArea(745, 580, 475, 320, "");
 		viewObjects.add(confirmation);
 
-		clickList = new ArrayList<CardPane>();
-		clickG = new ArrayList<CardPane>();
+		clickList = new ArrayList<JohnsonCardPane>();
+		clickG = new ArrayList<JohnsonCardPane>();
 
 		clickList.add(g1);
 		clickList.add(g2);
@@ -106,7 +106,7 @@ public class CharacterScreen extends FullFunctionScreen {
 		clickG.add(c2);
 		clickG.add(c3);
 		for (int i = 0; i < 3; i++) {
-			clickG.set(i, new CardPane(this, 66 + 225 * i, 586, 198, 315, null));
+			clickG.set(i, new JohnsonCardPane(this, 66 + 225 * i, 586, 198, 315, null));
 			int number = i;
 			clickG.get(i).setAction(new Action() {
 
@@ -146,12 +146,12 @@ public class CharacterScreen extends FullFunctionScreen {
 		}
 		for (int i = 0; i < 5; i++) {
 			if (MainGame.team.size() > i) {
-				clickList.set(i, new CardPane(this, 133 + 205 * i, 142, 206, 319, MainGame.team.get(i)));
+				clickList.set(i, new JohnsonCardPane(this, 133 + 205 * i, 142, 206, 319, MainGame.team.get(i)));
 				clickList.get(i).setHero(MainGame.team.get(i));
 				clickList.get(i).run();
 				clickList.get(i).update();
 			} else {
-				clickList.set(i, new CardPane(this, 133 + 205 * i, 142, 206, 319, null));
+				clickList.set(i, new JohnsonCardPane(this, 133 + 205 * i, 142, 206, 319, null));
 			}
 			int number = i;
 			clickList.get(i).setAction(new Action() {
@@ -204,7 +204,7 @@ public class CharacterScreen extends FullFunctionScreen {
 
 	}
 
-	public int findEquality(Hero hero) {
+	public int findEquality(JohnsonHero hero) {
 		for (int i = 0; i < MainGame.team.size(); i++) {
 			if (MainGame.team.get(i).getID() == hero.getID()) {
 				return i;

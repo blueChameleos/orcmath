@@ -20,18 +20,18 @@ package guiTeacher.components;
 
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Clickable;
-import maple_gacha.Hero;
+import maple_gacha.JohnsonHero;
 
 public class ClickableCharacter extends Graphic implements Clickable { 
 
 	private Action action;
 	private String imageLocation;
-	private Hero hero;
+	private JohnsonHero hero;
 	private boolean enable = false;
 	private Action hoverAction;
 	
 
-	public ClickableCharacter(int x, int y, int w, int h, String imageLocation,Hero hero) {
+	public ClickableCharacter(int x, int y, int w, int h, String imageLocation,JohnsonHero hero) {
 		super(x, y, w, h, imageLocation);
 		this.imageLocation = imageLocation;
 		this.hero = hero;
@@ -42,11 +42,11 @@ public class ClickableCharacter extends Graphic implements Clickable {
 	public boolean returnbool() {
 		return enable;
 	}
-	public void changeHero(Hero hero) {
+	public void changeHero(JohnsonHero hero) {
 		this.hero = hero;
 	}
 	
-	public Hero getHero() {
+	public JohnsonHero getHero() {
 		return hero;
 	}
 	

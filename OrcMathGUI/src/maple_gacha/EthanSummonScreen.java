@@ -17,7 +17,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class EthanSummonScreen extends FullFunctionScreen implements Runnable, BannerInterface, Summoning {
 
 	private ArrayList<Graphic> banners;
-	private ArrayList<Hero> heroes;
+	private ArrayList<JohnsonHero> heroes;
 	private int index;
 	private int nx;
 	private TextArea error;
@@ -238,7 +238,7 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 
 	@Override
 	public void setPotentialChars() {
-		ArrayList<Hero> hero = new ArrayList<Hero>();
+		ArrayList<JohnsonHero> hero = new ArrayList<JohnsonHero>();
 		if (bannerType() == 0) {
 			hero.add(MainGame.highPrincess);
 			hero.add(MainGame.beginnerSword);
@@ -267,11 +267,11 @@ public class EthanSummonScreen extends FullFunctionScreen implements Runnable, B
 		}
 	}
 
-	public void setThings(ArrayList<Hero> thing) {
+	public void setThings(ArrayList<JohnsonHero> thing) {
 		heroes = thing;
 	}
 
-	public ArrayList<Hero> getThings() {
+	public ArrayList<JohnsonHero> getThings() {
 		return heroes;
 	}
 

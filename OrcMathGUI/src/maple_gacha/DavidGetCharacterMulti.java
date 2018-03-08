@@ -20,7 +20,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 	public boolean srare;
 	public double rate;
 	public boolean lightingCheck;
-	public ArrayList<Hero> banner;
+	public ArrayList<JohnsonHero> banner;
 	public int cardNum;
 	public int bannerNum;
 	public int cardNum1;
@@ -28,11 +28,11 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 	public ArrayList<Number> num;
 	private CustomCursor customCursor;
 	
-	public ArrayList<Hero> getStuff() {
+	public ArrayList<JohnsonHero> getStuff() {
 		return banner;
 	}
 
-	public void setStuff(ArrayList<Hero> stuff) {
+	public void setStuff(ArrayList<JohnsonHero> stuff) {
 		this.banner = stuff;
 	}
 
@@ -241,7 +241,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 		
 		if(bannerNum == 0)
 		{
-			banner = new ArrayList<Hero>();
+			banner = new ArrayList<JohnsonHero>();
 			banner.add(MainGame.highPrincess);//SS
 			banner.add(MainGame.highTank);//S
 			banner.add(MainGame.bCoolGuys);//A
@@ -254,7 +254,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 		
 		if(bannerNum == 1)
 		{
-			banner = new ArrayList<Hero>();
+			banner = new ArrayList<JohnsonHero>();
 			banner.add(MainGame.highAssassin);//SS
 			banner.add(MainGame.mediumHighSchoolGirl);//S
 			
@@ -267,7 +267,7 @@ public class DavidGetCharacterMulti extends FullFunctionScreen implements Banner
 		
 		if(bannerNum == 2)
 		{
-			banner = new ArrayList<Hero>();
+			banner = new ArrayList<JohnsonHero>();
 			banner.add(MainGame.highSirandHorse);//SS
 			banner.add(MainGame.mediumCannonMan);//S
 			
