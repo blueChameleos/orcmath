@@ -165,7 +165,6 @@ public class MainScreen extends WeiLightingScreen {
             if (MainGame.currentTeam.size() > i) {
             	unitlist.get(i).loadImages(MainGame.currentTeam.get(i).getImage(), (getWidth()/2)-359+(i*246), 175);
             }else {
-            	System.out.println("aah");
             	unitlist.get(i).loadImages("resources/transparent.png", (getWidth()/2)-359+(i*246)+113, 175);
             }
         }
