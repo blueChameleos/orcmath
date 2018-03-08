@@ -24,7 +24,7 @@ import guiTeacher.userInterfaces.ClickableScreen;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import holiday.HolidayCard;
 
-public class MainScreen extends FullFunctionScreen {
+public class MainScreen extends WeiLightingScreen {
 	/**
 	 * 
 	 */

@@ -19,7 +19,7 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ComponentContainer;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class BattleScreen extends FullFunctionScreen implements Runnable {
+public class BattleScreen extends WeiLightingScreen implements Runnable {
 
 	private static final long serialVersionUID = 2809999782648181302L;
 	private int roundNum;
@@ -111,55 +111,16 @@ public class BattleScreen extends FullFunctionScreen implements Runnable {
 			monsterImg.add(g);
 			viewObjects.add(g);
 		}
-		hider = new Graphic(0,0,getWidth(),getHeight(),"resources/hider.jpg");
-		viewObjects.add(hider);
 		backend.setPlaying(true);
 		game = new Thread(backend);
 		game.start();
+		super.initAllObjects(viewObjects);
 		fadeIn();
+		MainGame.battle.game.interrupt();
 	}
 
 	private Graphic getRandomBackground() {
 		return new Graphic(0, 0, getWidth(), getHeight(), "resources/winter.png");
-	}
-	
-	public void fadeIn() {
-		Thread animator = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(hider.getAlpha() > 0.01) {
-					hider.setAlpha((float)(hider.getAlpha()-0.01));
-					try {
-						Thread.sleep(1000/60);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				hider.setAlpha(0);
-				game.interrupt();
-			}
-		});
-		animator.start();
-	}
-	
-	public void fadeOut() {
-		Thread animator = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(hider.getAlpha() < 0.99) {
-					hider.setAlpha((float)(hider.getAlpha()+0.01));
-					try {
-						Thread.sleep(1000/60);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					hider.setAlpha((float) 1.0);
-				}
-				MainGame.battle.game.interrupt();
-			}
-		});
 	}
 	
 	public void updateHp() {
